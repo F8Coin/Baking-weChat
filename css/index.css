@@ -1,0 +1,232 @@
+.top_bg {
+    height: 10rem;
+    width: 100%;
+    margin-bottom: 1.25rem;
+    /* background-color: pink; */
+    background: url('../img/topBanner_bg.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+.contentBox>ul {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    flex-wrap:  wrap ;
+    justify-content:  space-between; 
+    align-content: space-between; 
+    box-sizing: border-box;
+    padding: 0rem 1.875rem;
+}
+
+.contentBox>ul>li {
+    width: 7rem;
+    height: 7rem;
+    margin-bottom: 1.25rem;
+    border: .0625rem solid #e7e7e7;
+    text-align: center;
+    border-radius: .375rem; 
+}
+
+.contentBox>ul>li.lastItem {
+    visibility: hidden;
+}
+
+.contentBox>ul>li.last>a {
+    display: none;
+}
+
+.contentBox>ul>li>a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    font-size: 1rem;
+    padding-top: 1.25rem;
+    box-sizing: border-box;
+    color: #000000;
+}
+
+
+.contentBox>ul>li>a>img {
+    display: block;
+    width: 2.8125rem;
+    margin: 0 auto;
+    margin-bottom: .375rem;
+}
+
+
+
+/* --------------刻章信息页面----------------- */
+
+.sealContainer {
+    position: relative;
+    background-color: rgba(250,250,250, 1);
+}
+
+.sealContainer .headerBar {
+    height: 7.5rem;
+    width: 100%;
+    position: absolute;
+    background-color: #836FFF;
+    /* background: url('../img/sealPage_bg.jpg') no-repeat center center;
+    background-size: cover; */
+}
+
+.sealContainer .contentBox {
+    position: relative;
+    top: 3.75rem;
+    z-index: 999;
+    padding: 0rem 1.875rem;
+}
+
+.sealContainer .upBox {
+    padding: 1.25rem;
+    border: 1px solid #e7e7e7;
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: .75rem;
+}
+
+.sealContainer .upBox>.title,
+.downBox>.title {
+    font-size: 1.375rem;
+}
+
+.upBox>.formItem,
+.downBox>.formItem {
+    padding: .75rem 0rem;
+}
+
+.upBox>.formItem>.labTitle,
+.downBox>.formItem>.labTitle {
+    font-size: 1.125rem;
+}
+
+.upBox>.formItem>.placeholderText,
+.downBox>.formItem>.placeholderText {
+    font-size: 1.125rem;
+    width: 100%;
+    padding: .375rem 0rem 1rem;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.upBox>.formItem>.selectZoom {
+    font-size: 0px;
+}
+
+.upBox>.selectZoomBox {
+    padding-bottom: 0px ;
+}
+
+.upBox>.formItem>.selectZoom {
+    margin-top: .5rem;
+}
+
+.upBox>.formItem>.selectZoom>li {
+    width: 5rem;
+    height: 1.875rem;
+    text-align: center;
+    line-height: 1.875rem;
+    border: 1px solid #e7e7e7;
+    border-radius: .3125rem;
+    margin-right: .625rem;
+    margin-bottom: .875rem;
+    display: inline-block;
+} 
+
+.upBox>.formItem>.selectZoom>li.checkedItem {
+    background-color: #836FFF;
+    border-color: #836FFF;
+    color: #fff;
+}
+
+.upBox>.formItem>.sealBox {
+    margin-top: .625rem;
+}
+
+.upBox>.formItem>.sealBox>li {
+    height: 7.5rem;
+    line-height: 7.5rem;
+    border: 1px solid #e7e7e7;
+    border-radius: .375rem;
+    margin-bottom: .5rem;
+    position: relative;
+}
+
+.upBox>.formItem>.sealBox>li>img {
+    width: 5rem;
+    margin-right: 2.5rem;
+    vertical-align: middle;
+}
+
+.upBox>.formItem>.sealBox>li>.sealType {
+    font-size: 1.125rem;
+    font-weight: 700;
+    padding-right: 1.25rem;
+}
+
+.upBox>.formItem>.sealBox>li>.sealPrice {
+    font-size: 1rem ;
+    font-weight: 700;
+    color: red;
+    position: absolute;
+    top: 1.875rem;
+    left: 7.25rem;
+}
+
+.upBox>.formItem>.sealBox>li>.addBtn {
+    width: 5rem;
+    font-size: 1rem;
+    line-height: 1.875rem;
+    text-align: center;
+    color: #836FFF;
+    background-color: transparent;
+    border: 1px solid #836FFF;
+    border-radius: 1rem;
+    position: absolute;
+    top: 50%;
+    right: 1.875rem;
+}
+
+.upBox>.formItem>.sealBox>li>.addBtn>span {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.upBox>.formItem>.sealBox>li.sealPri {
+    padding-left: .625rem;
+}
+
+.upBox>.formItem>.uploadBox {
+    margin-top: .625rem;
+    width: 60%;
+    height: 8.75rem;
+    border: 1px solid #e7e7e7;
+    background: url('../img/uploadIco.png') no-repeat center center;
+    background-size: 30%;
+}
+
+.upBox>.formItem>.uploadBox>input {
+    width: 100%;
+    height: 100%;
+}
+
+.sealContainer .downBox {
+    margin-top: 1.875rem;
+    padding: 1.25rem;
+    border: 1px solid #e7e7e7;
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: .75rem;
+}
+
+.sealContainer .downBox .remarkText {
+    width: 100%;
+    height: 7.5rem;
+    margin-top: .625rem;
+    padding: .875rem .75rem;
+    box-sizing: border-box;
+}
+
+.contentBox .nextBtn {
+    margin-top: 2.8125rem;
+    margin-bottom: 1.875rem;
+    background-color: #836FFF;
+}
