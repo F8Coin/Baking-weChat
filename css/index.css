@@ -72,7 +72,7 @@
 .sealContainer .contentBox {
     position: relative;
     top: 3.75rem;
-    z-index: 999;
+    /* z-index: 999; */
     padding: 0rem 1.875rem;
 }
 
@@ -309,7 +309,6 @@
 }
 
 .tipBox {
-    height: 15rem ;
     color: #fff;
     margin-bottom: 3.75rem;
     border-radius: .375rem;
@@ -525,3 +524,52 @@
 }
 
 /* --------------红本合同信息页面----------------- */
+.redPactContainer>.contentBox>.tipBox {
+    height: 15.375rem;
+    margin-bottom: 3.75rem;
+    margin-top: 1.875rem;
+}
+
+.redPactContainer>.contentBox>.upBox>.formItem>.labTitle>.text {
+    color: #999999;
+}
+
+.redPactContainer>.contentBox>.upBox>.formItem>.uesText {
+    padding: 1.25rem .75rem;
+    margin-top: .5rem;
+    width: 100%;
+    height: 7.5rem;
+    border: 1px solid #e7e7e7;
+    border-radius: .5rem;
+    box-sizing: border-box;
+}
+
+.redPactContainer>.contentBox>.upBox>.upload_ID {
+    font-size: 0px;
+    margin-bottom: 1.375rem;
+}
+
+.redPactContainer>.contentBox>.upBox>.formItem>.ID_img {
+    display: inline-block;
+    width: 48%;
+    height: 7.5rem;
+    margin-top: .5rem;
+    border: 1px solid #e7e7e7;
+    background: url('../img/uploadIco.png') no-repeat center center;
+    background-size: 30%;
+    text-align: center;
+}
+
+.redPactContainer>.contentBox>.upBox>.formItem>.ID_img>.tipText {
+    color: #999999;
+    font-size: 1rem;
+    display: inline-block;
+    margin-top: .5rem;
+    vertical-align: middle;
+}
+
+/* --------------红本合同订单页面----------------- */
+
+.redPactOrderContainer>.orderAbout>.orderAbout_content>.informationItem>.text {
+    color: #000000;
+}
