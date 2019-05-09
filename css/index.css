@@ -235,3 +235,293 @@
 
 
 /* --------------刻章订单页面----------------- */
+
+.sealOrderContainer {
+    height: 100%;
+    padding: 1.875rem;
+    background-color: rgba(250, 250, 250, 1);
+}
+
+.sealOrderContainer>.orderAbout {
+    padding: 1.25rem;
+    border: 1px solid #e7e7e7;
+    border-radius: .375rem;
+    background-color: #fff;
+    margin-bottom: 1.25rem;
+} 
+
+.sealOrderContainer>.orderAbout>.orderAbout_title {
+    font-size: 1.375rem;
+    margin-bottom: .5rem;
+}
+
+.seal_information>.orderAbout_content>.informationItem {
+    font-size: 1rem;
+    letter-spacing: .1875rem;
+    color: #999999;
+    line-height: 1.5rem;
+}
+
+.seal_information>.orderAbout_content>.informationItem>.companyName,
+.informationItem>.ID,
+.informationItem>.zoom,
+.informationItem>.remarkText {
+    letter-spacing: 0rem;
+    color: #000000;
+}
+
+.seal_information>.orderAbout_content>.tradingPic>img {
+    height: 8.75rem;
+}
+
+
+.seal_goods .sealListBox {
+    width: 100%;
+}
+
+.seal_goods .sealListBox .sealItem {
+    height: 3.75rem;
+}
+
+.seal_goods .sealListBox .sealItem>td {
+    width: 25%;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.seal_goods .sealListBox .sealItem>.sealIcon>img {
+    height: 2.5rem;
+}
+
+.seal_goods .sealListBox .sealItem>.sealName {
+    color: #999999;
+    
+}
+
+.seal_goods .sealListBox .sealItem>.sealAccount {
+    font-weight: 700;
+}
+
+.seal_goods .sealListBox .sealItem>.sealPrice {
+    font-weight: 700;
+    color: red;
+    text-align: right; 
+}
+
+.tipBox {
+    height: 15rem ;
+    color: #fff;
+    margin-bottom: 3.75rem;
+    border-radius: .375rem;
+    padding: 1.25rem 1.875rem;
+    background: linear-gradient(to top right, #40E0D0, #836FFF);
+}
+
+.tipBox>.tipTitle {
+    text-align: center;
+    font-size: 1.25rem;
+    padding-bottom: .625rem;
+} 
+
+.tipBox>.tipText {
+    font-size: 1rem;
+}
+
+.paymentBox {
+    position: fixed;
+    bottom: 0px;
+    height: 3.75rem;
+    line-height: 3.75rem;
+    width: 100%;
+    padding: 0rem 1.875rem;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+.paymentBox>.payInfo {
+    font-size: 1.125rem ;
+}
+
+.paymentBox>.payInfo>.payAmount {
+    font-size: 1.25rem;
+    color: red;
+    font-weight: 700;
+}
+
+.paymentBox>.paymentBtn {
+    width: 8.75rem;
+    height: 3.125rem;
+    margin-top: .3125rem;
+    line-height: 3.125rem;
+    font-size: 1.125rem;
+    text-align: center;
+    color: #fff;
+    border-radius: 3.125rem;
+    background-color: #836FFF;
+}
+
+/* --------------注销公司信息页面----------------- */
+
+.companyFormContainer {
+    padding: 1.875rem;
+    background-color: rgba(250, 250, 250, 1);
+}
+
+.companyFormContainer>.formItem {
+    margin-top: 1.25rem;
+}
+
+.companyFormContainer>.formItem>.title {
+    font-size: 1.125rem;
+}
+
+.companyFormContainer>.formItem>.title>.text {
+    padding-left: .5rem;
+    color: #999999;
+    font-size: 1rem;
+}
+
+.companyFormContainer>.formItem>.content {
+    margin-top: .5rem;
+}
+
+.companyFormContainer>.formItem>.content>.optionAbout {
+    width: 48%;
+    height: 7.5rem;
+    border: 1px solid #e7e7e7;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 1.25rem .75rem;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.companyFormContainer>.partOther>.content>.optionAbout {
+    margin-bottom: .5rem;
+}
+
+.companyFormContainer .optionAbout>.flag>img {
+    width: 1.5rem;
+    vertical-align: middle;
+}
+
+.companyFormContainer .optionAbout>.flag>.text {
+    padding-left: .75rem;
+    font-size: 1rem;
+    vertical-align: middle;
+}
+
+.companyFormContainer .optionAbout>.price {
+    font-size: 1.125rem;
+    color: red;
+    font-weight: 700;
+    position: absolute;
+    bottom: .75rem;
+} 
+
+.companyFormContainer .optionAbout>input[type='checkbox'] {
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+    color: #836FFF;
+    border: 1px solid #836FFF;
+    -webkit-appearance:none;
+    border-radius: 1.875rem;
+    right: 0.75rem;
+    bottom: 1rem;
+}
+
+.companyFormContainer .optionAbout>input[type='checkbox']:checked {
+    background: url('../img/checked.png') no-repeat center center;
+    background-size: cover;
+}
+
+.companyFormContainer .partOther .partOther_self {
+    width: 100% !important;
+}
+
+.companyFormContainer .partOther .partOther_self>.selfText {
+    padding: .5rem 1.875rem .5rem .75rem;
+    width: 100%;
+    height: 4rem;
+    line-height: 1rem;
+    box-sizing: border-box;
+    border: none;
+}
+
+.companyFormContainer .partOther .partOther_self>.selfText:focus {
+    outline: none;
+}
+
+
+.companyFormContainer>.formItem>.companyNameBox {
+    border: 1px solid #e7e7e7;
+    background-color: #fff;
+    border-radius: .5rem;
+    height: 6.25rem;
+    padding: 0rem 1.25rem;
+}
+
+.companyFormContainer>.formItem>.companyNameBox>.companyNameText {
+    height: 4.375rem;
+    border-bottom: 1px solid #e7e7e7;
+    width: 100%;
+    padding-left: .75rem;
+    font-size: 1.125rem;
+}
+
+.companyFormContainer .nextBtn {
+    margin-top: 2.8125rem;
+    margin-bottom: 1.875rem;
+    background-color: #836FFF;
+}
+
+.companyFormContainer a.nextBtn:active {
+    background-color: #836FFF;
+}
+
+/* --------------注销公司订单页面----------------- */
+
+
+.companyOrderContainer>.fileList>.content>.fileTable {
+    width: 100%;
+    background-color: #fff;
+    border-radius: .5rem;
+}
+
+.companyOrderContainer>.fileList>.content>.fileTable>tbody>tr {
+    height: 3.75rem;
+    line-height: 3.75rem;
+    border-bottom: 1px dashed #e7e7e7;
+}
+
+.companyOrderContainer>.fileList>.content>.fileTable>tbody>tr:last-child {
+    border-bottom: none;
+}
+
+.companyOrderContainer>.fileList>.content>.fileTable td {
+    width: 50%;
+    padding: 0rem .5rem;
+    font-size: 1rem;
+}
+
+.companyOrderContainer>.agreementText {
+    margin-top: 1.875rem;
+    margin-bottom: 5rem;
+    font-size: 1rem;
+}
+
+.companyOrderContainer>.agreementText>input[type='checkbox'] {
+    width: 1.125rem;
+    height: 1.125rem;
+    vertical-align: middle;
+}
+
+.companyOrderContainer>.agreementText>.tipText,
+.companyOrderContainer>.agreementText>.orderText
+{
+    font-size: 1.125rem;
+    vertical-align: middle;
+}
+
+/* --------------红本合同信息页面----------------- */
