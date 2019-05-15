@@ -77,9 +77,10 @@
         $('.userInfo .userTel').text(sealOrderAbout.receiverTel);
         $('.userInfo .userAdd').text(sealOrderAbout.receiverAdd);
         
-
+        
         for (let i = 0; i < sealOrderAbout.seal_goods.length; i++) {
             var imgSrc = '../img/sealPub.jpg';
+            var orderAmount;
             if(sealOrderAbout.seal_goods[i].typeAbout == '私章') {
                 imgSrc = "../img/sealPri.jpg"
             }
@@ -91,8 +92,10 @@
                                 '<td class="sealAccount">×1</td>'+
                                 '<td class="sealPrice">￥'+sealOrderAbout.seal_goods[i].priceAbout+'</td>'+
                             '</tr>'
-            $('#sealList').append(trItem);                
+            $('#sealList').append(trItem);
+             orderAmount+= parseInt(sealOrderAbout.seal_goods[i].priceAbout);
         }
+        console.log(orderAmount);
     })
     
 </script>
