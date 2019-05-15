@@ -156,43 +156,43 @@
             };
 
             // 正则验证表单信息
-            // if(companyName == ''){ //验证公司名称
-            //     layer.msg('请输入公司名称');
-            //     return;
-            // }
+            if(companyName == ''){ //验证公司名称
+                layer.msg('请输入公司名称');
+                return;
+            }
 
-            // if(personID == ''){ //验证法人身份证
-            //     layer.msg('请输入法人身份证');
-            //     return;
-            // }else if(!(/^([0-9]){7,18}(x|X)?$ 或 ^\d{8,18}|[0-9x]{8,18}|[0-9X]{8,18}?$/.test(personID))) {
-            //     layer.msg('请填写正确的身份证号码');
-            //     return;
-            // }
+            if(personID == ''){ //验证法人身份证
+                layer.msg('请输入法人身份证');
+                return;
+            }else if(!(/^([0-9]){7,18}(x|X)?$ 或 ^\d{8,18}|[0-9x]{8,18}|[0-9X]{8,18}?$/.test(personID))) {
+                layer.msg('请填写正确的身份证号码');
+                return;
+            }
 
-            // if(receiverName == ''){ //验证收货人姓名
-            //     layer.msg('请输入收货人姓名');
-            //     return;
-            // }
+            if(receiverName == ''){ //验证收货人姓名
+                layer.msg('请输入收货人姓名');
+                return;
+            }
 
-            // if(receiverTel == ''){ //验证收货人姓名
-            //     layer.msg('请输入收货人电话');
-            //     return;
-            // }else if(!(/^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/.test(receiverTel))) {
-            //     layer.msg('请填写正确的收货人电话');
-            //     return;
-            // }
+            if(receiverTel == ''){ //验证收货人姓名
+                layer.msg('请输入收货人电话');
+                return;
+            }else if(!(/^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/.test(receiverTel))) {
+                layer.msg('请填写正确的收货人电话');
+                return;
+            }
 
-            // if(receiverAdd == ''){ //验证收货人姓名
-            //     layer.msg('请输入收货人地址');
-            //     return;
-            // }
+            if(receiverAdd == ''){ //验证收货人姓名
+                layer.msg('请输入收货人地址');
+                return;
+            }
 
-            // if(seal_goods.length == 0) {
-            //     layer.msg('请选择需要购买的印章')
-            //     return;
-            // }
+            if(seal_goods.length == 0) {
+                layer.msg('请选择需要购买的印章')
+                return;
+            }
 
-            localStorage.setItem("test", orderInfo);
+            sessionStorage.setItem("sealFormMes", JSON.stringify(orderInfo));
 
             window.location.href = "../view/seal_order.html"
 

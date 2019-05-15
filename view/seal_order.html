@@ -30,30 +30,7 @@
             <div class="orderAbout_content">
                 <table class="sealListBox">
                     <tbody id="sealList">
-                        <!-- <tr class="sealItem">
-                            <td class="sealIcon">
-                                <img src="../img/sealPub.jpg" alt="">
-                            </td>
-                            <td class="sealName">公章</td>
-                            <td class="sealAccount">×1</td>
-                            <td class="sealPrice">￥130.00</td>
-                        </tr>
-                        <tr class="sealItem">
-                            <td class="sealIcon">
-                                <img src="../img/sealPub.jpg" alt="">
-                            </td>
-                            <td class="sealName">财务章</td>
-                            <td class="sealAccount">×1</td>
-                            <td class="sealPrice">￥160.00</td>
-                        </tr>
-                        <tr class="sealItem">
-                            <td class="sealIcon">
-                                <img src="../img/sealPub.jpg" alt="">
-                            </td>
-                            <td class="sealName">合同章</td>
-                            <td class="sealAccount">×1</td>
-                            <td class="sealPrice">￥130.00</td>
-                        </tr> -->
+
                     </tbody>
                 </table>
             </div>
@@ -62,11 +39,11 @@
             <p class="orderAbout_title">收货信息</p>
             <div class="orderAbout_content">
                 <p class="userInfo">
-                    <span class="userName">张晓东</span>    
-                    <span class="userTel">18603059551</span>
+                    <span class="userName"></span>    
+                    <span class="userTel"></span>
                 </p>    
                 <p class="userInfo">
-                    <span class="userAdd">广东省深圳市龙华新区东环一路壹城中心E区2栋909</span>
+                    <span class="userAdd"></span>
                 </p>
             </div>  
         </div>
@@ -91,31 +68,31 @@
 <script src="../js/jQuery/jquery-3.4.0.js"></script>
 <script>
     $(function(){
-        var sealOrderAbout = localStorage.getItem('test');
-        // $('.informationItem .companyName').text(sealOrderAbout.companyName);
-        // $('.informationItem .ID').text(sealOrderAbout.personID);
-        // $('.informationItem .zoom').text(sealOrderAbout.zoomArea);
-        // $('.informationItem .remarkText').text(sealOrderAbout.remarkText);
-        // $('.informationItem .companyName').text(sealOrderAbout.companyName);
-        console.log(sealOrderAbout.zoomArea);
-        console.log(sealOrderAbout.seal_goods);
-        // console.log(sealOrderAbout.seal_goods.length);
+        var sealOrderAbout = JSON.parse(sessionStorage.getItem('sealFormMes')) ;
+        $('.informationItem .companyName').text(sealOrderAbout.companyName);
+        $('.informationItem .ID').text(sealOrderAbout.personID);
+        $('.informationItem .zoom').text(sealOrderAbout.zoomArea);
+        $('.informationItem .remarkText').text(sealOrderAbout.remarkText);
+        $('.userInfo .userName').text(sealOrderAbout.receiverName);
+        $('.userInfo .userTel').text(sealOrderAbout.receiverTel);
+        $('.userInfo .userAdd').text(sealOrderAbout.receiverAdd);
+        
 
-        // for (let i = 0; i < sealOrderAbout.seal_goods.length; i++) {
-        //     var imgSrc = '../img/sealPub.jpg';
-        //     if(sealOrderAbout.seal_goods[i].type == '私章') {
-        //         imgSrc = "../img/sealPri.jpg"
-        //     }
-        //     var trItem = '<tr class="sealItem">'+
-        //                         '<td class="sealIcon">'+
-        //                             '<img src='+imgSrc+' alt="">'+
-        //                         '</td>'+
-        //                         '<td class="sealName">'+sealOrderAbout.seal_goods[i].type+'</td>'+
-        //                         '<td class="sealAccount">×1</td>'+
-        //                         '<td class="sealPrice">￥'+sealOrderAbout.seal_goods[i].price+'</td>'+
-        //                     '</tr>'
-        //     $('#sealList').append(trItem);                
-        // }
+        for (let i = 0; i < sealOrderAbout.seal_goods.length; i++) {
+            var imgSrc = '../img/sealPub.jpg';
+            if(sealOrderAbout.seal_goods[i].typeAbout == '私章') {
+                imgSrc = "../img/sealPri.jpg"
+            }
+            var trItem = '<tr class="sealItem">'+
+                                '<td class="sealIcon">'+
+                                    '<img src='+imgSrc+' alt="">'+
+                                '</td>'+
+                                '<td class="sealName">'+sealOrderAbout.seal_goods[i].typeAbout+'</td>'+
+                                '<td class="sealAccount">×1</td>'+
+                                '<td class="sealPrice">￥'+sealOrderAbout.seal_goods[i].priceAbout+'</td>'+
+                            '</tr>'
+            $('#sealList').append(trItem);                
+        }
     })
     
 </script>
