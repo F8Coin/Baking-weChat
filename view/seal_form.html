@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>深圳市聚雕网科技有限公司</title>
     <link rel="stylesheet" href="../css/weui.min.css">
+    <link rel="stylesheet" href="../lib/layer/mobile/need/layer.css">
     <link rel="stylesheet" href="../css/regist.css">
     <link rel="stylesheet" href="../css/index.css">
 </head>
@@ -19,11 +20,11 @@
                 <p class="title">刻章信息</p>
                 <div class="formItem">
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;公司名称</p>
-                    <input class="placeholderText" type="text" placeholder="请输入公司名称">
+                    <input class="placeholderText companyName" type="text" placeholder="请输入公司名称">
                 </div>
                 <div class="formItem">
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;法人身份证号码</p>
-                    <input class="placeholderText" type="text" placeholder="请输入法人身份证号码">
+                    <input class="placeholderText personID" type="text" placeholder="请输入法人身份证号码">
                 </div>
                 <div class="formItem selectZoomBox">
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;办理区域</p>
@@ -89,24 +90,115 @@
                 <p class="title">收货信息</p>
                 <div class="formItem">
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;联系人</p>
-                    <input class="placeholderText" type="text" placeholder="请输入联系人">
+                    <input class="placeholderText receiverName" type="text" placeholder="请输入联系人">
                 </div>
                 <div class="formItem">
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;手机号码</p>
-                    <input class="placeholderText" type="text" placeholder="请输入手机号码">
+                    <input class="placeholderText receiverTel" type="text" placeholder="请输入手机号码">
                 </div>
                 <div class="formItem">
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;收货地址</p>
-                    <input class="placeholderText" type="text" placeholder="请输入收货地址">
+                    <input class="placeholderText receiverAdd" type="text" placeholder="请输入收货地址">
                 </div>
                 <div class="formItem">
                     <p class="labTitle">备注</p>
                     <textarea class="remarkText" name="" id="" cols="" rows="" placeholder="如需其它服务请备注"></textarea>
                 </div>
             </div>
-            <a href="./seal_order.html" class="weui_btn weui_btn_primary nextBtn">下一步</a>
+            <a href="javascript:void(0)" class="weui_btn weui_btn_primary nextBtn">下一步</a>
         </div>
     </div>
 </body>
 
 </html>
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="../js/jQuery/jquery-3.4.0.js"></script>
+<script src="../lib/layer/layer.js"></script>
+<script src="../js/index.js"></script>
+<script>
+    $(function(){
+        // 点击下一步提交订单
+        $('.nextBtn').on('touchend',function(e){
+            var orderInfo = {};
+            var companyName = $('.companyName').val(); // 获取公司名称
+            var personID = $('.personID').val(); // 获取法人身份证
+            var zoomArea = $('.selectZoom li.checkedItem').text(); // 办理区域
+            var receiverName = $('.receiverName').val(); // 收货人姓名
+            var receiverTel = $('.receiverTel').val(); // 收货人电话
+            var receiverAdd = $('.receiverAdd').val(); // 收货地址
+            var remarkText = $('.remarkText').val(); // 备注信息
+            // 购买印章信息
+            var seal_goods= [];
+            var addBtnList = $('.addBtn');
+            for (let i = 0; i < addBtnList.length; i++) {
+                if($(addBtnList[i]).text() == "已添加"){
+                    var type = $(addBtnList[i]).siblings('.sealType').text();
+                    var price = $(addBtnList[i]).siblings('.sealPrice').text().replace('￥','');
+                    var sealItem = {typeAbout:type,priceAbout:price}
+                    seal_goods.push(sealItem);
+                }else {
+                    continue;
+                }
+                
+            }
+            // 上传营业执照
+            
+            orderInfo = {
+                'companyName': companyName,
+                'personID': personID,
+                'zoomArea': zoomArea,
+                'seal_goods': seal_goods,
+                'receiverName': receiverName,
+                'receiverTel': receiverTel,
+                'receiverAdd': receiverAdd,
+                'remarkText': remarkText
+            };
+
+            // 正则验证表单信息
+            // if(companyName == ''){ //验证公司名称
+            //     layer.msg('请输入公司名称');
+            //     return;
+            // }
+
+            // if(personID == ''){ //验证法人身份证
+            //     layer.msg('请输入法人身份证');
+            //     return;
+            // }else if(!(/^([0-9]){7,18}(x|X)?$ 或 ^\d{8,18}|[0-9x]{8,18}|[0-9X]{8,18}?$/.test(personID))) {
+            //     layer.msg('请填写正确的身份证号码');
+            //     return;
+            // }
+
+            // if(receiverName == ''){ //验证收货人姓名
+            //     layer.msg('请输入收货人姓名');
+            //     return;
+            // }
+
+            // if(receiverTel == ''){ //验证收货人姓名
+            //     layer.msg('请输入收货人电话');
+            //     return;
+            // }else if(!(/^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/.test(receiverTel))) {
+            //     layer.msg('请填写正确的收货人电话');
+            //     return;
+            // }
+
+            // if(receiverAdd == ''){ //验证收货人姓名
+            //     layer.msg('请输入收货人地址');
+            //     return;
+            // }
+
+            // if(seal_goods.length == 0) {
+            //     layer.msg('请选择需要购买的印章')
+            //     return;
+            // }
+
+            localStorage.setItem("test", orderInfo);
+
+            window.location.href = "../view/seal_order.html"
+
+            // console.log(orderInfo);
+            e.preventDefault();
+        })
+    })
+ 
+</script>

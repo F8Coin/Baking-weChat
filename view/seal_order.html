@@ -17,10 +17,10 @@
         <div class="orderAbout seal_information">
             <p class="orderAbout_title">刻章信息</p>
             <div class="orderAbout_content">
-                <p class="informationItem">公司名称:&nbsp;<span class="companyName">深圳聚雕网科技有限公司</span></p>
-                <p class="informationItem">法人身份证号码:&nbsp;<span class="ID">420281198508078451</span></p>
-                <p class="informationItem">办理区域:&nbsp;<span class="zoom">龙华区</span></p>
-                <p class="informationItem">备注:&nbsp;<span class="remarkText">没有办不了的业务</span></p>  
+                <p class="informationItem">公司名称:&nbsp;<span class="companyName"></span></p>
+                <p class="informationItem">法人身份证号码:&nbsp;<span class="ID"></span></p>
+                <p class="informationItem">办理区域:&nbsp;<span class="zoom"></span></p>
+                <p class="informationItem">备注:&nbsp;<span class="remarkText"></span></p>  
                 <p class="informationItem">营业执照:<p class="tradingPic"><img src="../img/tradingPic.jpg" alt=""></p></p>                                
             </div>
 
@@ -29,8 +29,8 @@
             <p class="orderAbout_title">选购印章</p>
             <div class="orderAbout_content">
                 <table class="sealListBox">
-                    <tbody>
-                        <tr class="sealItem">
+                    <tbody id="sealList">
+                        <!-- <tr class="sealItem">
                             <td class="sealIcon">
                                 <img src="../img/sealPub.jpg" alt="">
                             </td>
@@ -53,7 +53,7 @@
                             <td class="sealName">合同章</td>
                             <td class="sealAccount">×1</td>
                             <td class="sealPrice">￥130.00</td>
-                        </tr>
+                        </tr> -->
                     </tbody>
                 </table>
             </div>
@@ -85,3 +85,37 @@
 </body>
 
 </html>
+
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="../js/jQuery/jquery-3.4.0.js"></script>
+<script>
+    $(function(){
+        var sealOrderAbout = localStorage.getItem('test');
+        // $('.informationItem .companyName').text(sealOrderAbout.companyName);
+        // $('.informationItem .ID').text(sealOrderAbout.personID);
+        // $('.informationItem .zoom').text(sealOrderAbout.zoomArea);
+        // $('.informationItem .remarkText').text(sealOrderAbout.remarkText);
+        // $('.informationItem .companyName').text(sealOrderAbout.companyName);
+        console.log(sealOrderAbout.zoomArea);
+        console.log(sealOrderAbout.seal_goods);
+        // console.log(sealOrderAbout.seal_goods.length);
+
+        // for (let i = 0; i < sealOrderAbout.seal_goods.length; i++) {
+        //     var imgSrc = '../img/sealPub.jpg';
+        //     if(sealOrderAbout.seal_goods[i].type == '私章') {
+        //         imgSrc = "../img/sealPri.jpg"
+        //     }
+        //     var trItem = '<tr class="sealItem">'+
+        //                         '<td class="sealIcon">'+
+        //                             '<img src='+imgSrc+' alt="">'+
+        //                         '</td>'+
+        //                         '<td class="sealName">'+sealOrderAbout.seal_goods[i].type+'</td>'+
+        //                         '<td class="sealAccount">×1</td>'+
+        //                         '<td class="sealPrice">￥'+sealOrderAbout.seal_goods[i].price+'</td>'+
+        //                     '</tr>'
+        //     $('#sealList').append(trItem);                
+        // }
+    })
+    
+</script>
