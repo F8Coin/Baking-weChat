@@ -355,7 +355,9 @@
     font-size: 1.125rem ;
 }
 
-.paymentBox>.payInfo>.payAmount {
+.paymentBox>.payInfo>.payAmount,
+.paymentBox>.payInfo>.RMB_flag
+{
     font-size: 1.25rem;
     color: red;
     font-weight: 700;

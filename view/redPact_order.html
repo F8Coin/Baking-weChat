@@ -40,9 +40,28 @@
     </div>
     <div class="paymentBox clearfix">
         <span class="fl payInfo">
-            订单金额 : <span class="payAmount">￥420.00</span>
+            订单金额 : <span class="RMB_flag">￥</span><span class="payAmount">420.00</span>
         </span>
         <a href="javascript:;" class="fr paymentBtn">微信支付</a>
     </div>
 </body>
 </html>
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="../js/jQuery/jquery-3.4.0.js"></script>
+<script>
+    $(function(){
+        var redOrderAbout = JSON.parse(sessionStorage.getItem('redlFormMes')) ;
+        $('.informationItem .tenant').text(redOrderAbout.tenantType);
+        $('.informationItem .legalName').text(redOrderAbout.lawName);
+        $('.informationItem .zoom').text(redOrderAbout.zoomArea);
+        $('.informationItem .type').text(redOrderAbout.timeArea);
+        $('.informationItem .remarkText').text(redOrderAbout.useText);
+        $('.informationItem .invoice').text(redOrderAbout.moneyBill);
+        $('.userInfo .userName').text(redOrderAbout.receiverName);
+        $('.userInfo .userTel').text(redOrderAbout.receiverTel);
+        $('.userInfo .userAdd').text(redOrderAbout.receiverAdd);
+        $('.payInfo .payAmount').text(redOrderAbout.orderAmount)
+    })
+    
+</script>

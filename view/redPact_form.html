@@ -32,9 +32,9 @@
                 <div class="formItem selectZoomBox">
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;面积时长</p>
                     <ul class="selectZoom selectArea">
-                        <li class="checkedItem">6m²/3月</li>
+                        <!-- <li class="checkedItem">6m²/3月</li>
                         <li>6m²/6月</li>
-                        <li>6m²/12月</li>
+                        <li>6m²/12月</li> -->
                     </ul>
                 </div>
                 <div class="formItem selectZoomBox">
@@ -96,7 +96,7 @@
     </div>
     <div class="paymentBox">
         <span class="payInfo">
-            订单金额 : <span class="payAmount">￥420.00</span>
+            订单金额 : <span class="RMB_flag">￥</span><span class="payAmount">420.00</span>
         </span>
         <a href="javascript:void(0)" class="fr nextBtn paymentBtn">下一步</a>
     </div>
@@ -108,7 +108,40 @@
 <script src="../lib/layer/layer.js"></script>
 <script src="../js/index.js"></script>
 <script>
-    $(function(){        
+    $(function(){
+        $('.checkZoom>li').on('touchend',function(e){
+            $(this).addClass('checkedItem').siblings('li').removeClass('checkedItem');
+            var currentZoom = $(this).text();
+            //红本合同模块
+            if(currentZoom == "福田区") {
+                $('.selectArea').html('<li class="checkedItem" payPrice="1000.00">6m²/3月</li><li payPrice="2000.00">6m²/6月</li><li payPrice="3000.00">6m²/12月</li>');
+                $('.payInfo .payAmount').text('1000.00');
+            }
+        })
+        
+        $('.selectArea').on('touchend','li', function(e) {
+            $(this).addClass('checkedItem').siblings('li').removeClass('checkedItem');
+            if($('.selectBill>li.checkedItem').text() == '需要') {
+                var payAmount= parseInt($(this).attr('payPrice')) + 300.00 +".00"
+                $('.payInfo .payAmount').text(payAmount);
+            }else if($('.selectBill>li.checkedItem').text() == '不需要') {
+                var payAmount= parseInt($(this).attr('payPrice')) +".00";
+                $('.payInfo .payAmount').text(payAmount);
+            }
+            
+        })
+
+        $('.selectBill>li').on('touchend',function(e) {
+            $(this).addClass('checkedItem').siblings('li').removeClass('checkedItem');
+            if($(this).text() == "需要") {
+                var payAmount = parseInt($('.selectArea>li.checkedItem').attr('payPrice')) + 300.00 +".00";
+                $('.payInfo .payAmount').text(payAmount);
+            }else if($(this).text() == "不需要") {
+                var payAmount = parseInt($('.selectArea>li.checkedItem').attr('payPrice')) +".00";               
+                $('.payInfo .payAmount').text(payAmount);
+            }
+            
+        })
        
         // 点击下一步提交订单
         $('.nextBtn').on('touchend',function(e){
@@ -122,6 +155,7 @@
             var receiverName = $('.receiverName').val(); // 收货人姓名
             var receiverTel = $('.receiverTel').val(); // 收货人电话
             var receiverAdd = $('.receiverAdd').val(); // 收货地址
+            var payAmount = $('.payAmount').text(); //订单总金额
             // 上传身份证
             
             orderInfo = {
@@ -134,6 +168,7 @@
                 'receiverName': receiverName,                
                 'receiverTel': receiverTel,
                 'receiverAdd': receiverAdd,
+                'orderAmount': payAmount
             };
 
             // 正则验证表单信息
@@ -165,13 +200,13 @@
                 return;
             }
 
-            sessionStorage.setItem("sealFormMes", JSON.stringify(orderInfo));
+            sessionStorage.setItem("redlFormMes", JSON.stringify(orderInfo));
 
             window.location.href = "./redPact_order.html"
-            console.log(orderInfo)
 
             e.preventDefault();
         })
     })
  
 </script>
+
