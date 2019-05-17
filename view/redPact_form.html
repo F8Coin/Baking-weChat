@@ -17,7 +17,7 @@
                 <p class="title">红本合同信息</p>
                 <div class="formItem selectZoomBox">
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;所属办理区域</p>
-                    <ul class="selectZoom">
+                    <ul class="selectZoom checkZoom">
                         <li class="checkedItem">罗湖区</li>
                         <li>南山区</li>
                         <li>宝安区</li>
@@ -31,7 +31,7 @@
                 </div>
                 <div class="formItem selectZoomBox">
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;面积时长</p>
-                    <ul class="selectZoom">
+                    <ul class="selectZoom selectArea">
                         <li class="checkedItem">6m²/3月</li>
                         <li>6m²/6月</li>
                         <li>6m²/12月</li>
@@ -39,18 +39,18 @@
                 </div>
                 <div class="formItem selectZoomBox">
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;承租人性质</p>
-                    <ul class="selectZoom">
+                    <ul class="selectZoom selectTenant">
                         <li class="checkedItem">法人</li>
                         <li>公司</li>
                     </ul>
                 </div>
                 <div class="formItem">
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;法人名称</p>
-                    <input class="placeholderText" type="text" placeholder="请输入法人名称">
+                    <input class="placeholderText lawName" type="text" placeholder="请输入法人名称">
                 </div>
                 <div class="formItem selectZoomBox">
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;是否需要租金发票 <span class="text">(300元)</span> </p>
-                    <ul class="selectZoom">
+                    <ul class="selectZoom selectBill">
                         <li class="checkedItem">不需要</li>
                         <li>需要</li>
                     </ul>
@@ -75,22 +75,22 @@
                 <p class="title">收货信息</p>
                 <div class="formItem">
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;联系人</p>
-                    <input class="placeholderText" type="text" placeholder="请输入联系人">
+                    <input class="placeholderText receiverName" type="text" placeholder="请输入联系人">
                 </div>
                 <div class="formItem">
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;手机号码</p>
-                    <input class="placeholderText" type="text" placeholder="请输入手机号码">
+                    <input class="placeholderText receiverTel" type="text" placeholder="请输入手机号码">
                 </div>
                 <div class="formItem">
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;收货地址</p>
-                    <input class="placeholderText" type="text" placeholder="请输入收货地址">
+                    <input class="placeholderText receiverAdd" type="text" placeholder="请输入收货地址">
                 </div>
             </div>
             <div class="tipBox">
                 <p class="tipTitle">服务保障</p>
                 <p class="tipText">1.聚雕网代办的红本可免费提供挂靠一年服务（接收工商、税务商事主体登记函）。</p>
                 <p class="tipText">2.可配合工商税务或银行检查上门一次。（第一次上门免费，后续上门额外收费， 工商税务300元一次，银行检查1500元一次,自行提供招牌。）</p>
-                <p class="tipText">3.个人名义办理的红本凭证，请在公司注册后及时把公司名称告知聚服网，以免影响工商税务函件接收，导致地址异常。</p>            
+                <p class="tipText">3.个人名义办理的红本凭证，请在公司注册后及时把公司名称告知聚雕网，以免影响工商税务函件接收，导致地址异常。</p>            
             </div> 
         </div>
     </div>
@@ -98,7 +98,80 @@
         <span class="payInfo">
             订单金额 : <span class="payAmount">￥420.00</span>
         </span>
-        <a href="./redPact_order.html" class="fr paymentBtn">下一步</a>
+        <a href="javascript:void(0)" class="fr nextBtn paymentBtn">下一步</a>
     </div>
 </body>
 </html>
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="../js/jQuery/jquery-3.4.0.js"></script>
+<script src="../lib/layer/layer.js"></script>
+<script src="../js/index.js"></script>
+<script>
+    $(function(){        
+       
+        // 点击下一步提交订单
+        $('.nextBtn').on('touchend',function(e){
+            var orderInfo = {};
+            var zoomArea = $('.checkZoom li.checkedItem').text(); // 办理区域
+            var timeArea = $('.selectArea li.checkedItem').text(); // 面积时长
+            var tenantType = $('.selectTenant li.checkedItem').text(); // 承租人性质
+            var moneyBill = $('.selectBill li.checkedItem').text(); // 租金发票           
+            var lawName = $('.lawName').val(); // 法人名称;
+            var useText = $('.uesText').val(); // 用途备注
+            var receiverName = $('.receiverName').val(); // 收货人姓名
+            var receiverTel = $('.receiverTel').val(); // 收货人电话
+            var receiverAdd = $('.receiverAdd').val(); // 收货地址
+            // 上传身份证
+            
+            orderInfo = {
+                'zoomArea': zoomArea,
+                'timeArea': timeArea,
+                'tenantType': tenantType,
+                'moneyBill': moneyBill,
+                'lawName': lawName,
+                'useText': useText,
+                'receiverName': receiverName,                
+                'receiverTel': receiverTel,
+                'receiverAdd': receiverAdd,
+            };
+
+            // 正则验证表单信息
+            if(lawName == ''){ //验证法人名称
+                layer.msg('请输入法人名称');
+                return;
+            }
+
+            if(useText == ''){ //验证用途备注
+                layer.msg('请输用途类型');
+                return;
+            }
+
+            if(receiverName == ''){ //验证收货人姓名
+                layer.msg('请输入收货人姓名');
+                return;
+            }
+
+            if(receiverTel == ''){ //验证收货人电话
+                layer.msg('请输入收货人电话');
+                return;
+            }else if(!(/^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/.test(receiverTel))) {
+                layer.msg('请填写正确的收货人电话');
+                return;
+            }
+
+            if(receiverAdd == ''){ //验证收货人地址
+                layer.msg('请输入收货人地址');
+                return;
+            }
+
+            sessionStorage.setItem("sealFormMes", JSON.stringify(orderInfo));
+
+            window.location.href = "./redPact_order.html"
+            console.log(orderInfo)
+
+            e.preventDefault();
+        })
+    })
+ 
+</script>

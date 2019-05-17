@@ -47,7 +47,7 @@ $('.addBtn').on('touchend',function(e){
 })
 
 /* --------------办理区域----------------- */
- $('.selectZoom>li').on('touchend',function(e){
+$('.selectZoom').on('touchend','li',function(e){
     $(this).addClass('checkedItem').siblings('li').removeClass('checkedItem');
-    e.preventDefault();
- })
+})    
+ 
