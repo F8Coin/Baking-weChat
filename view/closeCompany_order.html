@@ -14,7 +14,7 @@
         <div class="formItem partOther checkedServ">
             <p class="title">已选择服务</p>
             <div class="content clearfix">
-                <label for="partOther1" class="left fl optionAbout">
+                <!-- <label for="partOther1" class="left fl optionAbout">
                     <p class="flag">
                         <img class="icon" src="../img/other1_icon.png" alt="">
                         <span class="text">注销登报</span>
@@ -53,7 +53,7 @@
                     </p>
                     <p class="price">￥500</p>
                     <input class="selectBtn" checked disabled type="checkbox" id="partOther5">
-                </label>
+                </label> -->
             </div>
         </div>
         <div class="formItem fileList">
@@ -101,9 +101,36 @@
     </div> 
     <div class="paymentBox">
         <span class="payInfo">
-            订单金额 : <span class="payAmount">￥420.00</span>
+            订单金额 : <span class="payAmount">420.00</span>
         </span>
         <a href="javascript:;" class="fr paymentBtn">微信支付</a>
     </div>  
 </body>
 </html>
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="../js/jQuery/jquery-3.4.0.js"></script>
+<script>
+    $(function(){
+        var closeOrderAbout = JSON.parse(sessionStorage.getItem('closeFormMes')) ;
+        var checkItemList = closeOrderAbout.checkItem;
+        var payAmount =0;
+        for (let i = 0; i < checkItemList.length; i++) {
+            var checkItemHtml = '<label class="optionAbout">'+
+                    '<p class="flag">'+
+                        '<img class="icon" src='+checkItemList[i].icon+' alt="">'+
+                        '<span class="text">'+checkItemList[i].title+'</span>'+
+                    '</p>'+
+                    '<p class="price">'+checkItemList[i].price+'</p>'+
+                    '<input class="selectBtn" checked disabled type="checkbox">'+
+                '</label>'
+            var price = parseInt(checkItemList[i].price.replace('￥',''));
+            payAmount += price;         
+            $('.checkedServ .content').append(checkItemHtml);
+            $('.checkedServ .content>label:even').addClass("left fl"); // 奇数添加类名
+            $('.checkedServ .content>label:odd').addClass("right fr"); // 偶数添加类名            
+        }
+        $('.payInfo .payAmount').text(payAmount+".00");
+    })
+    
+</script>

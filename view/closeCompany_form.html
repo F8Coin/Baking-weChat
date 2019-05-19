@@ -25,8 +25,8 @@
                         <img class="icon" src="../img/part1_left_icon.png" alt="">
                         <span class="text">小规模</span>
                     </p>
-                    <p class="price">￥800.00</p>
-                    <input class="selectBtn" type="checkbox" id="partOne_Left">
+                    <p class="price">800.00</p>
+                    <input class="selectBtn" type="radio" id="partOne_Left" name="partOne">
                 </label>
                 <label for="partOne_Right" class="right fr optionAbout">
                     <p class="flag">
@@ -34,7 +34,7 @@
                         <span class="text">一般纳税人</span>
                     </p>
                     <p class="price">￥1300.00</p>
-                    <input class="selectBtn" type="checkbox" id="partOne_Right">
+                    <input class="selectBtn" type="radio" id="partOne_Right" name="partOne">
                 </label>
             </div>
         </div>
@@ -47,7 +47,7 @@
                         <span class="text">开业</span>
                     </p>
                     <p class="price">￥0</p>
-                    <input class="selectBtn" type="checkbox" id="partTwo_Left">
+                    <input class="selectBtn" type="radio" id="partTwo_Left" name="partTwo">
                 </label>
                 <label for="partTwo_Right" class="right fr optionAbout">
                     <p class="flag">
@@ -55,7 +55,7 @@
                         <span class="text">已吊销</span>
                     </p>
                     <p class="price">￥1500.00</p>
-                    <input class="selectBtn" type="checkbox" id="partTwo_Right">
+                    <input class="selectBtn" type="radio" id="partTwo_Right" name="partTwo">
                 </label>
             </div>
         </div>
@@ -68,7 +68,7 @@
                         <span class="text">税务正常</span>
                     </p>
                     <p class="price">￥0</p>
-                    <input class="selectBtn" type="checkbox" id="partThree_Left">
+                    <input class="selectBtn" type="radio" id="partThree_Left" name="partThree">
                 </label>
                 <label for="partThree_Right" class="right fr optionAbout">
                     <p class="flag">
@@ -76,7 +76,7 @@
                         <span class="text">税务异常</span>
                     </p>
                     <p class="price">￥400.00</p>
-                    <input class="selectBtn" type="checkbox" id="partThree_Right">
+                    <input class="selectBtn" type="radio" id="partThree_Right" name="partThree">
                 </label>
             </div>
         </div>
@@ -89,7 +89,7 @@
                         <span class="text">无逾期漏报</span>
                     </p>
                     <p class="price">￥0</p>
-                    <input class="selectBtn" type="checkbox" id="partFour_Left">
+                    <input class="selectBtn" type="radio" id="partFour_Left" name="partFour">
                 </label>
                 <label for="partFour_Right" class="right fr optionAbout">
                     <p class="flag">
@@ -97,7 +97,7 @@
                         <span class="text">有逾期漏报</span>
                     </p>
                     <p class="price">￥300.00</p>
-                    <input class="selectBtn" type="checkbox" id="partFour_Right">
+                    <input class="selectBtn" type="radio" id="partFour_Right" name="partFour">
                 </label>
             </div>
         </div>
@@ -110,7 +110,7 @@
                         <span class="text">有U盾网上备案</span>
                     </p>
                     <p class="price">￥0</p>
-                    <input class="selectBtn" type="checkbox" id="partFive_Left">
+                    <input class="selectBtn" type="radio" id="partFive_Left" name="partFive">
                 </label>
                 <label for="partFive_Right" class="right fr optionAbout">
                     <p class="flag">
@@ -118,7 +118,7 @@
                         <span class="text">无U盾纸质备案</span>
                     </p>
                     <p class="price">￥500.00</p>
-                    <input class="selectBtn" type="checkbox" id="partFive_Right">
+                    <input class="selectBtn" type="radio" id="partFive_Right" name="partFive">
                 </label>
             </div>
         </div>
@@ -199,7 +199,40 @@
                 </label>
             </div>
         </div>
-        <a href="./closeCompany_order.html" class="weui_btn weui_btn_primary nextBtn">下一步</a>
+        <a href="javascript:void(0)" class="weui_btn weui_btn_primary nextBtn">下一步</a>
     </div>
 </body>
 </html>
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="../js/jQuery/jquery-3.4.0.js"></script>
+<script src="../lib/layer/layer.js"></script>
+<script src="../js/index.js"></script>
+<script>
+    $(function(){
+        $('.nextBtn').on('touchend',function(e){
+            var companyName = $('.companyNameText').val();
+            var checkItem=[]; 
+            var checkItemList = $('.formItem>.content input:checked').parent();
+            for (let i = 0; i < checkItemList.length; i++) {
+                var checkItemInfo = {
+                    'icon': $(checkItemList[i]).find('p.flag img').attr('src'),
+                    'title': $(checkItemList[i]).find('p.flag .text').text(),
+                    'price': $(checkItemList[i]).find('p.price').text(),
+                }
+                checkItem.push(checkItemInfo);
+            }
+            var orderInfo = {};
+            orderInfo = {
+                'companyName': companyName,
+                'checkItem': checkItem,
+            };
+            console.log(orderInfo);
+            sessionStorage.setItem("closeFormMes", JSON.stringify(orderInfo));
+
+            window.location.href = "./closeCompany_order.html"
+
+            e.preventDefault();
+        })
+    })
+</script>

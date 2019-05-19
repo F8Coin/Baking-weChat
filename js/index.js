@@ -46,6 +46,24 @@ $('.addBtn').on('touchend',function(e){
 
 })
 
+/* --------------注销业务----------------- */
+// $('.companyFormContainer .content label>input').on('touchend',function(e){
+//     var selectFlag= true;
+//     if($(this).attr('checked')){
+//         selectFlag = true;
+//     }else {
+//         selectFlag = false;
+//     }
+//     if(selectFlag) {
+//         $(this).attr('checked',false);
+//         selectFlag = false;
+//     }else {
+//         $(this).attr('checked',true);
+//         selectFlag = true;
+//     }
+// })
+
+
 /* --------------办理区域----------------- */
 $('.selectZoom').on('touchend','li',function(e){
     $(this).addClass('checkedItem').siblings('li').removeClass('checkedItem');

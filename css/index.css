@@ -434,7 +434,9 @@
     bottom: .75rem;
 } 
 
-.companyFormContainer .optionAbout>input[type='checkbox'] {
+.companyFormContainer .optionAbout>input[type='radio'],
+.companyFormContainer .optionAbout>input[type='checkbox']
+{
     position: absolute;
     width: 1.5rem;
     height: 1.5rem;
@@ -446,7 +448,9 @@
     bottom: 1rem;
 }
 
-.companyFormContainer .optionAbout>input[type='checkbox']:checked {
+.companyFormContainer .optionAbout>input[type='radio']:checked,
+.companyFormContainer .optionAbout>input[type='checkbox']:checked
+{
     background: url('../img/checked.png') no-repeat center center;
     background-size: cover;
 }
@@ -534,7 +538,9 @@
     font-size: 1rem;
 }
 
-.companyOrderContainer>.agreementText>input[type='checkbox'] {
+.companyOrderContainer>.agreementText>input[type='radio'],
+.companyOrderContainer>.agreementText>input[type='checkbox']
+{
     width: 1.125rem;
     height: 1.125rem;
     vertical-align: middle;
