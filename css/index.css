@@ -148,6 +148,7 @@
     border-radius: .375rem;
     margin-bottom: .5rem;
     position: relative;
+    padding: 0rem .5rem;
 }
 
 .upBox>.formItem>.sealBox>li>img {
