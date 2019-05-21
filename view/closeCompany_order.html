@@ -14,46 +14,7 @@
         <div class="formItem partOther checkedServ">
             <p class="title">已选择服务</p>
             <div class="content clearfix">
-                <!-- <label for="partOther1" class="left fl optionAbout">
-                    <p class="flag">
-                        <img class="icon" src="../img/other1_icon.png" alt="">
-                        <span class="text">注销登报</span>
-                    </p>
-                    <p class="price">￥150</p>
-                    <input class="selectBtn" checked disabled type="checkbox" id="partOther1">
-                </label>
-                <label for="partOther2" class="right fr optionAbout">
-                    <p class="flag">
-                        <img class="icon" src="../img/other2_icon.png" alt="">
-                        <span class="text">注销发票、税盘</span> 
-                    </p>
-                    <p class="price">￥300.00</p>
-                    <input class="selectBtn" checked disabled type="checkbox" id="partOther2">
-                </label>
-                <label for="partOther3" class="left fl optionAbout">
-                    <p class="flag">
-                        <img class="icon" src="../img/other3_icon.png" alt="">
-                        <span class="text">注销社保</span>
-                    </p>
-                    <p class="price">￥300</p>
-                    <input class="selectBtn" checked disabled type="checkbox" id="partOther3">
-                </label>
-                <label for="partOther4" class="right fr optionAbout">
-                    <p class="flag">
-                        <img class="icon" src="../img/other4_icon.png" alt="">
-                        <span class="text">注销银行</span> 
-                    </p>
-                    <p class="price">￥300.00</p>
-                    <input class="selectBtn" checked disabled type="checkbox" id="partOther4">
-                </label>
-                <label for="partOther5" class="left fl optionAbout">
-                    <p class="flag">
-                        <img class="icon" src="../img/other5_icon.png" alt="">
-                        <span class="text">注销资质</span>
-                    </p>
-                    <p class="price">￥500</p>
-                    <input class="selectBtn" checked disabled type="checkbox" id="partOther5">
-                </label> -->
+
             </div>
         </div>
         <div class="formItem fileList">
@@ -127,8 +88,8 @@
             var price = parseInt(checkItemList[i].price.replace('￥',''));
             payAmount += price;         
             $('.checkedServ .content').append(checkItemHtml);
-            $('.checkedServ .content>label:even').addClass("left fl"); // 奇数添加类名
-            $('.checkedServ .content>label:odd').addClass("right fr"); // 偶数添加类名            
+            $('.checkedServ .content>label:even').addClass("left fl"); // 偶数添加类名; index索引从0开始,0算偶数
+            $('.checkedServ .content>label:odd').addClass("right fr"); // 奇数添加类名            
         }
         $('.payInfo .payAmount').text(payAmount+".00");
     })
