@@ -21,6 +21,20 @@ window.onload = function () {
     }, false);
 };
 
+/* --------------文件上传----------------- */
+var upLoadSrc;
+function uploadFile() {
+    let formData = new FormData(),
+    fs = $(".uploadInput")[0].files[0];
+    var reads= new FileReader();
+    reads.readAsDataURL(fs);
+    reads.onload=function (e) {
+        upLoadSrc = this.result;
+        $('.uploadBox').removeClass('uploadIcon')
+        $('.uploadBox .showImg').attr('src',upLoadSrc);
+    };
+}
+
 
 /* --------------添加按钮----------------- */
 $('.addBtn').on('touchend',function(e){

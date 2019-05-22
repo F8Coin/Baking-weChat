@@ -32,9 +32,7 @@
                 <div class="formItem selectZoomBox">
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;面积时长</p>
                     <ul class="selectZoom selectArea">
-                        <!-- <li class="checkedItem">6m²/3月</li>
-                        <li>6m²/6月</li>
-                        <li>6m²/12月</li> -->
+
                     </ul>
                 </div>
                 <div class="formItem selectZoomBox">
@@ -59,14 +57,16 @@
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;用途备注</p>
                     <textarea class="uesText" name="" id="" cols="30" rows="10" placeholder="例: 注册、变更、续签、解除异常"></textarea>
                 </div>
-                <div class="formItem upload_ID clearfix">
+                <div class="formItem upload_ID clearfix uploadBox">
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;所需材料 <span class="text">(照片必须清晰整齐)</span> </p>
-                    <div class="picUp ID_img fl">
-                        <input class="idImg" type="file" style="opacity:0;width:100%;height:100%;">
+                    <div class="picUp ID_img fl uploadIcon">
+                        <input class="idImg uploadInput" type="file" style="opacity:0;width:100%;height:100%;position:absolute;" onchange="uploadFile()">
+                        <img src="" alt="" class="showImg" style="display:block;margin:0 auto; height:100%;">
                         <span class="tipText"><span style="color:#CD0000;vertical-align: middle;">*</span>&nbsp;法人身份证正面</span>
                     </div>
-                    <div class="picDown ID_img fr">
-                        <input class="idImg" type="file" style="opacity:0;width:100%;height:100%;">
+                    <div class="picDown ID_img fr uploadIcon">
+                        <input class="idImg uploadInput" type="file" style="opacity:0;width:100%;height:100%; position:absolute;" onchange="uploadFile()">
+                        <img src="" alt="" class="showImg" style="display:block;margin:0 auto; height:100%;">
                         <span class="tipText"><span style="color:#CD0000;vertical-align: middle;">*</span>&nbsp;法人身份证反面</span>
                     </div>
                 </div>
@@ -96,7 +96,7 @@
     </div>
     <div class="paymentBox">
         <span class="payInfo">
-            订单金额 : <span class="RMB_flag">￥</span><span class="payAmount">420.00</span>
+            订单金额 : <span class="RMB_flag">￥</span><span class="payAmount">1700.00</span>
         </span>
         <a href="javascript:void(0)" class="fr nextBtn paymentBtn">下一步</a>
     </div>
@@ -114,8 +114,85 @@
             var currentZoom = $(this).text();
             //红本合同模块
             if(currentZoom == "福田区") {
-                $('.selectArea').html('<li class="checkedItem" payPrice="1000.00">6m²/3月</li><li payPrice="2000.00">6m²/6月</li><li payPrice="3000.00">6m²/12月</li>');
-                $('.payInfo .payAmount').text('1000.00');
+                var liList = '<li class="checkedItem" payPrice="1700.00">6m²/3月</li><li payPrice="2500.00">6m²/6月</li><li payPrice="3600.00">6m²/12月</li>'
+                $('.selectArea').html(liList);
+                if($('.selectBill>li.checkedItem').text() == '需要') {
+                    $('.payInfo .payAmount').text('2000.00');
+                }else if($('.selectBill>li.checkedItem').text() == '不需要') {
+                    $('.payInfo .payAmount').text('1700.00');
+                }
+            }
+            if(currentZoom == "龙岗区") {
+                var liList = '<li class="checkedItem" payPrice="1600.00">5m²/3月</li><li payPrice="2400.00">5m²/6月</li><li payPrice="3400.00">5m²/12月</li>'
+                $('.selectArea').html(liList);
+                if($('.selectBill>li.checkedItem').text() == '需要') {
+                    $('.payInfo .payAmount').text('1900.00');
+                }else if($('.selectBill>li.checkedItem').text() == '不需要') {
+                    $('.payInfo .payAmount').text('1600.00');
+                }
+            }
+            if(currentZoom == "南山区") {
+                var liList = '<li class="checkedItem" payPrice="2000.00">5m²/3月</li><li payPrice="2900.00">5m²/6月</li><li payPrice="4100.00">5m²/12月</li>'
+                $('.selectArea').html(liList);
+                if($('.selectBill>li.checkedItem').text() == '需要') {
+                    $('.payInfo .payAmount').text('2300.00');
+                }else if($('.selectBill>li.checkedItem').text() == '不需要') {
+                    $('.payInfo .payAmount').text('2000.00');
+                }
+            }
+            if(currentZoom == "宝安区") {
+                var liList = '<li class="checkedItem" payPrice="4100.00">6m²/12月</li>'
+                $('.selectArea').html(liList);
+                if($('.selectBill>li.checkedItem').text() == '需要') {
+                    $('.payInfo .payAmount').text('4400.00');
+                }else if($('.selectBill>li.checkedItem').text() == '不需要') {
+                    $('.payInfo .payAmount').text('4100.00');
+                }
+            }
+            if(currentZoom == "罗湖区") {
+                var liList = '<li class="checkedItem" payPrice="1700.00">6m²/3月</li>'
+                $('.selectArea').html(liList);
+                if($('.selectBill>li.checkedItem').text() == '需要') {
+                    $('.payInfo .payAmount').text('2000.00');
+                }else if($('.selectBill>li.checkedItem').text() == '不需要') {
+                    $('.payInfo .payAmount').text('1700.00');
+                }
+            }
+            if(currentZoom == "龙华区") {
+                var liList = '<li class="checkedItem" payPrice="1700.00">6m²/3月</li>'
+                $('.selectArea').html(liList);
+                if($('.selectBill>li.checkedItem').text() == '需要') {
+                    $('.payInfo .payAmount').text('2000.00');
+                }else if($('.selectBill>li.checkedItem').text() == '不需要') {
+                    $('.payInfo .payAmount').text('1700.00');
+                }
+            }
+            if(currentZoom == "光明区") {
+                var liList = '<li class="checkedItem" payPrice="1700.00">6m²/3月</li>'
+                $('.selectArea').html(liList);
+                if($('.selectBill>li.checkedItem').text() == '需要') {
+                    $('.payInfo .payAmount').text('2000.00');
+                }else if($('.selectBill>li.checkedItem').text() == '不需要') {
+                    $('.payInfo .payAmount').text('1700.00');
+                }
+            }
+            if(currentZoom == "大鹏新区") {
+                var liList = '<li class="checkedItem" payPrice="1700.00">6m²/3月</li>'
+                $('.selectArea').html(liList);
+                if($('.selectBill>li.checkedItem').text() == '需要') {
+                    $('.payInfo .payAmount').text('2000.00');
+                }else if($('.selectBill>li.checkedItem').text() == '不需要') {
+                    $('.payInfo .payAmount').text('1700.00');
+                }
+            }
+            if(currentZoom == "坪山区") {
+                var liList = '<li class="checkedItem" payPrice="1700.00">6m²/3月</li>'
+                $('.selectArea').html(liList);
+                if($('.selectBill>li.checkedItem').text() == '需要') {
+                    $('.payInfo .payAmount').text('2000.00');
+                }else if($('.selectBill>li.checkedItem').text() == '不需要') {
+                    $('.payInfo .payAmount').text('1700.00');
+                }
             }
         })
         

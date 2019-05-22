@@ -197,11 +197,14 @@
 
 .upBox>.formItem>.uploadBox {
     margin-top: .625rem;
-    width: 60%;
+    width: 13.125rem;
     height: 8.75rem;
     border: 1px solid #e7e7e7;
+}
+
+.uploadIcon {
     background: url('../img/uploadIco.png') no-repeat center center;
-    background-size: 30%;
+    background-size: 3.75rem;
 }
 
 .upBox>.formItem>.uploadBox>input {
@@ -596,8 +599,8 @@
     height: 7.5rem;
     margin-top: .5rem;
     border: 1px solid #e7e7e7;
-    background: url('../img/uploadIco.png') no-repeat center center;
-    background-size: 30%;
+    /* background: url('../img/uploadIco.png') no-repeat center center;
+    background-size: 30%; */
     text-align: center;
 }
 

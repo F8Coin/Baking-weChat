@@ -101,12 +101,9 @@
                 </div>
                 <div class="formItem">
                     <p class="labTitle">上传营业执照&nbsp;<span style="color:#ccc">(刻章码短信或领证通知短信)</span></p>
-                    <!-- <input class="uploadFile" type="file"> -->
-                    <div class="uploadBox">
-                        <!-- <input type="file" style="opacity:0;width:100%;height:100%;position:absolute;top:0;left:0"> -->
-                        <input type="file" style="opacity:0;">
-                        <img src="" alt="">
-                        <!-- 文件上传成功后显示预览图片 -->
+                    <div class="uploadBox uploadIcon">
+                        <input type="file" class="uploadInput" style="opacity:0;position:absolute;width:13.125rem; height:8.75rem;" onchange="uploadFile()">
+                        <img src="" alt="" class="showImg" style="display:block;margin:0 auto; height:100%;">
                     </div>
                 </div>
             </div>
@@ -196,7 +193,8 @@
                 'receiverName': receiverName,
                 'receiverTel': receiverTel,
                 'receiverAdd': receiverAdd,
-                'remarkText': remarkText
+                'remarkText': remarkText,
+                'uploadImg':uploadImg
             };
 
             // 正则验证表单信息
