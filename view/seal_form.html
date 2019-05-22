@@ -102,7 +102,7 @@
                 <div class="formItem">
                     <p class="labTitle">上传营业执照&nbsp;<span style="color:#ccc">(刻章码短信或领证通知短信)</span></p>
                     <div class="uploadBox uploadIcon">
-                        <input type="file" class="uploadInput" style="opacity:0;position:absolute;width:13.125rem; height:8.75rem;" onchange="uploadFile()">
+                        <input type="file" class="uploadInput" style="opacity:0;position:absolute;width:13.125rem; height:8.75rem;" onchange="uploadFile($(this),$(this).parent())">
                         <img src="" alt="" class="showImg" style="display:block;margin:0 auto; height:100%;">
                     </div>
                 </div>
@@ -169,6 +169,7 @@
             var receiverTel = $('.receiverTel').val(); // 收货人电话
             var receiverAdd = $('.receiverAdd').val(); // 收货地址
             var remarkText = $('.remarkText').val(); // 备注信息
+            var showImgSrc= $('.showImg').attr('src') // 上传图片url地址
             // 购买印章信息
             var seal_goods= [];
             var addBtnList = $('.addBtn');
@@ -183,8 +184,6 @@
                 }
                 
             }
-            // 上传营业执照
-            
             orderInfo = {
                 'companyName': companyName,
                 'personID': personID,
@@ -194,7 +193,7 @@
                 'receiverTel': receiverTel,
                 'receiverAdd': receiverAdd,
                 'remarkText': remarkText,
-                'uploadImg':uploadImg
+                'uploadImg':showImgSrc
             };
 
             // 正则验证表单信息

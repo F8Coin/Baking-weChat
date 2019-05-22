@@ -21,8 +21,8 @@
                 <p class="informationItem">面积时长:&nbsp;<span class="type text">6m²/3月</span></p>
                 <p class="informationItem">备注用途:&nbsp;<span class="remarkText text">变更</span></p>  
                 <p class="informationItem">是否需要租金发票:&nbsp;<span class="invoice text">否</span></p>                  
-                <p class="informationItem">身份证正面:<p class="tradingPic"><img src="../img/tradingPic.jpg" alt=""></p></p>    
-                <p class="informationItem">身份证反面:<p class="tradingPic"><img src="../img/tradingPic.jpg" alt=""></p></p>                                                
+                <p class="informationItem">身份证正面:<p class="tradingPic"><img class="ID_up" src="" alt=""></p></p>    
+                <p class="informationItem">身份证反面:<p class="tradingPic"><img class="ID_down" src="" alt=""></p></p>                                                
             </div>
         </div>
         <div class="orderAbout receive_address">
@@ -61,7 +61,10 @@
         $('.userInfo .userName').text(redOrderAbout.receiverName);
         $('.userInfo .userTel').text(redOrderAbout.receiverTel);
         $('.userInfo .userAdd').text(redOrderAbout.receiverAdd);
-        $('.payInfo .payAmount').text(redOrderAbout.orderAmount)
+        $('.payInfo .payAmount').text(redOrderAbout.orderAmount);
+
+        $('.ID_up').attr('src',redOrderAbout.ID_pic.up);
+        $('.ID_down').attr('src',redOrderAbout.ID_pic.down)
     })
     
 </script>

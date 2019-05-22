@@ -59,13 +59,13 @@
                 </div>
                 <div class="formItem upload_ID clearfix uploadBox">
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;所需材料 <span class="text">(照片必须清晰整齐)</span> </p>
-                    <div class="picUp ID_img fl uploadIcon">
-                        <input class="idImg uploadInput" type="file" style="opacity:0;width:100%;height:100%;position:absolute;" onchange="uploadFile()">
+                    <div class="picUp ID_img fl uploadIcon" style="position:relative">
+                        <input class="idImg uploadInput" type="file" style="opacity:0;width:100%;height:100%;position:absolute;left:0px;" onchange="uploadFile($(this),$(this).parent())">
                         <img src="" alt="" class="showImg" style="display:block;margin:0 auto; height:100%;">
                         <span class="tipText"><span style="color:#CD0000;vertical-align: middle;">*</span>&nbsp;法人身份证正面</span>
                     </div>
-                    <div class="picDown ID_img fr uploadIcon">
-                        <input class="idImg uploadInput" type="file" style="opacity:0;width:100%;height:100%; position:absolute;" onchange="uploadFile()">
+                    <div class="picDown ID_img fr uploadIcon" style="position:relative">
+                        <input class="idImg uploadInput" type="file" style="opacity:0;width:100%;height:100%; position:absolute;left:0px;" onchange="uploadFile($(this),$(this).parent())">
                         <img src="" alt="" class="showImg" style="display:block;margin:0 auto; height:100%;">
                         <span class="tipText"><span style="color:#CD0000;vertical-align: middle;">*</span>&nbsp;法人身份证反面</span>
                     </div>
@@ -234,6 +234,7 @@
             var receiverAdd = $('.receiverAdd').val(); // 收货地址
             var payAmount = $('.payAmount').text(); //订单总金额
             // 上传身份证
+            var ID_src= {'up': $('.picUp .showImg').attr('src'),'down': $('.picDown .showImg').attr('src') }
             
             orderInfo = {
                 'zoomArea': zoomArea,
@@ -245,7 +246,8 @@
                 'receiverName': receiverName,                
                 'receiverTel': receiverTel,
                 'receiverAdd': receiverAdd,
-                'orderAmount': payAmount
+                'orderAmount': payAmount,
+                'ID_pic': ID_src
             };
 
             // 正则验证表单信息

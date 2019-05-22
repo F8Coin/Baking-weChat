@@ -22,16 +22,15 @@ window.onload = function () {
 };
 
 /* --------------文件上传----------------- */
-var upLoadSrc;
-function uploadFile() {
+function uploadFile(inputEle,containerEle) {
     let formData = new FormData(),
-    fs = $(".uploadInput")[0].files[0];
+    fs =inputEle[0].files[0];
     var reads= new FileReader();
     reads.readAsDataURL(fs);
     reads.onload=function (e) {
-        upLoadSrc = this.result;
-        $('.uploadBox').removeClass('uploadIcon')
-        $('.uploadBox .showImg').attr('src',upLoadSrc);
+        var targetSrc = this.result;
+        containerEle.removeClass('uploadIcon')
+        containerEle.find('.showImg').attr('src',targetSrc);
     };
 }
 
