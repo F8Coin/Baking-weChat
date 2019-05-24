@@ -161,6 +161,8 @@
     font-size: 1.125rem;
     font-weight: 700;
     padding-right: 1.25rem;
+    position: absolute;
+    left: 7.5rem;
 }
 
 .upBox>.formItem>.sealBox>li>.sealPrice {
