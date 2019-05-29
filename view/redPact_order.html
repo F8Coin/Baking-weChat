@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>深圳市聚雕网科技有限公司</title>
     <link rel="stylesheet" href="../css/weui.min.css">
@@ -40,7 +40,7 @@
     </div>
     <div class="paymentBox clearfix">
         <span class="fl payInfo">
-            订单金额 : <span class="RMB_flag">￥</span><span class="payAmount">420.00</span>
+            订单金额 : <span class="RMB_flag">￥</span><span class="payAmount"></span>
         </span>
         <a href="./dev.html" class="fr paymentBtn">微信支付</a>
     </div>
@@ -61,7 +61,7 @@
         $('.userInfo .userName').text(redOrderAbout.receiverName);
         $('.userInfo .userTel').text(redOrderAbout.receiverTel);
         $('.userInfo .userAdd').text(redOrderAbout.receiverAdd);
-        $('.payInfo .payAmount').text(redOrderAbout.orderAmount);
+        // $('.payInfo .payAmount').text(redOrderAbout.orderAmount);
 
         $('.ID_up').attr('src',redOrderAbout.ID_pic.up);
         $('.ID_down').attr('src',redOrderAbout.ID_pic.down)

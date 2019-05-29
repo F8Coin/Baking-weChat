@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>深圳市聚雕网科技有限公司</title>
     <link rel="stylesheet" href="../css/weui.min.css">
@@ -62,7 +62,7 @@
     </div> 
     <div class="paymentBox">
         <span class="payInfo">
-            订单金额 : <span class="payAmount">420.00</span>
+            订单金额 : <span class="payAmount"></span>
         </span>
         <a href="./dev.html" class="fr paymentBtn">微信支付</a>
     </div>  
@@ -91,7 +91,7 @@
             $('.checkedServ .content>label:even').addClass("left fl"); // 偶数添加类名; index索引从0开始,0算偶数
             $('.checkedServ .content>label:odd').addClass("right fr"); // 奇数添加类名            
         }
-        $('.payInfo .payAmount').text(payAmount+".00");
+        // $('.payInfo .payAmount').text(payAmount+".00");
     })
     
 </script>

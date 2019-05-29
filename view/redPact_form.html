@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>深圳市聚雕网科技有限公司</title>
     <link rel="stylesheet" href="../css/weui.min.css">
@@ -96,7 +96,8 @@
     </div>
     <div class="paymentBox">
         <span class="payInfo">
-            订单金额 : <span class="RMB_flag">￥</span><span class="payAmount">1700.00</span>
+            <!-- 订单金额 : <span class="RMB_flag">￥</span><span class="payAmount">1700.00</span> -->
+            订单金额 : <span class="RMB_flag">￥</span><span class="payAmount"></span>            
         </span>
         <a href="javascript:void(0)" class="fr nextBtn paymentBtn">下一步</a>
     </div>
@@ -117,81 +118,81 @@
                 var liList = '<li class="checkedItem" payPrice="1700.00">6m²/3月</li><li payPrice="2500.00">6m²/6月</li><li payPrice="3600.00">6m²/12月</li>'
                 $('.selectArea').html(liList);
                 if($('.selectBill>li.checkedItem').text() == '需要') {
-                    $('.payInfo .payAmount').text('2000.00');
+                    // $('.payInfo .payAmount').text('2000.00');
                 }else if($('.selectBill>li.checkedItem').text() == '不需要') {
-                    $('.payInfo .payAmount').text('1700.00');
+                    // $('.payInfo .payAmount').text('1700.00');
                 }
             }
             if(currentZoom == "龙岗区") {
                 var liList = '<li class="checkedItem" payPrice="1600.00">5m²/3月</li><li payPrice="2400.00">5m²/6月</li><li payPrice="3400.00">5m²/12月</li>'
                 $('.selectArea').html(liList);
                 if($('.selectBill>li.checkedItem').text() == '需要') {
-                    $('.payInfo .payAmount').text('1900.00');
+                    // $('.payInfo .payAmount').text('1900.00');
                 }else if($('.selectBill>li.checkedItem').text() == '不需要') {
-                    $('.payInfo .payAmount').text('1600.00');
+                    // $('.payInfo .payAmount').text('1600.00');
                 }
             }
             if(currentZoom == "南山区") {
                 var liList = '<li class="checkedItem" payPrice="2000.00">5m²/3月</li><li payPrice="2900.00">5m²/6月</li><li payPrice="4100.00">5m²/12月</li>'
                 $('.selectArea').html(liList);
                 if($('.selectBill>li.checkedItem').text() == '需要') {
-                    $('.payInfo .payAmount').text('2300.00');
+                    // $('.payInfo .payAmount').text('2300.00');
                 }else if($('.selectBill>li.checkedItem').text() == '不需要') {
-                    $('.payInfo .payAmount').text('2000.00');
+                    // $('.payInfo .payAmount').text('2000.00');
                 }
             }
             if(currentZoom == "宝安区") {
                 var liList = '<li class="checkedItem" payPrice="4100.00">6m²/12月</li>'
                 $('.selectArea').html(liList);
                 if($('.selectBill>li.checkedItem').text() == '需要') {
-                    $('.payInfo .payAmount').text('4400.00');
+                    // $('.payInfo .payAmount').text('4400.00');
                 }else if($('.selectBill>li.checkedItem').text() == '不需要') {
-                    $('.payInfo .payAmount').text('4100.00');
+                    // $('.payInfo .payAmount').text('4100.00');
                 }
             }
             if(currentZoom == "罗湖区") {
                 var liList = '<li class="checkedItem" payPrice="1700.00">6m²/3月</li>'
                 $('.selectArea').html(liList);
                 if($('.selectBill>li.checkedItem').text() == '需要') {
-                    $('.payInfo .payAmount').text('2000.00');
+                    // $('.payInfo .payAmount').text('2000.00');
                 }else if($('.selectBill>li.checkedItem').text() == '不需要') {
-                    $('.payInfo .payAmount').text('1700.00');
+                    // $('.payInfo .payAmount').text('1700.00');
                 }
             }
             if(currentZoom == "龙华区") {
                 var liList = '<li class="checkedItem" payPrice="1700.00">6m²/3月</li>'
                 $('.selectArea').html(liList);
                 if($('.selectBill>li.checkedItem').text() == '需要') {
-                    $('.payInfo .payAmount').text('2000.00');
+                    // $('.payInfo .payAmount').text('2000.00');
                 }else if($('.selectBill>li.checkedItem').text() == '不需要') {
-                    $('.payInfo .payAmount').text('1700.00');
+                    // $('.payInfo .payAmount').text('1700.00');
                 }
             }
             if(currentZoom == "光明区") {
                 var liList = '<li class="checkedItem" payPrice="1700.00">6m²/3月</li>'
                 $('.selectArea').html(liList);
                 if($('.selectBill>li.checkedItem').text() == '需要') {
-                    $('.payInfo .payAmount').text('2000.00');
+                    // $('.payInfo .payAmount').text('2000.00');
                 }else if($('.selectBill>li.checkedItem').text() == '不需要') {
-                    $('.payInfo .payAmount').text('1700.00');
+                    // $('.payInfo .payAmount').text('1700.00');
                 }
             }
             if(currentZoom == "大鹏新区") {
                 var liList = '<li class="checkedItem" payPrice="1700.00">6m²/3月</li>'
                 $('.selectArea').html(liList);
                 if($('.selectBill>li.checkedItem').text() == '需要') {
-                    $('.payInfo .payAmount').text('2000.00');
+                    // $('.payInfo .payAmount').text('2000.00');
                 }else if($('.selectBill>li.checkedItem').text() == '不需要') {
-                    $('.payInfo .payAmount').text('1700.00');
+                    // $('.payInfo .payAmount').text('1700.00');
                 }
             }
             if(currentZoom == "坪山区") {
                 var liList = '<li class="checkedItem" payPrice="1700.00">6m²/3月</li>'
                 $('.selectArea').html(liList);
                 if($('.selectBill>li.checkedItem').text() == '需要') {
-                    $('.payInfo .payAmount').text('2000.00');
+                    // $('.payInfo .payAmount').text('2000.00');
                 }else if($('.selectBill>li.checkedItem').text() == '不需要') {
-                    $('.payInfo .payAmount').text('1700.00');
+                    // $('.payInfo .payAmount').text('1700.00');
                 }
             }
         })
@@ -200,10 +201,10 @@
             $(this).addClass('checkedItem').siblings('li').removeClass('checkedItem');
             if($('.selectBill>li.checkedItem').text() == '需要') {
                 var payAmount= parseInt($(this).attr('payPrice')) + 300.00 +".00"
-                $('.payInfo .payAmount').text(payAmount);
+                // $('.payInfo .payAmount').text(payAmount);
             }else if($('.selectBill>li.checkedItem').text() == '不需要') {
                 var payAmount= parseInt($(this).attr('payPrice')) +".00";
-                $('.payInfo .payAmount').text(payAmount);
+                // $('.payInfo .payAmount').text(payAmount);
             }
             
         })
@@ -212,10 +213,10 @@
             $(this).addClass('checkedItem').siblings('li').removeClass('checkedItem');
             if($(this).text() == "需要") {
                 var payAmount = parseInt($('.selectArea>li.checkedItem').attr('payPrice')) + 300.00 +".00";
-                $('.payInfo .payAmount').text(payAmount);
+                // $('.payInfo .payAmount').text(payAmount);
             }else if($(this).text() == "不需要") {
                 var payAmount = parseInt($('.selectArea>li.checkedItem').attr('payPrice')) +".00";               
-                $('.payInfo .payAmount').text(payAmount);
+                // $('.payInfo .payAmount').text(payAmount);
             }
             
         })

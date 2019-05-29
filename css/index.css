@@ -151,6 +151,19 @@
     padding: 0rem .5rem;
 }
 
+.upBox>.formItem>.sealBox .closeSealBox {
+    position: absolute;
+    width: 4.0625rem;
+    line-height: 1.5rem;
+    top: .75rem;
+    right: 1.25rem;
+    font-size: 1.25rem;
+}
+
+.upBox>.formItem>.sealBox .closeSealBox>.checkbox {
+    margin-right: .5rem;
+}
+
 .upBox>.formItem>.sealBox>li>img {
     width: 5rem;
     margin-right: 2.5rem;

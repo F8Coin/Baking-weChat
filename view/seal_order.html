@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>深圳市聚雕网科技有限公司</title>
     <link rel="stylesheet" href="../css/weui.min.css">
@@ -69,7 +69,6 @@
 <script>
     $(function(){
         var sealOrderAbout = JSON.parse(sessionStorage.getItem('sealFormMes')) ;
-        // console.log(sealOrderAbout.uploadImg)
         $('.informationItem .companyName').text(sealOrderAbout.companyName);
         $('.informationItem .ID').text(sealOrderAbout.personID);
         $('.informationItem .zoom').text(sealOrderAbout.zoomArea);
@@ -96,7 +95,7 @@
             $('#sealList').append(trItem);
              orderAmount+= parseInt(sealOrderAbout.seal_goods[i].priceAbout);
         }
-        $('.payInfo .payAmount').text(orderAmount)
+        // $('.payInfo .payAmount').text(orderAmount)
     })
     
 </script>
