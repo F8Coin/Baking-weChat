@@ -143,6 +143,10 @@
     width: 4rem;
 }
 
+.upBox>.formItem>.closeSeal>li.lastItem {
+    margin-right: 0px;
+}
+
 .upBox>.formItem>.selectZoom>li.checkedItem,
 .upBox>.formItem>.closeSeal>li.checkedItem {
     background-color: #836FFF;
