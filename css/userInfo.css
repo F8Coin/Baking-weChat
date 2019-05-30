@@ -1,0 +1,45 @@
+/* -----------登录页面------------- */
+.loginBox {
+    text-align: center;
+    position: relative;
+    padding: 0rem 1.875rem;
+}
+
+.loginBox .title {
+    font-size: 1.875rem;
+    line-height: 1.875rem;
+    color: #ffffff;
+    margin-top: 15%;
+    margin-bottom: 47%;
+}
+
+.loginBox .formItem {
+    height: 2.625rem;
+    margin-bottom: 1.25rem;
+}
+
+.loginBox .formItem .labelTitle {
+    font-size: 1.125rem;
+    line-height: 2.625rem;
+    color: #ffffff;
+    margin-right: .75rem;
+} 
+
+.loginBox .formItem .inputText {
+    height: 2.25rem;
+    width: 80%;
+    line-height: 2.25rem;
+    padding-left: .5rem;
+}
+
+.loginBox .submitBtn {
+    width: 98%;
+    height: 2.8125rem;
+    line-height: 2.8125rem;
+    border-radius: .5rem;
+    margin-top: 2.5rem;
+    color: #fff;
+    font-size: 1.25rem;
+    background-color: #b39fff;
+    border: 1px solid #e7e7e7;
+}
