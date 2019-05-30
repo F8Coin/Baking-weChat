@@ -120,8 +120,7 @@
 }
 
 .upBox>.formItem>.selectZoom>li,
-.upBox>.formItem>.closeSeal>li
-{
+.upBox>.formItem>.closeSeal>li {
     height: 1.875rem;
     text-align: center;
     line-height: 1.875rem;
@@ -145,8 +144,7 @@
 }
 
 .upBox>.formItem>.selectZoom>li.checkedItem,
-.upBox>.formItem>.closeSeal>li.checkedItem
-{
+.upBox>.formItem>.closeSeal>li.checkedItem {
     background-color: #836FFF;
     border-color: #836FFF;
     color: #fff;
@@ -164,19 +162,6 @@
     margin-bottom: .5rem;
     position: relative;
     padding: 0rem .5rem;
-}
-
-.upBox>.formItem>.sealBox .closeSealBox {
-    position: absolute;
-    width: 4.0625rem;
-    line-height: 1.5rem;
-    top: .75rem;
-    right: 1.25rem;
-    font-size: 1.25rem;
-}
-
-.upBox>.formItem>.sealBox .closeSealBox>.checkbox {
-    margin-right: .5rem;
 }
 
 .upBox>.formItem>.sealBox>li>img {
