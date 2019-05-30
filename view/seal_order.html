@@ -95,7 +95,11 @@
             $('#sealList').append(trItem);
              orderAmount+= parseInt(sealOrderAbout.seal_goods[i].priceAbout);
         }
-        // $('.payInfo .payAmount').text(orderAmount)
+        if(sealOrderAbout.isCloseSeal == 1) {
+            // $('.payInfo .payAmount').text(orderAmount+24)
+        }else {
+            // $('.payInfo .payAmount').text(orderAmount)
+        }
     })
     
 </script>

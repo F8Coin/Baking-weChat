@@ -73,17 +73,15 @@
                             <!-- <span class="sealPrice personalPri">￥0.00</span> -->
                             <button class="addBtn"><span>+</span>添加</button>
                         </li>
-                        <li class="sealItem">
-                            <img src="../img/sealPub.jpg" alt="">
-                            <span class="sealType">注销章</span>
-                            <span class="sealPrice cancelSealPri">￥24.00</span>
-                            <span class="closeSealBox">
-                                <input type="checkbox"><span class="closeSealType">公章</span>
-                                <input type="checkbox"><span class="closeSealType">财务章</span>
-                                <input type="checkbox"><span class="closeSealType">发票章</span>
-                                <input type="checkbox"><span class="closeSealType">合同章</span>                            
-                            </sp>
-                        </li>
+                    </ul>
+                </div>
+                <div class="formItem selectZoomBox">
+                    <p class="labTitle">注销印章&nbsp;<span style="color:#ccc">(注销印章免费,包邮24元)</span></p>
+                    <ul class="closeSeal">
+                        <li>公章</li>
+                        <li>财务章</li>
+                        <li>合同章</li>
+                        <li>发票章</li>
                     </ul>
                 </div>
                 <div class="formItem">
@@ -126,6 +124,11 @@
 <script src="../js/index.js"></script>
 <script>
     $(function(){
+        /* --------------注销印章----------------- */
+        $('.closeSeal').on('touchend','li',function(e){
+            $(this).toggleClass('checkedItem')
+        })
+
         // 选择区域
         $('.checkZoom>li').on('touchend',function(e){
             $(this).addClass('checkedItem').siblings('li').removeClass('checkedItem');
@@ -171,6 +174,19 @@
                 }
                 
             }
+            // 注销印章信息
+            var closeSealList = $('.closeSeal>li.checkedItem');
+            var closeSealFlag = 0; //没有添加注销印章
+            if(closeSealList.length > 0){
+                closeSealFlag = 1; //有添加注销印章
+                for (let j = 0; j < closeSealList.length; j++) {
+                    var type= "注销"+$(closeSealList[j]).text();
+                    var price = 0.00;
+                    seal_goods.push( {typeAbout:type,priceAbout:price})
+                    
+                }
+            }
+            
             orderInfo = {
                 'companyName': companyName,
                 'personID': personID,
@@ -180,7 +196,8 @@
                 'receiverTel': receiverTel,
                 'receiverAdd': receiverAdd,
                 'remarkText': remarkText,
-                'uploadImg':showImgSrc
+                'uploadImg':showImgSrc,
+                'isCloseSeal': closeSealFlag,
             };
 
             // 正则验证表单信息

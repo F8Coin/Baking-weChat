@@ -119,8 +119,9 @@
     margin-top: .5rem;
 }
 
-.upBox>.formItem>.selectZoom>li {
-    width: 5rem;
+.upBox>.formItem>.selectZoom>li,
+.upBox>.formItem>.closeSeal>li
+{
     height: 1.875rem;
     text-align: center;
     line-height: 1.875rem;
@@ -131,7 +132,21 @@
     display: inline-block;
 }
 
-.upBox>.formItem>.selectZoom>li.checkedItem {
+.upBox>.formItem>.selectZoom>li {
+    width: 5rem;
+}
+
+.upBox>.formItem>.closeSeal {
+    margin-top: .9375rem;
+}
+
+.upBox>.formItem>.closeSeal>li {
+    width: 4rem;
+}
+
+.upBox>.formItem>.selectZoom>li.checkedItem,
+.upBox>.formItem>.closeSeal>li.checkedItem
+{
     background-color: #836FFF;
     border-color: #836FFF;
     color: #fff;
