@@ -1,4 +1,4 @@
-/* -----------登录页面------------- */
+/* -----------partner登录页面------------- */
 .loginBox {
     text-align: center;
     position: relative;
@@ -42,4 +42,79 @@
     font-size: 1.25rem;
     background-color: #b39fff;
     border: 1px solid #e7e7e7;
+}
+
+/* -----------partner入口页面------------- */
+.partnerContainer {
+    padding: 1.25rem;
+}
+
+.partnerContainer .partner_bg {
+    margin-top: 15%;
+    margin-bottom: 10%;
+}
+
+.partnerContainer .partner_bg>img {
+    width: 100%;
+}
+
+.partnerContainer .partnerBtn .operateBtn {
+    width: 45%;
+    height: 3.5rem;
+    color: #b39fff;
+    font-size: 1.5rem;
+    text-align: center;
+    line-height: 3.5rem;
+    border-radius: 2rem;
+    border: 1px solid #b39fff;
+}
+
+.partnerContainer .partnerBtn .loginBtn {
+    color: #fff;
+    background-color: #b39fff;
+}
+
+/* -----------partner注册页面------------- */
+
+/* -----------partner登录页面------------- */
+.partnerLogin {
+    padding: 0rem 1.25rem;
+}
+
+.partnerLogin>.title {
+    padding: 1.875rem 0rem 1.875rem 1rem;
+    font-size: 1.5rem;  
+    font-weight: 700;
+} 
+
+.partnerLogin .loginForm {
+    border-radius: .625rem;
+    border: 1px solid #e7e7e7;
+    background-color: #fff;
+    padding: 2.8125rem 1.25rem;
+    margin-bottom: 2.8125rem;
+}
+
+.partnerLogin .loginForm>.formItem {
+    padding-bottom: .5rem;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.partnerLogin .loginForm>.formItem>.itemTitle {
+    font-size: .875rem;
+    padding-bottom: .375rem;
+}
+
+.partnerLogin>.loginBtn {
+    display: inline-block;
+    width: 100%;
+    height: 3.5rem;
+    line-height: 3.5rem;
+    text-align: center;
+    font-size: 1.5rem;
+    color: #fff;
+    border-radius: 2rem;
+    border: 1px solid #b39fff;
+    background-color: #b39fff;
 }
