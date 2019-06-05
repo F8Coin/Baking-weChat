@@ -85,7 +85,8 @@
 }
 
 .sealContainer .upBox>.title,
-.downBox>.title {
+.downBox>.title,
+.centerBox>.title {
     font-size: 1.375rem;
 }
 
@@ -239,7 +240,8 @@
     border-radius: .75rem;
 }
 
-.sealContainer .downBox .remarkText {
+.sealContainer .downBox .remarkText,
+.sealContainer .upBox .remarkText {
     width: 100%;
     height: 7.5rem;
     margin-top: .625rem;

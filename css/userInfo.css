@@ -75,6 +75,10 @@
 }
 
 /* -----------partner注册页面------------- */
+.partnerRegist>.contentBox>.centerBox .remarkText {
+    font-size: .75rem;
+    color: #999999;
+} 
 
 /* -----------partner登录页面------------- */
 .partnerLogin {
@@ -117,4 +121,92 @@
     border-radius: 2rem;
     border: 1px solid #b39fff;
     background-color: #b39fff;
+}
+
+/* -----------partner个人中心------------- */
+.partnerCenter .basic {
+    height: 7.5rem;
+    position: relative;
+    padding: 1.875rem 1.25rem 0rem;
+    background-color: #e7e7e7;
+}
+
+.partnerCenter .basic .personText {
+    margin-bottom: .5rem;
+    padding-top: 12px;
+}
+
+.partnerCenter .basic .personText>.name {
+    font-size: 1.125rem;
+    font-weight: 700;
+}
+
+.partnerCenter .basic .personIcon {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 5rem;
+    overflow: hidden;
+    position: absolute;
+    top: 1.75rem;
+    right: 1.75rem;
+}
+
+.partnerCenter .basic .personIcon>img {
+    width: 100%;
+    height: 100%;
+}
+
+.partnerCenter .order {
+    font-size: 0px;
+    padding: 1.875rem 1.25rem;
+}
+
+.partnerCenter .order>.title,
+.partnerCenter .answer>.title {
+    font-size: 1.125rem;
+    padding-bottom: .5rem;
+} 
+
+.partnerCenter .order>.orderRecord,
+.partnerCenter .answer>.module {
+    width: 48%;
+    height: 6.25rem;
+    border: 1px solid #e7e7e7;
+    border-radius: .625rem;
+    padding-left: 1.25rem;
+    box-sizing: border-box;
+}
+
+.partnerCenter .order>.orderRecord>.amount {
+    padding-top: 1.25rem;
+}
+
+.partnerCenter .answer {
+    height: 8.75rem;
+    padding: 0rem 1.25rem;
+    padding-top: .5rem;
+}
+
+.partnerCenter .answer>.module {
+    padding-left: 0rem;
+    height: 7.25rem;
+    text-align: center;
+}
+
+.partnerCenter .answer .flag {
+    width: 3.75rem;
+    height: 3.75rem;
+    border-radius: 3.75rem;
+    margin: 0 auto;
+    margin-bottom: .5rem;
+    margin-top: .5rem;
+    border: 1px solid #e7e7e7;
+}
+
+.partnerCenter .answer>.board>.flag {
+
+}
+
+.partnerCenter .answer>.professor>.flag {
+    
 }
