@@ -141,6 +141,19 @@
     font-weight: 700;
 }
 
+.partnerCenter .basic>.company {
+    vertical-align: middle;
+}
+
+.partnerCenter .basic>.company>img {
+    width: 1.875rem;
+    vertical-align: middle;
+}
+
+.partnerCenter .basic>.company>companyName {
+    vertical-align: middle;
+}
+
 .partnerCenter .basic .personIcon {
     width: 5rem;
     height: 5rem;
@@ -190,6 +203,7 @@
 .partnerCenter .answer>.module {
     padding-left: 0rem;
     height: 7.25rem;
+    color: #000000;
     text-align: center;
 }
 
@@ -201,12 +215,16 @@
     margin-bottom: .5rem;
     margin-top: .5rem;
     border: 1px solid #e7e7e7;
-}
+} 
 
-.partnerCenter .answer>.board>.flag {
-
-}
-
-.partnerCenter .answer>.professor>.flag {
-    
+.partnerCenter .more {
+    display: block;
+    height:3.75rem;
+    text-align: center;
+    line-height: 3.75rem;
+    border: 1px solid #b39fff;
+    border-radius: 3.75rem; ; 
+    margin-top: 3.75rem;
+    margin-left: 1.25rem;
+    margin-right: 20px ;
 }
