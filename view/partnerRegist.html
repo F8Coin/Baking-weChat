@@ -22,19 +22,19 @@
                 </div>
                 <div class="formItem">
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;公司地址</p>
-                    <input class="placeholderText companyName" type="text" placeholder="请输入公司地址">
+                    <input class="placeholderText companyAdd" type="text" placeholder="请输入公司地址">
                 </div>
                 <div class="formItem">
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;姓名</p>
-                    <input class="placeholderText companyName" type="text" placeholder="请输入姓名">
+                    <input class="placeholderText userName" type="text" placeholder="请输入姓名">
                 </div>
                 <div class="formItem">
                     <p class="labTitle">推荐人</p>
-                    <input class="placeholderText companyName" type="text" placeholder="请输入推荐人(选填)">
+                    <input class="placeholderText referrer" type="text" placeholder="请输入推荐人(选填)">
                 </div>
                 <div class="formItem">
                     <p class="labTitle">优势业务</p>
-                    <textarea class="remarkText" name="" id="" cols="" rows="" placeholder="简要描述您的优势业务(选填)"></textarea>
+                    <textarea class="remarkText business" name="" id="" cols="" rows="" placeholder="简要描述您的优势业务(选填)"></textarea>
                 </div>
             </div>
             <div class="centerBox upBox">
@@ -52,19 +52,94 @@
                 <p class="title">手机验证</p>
                 <div class="formItem">
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;手机号码</p>
-                    <input class="placeholderText receiverName" type="text" placeholder="此手机号码将用作主账号登陆">
+                    <input class="placeholderText mobile" type="text" placeholder="此手机号码将用作主账号登陆">
                 </div>
-                <div class="formItem">
+                <!-- <div class="formItem">
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;验证码</p>
-                    <input class="placeholderText receiverTel" type="text" placeholder="请输入验证码">
-                </div>
+                    <input class="placeholderText code" type="text" placeholder="请输入验证码">
+                </div> -->
                 <div class="formItem">
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;密码</p>
-                    <input class="placeholderText receiverAdd" type="text" placeholder="请输入密码">
+                    <input class="placeholderText password" type="text" placeholder="请输入密码">
                 </div>
             </div>
-            <a href="javascript:void(0)" class="weui_btn weui_btn_primary nextBtn">注册</a>
+            <a href="javascript:void(0)" class="weui_btn weui_btn_primary nextBtn regBtn">注册</a>
         </div>
     </div>
 </body>
 </html>
+<script src="../js/jQuery/jquery-3.4.0.js"></script>
+<script src="../lib/layer/layer.js"></script>
+<script>
+    var baseUrl= 'http://judiaowang.cn/platform';
+    $('.regBtn').on('touchend',function(e){
+        var companyName= $('.formItem .companyName').val();
+        var companyAdd= $('.formItem .companyAdd').val();
+        var userName= $('.formItem .userName').val();
+        var referrer= $('.formItem .referrer').val(); 
+        var business= $('.formItem .business').text(); 
+        var mobile= $('.formItem .mobile').val(); 
+        var code= $('.formItem .code').val(); 
+        var password= $('.formItem .password').val();
+        var partnerReg = {
+            address: companyAdd,
+            username: userName,
+            // bargain: bargain, // 合同url地址
+            business: business,
+            mobile: mobile,
+            name: companyName,
+            password: password,
+            referrer: referrer,
+            // smsCode: code,
+        } 
+        // 注册信息校验规则
+        if(companyName == ''){ //验证公司名称
+                layer.msg('请输入公司名称');
+                return;
+            }
+
+        if(companyAdd == ''){ //验证公司地址
+            layer.msg('请输入公司地址');
+            return;
+        }
+
+        if(companyAdd == ''){ //验证用户姓名
+            layer.msg('请输入姓名');
+            return;
+        }
+
+        if(mobile == ''){ //验证手机号码
+            layer.msg('请输入手机号码');
+            return;
+        }else if(!(/^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/.test(mobile))) {
+            layer.msg('请填写正确的收货人电话');
+            return;
+        }
+
+        // if(code == ''){ //验证短信验证码
+        //     layer.msg('请输入验证码');
+        //     return;
+        // }
+
+        $.ajax({
+            type: 'post',
+            url: baseUrl+'/api/register/register',
+            data: partnerReg,
+            headers:{"Content-Type":"application/json;charset=UTF-8"},
+            success: function(data){
+                console.log('提交注册');
+                console.log(partnerReg);
+                if(data.code== 200) {
+                    layer.msg('注册成功',function(){
+                        window.location.href= ''
+                    });
+                }else {
+                    layer.msg(data.msg)
+                }
+                
+            }
+
+        })
+
+    })
+</script>
