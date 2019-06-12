@@ -654,4 +654,9 @@
 }
 
 
-/* --------------微信支付页面----------------- */
+/* --------------银行开户信息页面----------------- */
+.bankFormContainer .contentBox .formItem .typeText {
+    text-align: center;
+    padding-top: .5rem;
+    color: #cccccc;
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>银行开户</title>
+    <link rel="stylesheet" href="../css/regist.css">
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+<body>
+    <div class="bankFormContainer sealContainer">
+        <div class="headerBar"></div>
+        <div class="contentBox">
+            <div class="upBox">
+                <div class="formItem">
+                    <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;公司名称</p>
+                    <input class="placeholderText companyName" type="text" placeholder="请输入公司名称">
+                </div>
+                <div class="formItem selectZoomBox">
+                    <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;办理区域</p>
+                    <ul class="selectZoom checkZoom">
+                        <li class="checkedItem">罗湖区</li>
+                        <li>南山区</li>
+                        <li>宝安区</li>
+                        <li>福田区</li>
+                        <li>龙华区</li>
+                        <li>龙岗区</li>
+                        <li>光明区</li>
+                        <li>坪山区</li>
+                        <li>大鹏新区</li>
+                    </ul>
+                </div>
+                <div class="formItem selectZoomBox">
+                    <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;开户银行</p>
+                    <ul class="selectZoom checkZoom">
+                        <li class="checkedItem">交通银行</li>
+                        <li>民生银行</li>
+                        <li>中国银行</li>
+                        <li>工商银行</li>
+                        <li>招商银行</li>
+                    </ul>
+                </div>
+                <div class="formItem">
+                    <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;上传资料</p>
+                    <div class="uploadBox uploadIcon">
+                        <input type="file" class="uploadInput" style="opacity:0;position:absolute;width:13.125rem; height:8.75rem;" onchange="uploadFile($(this),$(this).parent())">
+                        <img src="" alt="" class="showImg" style="display:block;margin:0 auto; height:100%;">
+                        <p class="typeText">营业执照</p>
+                    </div>
+                </div>
+            </div>
+            <div class="downBox">
+                <div class="formItem">
+                    <p class="labTitle">预约时间备注</p>
+                    <textarea class="remarkText" name="" id="" cols="" rows="" placeholder="如需其它服务请备注"></textarea>
+                </div>
+            </div>
+            <a href="javascript:void(0)" class="weui_btn weui_btn_primary nextBtn">下一步</a>
+        </div>
+    </div>
+</body>
+</html>
+<script src="../js/jQuery/jquery-3.4.0.js"></script>
+<script src="../js/index.js"></script>
