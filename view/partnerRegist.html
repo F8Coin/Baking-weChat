@@ -54,13 +54,13 @@
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;手机号码</p>
                     <input class="placeholderText mobile" type="text" placeholder="此手机号码将用作主账号登陆">
                 </div>
-                <!-- <div class="formItem">
+                <div class="formItem">
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;验证码</p>
                     <input class="placeholderText code" type="text" placeholder="请输入验证码">
-                </div> -->
+                </div>
                 <div class="formItem">
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;密码</p>
-                    <input class="placeholderText password" type="text" placeholder="请输入密码">
+                    <input class="placeholderText password" type="password" placeholder="请输入密码">
                 </div>
             </div>
             <a href="javascript:void(0)" class="weui_btn weui_btn_primary nextBtn regBtn">注册</a>
@@ -70,9 +70,12 @@
 </html>
 <script src="../js/jQuery/jquery-3.4.0.js"></script>
 <script src="../lib/layer/layer.js"></script>
+<script src="../js/index.js"></script>
 <script>
     var baseUrl= 'http://judiaowang.cn/platform';
     $('.regBtn').on('touchend',function(e){
+        // var localhostPaht = getRootPath_web();
+        // console.log(localhostPaht);
         var companyName= $('.formItem .companyName').val();
         var companyAdd= $('.formItem .companyAdd').val();
         var userName= $('.formItem .userName').val();
@@ -84,14 +87,16 @@
         var partnerReg = {
             address: companyAdd,
             username: userName,
-            // bargain: bargain, // 合同url地址
+            bargain: '../img/checked.png', // 合同url地址
             business: business,
             mobile: mobile,
             name: companyName,
             password: password,
             referrer: referrer,
-            // smsCode: code,
+            smsCode: code,
         } 
+        var partnerRegData= JSON.stringify(partnerReg); 
+
         // 注册信息校验规则
         if(companyName == ''){ //验证公司名称
                 layer.msg('请输入公司名称');
@@ -112,7 +117,7 @@
             layer.msg('请输入手机号码');
             return;
         }else if(!(/^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/.test(mobile))) {
-            layer.msg('请填写正确的收货人电话');
+            layer.msg('请填写正确的手机号码');
             return;
         }
 
@@ -124,17 +129,17 @@
         $.ajax({
             type: 'post',
             url: baseUrl+'/api/register/register',
-            data: partnerReg,
-            headers:{"Content-Type":"application/json;charset=UTF-8"},
+            // url: 'http://192.168.1.42:8080/api/register/register',
+            data: partnerRegData,
+            contentType: "application/json",        
             success: function(data){
-                console.log('提交注册');
-                console.log(partnerReg);
-                if(data.code== 200) {
+                if(data.code== 0) {
                     layer.msg('注册成功',function(){
-                        window.location.href= ''
+                        window.location.href= 'http://judiaowang.cn/app/view/partnerLogin.html'
+                        // window.location.href= localhostPaht+'/app/view/partnerLogin.html'
                     });
                 }else {
-                    layer.msg(data.msg)
+                    layer.msg(JSON.parse(data).msg)
                 }
                 
             }

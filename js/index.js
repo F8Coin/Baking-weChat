@@ -1,25 +1,16 @@
-/* --------------textarea在ios打开点击放大问题----------------- */
-window.onload = function () {
-    // document.addEventListener('gesturestart', function (e) {
-    //     e.preventDefault();
-    // });
-    // document.addEventListener('dblclick', function (e) {
-    //     e.preventDefault();
-    // });
-    // document.addEventListener('touchstart', function (event) {
-    //     if (event.touches.length > 1) {
-    //         event.preventDefault();
-    //     }
-    // });
-    // var lastTouchEnd = 0;
-    // document.addEventListener('touchend', function (event) {
-    //     var now = (new Date()).getTime();
-    //     if (now - lastTouchEnd <= 300) {
-    //         event.preventDefault();
-    //     }
-    //     lastTouchEnd = now;
-    // }, false);
-};
+
+/* --------------网页根目录----------------- */
+
+function getRootPath_web() {
+    //获取当前网址，如： http://localhost:8083/uimcardprj/share/meun.jsp
+    var curWwwPath = window.document.location.href;
+    //获取主机地址之后的目录，如： uimcardprj/share/meun.jsp
+    var pathName = window.document.location.pathname;
+    var pos = curWwwPath.indexOf(pathName);
+    //获取主机地址，如： http://localhost:8083
+    var localhostPaht = curWwwPath.substring(0, pos);
+    return localhostPaht;
+}
 
 /* --------------文件上传----------------- */
 function uploadFile(inputEle,containerEle) {

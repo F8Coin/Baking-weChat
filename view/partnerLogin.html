@@ -16,22 +16,71 @@
         <div class="loginForm">
             <div class="formItem phone">
                 <p class="itemTitle">预留号码</p>
-                <input type="text" class="itemInput" placeholder="请输入手机号码">
+                <input type="text" class="itemInput mobile" placeholder="请输入手机号码">
                 <!-- <div class="getCode">获取验证码</div> -->
             </div>
-            <!-- <div class="formItem code">
+            <div class="formItem code">
                 <p class="itemTitle">验证码</p>
-                <input type="text" placeholder="请输入验证码">
-            </div> -->
+                <input type="text" class="code"  placeholder="请输入验证码">
+            </div>
             <div class="formItem password">
                 <p class="itemTitle">密码</p>
-                <input type="text" placeholder="请输入密码">
+                <input type="text" class="password" placeholder="请输入密码">
             </div>
         </div>
-        <a href="./partnerCenter.html" class="loginBtn">登录</a>
+        <a href="javascript:void(0)" class="loginBtn">登录</a>
     </div>
 </body>
 </html>
 
 <script src="../js/jQuery/jquery-3.4.0.js"></script>
 <script src="../lib/layer/layer.js"></script>
+<script>
+    var baseUrl= 'http://judiaowang.cn/platform';
+    $('.loginBtn').on('touchend',function(e){
+        var mobile= $('.formItem .mobile').val();
+        var code= $('.formItem .code').val();
+        var password= $('.formItem .password').val();
+        var partnerLog= {
+            mobile: mobile,
+            password: password	
+        }
+        var partnerLogData= JSON.stringify(partnerLog);
+        // 校验规则
+        if(mobile == ''){ //验证手机号码
+            layer.msg('请输入手机号码');
+            return;
+        }else if(!(/^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/.test(mobile))) {
+            layer.msg('请填写正确的手机号码');
+            return;
+        }
+
+        if(code == ''){ //验证短信验证码
+            layer.msg('请输入短信验证码');
+            return;
+        }
+
+        if(password == ''){ //验证密码
+            layer.msg('请输入密码');
+            return;
+        }
+
+        $.ajax({
+            type: 'post',
+            url: baseUrl+'/api/auth/login',
+            data: partnerLogData,
+            contentType: "application/json",        
+            success: function(data){
+                if(data.code== 0) {
+                    window.location.href= 'http://judiaowang.cn/app/index.html'
+                }else {
+                    layer.msg(JSON.parse(data).msg)
+                }
+                
+            }
+
+        })
+
+
+    })
+</script>
