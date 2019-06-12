@@ -16,57 +16,57 @@
     <div class="contentBox">
         <ul>
             <li>
-                <a href="./view/seal_form.html">
+                <a href="javascript:void(0)" hrefs="./view/seal_form.html">
                     <img src="./img/icon01.png" alt=""> 企业刻章
                 </a>
             </li>
             <li>
-                <a href="./view/closeCompany_form.html">
+                <a href="javascript:void(0)" hrefs="./view/closeCompany_form.html">
                     <img src="./img/icon02.png" alt=""> 注销代跑
                 </a>
             </li>
             <li>
-                <a href="./view/redPact_form.html">
+                <a href="javascript:void(0)" hrefs="./view/redPact_form.html">
                     <img src="./img/icon04.png" alt=""> 红本合同
                 </a>
             </li>
             <li>
-                <a href="./view/dev.html">
+                <a href="./view/dev.html" hrefs="./view/dev.html">
                     <img src="./img/icon03.png" alt=""> 变更代跑
                 </a>
             </li>
             <li>
-                <a href="./view/dev.html">
+                <a href="./view/dev.html" hrefs="./view/dev.html">
                     <img src="./img/icon05.png" alt=""> 前海地址续签
                 </a>
             </li>
             <li>
-                <a href="./view/dev.html">
+                <a href="./view/dev.html" hrefs="./view/dev.html">
                     <img src="./img/icon06.png" alt=""> 银行开户
                 </a>
             </li>
             <li>
-                <a href="./view/dev.html">
+                <a href="./view/dev.html" hrefs="./view/dev.html">
                     <img src="./img/icon07.png" alt=""> 登报服务
                 </a>
             </li>
             <li>
-                <a href="./view/dev.html">
+                <a href="./view/dev.html" hrefs="./view/dev.html">
                     <img src="./img/icon08.png" alt=""> 税审报告
                 </a>
             </li>
             <li>
-                <a href="./view/dev.html">
+                <a href="./view/dev.html" hrefs="./view/dev.html">
                     <img src="./img/icon09.png" alt=""> 商标专利
                 </a>
             </li>
             <li>
-                <a href="./view/dev.html">
+                <a href="./view/dev.html" hrefs="./view/dev.html">
                     <img src="./img/icon10.png" alt=""> 香港公司业务
                 </a>
             </li>
             <li>
-                <a href="./view/login.html">
+                <a href="./view/dev.html" hrefs="./view/dev.html">
                     <img src="./img/icon11.png" alt=""> 法律服务
                 </a>
             </li>
@@ -105,10 +105,10 @@
     $('.contentBox>ul>li>a').on('touchend',function(){
         var isLogin= localStorage.getItem('token');
         if(isLogin) {
-            var hrefRoot= $(this).attr('href')
-            window.location.href= 'http://judiaowang.cn'+hrefRoot
+            var hrefRoot= $(this).attr('hrefs')
+            window.location.href= 'http://judiaowang.cn/app'+hrefRoot
         }else {
-            window.location.href= 'http://judiaowang.cn/app/view/login.html'
+            window.location.href= 'http://judiaowang.cn/app/view/partnerLogin.html'
         }
     })
 </script>
