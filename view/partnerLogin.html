@@ -19,13 +19,13 @@
                 <input type="text" class="itemInput mobile" placeholder="请输入手机号码">
                 <!-- <div class="getCode">获取验证码</div> -->
             </div>
-            <div class="formItem code">
+            <!-- <div class="formItem code">
                 <p class="itemTitle">验证码</p>
                 <input type="text" class="code"  placeholder="请输入验证码">
-            </div>
+            </div> -->
             <div class="formItem password">
                 <p class="itemTitle">密码</p>
-                <input type="text" class="password" placeholder="请输入密码">
+                <input type="password" class="password" placeholder="请输入密码">
             </div>
         </div>
         <a href="javascript:void(0)" class="loginBtn">登录</a>
@@ -45,7 +45,7 @@
             mobile: mobile,
             password: password	
         }
-        var partnerLogData= JSON.stringify(partnerLog);
+        // var partnerLogData= JSON.stringify(partnerLog);
         // 校验规则
         if(mobile == ''){ //验证手机号码
             layer.msg('请输入手机号码');
@@ -68,13 +68,16 @@
         $.ajax({
             type: 'post',
             url: baseUrl+'/api/auth/login',
-            data: partnerLogData,
-            contentType: "application/json",        
-            success: function(data){
-                if(data.code== 0) {
+            // url: 'http://192.168.1.42:8080/api/auth/login',
+            data: partnerLog,
+            // contentType: "application/json",    
+            success: function(res){
+                if(res.code== 0) {
                     window.location.href= 'http://judiaowang.cn/app/index.html'
+                    localStorage.setItem('token',res.data.token)
+                    console.log(res.data.token);
                 }else {
-                    layer.msg(JSON.parse(data).msg)
+                    layer.msg(JSON.parse(res).msg)
                 }
                 
             }
