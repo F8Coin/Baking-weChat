@@ -660,3 +660,9 @@
     padding-top: .5rem;
     color: #cccccc;
 }
+
+.bankFormContainer>.contentBox>.remarkText {
+    margin-bottom: 5rem;
+}
+
+/* --------------银行开户订单页面----------------- */
