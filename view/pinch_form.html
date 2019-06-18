@@ -13,15 +13,41 @@
     <div class="pinchFormContainer sealContainer">
         <div class="headerBar"></div>
         <div class="contentBox">
-            <div class="upBox">
+            <div class="upBox companyFormContainer">
                 <p class="title">内资工商变更</p>
                 <div class="formItem">
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;公司名称</p>
                     <input class="placeholderText companyName" type="text" placeholder="请输入公司名称">
                 </div>
-                <div class="formItem">
+                <div class="formItem selectZoomBox">
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;变更方案</p>
-                    div
+                    <ul class="pinchZoom selectZoom">
+                        <li>变更股权</li>
+                        <li>注册资本减资</li>
+                        <li>变更地址</li>
+                        <li>变更名称/法人/营业范围/增资</li>
+                    </ul>
+                </div>
+                <div class="formItem changePro">
+                    <p class="title">变更项目</p>
+                    <div class="content clearfix">
+                        <label for="partOne_Left" class="left fl optionAbout">
+                            <p class="flag">
+                                <img class="icon" src="../img/part1_left_icon.png" alt="">
+                                <span class="text">小规模</span>
+                            </p>
+                            <p class="price">800.00</p>
+                            <input class="selectBtn" type="radio" id="partOne_Left" name="partOne">
+                        </label>
+                        <label for="partOne_Right" class="right fr optionAbout">
+                            <p class="flag">
+                                <img class="icon" src="../img/part1_right_icon.png" alt="">
+                                <span class="text">一般纳税人</span>
+                            </p>
+                            <p class="price">￥1300.00</p>
+                            <input class="selectBtn" type="radio" id="partOne_Right" name="partOne">
+                        </label>
+                    </div>
                 </div>
             </div>
             

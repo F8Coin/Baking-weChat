@@ -666,3 +666,27 @@
 }
 
 /* --------------银行开户订单页面----------------- */
+
+
+/* --------------变更代跑信息页面----------------- */
+.upBox>.formItem>.pinchZoom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.upBox>.formItem>.pinchZoom>li {
+    width: 48%;
+    line-height: 1rem;
+    padding-top: 1.25rem;
+    margin-right: 0rem;
+    font-size: .875rem;
+    height: 3.75rem;
+    box-sizing: border-box;
+}
+
+.upBox>.formItem>.pinchZoom>li:last-child {
+    padding-top: .875rem;
+}
