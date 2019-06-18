@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>前海地址续签</title>
+    <link rel="stylesheet" href="../css/weui.min.css">
+    <link rel="stylesheet" href="../css/regist.css">
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+<body>
+    <div class="renewFormContainer sealContainer">
+        <div class="headerBar"></div>
+        <div class="contentBox">
+            <div class="upBox">
+                <p class="title">公司信息</p>
+                <div class="formItem">
+                    <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;公司名称</p>
+                    <input class="placeholderText companyName" type="text" placeholder="请输入公司名称">
+                </div>
+                <div class="formItem">
+                    <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;商密账号</p>
+                    <input class="placeholderText businessAccount" type="text" placeholder="请输入商密系统账号">
+                </div>
+                <div class="formItem">
+                    <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;商密密码</p>
+                    <input class="placeholderText businessPassword" type="text" placeholder="请输入商密系统密码">
+                </div>
+                <div class="formItem">
+                    <p class="labTitle">法人身份证</p>
+                    <div class="uploadBox uploadIcon">
+                        <input type="file" class="uploadInput" style="opacity:0;position:absolute;width:13.125rem; height:8.75rem;" onchange="uploadFile($(this),$(this).parent())">
+                        <img src="" alt="" class="showImg" style="display:block;margin:0 auto; height:100%;">
+                    </div>
+                </div>
+            </div>
+            <div class="downBox">
+                <p class="title">收货信息</p>
+                <div class="formItem">
+                    <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;联系人</p>
+                    <input class="placeholderText receiverName" type="text" placeholder="请输入联系人">
+                </div>
+                <div class="formItem">
+                    <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;手机号码</p>
+                    <input class="placeholderText receiverTel" type="text" placeholder="请输入手机号码">
+                </div>
+                <div class="formItem">
+                    <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;收货地址</p>
+                    <input class="placeholderText receiverAdd" type="text" placeholder="请输入收货地址">
+                </div>
+                <div class="formItem">
+                    <p class="labTitle">备注</p>
+                    <textarea class="remarkText" name="" id="" cols="" rows="" placeholder="如需其它服务请备注"></textarea>
+                </div>
+            </div>
+            <a href="javascript:void(0)" class="weui_btn weui_btn_primary nextBtn">下一步</a>
+        </div>
+    </div>
+</body>
+</html>
+<script src="../js/jQuery/jquery-3.4.0.js"></script>
+<script src="../lib/layer/layer.js"></script>
+<script src="../js/index.js"></script>
