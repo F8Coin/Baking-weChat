@@ -5,10 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>前海地址续签</title>
+    <link rel="stylesheet" href="../css/weui.min.css">
+    <link rel="stylesheet" href="../css/regist.css">
+    <link rel="stylesheet" href="../css/index.css">
 </head>
 <body>
-    
+    <div class="renewAddOrder sealContainer sealOrderContainer">
+        <div class="headerBar"></div>
+        <div class="orderAbout seal_information">
+            <p class="orderAbout_title">公司信息</p>
+            <div class="orderAbout_content">
+                <p class="informationItem">公司名称:&nbsp;<span class="companyName"></span></p>
+                <p class="informationItem">商密账号:&nbsp;<span class="businessAccount"></span></p>
+                <p class="informationItem">商密密码:&nbsp;<span class="businessPassword"></span></p>
+                <p class="informationItem">备注:&nbsp;<span class="remarkText"></span></p>  
+               <p class="informationItem">营业执照:<p class="tradingPic"><img class="showImg" src='' alt=""></p></p>
+            </div>
+        </div>
+
+        <div class="orderAbout receive_address">
+            <p class="orderAbout_title">收货信息</p>
+            <div class="orderAbout_content">
+                <p class="userInfo">
+                    <span class="userName"></span>    
+                    <span class="userTel"></span>
+                </p>    
+                <p class="userInfo">
+                    <span class="userAdd"></span>
+                </p>
+            </div>  
+        </div>
+    </div>
+    <div class="paymentBox clearfix">
+        <span class="fl payInfo">
+            订单金额 : <span class="RMB_flag">￥</span><span class="payAmount"></span>
+        </span>
+        <a href="./dev.html" class="fr paymentBtn">微信支付</a>
+    </div>
 </body>
 </html>
 <script src="../js/jQuery/jquery-3.4.0.js"></script>
+<script src="../lib/layer/layer.js"></script>
 <script src="../js/index.js"></script>
