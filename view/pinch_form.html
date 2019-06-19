@@ -13,7 +13,7 @@
     <div class="pinchFormContainer sealContainer">
         <div class="headerBar"></div>
         <div class="contentBox">
-            <div class="upBox companyFormContainer">
+            <div class="upBox commonBox">
                 <p class="title">内资工商变更</p>
                 <div class="formItem">
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;公司名称</p>
@@ -22,36 +22,77 @@
                 <div class="formItem selectZoomBox">
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;变更方案</p>
                     <ul class="pinchZoom selectZoom">
-                        <li>变更股权</li>
+                        <li class="checkedItem">变更股权</li>
                         <li>注册资本减资</li>
                         <li>变更地址</li>
                         <li>变更名称/法人/营业范围/增资</li>
                     </ul>
                 </div>
                 <div class="formItem changePro">
-                    <p class="title">变更项目</p>
+                    <p class="title"><span style="color:#CD0000">*</span>&nbsp;变更项目</p>
                     <div class="content clearfix">
                         <label for="partOne_Left" class="left fl optionAbout">
                             <p class="flag">
-                                <img class="icon" src="../img/part1_left_icon.png" alt="">
-                                <span class="text">小规模</span>
+                                <span class="text">股权变更</span>
                             </p>
-                            <p class="price">800.00</p>
+                            <!-- <p class="price">800.00</p> -->
                             <input class="selectBtn" type="radio" id="partOne_Left" name="partOne">
                         </label>
                         <label for="partOne_Right" class="right fr optionAbout">
                             <p class="flag">
-                                <img class="icon" src="../img/part1_right_icon.png" alt="">
-                                <span class="text">一般纳税人</span>
+                                <span class="text">法人/高管变更</span>
                             </p>
-                            <p class="price">￥1300.00</p>
+                            <!-- <p class="price">￥1300.00</p> -->
+                            <input class="selectBtn" type="radio" id="partOne_Right" name="partOne">
+                        </label>
+                        <label for="partOne_Left" class="left fl optionAbout">
+                            <p class="flag">
+                                <span class="text">地址变更</span>
+                            </p>
+                            <!-- <p class="price">800.00</p> -->
+                            <input class="selectBtn" type="radio" id="partOne_Left" name="partOne">
+                        </label>
+                        <label for="partOne_Right" class="right fr optionAbout">
+                            <p class="flag">
+                                <span class="text">经营范围变更</span>
+                            </p>
+                            <!-- <p class="price">￥1300.00</p> -->
+                            <input class="selectBtn" type="radio" id="partOne_Right" name="partOne">
+                        </label>
+                        <label for="partOne_Left" class="left fl optionAbout">
+                            <p class="flag">
+                                <span class="text">名称变更</span>
+                            </p>
+                            <!-- <p class="price">800.00</p> -->
+                            <input class="selectBtn" type="radio" id="partOne_Left" name="partOne">
+                        </label>
+                        <label for="partOne_Right" class="right fr optionAbout">
+                            <p class="flag">
+                                <span class="text">注册资本增资</span>
+                            </p>
+                            <!-- <p class="price">￥1300.00</p> -->
                             <input class="selectBtn" type="radio" id="partOne_Right" name="partOne">
                         </label>
                     </div>
                 </div>
             </div>
-            
-            <a href="javascript:void(0)" class="weui_btn weui_btn_primary nextBtn">下一步</a>
+            <div class="tipBox">
+                <p class="tipTitle">所需材料</p>
+                <p class="tipText">1 营业执照正副本，公章，转让方、受让方身份证原件，详细的转让情况信息，如果双方不能到场，需提供真实的签字。</p>
+                <p class="tipText">2 龙华区必须双方到场，其他区会视情况可能要求到场，客户应当配合。</p>
+                <p class="tipText">3 变更名称还需所有印章及刻章卡、法人身份证。</p>
+                <p class="tipText">4 其它变更视情况提供所需的资料。</p>
+                <p class="tipText">5 如果同时要变更地址，需提供合法的场所证明。</p>
+                <p class="tipText">请把上述资料快递至聚雕网，快递时请附上寄送资料清单，不能提前寄送的资料，可随后与聚雕网跑手沟通何时交接。</p>
+                <p class="tipText">若因甲方原因，比如预约之后资料提供不及时、爽约，窗口临时提出特殊要求客户到场而不能配合的，有黑户或其它客户自身问题，导致已进行办理的业务却办理失败的，聚雕网收取100元路费。</p>
+            </div>
+        </div>
+        <div class="paymentBox">
+            <span class="payInfo">
+                <!-- 订单金额 : <span class="RMB_flag">￥</span><span class="payAmount">1700.00</span> -->
+                订单金额 : <span class="RMB_flag">￥</span><span class="payAmount"></span>            
+            </span>
+            <a href="javascript:void(0)" class="fr nextBtn paymentBtn">下一步</a>
         </div>
     </div>
 </body>

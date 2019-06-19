@@ -407,11 +407,11 @@
     background-color: rgba(250, 250, 250, 1);
 }
 
-.companyFormContainer>.formItem {
+.commonBox>.formItem {
     margin-top: 1.25rem;
 }
 
-.companyFormContainer>.formItem>.title {
+.commonBox>.formItem>.title {
     font-size: 1.125rem;
 }
 
@@ -421,11 +421,11 @@
     font-size: 1rem;
 }
 
-.companyFormContainer>.formItem>.content {
+.commonBox>.formItem>.content {
     margin-top: .5rem;
 }
 
-.companyFormContainer>.formItem>.content>.optionAbout {
+.commonBox>.formItem>.content>.optionAbout {
     width: 48%;
     height: 7.5rem;
     border: 1px solid #e7e7e7;
@@ -436,22 +436,22 @@
     box-sizing: border-box;
 }
 
-.companyFormContainer>.partOther>.content>.optionAbout {
+.commonBox .content>.optionAbout {
     margin-bottom: .5rem;
 }
 
-.companyFormContainer .optionAbout>.flag>img {
+.commonBox .optionAbout>.flag>img {
     width: 1.5rem;
     vertical-align: middle;
 }
 
-.companyFormContainer .optionAbout>.flag>.text {
+.commonBox .optionAbout>.flag>.text {
     padding-left: .75rem;
     font-size: 1rem;
     vertical-align: middle;
 }
 
-.companyFormContainer .optionAbout>.price {
+.commonBox .optionAbout>.price {
     font-size: 1.125rem;
     color: red;
     font-weight: 700;
@@ -459,8 +459,8 @@
     bottom: .75rem;
 } 
 
-.companyFormContainer .optionAbout>input[type='radio'],
-.companyFormContainer .optionAbout>input[type='checkbox']
+.commonBox .optionAbout>input[type='radio'],
+.commonBox .optionAbout>input[type='checkbox']
 {
     position: absolute;
     width: 1.5rem;
@@ -473,8 +473,8 @@
     bottom: 1rem;
 }
 
-.companyFormContainer .optionAbout>input[type='radio']:checked,
-.companyFormContainer .optionAbout>input[type='checkbox']:checked
+.commonBox .optionAbout>input[type='radio']:checked,
+.commonBox .optionAbout>input[type='checkbox']:checked
 {
     background: url('../img/checked.png') no-repeat center center;
     background-size: cover;
@@ -689,4 +689,9 @@
 
 .upBox>.formItem>.pinchZoom>li:last-child {
     padding-top: .875rem;
+}
+
+.contentBox>.tipBox {
+    margin-top: 1.25rem;
+    margin-bottom: 5.625rem;
 }
