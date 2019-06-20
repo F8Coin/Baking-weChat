@@ -695,3 +695,29 @@
     margin-top: 1.25rem;
     margin-bottom: 5.625rem;
 }
+
+/* --------------登报服务信息页面----------------- */
+
+.newsContainer>.contentBox .optionType {
+    width: 48%;
+    height: 80px;   
+    position: relative;
+    top: .5rem;
+    right: 0px;
+    border: 1px solid #e7e7e7; 
+}
+
+.newsContainer>.contentBox .optionType>.flag {
+    padding-top: .75rem;
+    padding-left: .5rem;
+}
+
+.newsContainer>.contentBox .optionType>.price {
+    left: .5rem;
+    font-size: 1rem;
+}
+
+.newsContainer>.contentBox .optionType>.price,
+.newsContainer>.contentBox .optionType>.selectBtn {
+    top: 3rem;
+}
