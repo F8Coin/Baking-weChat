@@ -10,8 +10,45 @@
     <link rel="stylesheet" href="../css/index.css">
 </head>
 <body>
-    <div class="pinchOrderContainer">
-
+    <div class="pinchOrderContainer sealContainer sealOrderContainer">
+        <div class="headerBar"></div>
+        <div class="orderAbout seal_information">
+            <p class="orderAbout_title">内资工商变更</p>
+            <div class="orderAbout_content">
+                <p class="informationItem">公司名称:&nbsp;<span class="companyName"></span></p>
+                <p class="informationItem">变更方案:&nbsp;<span class="changePlan"></span></p>
+            </div>
+        </div>
+        <div class="orderAbout seal_goods">
+            <p class="orderAbout_title">变更项目</p>
+            <div class="orderAbout_content">
+                <table class="sealListBox">
+                    <tbody id="sealList">
+                        <tr class="sealItem">
+                            <td>股权变更</td>
+                            <td>×1</td>
+                            <td class="sealPrice">￥390</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="tipBox">
+            <p class="tipTitle">所需材料</p>
+            <p class="tipText">1 营业执照正副本，公章，转让方、受让方身份证原件，详细的转让情况信息，如果双方不能到场，需提供真实的签字。</p>
+            <p class="tipText">2 龙华区必须双方到场，其他区会视情况可能要求到场，客户应当配合。</p>
+            <p class="tipText">3 变更名称还需所有印章及刻章卡、法人身份证。</p>
+            <p class="tipText">4 其它变更视情况提供所需的资料。</p>
+            <p class="tipText">5 如果同时要变更地址，需提供合法的场所证明。</p>
+            <p class="tipText">请把上述资料快递至聚雕网，快递时请附上寄送资料清单，不能提前寄送的资料，可随后与聚雕网跑手沟通何时交接。</p>
+            <p class="tipText">若因甲方原因，比如预约之后资料提供不及时、爽约，窗口临时提出特殊要求客户到场而不能配合的，有黑户或其它客户自身问题，导致已进行办理的业务却办理失败的，聚雕网收取100元路费。</p>
+        </div>
+    </div>
+    <div class="paymentBox clearfix">
+        <span class="fl payInfo">
+            订单金额 : <span class="RMB_flag">￥</span><span class="payAmount"></span>
+        </span>
+        <a href="./dev.html" class="fr paymentBtn">微信支付</a>
     </div>
 </body>
 </html>
