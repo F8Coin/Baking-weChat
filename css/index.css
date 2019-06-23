@@ -1,3 +1,21 @@
+/* --------------刻章信息页面----------------- */
+.frame {
+    padding: 1.25rem;
+    border: 1px solid #e7e7e7;
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: .75rem;
+    margin-top: 1.875rem;
+}
+
+.frame .title {
+    font-size: 1.375rem;
+    margin-bottom: .5rem;
+}
+
+.frame .formItem .labTitle {
+    font-size: 1.125rem;
+}
+
 .top_bg {
     height: 10rem;
     width: 100%;
@@ -720,4 +738,12 @@
 .newsContainer>.contentBox .optionType>.price,
 .newsContainer>.contentBox .optionType>.selectBtn {
     top: 3rem;
+}
+
+.missFileBox .missFileTab {
+    margin-top: .5rem;
+}
+
+.missFileBox .missFileTab tr td {
+    padding: 0rem 1.875rem 0px 0rem;
 }
