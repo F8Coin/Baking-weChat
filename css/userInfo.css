@@ -51,7 +51,7 @@
 
 .partnerContainer .partner_bg {
     margin-top: 15%;
-    margin-bottom: 10%;
+    margin-bottom: 50%;
 }
 
 .partnerContainer .partner_bg>img {
@@ -61,17 +61,17 @@
 .partnerContainer .partnerBtn .operateBtn {
     width: 45%;
     height: 3.5rem;
-    color: #b39fff;
+    color: #2D73EE;
     font-size: 1.5rem;
     text-align: center;
     line-height: 3.5rem;
     border-radius: 2rem;
-    border: 1px solid #b39fff;
+    border: 1px solid #2D73EE;
 }
 
 .partnerContainer .partnerBtn .loginBtn {
     color: #fff;
-    background-color: #b39fff;
+    background-color: #2D73EE;
 }
 
 /* -----------partner注册页面------------- */

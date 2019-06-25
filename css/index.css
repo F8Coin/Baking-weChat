@@ -1,4 +1,17 @@
-/* --------------刻章信息页面----------------- */
+/* --------------提取公共部分----------------- */
+.layOut {
+    padding: 1.875rem 1.25rem 7.5rem;
+}
+
+.layOut .frame .formItem .remarkTitle {
+    padding-bottom: .5rem;
+} 
+
+.layOut .tipBox {
+    margin-top: 1.875rem;
+    margin-bottom: 7.5rem;
+}
+
 .frame {
     padding: 1.25rem;
     border: 1px solid #e7e7e7;
@@ -14,6 +27,14 @@
 
 .frame .formItem .labTitle {
     font-size: 1.125rem;
+}
+
+.frame .formItem .textarea {
+    width: 100%;
+    height: 6.25rem;
+    padding: .75rem;
+    box-sizing: border-box;
+    border: 1px solid #e7e7e7;
 }
 
 .top_bg {
@@ -116,6 +137,7 @@
 .upBox>.formItem>.labTitle,
 .downBox>.formItem>.labTitle {
     font-size: 1.125rem;
+    line-height: 1.25rem;
 }
 
 .upBox>.formItem>.placeholderText,
@@ -746,4 +768,74 @@
 
 .missFileBox .missFileTab tr td {
     padding: 0rem 1.875rem 0px 0rem;
+}
+
+/* --------------登报服务订单页面----------------- */
+.layout .receive_address {
+    margin-top: 1.875rem;
+}
+
+/* --------------商标专利入口页面----------------- */
+.patentEntry>ul>li:last-child {
+    visibility: hidden;
+}
+
+/* --------------专利信息页面----------------- */
+.patentForm {
+    padding-bottom: 2.625rem;
+}
+
+.patentForm .optionAbout>.flag>.text {
+    padding-left: 0rem;
+}
+
+.patentForm .tipBox {
+    margin-top: 1.875rem;
+}
+
+.patentForm .formItem .checkType {
+    margin-top: .75rem;
+}
+
+.patentForm .formItem .checkType>li {
+    width: 45%;
+    height: 2.25rem;
+    margin-right: .75rem;
+    text-align: center;
+    line-height: 2.25rem;
+    display: inline-block;
+    border: 1px solid #e7e7e7;
+    border-radius: .3125rem;
+}
+
+.patentForm .formItem .checkType>li.checkedItem {
+    color: #fff;
+    background-color: #836FFF;
+    border-color: #836FFF;
+}
+
+
+
+/* --------------专利订单页面----------------- */
+
+/* --------------商标信息页面----------------- */
+
+/* --------------商标订单页面----------------- */
+
+/* --------------税审报告信息页面----------------- */
+.taxReport_form .formItem .companyNameText {
+    width: 100%;
+    height: 2.25rem;
+    background-color: transparent;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+
+/* --------------法律服务信息页面----------------- */
+.lawContainer .innerBox {
+    position: absolute;
+}
+
+.lawContainer .innerBox>img {
+    width: 100%;
 }

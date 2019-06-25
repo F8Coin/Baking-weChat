@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>订单支付</title>
+    <link rel="stylesheet" href="../css/weui.min.css">
+    <link rel="stylesheet" href="../css/regist.css">
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+
+<body>
+    <div class="layout sealContainer sealOrderContainer">
+        <div class="headerBar"></div>
+        <div class="orderAbout seal_information">
+            <p class="orderAbout_title">登报信息</p>
+            <div class="orderAbout_content">
+                <p class="informationItem">公司名称:&nbsp;<span class="companyName"></span></p>
+                <p class="informationItem">登报文字:&nbsp;<span class="remarkText"></span></p>
+            </div>
+        </div>
+        <div class="orderAbout seal_goods">
+            <p class="orderAbout_title">登报类型</p>
+            <div class="orderAbout_content">
+                <table class="sealListBox">
+                    <tbody id="sealList">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="frame">
+            <p class="title">遗失材料</p>
+        </div>
+        <div class="orderAbout receive_address">
+            <p class="orderAbout_title">收货信息</p>
+            <div class="orderAbout_content">
+                <p class="userInfo">
+                    <span class="userName"></span>    
+                    <span class="userTel"></span>
+                </p>    
+                <p class="userInfo">
+                    <span class="userAdd"></span>
+                </p>
+            </div>  
+        </div>
+    </div>
+    <div class="paymentBox clearfix">
+        <span class="fl payInfo">
+            订单金额 : <span class="RMB_flag">￥</span><span class="payAmount"></span>
+        </span>
+        <a href="./dev.html" class="fr paymentBtn">微信支付</a>
+    </div>
+</body>
+
+</html>
+
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="../js/jQuery/jquery-3.4.0.js"></script>
+<script>
+    $(function(){
+        var sealOrderAbout = JSON.parse(sessionStorage.getItem('sealFormMes')) ;
+        $('.informationItem .companyName').text(sealOrderAbout.companyName);
+        $('.informationItem .ID').text(sealOrderAbout.personID);
+        $('.informationItem .zoom').text(sealOrderAbout.zoomArea);
+        $('.informationItem .remarkText').text(sealOrderAbout.remarkText);
+        $('.showImg').attr('src', sealOrderAbout.uploadImg);
+        $('.userInfo .userName').text(sealOrderAbout.receiverName);
+        $('.userInfo .userTel').text(sealOrderAbout.receiverTel);
+        $('.userInfo .userAdd').text(sealOrderAbout.receiverAdd);
+        
+        var orderAmount= 0;
+        for (let i = 0; i < sealOrderAbout.seal_goods.length; i++) {
+            var imgSrc = '../img/sealPub.jpg';
+            if(sealOrderAbout.seal_goods[i].typeAbout == '私章') {
+                imgSrc = "../img/sealPri.jpg"
+            }
+            var trItem = '<tr class="sealItem">'+
+                                '<td class="sealIcon">'+
+                                    '<img src='+imgSrc+' alt="">'+
+                                '</td>'+
+                                '<td class="sealName">'+sealOrderAbout.seal_goods[i].typeAbout+'</td>'+
+                                '<td class="sealAccount">×1</td>'+
+                                '<td class="sealPrice">￥'+sealOrderAbout.seal_goods[i].priceAbout+'</td>'+
+                            '</tr>'
+            $('#sealList').append(trItem);
+             orderAmount+= parseInt(sealOrderAbout.seal_goods[i].priceAbout);
+        }
+        if(sealOrderAbout.isCloseSeal == 1) {
+            // $('.payInfo .payAmount').text(orderAmount+24)
+        }else {
+            // $('.payInfo .payAmount').text(orderAmount)
+        }
+    })
+    
+</script>

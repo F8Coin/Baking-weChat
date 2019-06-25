@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>汇算清缴报告</title>
+    <link rel="stylesheet" href="../css/weui.min.css">
+    <link rel="stylesheet" href="../css/regist.css">
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+<body>
+    <div class="taxReport_form layOut sealContainer redPactContainer commonBox">
+        <div class="formItem">
+            <p class="title"><span style="color:#CD0000">*</span>&nbsp;公司名称</p>
+            <div class="content companyNameBox">
+                <input class="companyNameText" type="text" placeholder="请输入公司名称">
+            </div>
+        </div>
+        <div class="formItem partOther">
+            <p class="title"><span style="color:#CD0000">*</span>&nbsp;资产收入</p>
+            <div class="content clearfix">
+                <label for="partOther1" class="left fl optionAbout">
+                    <p class="flag">
+                        <span class="text">1000万以下</span>
+                    </p>
+                    <p class="price">￥550</p>
+                    <input class="selectBtn" type="checkbox" id="partOther1">
+                </label>
+                <label for="partOther2" class="right fr optionAbout">
+                    <p class="flag">
+                        <span class="text">1000~3000万</span> 
+                    </p>
+                    <p class="price">￥650.00</p>
+                    <input class="selectBtn" type="checkbox" id="partOther2">
+                </label>
+                <label for="partOther3" class="left fl optionAbout">
+                    <p class="flag">
+                        <span class="text">3000~5000万</span>
+                    </p>
+                    <p class="price">￥750</p>
+                    <input class="selectBtn" type="checkbox" id="partOther3">
+                </label>
+                <label for="partOther4" class="right fr optionAbout">
+                    <p class="flag">
+                        <span class="text">5000~7500万</span> 
+                    </p>
+                    <p class="price">￥850.00</p>
+                    <input class="selectBtn" type="checkbox" id="partOther4">
+                </label>
+                <label for="partOther5" class="left fl optionAbout">
+                    <p class="flag">
+                        <span class="text">7500~1亿</span>
+                    </p>
+                    <p class="price">￥950</p>
+                    <input class="selectBtn" type="checkbox" id="partOther5">
+                </label>
+            </div>
+        </div>
+        <div class="frame downBox">
+            <p class="title">收货信息</p>
+            <div class="formItem">
+                <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;联系人</p>
+                <input class="placeholderText receiverName" type="text" placeholder="请输入联系人">
+            </div>
+            <div class="formItem">
+                <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;手机号码</p>
+                <input class="placeholderText receiverTel" type="text" placeholder="请输入手机号码">
+            </div>
+            <div class="formItem">
+                <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;邮箱</p>
+                <input class="placeholderText receiverAdd" type="text" placeholder="请输入邮箱,用于接收电子档报告">
+            </div>
+            <div class="formItem">
+                <p class="labTitle remarkTitle">备注</p>
+                <textarea class="remarkText" name="" id="" cols="" rows="" placeholder="如有其它要求请备注"></textarea>
+            </div>
+        </div>
+        <div class="tipBox">
+            <p class="tipTitle">邮寄资料</p>
+            <p class="tipText">请把以下清单文件电子档做成一压缩包发送至邮箱：kf@judiaowang.com</p>
+            <p class="tipText">1 营业执照扫描件（如果是高新企业，需提供高新证书扫描件）</p>
+            <p class="tipText">2 2018年3月、6月、9月和12月份的利润表和资产负债表（电子档）</p>
+            <p class="tipText">3 2018年1-12月份明细账、总账、1-12月份科目余额表导到最小科目（6级科目）、固定资产清单。（这些电子账都需要全年的）</p>
+            <p class="tipText">4 2018年12月份增值税申报表主表、第四季度企业所得税申报表</p>            
+            <p class="tipText">5 国税密码（实名登录）【如不方便提供国税密码，提供2013年-2017年的弥补亏损数（高新企业需要提供2008年到2017年的亏损盈利数），和确定上一年有没有结转到今年扣除的费用（例如：职工教育经费、广告费和业务宣传费、捐赠支出等）】</p>            
+            <p class="tipText">6 其他（根据报表及公司情况决定）</p>            
+        </div> 
+    </div>
+    <div class="paymentBox">
+        <span class="payInfo">
+            订单金额 : <span class="RMB_flag">￥</span><span class="payAmount"></span>            
+        </span>
+        <a href="./taxReport_order.html" class="fr nextBtn paymentBtn">下一步</a>
+    </div>
+</body>
+</html>
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="../js/jQuery/jquery-3.4.0.js"></script>
+<script src="../lib/layer/layer.js"></script>
+<script src="../js/index.js"></script>
