@@ -14,13 +14,13 @@
 <body>
     <div class="top_bg"></div>
     <div class="contentBox">
-        <ul>
-            <li>
+        <ul id="itemBox">
+            <!-- <li>
                 <a href="javascript:void(0)" hrefs="./view/seal_form.html">
                     <img src="./img/icon01.png" alt=""> 企业刻章
                 </a>
-            </li>
-            <li>
+            </li> -->
+            <!-- <li>
                 <a href="javascript:void(0)" hrefs="./view/closeCompany_form.html">
                     <img src="./img/icon02.png" alt=""> 注销代跑
                 </a>
@@ -69,11 +69,11 @@
                 <a href="javascript:void(0)" hrefs="./view/law_form.html">
                     <img src="./img/icon11.png" alt=""> 法律服务
                 </a>
-            </li>
-            <li class="lastItem">
+            </li> -->
+            <!-- <li class="lastItem">
                 <a href="./view/dev.html">
                 </a>
-            </li>
+            </li> -->
         </ul>
     </div>
 </body>
@@ -82,6 +82,7 @@
 
 <!-- <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script> -->
 <script src="./js/jQuery/jquery-3.4.0.js"></script>
+<script src="./js/index.js"></script>
 <script>
     // $(function() {
     //     wx.config({
@@ -101,14 +102,34 @@
     //     });
     // })
 
-    // 判断是否登陆
-    $('.contentBox>ul>li>a').on('touchend',function(){
-        var isLogin= localStorage.getItem('token');
-        if(isLogin) {
-            var hrefRoot= $(this).attr('hrefs')
-            window.location.href= 'http://judiaowang.cn/app'+hrefRoot
-        }else {
-            window.location.href= 'http://judiaowang.cn/app/view/partnerLogin.html'
-        }
+    $(function() {
+        // 默认加载服务列表
+        $.ajax({
+            url: baseUrl+'/api/index/index',
+            type: 'post',
+            success: function(res){
+                for (let i = 0; i < res.data.list.length; i++) {
+                    var item= '<li>'+
+                                    '<a href="javascript:void(0)" hrefs="./view/seal_form.html">'+
+                                        '<img src='+res.data.list[i].imgUrl+' alt="">'+ res.data.list[i].name+
+                                    '</a>'+
+                                '</li>'
+                    $('#itemBox').append(item)            
+                    
+                }
+            }
+        })
+
+        // 判断是否登陆
+        $('.contentBox>ul>li>a').on('touchend',function(){
+            var isLogin= localStorage.getItem('token');
+            if(isLogin) {
+                var hrefRoot= $(this).attr('hrefs')
+                window.location.href= 'http://judiaowang.cn/app'+hrefRoot
+            }else {
+                window.location.href= 'http://judiaowang.cn/app/view/partnerLogin.html'
+            }
+        })
     })
+
 </script>

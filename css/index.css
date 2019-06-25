@@ -51,14 +51,14 @@
     display: -webkit-flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
-    align-content: space-between;
+    /* justify-content: flex-start;
+    align-content: space-between; */
     box-sizing: border-box;
     padding: 0rem 1.875rem;
 }
 
 .contentBox>ul>li {
-    width: 7rem;
+    width:30%;
     height: 7rem;
     margin-bottom: 1.25rem;
     border: .0625rem solid #e7e7e7;

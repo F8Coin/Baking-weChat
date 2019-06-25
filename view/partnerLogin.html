@@ -45,7 +45,6 @@
             mobile: mobile,
             password: password	
         }
-        // var partnerLogData= JSON.stringify(partnerLog);
         // 校验规则
         if(mobile == ''){ //验证手机号码
             layer.msg('请输入手机号码');
@@ -68,9 +67,7 @@
         $.ajax({
             type: 'post',
             url: baseUrl+'/api/auth/login',
-            // url: 'http://192.168.1.42:8080/api/auth/login',
-            data: partnerLog,
-            // contentType: "application/json",    
+            data: partnerLog,   
             success: function(res){
                 if(res.code== 0) {
                     window.location.href= 'http://judiaowang.cn/app/index.html'
