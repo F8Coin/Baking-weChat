@@ -7,115 +7,75 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>聚雕网</title>
     <link rel="stylesheet" href="./css/weui.min.css">
+    <link rel="stylesheet" href="./lib/bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/regist.css">
     <link rel="stylesheet" href="./css/index.css">
 </head>
 
 <body>
-    <div class="top_bg"></div>
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <ol id="bannerIndex" class="carousel-indicators">
+                <!-- 轮播图索引 -->
+            </ol>
+            <div id="bannerBox" class="carousel-inner" role="listbox">
+                <!-- 轮播图图片 -->
+            </div>
+        </div>
     <div class="contentBox">
-        <ul id="itemBox">
-            <!-- <li>
-                <a href="javascript:void(0)" hrefs="./view/seal_form.html">
-                    <img src="./img/icon01.png" alt=""> 企业刻章
-                </a>
-            </li> -->
-            <!-- <li>
-                <a href="javascript:void(0)" hrefs="./view/closeCompany_form.html">
-                    <img src="./img/icon02.png" alt=""> 注销代跑
-                </a>
-            </li>
-            <li>
-                <a href="javascript:void(0)" hrefs="./view/redPact_form.html">
-                    <img src="./img/icon04.png" alt=""> 红本合同
-                </a>
-            </li>
-            <li>
-                <a href="javascript:void(0)" hrefs="./view/pinch_form.html">
-                    <img src="./img/icon03.png" alt=""> 变更代跑
-                </a>
-            </li>
-            <li>
-                <a href="javascript:void(0)" hrefs="./view/renewAdd_form.html">
-                    <img src="./img/icon05.png" alt=""> 前海地址续签
-                </a>
-            </li>
-            <li>
-                <a href="javascript:void(0)" hrefs="./view/bank_form.html">
-                    <img src="./img/icon06.png" alt=""> 银行开户
-                </a>
-            </li>
-            <li>
-                <a href="javascript:void(0)" hrefs="./view/newsPaper_form.html">
-                    <img src="./img/icon07.png" alt=""> 登报服务
-                </a>
-            </li>
-            <li>
-                <a href="javascript:void(0)" hrefs="./view/taxReport_form.html">
-                    <img src="./img/icon08.png" alt=""> 税审报告
-                </a>
-            </li>
-            <li>
-                <a href="javascript:void(0)" hrefs="./view/patent_form.html">
-                    <img src="./img/icon09.png" alt=""> 商标专利
-                </a>
-            </li>
-            <li>
-                <a href="javascript:void(0)" hrefs="./view/hk_form.html">
-                    <img src="./img/icon10.png" alt=""> 香港公司业务
-                </a>
-            </li>
-            <li>
-                <a href="javascript:void(0)" hrefs="./view/law_form.html">
-                    <img src="./img/icon11.png" alt=""> 法律服务
-                </a>
-            </li> -->
-            <!-- <li class="lastItem">
-                <a href="./view/dev.html">
-                </a>
-            </li> -->
+        <ul id="listBox">
+            <!-- 服务列表 -->
         </ul>
     </div>
 </body>
 
 </html>
 
-<!-- <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script> -->
 <script src="./js/jQuery/jquery-3.4.0.js"></script>
+<script src="./lib/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
 <script src="./js/index.js"></script>
 <script>
-    // $(function() {
-    //     wx.config({
-    //         debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-    //         appId: 'wxa961343ad3f298e4', // 必填，公众号的唯一标识
-    //         timestamp: '', // 必填，生成签名的时间戳
-    //         nonceStr: '', // 必填，生成签名的随机串
-    //         signature: '',// 必填，签名
-    //         jsApiList: [] // 必填，需要使用的JS接口列表
-    //     });
-
-    //     wx.ready(function(){
-    //         // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
-    //     });
-    //     wx.error(function(res){
-    //         // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
-    //     });
-    // })
 
     $(function() {
-        // 默认加载服务列表
+        // 获取轮播图/九宫格
         $.ajax({
             url: baseUrl+'/api/index/index',
             type: 'post',
             success: function(res){
                 for (let i = 0; i < res.data.list.length; i++) {
-                    var item= '<li>'+
+                    var serveItem= '<li>'+
                                     '<a href="javascript:void(0)" hrefs="./view/seal_form.html">'+
                                         '<img src='+res.data.list[i].imgUrl+' alt="">'+ res.data.list[i].name+
                                     '</a>'+
-                                '</li>'
-                    $('#itemBox').append(item)            
-                    
+                                '</li>'                         
+                    $('#listBox').append(serveItem);
+                }
+                if(res.data.list.length % 3 == 0) {
+                        $('.contentBox>ul').attr('justifyContent','spaceBetween')
+                    }else if(res.data.list.length % 3 == 1) {
+                        $('.contentBox>ul').attr('justifyContent','spaceAround')
+                    }else if(res.data.list.length % 3 == 2) {
+                        var otherItem= '<li class="lastItem">'+
+                                        '<a href="javascript:void(0)" hrefs="./view/seal_form.html">'+
+                                            '<img src="" alt="">'+
+                                        '</a>'+
+                                    '</li>' 
+                        $('#listBox').append(otherItem);
+                        $('#listBox .lastItem').attr('visibility','hidden');
+                    } 
+                for (let i = 0; i < res.data.banner.length; i++) {
+                    if(i == 0) {
+                        var bannerImg=  '<div class="item active">'+
+                                            '<img src='+res.data.banner[i].imgUrl+' alt="">'+
+                                        '</div>' 
+                        var bannerIndex= '<li data-target="#carousel-example-generic" data-slide-to='+i+' class="active"></li>'                
+                    }else {
+                        var bannerImg=  '<div class="item">'+
+                                            '<img src='+res.data.banner[i].imgUrl+' alt="">'+
+                                        '</div>' 
+                        var bannerIndex= '<li data-target="#carousel-example-generic" data-slide-to='+i+' class="active"></li>'                
+                    }    
+                    $('#bannerBox').append(bannerImg); 
+                    $('#bannerIndex').append(bannerIndex);                                                                                           
                 }
             }
         })
