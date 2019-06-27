@@ -30,6 +30,7 @@ function uploadFile(inputEle,containerEle) {
 
 /* --------------添加按钮----------------- */
 $('.addBtn').on('touchend',function(e){
+    console.log(11)
     var flag;
     if($(this).text() != '已添加'){
         flag = true;

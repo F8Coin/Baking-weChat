@@ -21,58 +21,14 @@
                 </div>
                 <div class="formItem selectZoomBox">
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;变更方案</p>
-                    <ul class="pinchZoom selectZoom">
-                        <li class="checkedItem">变更股权</li>
-                        <li>注册资本减资</li>
-                        <li>变更地址</li>
-                        <li>变更名称/法人/营业范围/增资</li>
+                    <ul class="pinchZoom selectZoom" id="changeType">
+                        <!-- 变更方案列表 -->
                     </ul>
                 </div>
                 <div class="formItem changePro">
                     <p class="title"><span style="color:#CD0000">*</span>&nbsp;变更项目</p>
-                    <div class="content clearfix">
-                        <label for="partOne_Left" class="left fl optionAbout">
-                            <p class="flag">
-                                <span class="text">股权变更</span>
-                            </p>
-                            <!-- <p class="price">800.00</p> -->
-                            <input class="selectBtn" type="radio" id="partOne_Left" name="partOne">
-                        </label>
-                        <label for="partOne_Right" class="right fr optionAbout">
-                            <p class="flag">
-                                <span class="text">法人/高管变更</span>
-                            </p>
-                            <!-- <p class="price">￥1300.00</p> -->
-                            <input class="selectBtn" type="radio" id="partOne_Right" name="partOne">
-                        </label>
-                        <label for="partOne_Left" class="left fl optionAbout">
-                            <p class="flag">
-                                <span class="text">地址变更</span>
-                            </p>
-                            <!-- <p class="price">800.00</p> -->
-                            <input class="selectBtn" type="radio" id="partOne_Left" name="partOne">
-                        </label>
-                        <label for="partOne_Right" class="right fr optionAbout">
-                            <p class="flag">
-                                <span class="text">经营范围变更</span>
-                            </p>
-                            <!-- <p class="price">￥1300.00</p> -->
-                            <input class="selectBtn" type="radio" id="partOne_Right" name="partOne">
-                        </label>
-                        <label for="partOne_Left" class="left fl optionAbout">
-                            <p class="flag">
-                                <span class="text">名称变更</span>
-                            </p>
-                            <!-- <p class="price">800.00</p> -->
-                            <input class="selectBtn" type="radio" id="partOne_Left" name="partOne">
-                        </label>
-                        <label for="partOne_Right" class="right fr optionAbout">
-                            <p class="flag">
-                                <span class="text">注册资本增资</span>
-                            </p>
-                            <!-- <p class="price">￥1300.00</p> -->
-                            <input class="selectBtn" type="radio" id="partOne_Right" name="partOne">
-                        </label>
+                    <div class="content clearfix" id="goodsList">
+                        <!-- 变更项目 -->
                     </div>
                 </div>
             </div>
@@ -101,3 +57,50 @@
 <script src="../js/jQuery/jquery-3.4.0.js"></script>
 <script src="../lib/layer/layer.js"></script>
 <script src="../js/index.js"></script>
+<script>
+    $(function() {
+        var isLogin= localStorage.getItem('token');
+        $.ajax({
+            url: baseUrl+'/api/change/list',
+            type: 'post',
+            headers: {
+                "X-Jdw-Token": isLogin
+            },
+            data: {
+                busModId: "3"// 变更代跑
+            },
+            success: function(res) {
+                // 类别
+                for (var i = 0; i < res.data.category.length; i++) {
+                    if(i == 0) {
+                        var typeItem= '<li class="checkedItem">'+res.data.category[i].name+'</li>'
+                    }else {
+                        var typeItem= '<li>'+res.data.category[i].name+'</li>'
+                    }
+                    $('#changeType').append(typeItem);
+                } 
+                // 列表
+                for (var j = 0; j < res.data.goods.length; j++) {
+                    if((j+1) % 2 == 0) {
+                        var goodsItem= '<label for="'+j+'" class="right fr optionAbout">'+
+                                        '<p class="flag">'+
+                                            '<span class="text">'+res.data.goods[j].name+'</span>'+
+                                        '</p>'+
+                                        '<p class="price">'+res.data.goods[j].marketPrice+'</p>'+
+                                        '<input class="selectBtn" type="radio" id="'+j+'" name="partOne">'+
+                                    '</label>'
+                    }else {
+                        var goodsItem= '<label for="'+j+'" class="left fl optionAbout">'+
+                                        '<p class="flag">'+
+                                            '<span class="text">'+res.data.goods[j].name+'</span>'+
+                                        '</p>'+
+                                        '<p class="price">'+res.data.goods[j].marketPrice+'</p>'+
+                                        '<input class="selectBtn" type="radio" id="'+j+'" name="partOne">'+
+                                    '</label>'
+                    }
+                    $('#goodsList').append(goodsItem)
+                }
+            }
+        })
+    })
+</script>

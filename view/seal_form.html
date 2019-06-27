@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>深圳市聚雕网科技有限公司</title>
+    <title>企业刻章</title>
     <link rel="stylesheet" href="../css/weui.min.css">
     <link rel="stylesheet" href="../lib/layer/mobile/need/layer.css">
     <link rel="stylesheet" href="../css/regist.css">
@@ -28,60 +28,20 @@
                 </div> -->
                 <div class="formItem selectZoomBox">
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;办理区域</p>
-                    <ul class="selectZoom checkZoom">
-                        <li class="checkedItem">罗湖区</li>
-                        <li>南山区</li>
-                        <li>宝安区</li>
-                        <li>福田区</li>
-                        <li>龙华区</li>
-                        <li>龙岗区</li>
-                        <li>光明区</li>
-                        <li>坪山区</li>
-                        <li>大鹏新区</li>
+                    <ul class="selectZoom checkZoom" id="sealZoom">
+                        <!-- 刻章选择办理区域 -->
                     </ul>
                 </div>
                 <div class="formItem">
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;印章种类&nbsp;<span style="color:#ccc">(刻章包邮,送私章)</span></p>
-                    <ul class="sealBox">
-                        <li class="sealItem">
-                            <img src="../img/sealPub.jpg" alt="">
-                            <span class="sealType">公章</span>
-                            <!-- <span class="sealPrice">￥110.00</span> -->
-                            <button class="addBtn"><span>+</span>添加</button>
-                        </li>
-                        <li class="sealItem">
-                            <img src="../img/sealPub.jpg" alt="">
-                            <span class="sealType">财务章</span>
-                            <!-- <span class="sealPrice">￥110.00</span> -->
-                            <button class="addBtn"><span>+</span>添加</button>
-                        </li>
-                        <li class="sealItem">
-                            <img src="../img/sealPub.jpg" alt="">
-                            <span class="sealType">发票章</span>
-                            <!-- <span class="sealPrice">￥110.00</span> -->
-                            <button class="addBtn"><span>+</span>添加</button>
-                        </li>
-                        <li class="sealItem">
-                            <img src="../img/sealPub.jpg" alt="">
-                            <span class="sealType">合同章</span>
-                            <!-- <span class="sealPrice">￥110.00</span> -->
-                            <button class="addBtn"><span>+</span>添加</button>
-                        </li>
-                        <li class="sealItem sealPri">
-                            <img src="../img/sealPri.jpg" alt="">
-                            <span class="sealType">私章</span>
-                            <!-- <span class="sealPrice personalPri">￥0.00</span> -->
-                            <button class="addBtn"><span>+</span>添加</button>
-                        </li>
+                    <ul class="sealBox" id="openSealList">
+                        <!-- 刻章列表 -->
                     </ul>
                 </div>
                 <div class="formItem selectZoomBox">
                     <p class="labTitle">注销印章&nbsp;<span style="color:#ccc">(注销印章免费,包邮24元)</span></p>
-                    <ul class="closeSeal">
-                        <li>公章</li>
-                        <li>财务章</li>
-                        <li>合同章</li>
-                        <li class="lastItem">发票章</li>
+                    <ul class="closeSeal" id="closeSealList">
+                        <!-- 注销章列表 -->
                     </ul>
                 </div>
                 <div class="formItem">
@@ -124,6 +84,58 @@
 <script src="../js/index.js"></script>
 <script>
     $(function(){
+        var isLogin= localStorage.getItem('token');
+        $.ajax({
+            url: baseUrl+'/api/signet/list',
+            type: 'post',
+            headers: {
+                "X-Jdw-Token": "zpok99fya9fcgpuyixpm1khgppjlu9w7"
+            },
+            data: {
+                busModId: "1"// 企业刻章
+            },
+            success: function(res) {
+                // 办理区域
+                for (var i = 0; i < res.data.region.length; i++) {
+                    if(i==0){
+                        var zoomItem= '<li class="checkedItem">'+res.data.region[0].name+'</li>'
+                    }else {
+                        var zoomItem= '<li>'+res.data.region[i].name+'</li>'
+                    }
+                    $('#sealZoom').append(zoomItem);
+                }
+                // 刻章列表
+                for (var k = 0; k < res.data.goods[0].goods.length; k++) {
+                    if(res.data.goods[0].goods[k].name == "私章") {
+                        var sealItem= '<li class="sealItem sealPri">'+
+                                        '<img src="'+res.data.goods[0].goods[k].imgUrl+'" alt="">'+
+                                        '<span class="sealType">'+res.data.goods[0].goods[k].name+'</span>'+
+                                        '<span class="sealPrice">￥'+res.data.goods[0].goods[k].marketPrice+'</span>'+
+                                        '<button class="addBtn"><span>+</span>添加</button>'+
+                                    '</li>'
+                    }else {
+                        var sealItem= '<li class="sealItem">'+
+                                        '<img src="'+res.data.goods[0].goods[k].imgUrl+'" alt="">'+
+                                        '<span class="sealType">'+res.data.goods[0].goods[k].name+'</span>'+
+                                        '<span class="sealPrice">￥'+res.data.goods[0].goods[k].marketPrice+'</span>'+
+                                        '<button class="addBtn"><span>+</span>添加</button>'+
+                                    '</li>'
+                    }
+                    $('#openSealList').append(sealItem);
+                }
+                // 注销列表
+                for (var j = 0; j < res.data.goods[1].goods.length; j++) {
+                    if(j== res.data.goods[1].goods.length-1) {
+                        var closeSeal= '<li class="lastItem">'+res.data.goods[1].goods[j].name+'</li>'
+                    }else {
+                        var closeSeal= '<li>'+res.data.goods[1].goods[j].name+'</li>'
+                    }
+                    $('#closeSealList').append(closeSeal)
+                }
+            }
+        })
+
+
         /* --------------注销印章----------------- */
         $('.closeSeal').on('touchend','li',function(e){
             $(this).toggleClass('checkedItem')
