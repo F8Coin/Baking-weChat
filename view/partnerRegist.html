@@ -37,10 +37,10 @@
                     <textarea class="remarkText business" name="" id="" cols="" rows="" placeholder="简要描述您的优势业务(选填)"></textarea>
                 </div>
             </div>
-            <div class="centerBox upBox">
+            <div class="centerBox upBox frame">
                 <p class="title">下载合同,填写盖章上传</p>
                 <div class="formItem">
-                    <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;上传电子合同<a href="javascript:void(0)">(电子合同模板下载)</a></p>
+                    <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;上传电子合同<a href="../static/contract.docx" download="contract.docx">(电子合同模板下载)</a></p>
                     <span class="remarkText">下载合同,打印填写并盖章,按照序号将三张合同上传</span>
                     <div class="uploadBox uploadIcon">
                         <input type="file" class="uploadInput" style="opacity:0;position:absolute;width:13.125rem; height:8.75rem;" onchange="uploadFile($(this),$(this).parent())">
@@ -54,9 +54,10 @@
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;手机号码</p>
                     <input class="placeholderText mobile" type="text" placeholder="此手机号码将用作主账号登陆">
                 </div>
-                <div class="formItem">
+                <div class="formItem" style="position:relative">
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;验证码</p>
                     <input class="placeholderText code" type="text" placeholder="请输入验证码">
+                    <button style="position:absolute;right:0px;bottom:18px;border-radius:21px;" class="getCodeBtn">获取验证码</button>
                 </div>
                 <div class="formItem">
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;密码</p>
@@ -73,6 +74,27 @@
 <script src="../js/index.js"></script>
 <script>
     var baseUrl= 'http://judiaowang.cn/platform';
+    // ------------获取短信验证码--------------
+    var time= 60;
+    var clearId;
+    $('.getCodeBtn').on('click',function(){
+        $(this).attr('disabled',"true");
+        $(this).text(time+'s再获取');
+        clearId= setInterval(timeDown,1000);
+        console.log(clearId);
+    })
+
+    function timeDown() {
+        if(time == 0) {
+            $('.formItem>.getCodeBtn').removeAttr('disabled');
+            $('.formItem>.getCodeBtn').text('获取验证码');
+            clearInterval(clearId);
+       }else {
+            time--
+            $('.formItem>.getCodeBtn').text(time+'s再获取');
+       }
+    }
+    // ------------获取短信验证码--------------
     $('.regBtn').on('touchend',function(e){
         // var localhostPaht = getRootPath_web();
         // console.log(localhostPaht);

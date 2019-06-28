@@ -40,7 +40,7 @@
     margin-top: 2.5rem;
     color: #fff;
     font-size: 1.25rem;
-    background-color: #b39fff;
+    background-color: #836FFF;
     border: 1px solid #e7e7e7;
 }
 
@@ -49,9 +49,16 @@
     padding: 1.25rem;
 }
 
+.partnerContainer .slogan {
+    font-size: 2rem;
+    color: #2D73EE;
+    text-align: center;
+    font-weight: 700;
+    margin: 60px  0rem 60px;
+}
+
 .partnerContainer .partner_bg {
     margin-top: 15%;
-    margin-bottom: 50%;
 }
 
 .partnerContainer .partner_bg>img {
@@ -80,6 +87,13 @@
     color: #999999;
 } 
 
+.partnerRegist>.contentBox .downBox .getCodeBtn {
+    height: 2.625rem;
+    width: 7.5rem;
+    padding: .375rem 0rem;
+    color: #fff;
+    background-color: #836FFF;
+}
 /* -----------partner登录页面------------- */
 .partnerLogin {
     padding: 0rem 1.25rem;
@@ -106,7 +120,7 @@
 }
 
 .partnerLogin .loginForm>.formItem>.itemTitle {
-    font-size: .875rem;
+    font-size: 1.125rem ;
     padding-bottom: .375rem;
 }
 
@@ -119,10 +133,17 @@
     font-size: 1.5rem;
     color: #fff;
     border-radius: 2rem;
-    border: 1px solid #b39fff;
-    background-color: #b39fff;
+    border: 1px solid #836FFF;
+    background-color: #836FFF;
 }
 
+.partnerLogin>.loginForm .formItem .getCodeBtn {
+    height: 2.625rem;
+    width: 7.5rem;
+    padding: .375rem 0rem;
+    color: #fff;
+    background-color: #836FFF;
+}
 /* -----------partner个人中心------------- */
 .partnerCenter .basic {
     height: 7.5rem;

@@ -37,10 +37,6 @@
     border: 1px solid #e7e7e7;
 }
 
-.contentBox {
-    margin-top: 1.25rem;
-}
-
 .contentBox>ul {
     display: flex;
     display: -webkit-flex;
