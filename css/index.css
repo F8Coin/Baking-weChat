@@ -82,6 +82,14 @@
     margin-bottom: .375rem;
 }
 
+#carousel-example-generic {
+    margin-bottom: 30px ;
+}
+
+#bannerBox>.item {
+    height: 7.5rem;
+} 
+
 
 /* --------------刻章信息页面----------------- */
 
