@@ -43,7 +43,7 @@
             success: function(res){
                 for (let i = 0; i < res.data.list.length; i++) {
                     var serveItem= '<li>'+
-                                    '<a href="javascript:void(0)" hrefs="./view/seal_form.html">'+
+                                    '<a href="javascript:void(0)" hrefs='+res.data.list[i].link+'>'+
                                         '<img src='+res.data.list[i].imgUrl+' alt="">'+ res.data.list[i].name+
                                     '</a>'+
                                 '</li>'                         
@@ -55,7 +55,7 @@
                         $('.contentBox>ul').attr('justifyContent','spaceAround')
                     }else if(res.data.list.length % 3 == 2) {
                         var otherItem= '<li class="lastItem">'+
-                                        '<a href="javascript:void(0)" hrefs="./view/seal_form.html">'+
+                                        '<a href="javascript:void(0)" hrefs="javascript:void(0)">'+
                                             '<img src="" alt="">'+
                                         '</a>'+
                                     '</li>' 
@@ -81,10 +81,11 @@
         })
 
         // 判断是否登陆
-        $('.contentBox>ul>li>a').on('touchend',function(){
+        $('#listBox').on('touchend','li>a',function(){
             var isLogin= localStorage.getItem('token');
             if(isLogin) {
                 var hrefRoot= $(this).attr('hrefs')
+                hrefRoot=hrefRoot.Substring(1); //去掉字符串前i个字符
                 window.location.href= 'http://judiaowang.cn/app'+hrefRoot
             }else {
                 window.location.href= 'http://judiaowang.cn/app/view/partnerLogin.html'
