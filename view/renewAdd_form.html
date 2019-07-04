@@ -62,3 +62,19 @@
 <script src="../js/jQuery/jquery-3.4.0.js"></script>
 <script src="../lib/layer/layer.js"></script>
 <script src="../js/index.js"></script>
+<script>
+    var isLogin= localStorage.getItem('token');
+        $.ajax({
+            url: baseUrl+'/api/redPact/list',
+            type: 'post',
+            headers: {
+                "X-Jdw-Token": "zpok99fya9fcgpuyixpm1khgppjlu9w7"
+            },
+            data: {
+                busModId: "5"// 前海地址续签
+            },
+            success: function(res) {
+
+            }
+        })
+</script>

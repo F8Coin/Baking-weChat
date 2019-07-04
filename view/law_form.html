@@ -16,3 +16,20 @@
     </div>
 </body>
 </html>
+<script>
+    $(function() {
+        $.ajax({
+            url: baseUrl+'/api/bankAccount/list',
+            type: 'post',
+            data: {
+                busModId: "11" // 法律服务 12 食品经营许可证  13 教育资质 14 进出口经营权
+            },
+            headers: {
+                "X-Jdw-Token": "7pnfyq95g9ugi51pdxuvr453ivnz3x0j"
+            },
+            success: function(res) {
+                console.log(res.code);
+            }
+        })
+    })
+</script>

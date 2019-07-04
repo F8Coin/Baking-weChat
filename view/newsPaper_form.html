@@ -166,3 +166,20 @@
 <script src="../js/jQuery/jquery-3.4.0.js"></script>
 <script src="../lib/layer/layer.js"></script>
 <script src="../js/index.js"></script>
+<script>
+        $(function() {
+            $.ajax({
+                url: baseUrl+'/api/bankAccount/list',
+                type: 'post',
+                data: {
+                    busModId: "7" // 登报服务 
+                },
+                headers: {
+                    "X-Jdw-Token": "7pnfyq95g9ugi51pdxuvr453ivnz3x0j"
+                },
+                success: function(res) {
+                    console.log(res.code);
+                }
+            })
+        })
+    </script>

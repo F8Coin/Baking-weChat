@@ -1,4 +1,4 @@
-var baseUrl= 'http://judiaowang.cn/platform';
+var baseUrl= 'https://judiaowang.cn/platform';
 
 
 /* --------------网页根目录----------------- */

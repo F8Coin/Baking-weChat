@@ -90,6 +90,10 @@
     height: 7.5rem;
 } 
 
+#bannerBox .bannerItem {
+    margin-right: 6px;
+}
+
 
 /* --------------刻章信息页面----------------- */
 

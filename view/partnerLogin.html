@@ -17,12 +17,12 @@
             <div class="formItem phone" style="position:relative">
                 <p class="itemTitle">预留号码</p>
                 <input type="text" class="itemInput mobile" placeholder="请输入手机号码">
-                <button style="position:absolute;right:0px;bottom:8px;border-radius:21px;" class="getCodeBtn">获取验证码</button>
+                <!-- <button style="position:absolute;right:0px;bottom:8px;border-radius:21px;" class="getCodeBtn">获取验证码</button> -->
             </div>
-            <div class="formItem code">
+            <!-- <div class="formItem code">
                 <p class="itemTitle">验证码</p>
                 <input type="text" class="code"  placeholder="请输入验证码">
-            </div>
+            </div> -->
             <div class="formItem password">
                 <p class="itemTitle">密码</p>
                 <input type="password" class="password" placeholder="请输入密码">
@@ -36,7 +36,7 @@
 <script src="../js/jQuery/jquery-3.4.0.js"></script>
 <script src="../lib/layer/layer.js"></script>
 <script>
-    var baseUrl= 'http://judiaowang.cn/platform';
+    var baseUrl= 'https://judiaowang.cn/platform';
      // ------------获取短信验证码--------------
     var time= 60;
     var clearId;
@@ -67,6 +67,7 @@
             mobile: mobile,
             password: password	
         }
+        partnerLog= JSON.stringify(partnerLog);
         // 校验规则
         if(mobile == ''){ //验证手机号码
             layer.msg('请输入手机号码');
@@ -76,10 +77,10 @@
             return;
         }
 
-        if(code == ''){ //验证短信验证码
-            layer.msg('请输入短信验证码');
-            return;
-        }
+        // if(code == ''){ //验证短信验证码
+        //     layer.msg('请输入短信验证码');
+        //     return;
+        // }
 
         if(password == ''){ //验证密码
             layer.msg('请输入密码');
@@ -89,12 +90,12 @@
         $.ajax({
             type: 'post',
             url: baseUrl+'/api/auth/login',
+            contentType: "application/json",
             data: partnerLog,   
             success: function(res){
                 if(res.code== 0) {
-                    window.location.href= 'http://judiaowang.cn/app/index.html'
+                    window.location.href= 'https://judiaowang.cn/app/index.html'
                     localStorage.setItem('token',res.data.token)
-                    console.log(res.data.token);
                 }else {
                     layer.msg(JSON.parse(res).msg)
                 }

@@ -1,0 +1,17 @@
+<script>
+        $(function() {
+            $.ajax({
+                url: baseUrl+'/api/bankAccount/list',
+                type: 'post',
+                data: {
+                    busModId: "10" // 香港公司业务 
+                },
+                headers: {
+                    "X-Jdw-Token": "7pnfyq95g9ugi51pdxuvr453ivnz3x0j"
+                },
+                success: function(res) {
+                    console.log(res.code);
+                }
+            })
+        })
+    </script>

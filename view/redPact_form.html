@@ -109,6 +109,139 @@
 <script src="../lib/layer/layer.js"></script>
 <script src="../js/index.js"></script>
 <script>
+     $(function(){
+        var isLogin= localStorage.getItem('token');
+        $.ajax({
+            url: baseUrl+'/api/redPact/list',
+            type: 'post',
+            headers: {
+                "X-Jdw-Token": "7tvsykumvnk1d2zoyp1ashrcek1asx54"
+            },
+            data: {
+                busModId: "4"// 红本合同
+            },
+            success: function(res) {
+                console.log(res)
+                console.log(res.code)
+            }
+        })
+
+        // 选择区域
+        // $('.checkZoom>li').on('touchend',function(e){
+        //     $(this).addClass('checkedItem').siblings('li').removeClass('checkedItem');
+        //     var currentZoom = $(this).text();
+        //     //刻章模块
+        //     if(currentZoom == "福田区" || currentZoom == "罗湖区" || currentZoom == "龙岗区") {
+        //         $('.sealPrice').text('￥110.00')
+        //     }else if(currentZoom == "宝安区" || currentZoom == "南山区") {
+        //         $('.sealPrice').text('￥100.00')
+        //     }else if(currentZoom == "龙华区" || currentZoom == "光明区") {
+        //         $('.sealPrice').text('￥90.00')
+        //     }else if(currentZoom == "坪山区") {
+        //         $('.sealPrice').text('￥140.00')
+        //     }else if(currentZoom == "大鹏新区") {
+        //         $('.sealPrice').text('￥120.00')
+        //     };
+        //     $('.cancelSealPri').text('￥24.00');
+        //     $('.sealPri .personalPri').text('￥0.00');
+        // })
+
+        // 点击下一步提交订单
+        $('.nextBtn').on('touchend',function(e){
+            var orderInfo = {};
+            var companyName = $('.companyName').val(); // 获取公司名称
+            var personID = $('.personID').val(); // 获取法人身份证
+            var zoomArea = $('.selectZoom li.checkedItem').text(); // 办理区域
+            var receiverName = $('.receiverName').val(); // 收货人姓名
+            var receiverTel = $('.receiverTel').val(); // 收货人电话
+            var receiverAdd = $('.receiverAdd').val(); // 收货地址
+            var remarkText = $('.remarkText').val(); // 备注信息
+            var showImgSrc= $('.showImg').attr('src') // 上传图片url地址
+            // 购买印章信息
+            var seal_goods= [];
+            var addBtnList = $('.addBtn');
+            for (let i = 0; i < addBtnList.length; i++) {
+                if($(addBtnList[i]).text() == "已添加"){
+                    var type = $(addBtnList[i]).siblings('.sealType').text();
+                    var price = $(addBtnList[i]).siblings('.sealPrice').text().replace('￥','');
+                    var sealItem = {typeAbout:type,priceAbout:price}
+                    seal_goods.push(sealItem);
+                }else {
+                    continue;
+                }
+                
+            }
+            // 注销印章信息
+            var closeSealList = $('.closeSeal>li.checkedItem');
+            var closeSealFlag = 0; //没有添加注销印章
+            if(closeSealList.length > 0){
+                closeSealFlag = 1; //有添加注销印章
+                for (let j = 0; j < closeSealList.length; j++) {
+                    var type= "注销"+$(closeSealList[j]).text();
+                    var price = 0.00;
+                    seal_goods.push( {typeAbout:type,priceAbout:price})
+                    
+                }
+            }
+            
+            orderInfo = {
+                'companyName': companyName,
+                'personID': personID,
+                'zoomArea': zoomArea,
+                'seal_goods': seal_goods,
+                'receiverName': receiverName,
+                'receiverTel': receiverTel,
+                'receiverAdd': receiverAdd,
+                'remarkText': remarkText,
+                'uploadImg':showImgSrc,
+                'isCloseSeal': closeSealFlag,
+            };
+
+            // 正则验证表单信息
+            if(companyName == ''){ //验证公司名称
+                layer.msg('请输入公司名称');
+                return;
+            }
+
+            // if(personID == ''){ //验证法人身份证
+            //     layer.msg('请输入法人身份证');
+            //     return;
+            // }else if(!(/^([0-9]){7,18}(x|X)?$ 或 ^\d{8,18}|[0-9x]{8,18}|[0-9X]{8,18}?$/.test(personID))) {
+            //     layer.msg('请填写正确的身份证号码');
+            //     return;
+            // }
+
+            if(receiverName == ''){ //验证收货人姓名
+                layer.msg('请输入收货人姓名');
+                return;
+            }
+
+            if(receiverTel == ''){ //验证收货人电话
+                layer.msg('请输入收货人电话');
+                return;
+            }else if(!(/^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/.test(receiverTel))) {
+                layer.msg('请填写正确的收货人电话');
+                return;
+            }
+
+            if(receiverAdd == ''){ //验证收货人地址
+                layer.msg('请输入收货人地址');
+                return;
+            }
+
+            if(seal_goods.length == 0) {
+                layer.msg('请选择需要购买的印章')
+                return;
+            }
+
+            sessionStorage.setItem("sealFormMes", JSON.stringify(orderInfo));
+
+            window.location.href = "../view/seal_order.html"
+
+            e.preventDefault();
+        })
+    })
+
     $(function(){
         $('.checkZoom>li').on('touchend',function(e){
             $(this).addClass('checkedItem').siblings('li').removeClass('checkedItem');
