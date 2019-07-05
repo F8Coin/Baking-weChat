@@ -1,18 +1,21 @@
 var baseUrl= 'https://judiaowang.cn/platform';
 
-
-/* --------------网页根目录----------------- */
-
-function getRootPath_web() {
-    //获取当前网址，如： http://localhost:8083/uimcardprj/share/meun.jsp
-    var curWwwPath = window.document.location.href;
-    //获取主机地址之后的目录，如： uimcardprj/share/meun.jsp
-    var pathName = window.document.location.pathname;
-    var pos = curWwwPath.indexOf(pathName);
-    //获取主机地址，如： http://localhost:8083
-    var localhostPaht = curWwwPath.substring(0, pos);
-    return localhostPaht;
+/* --------------获取分区----------------- */
+function getArea(url,type,token,busModId,busRegionId,callback) {
+    $.ajax({
+        url: url,
+        type: type,
+        // busRegionId:busRegionId,
+        headers: {
+            "X-Jdw-Token": token
+        },
+        data: {
+            busModId: busModId
+        },
+        success: callback(data)
+    })   
 }
+
 
 /* --------------文件上传----------------- */
 function uploadFile(inputEle,containerEle) {
