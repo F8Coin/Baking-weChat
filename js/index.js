@@ -18,6 +18,22 @@ function getArea(url,type,token,busModId,busRegionId,callback) {
 
 
 /* --------------文件上传----------------- */
+function saveUpload(imgFile) {
+    var isLogin= localStorage.getItem('token');
+    $.ajax({
+        url: baseUrl+'/api/upload/upload',
+        // url:'https://desom.mynatapp.cc/api/upload/upload',
+        type: 'post',
+        data: {
+            'file': imgFile
+        },
+        dataType: 'json',
+        success: function(res){
+            console.log(res.code);
+        }
+    })
+}
+
 function uploadFile(inputEle,containerEle) {
     let formData = new FormData(),
     fs =inputEle[0].files[0];
@@ -25,14 +41,15 @@ function uploadFile(inputEle,containerEle) {
     reads.readAsDataURL(fs);
     reads.onload=function (e) {
         var targetSrc = this.result;
-        containerEle.removeClass('uploadIcon')
+        saveUpload(targetSrc);
+        containerEle.removeClass('uploadIcon');
         containerEle.find('.showImg').attr('src',targetSrc);
     };
 }
 
 
 /* --------------添加按钮----------------- */
-$('.addBtn').on('touchend',function(e){
+$('#openSealList').on('touchend','.addBtn',function(e){
     console.log(11)
     var flag;
     if($(this).text() != '已添加'){
@@ -56,26 +73,9 @@ $('.addBtn').on('touchend',function(e){
 
 })
 
-/* --------------注销业务----------------- */
-// $('.companyFormContainer .content label>input').on('touchend',function(e){
-//     var selectFlag= true;
-//     if($(this).attr('checked')){
-//         selectFlag = true;
-//     }else {
-//         selectFlag = false;
-//     }
-//     if(selectFlag) {
-//         $(this).attr('checked',false);
-//         selectFlag = false;
-//     }else {
-//         $(this).attr('checked',true);
-//         selectFlag = true;
-//     }
-// })
-
 
 /* --------------办理区域----------------- */
-$('.selectZoom').on('touchend','li',function(e){
-    $(this).addClass('checkedItem').siblings('li').removeClass('checkedItem');
-})
+// $('.selectZoom').on('touchend','li',function(e){
+//     $(this).addClass('checkedItem').siblings('li').removeClass('checkedItem');
+// })
 

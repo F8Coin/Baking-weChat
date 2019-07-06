@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <meta http-equiv="Content-Type"  content="multipart/form-data; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>企业刻章</title>
     <link rel="stylesheet" href="../css/weui.min.css">
@@ -22,13 +23,13 @@
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;公司名称</p>
                     <input class="placeholderText companyName" type="text" placeholder="请输入公司名称">
                 </div>
-                <!-- <div class="formItem">
+                <div class="formItem">
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;法人身份证号码</p>
                     <input class="placeholderText personID" type="text" placeholder="请输入法人身份证号码">
-                </div> -->
+                </div>
                 <div class="formItem selectZoomBox">
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;办理区域</p>
-                    <ul class="selectZoom checkZoom" id="sealZoom">
+                    <ul class="selectZoom" id="sealZoom">
                         <!-- 刻章选择办理区域 -->
                     </ul>
                 </div>
@@ -85,80 +86,82 @@
 <script>
     $(function(){
         var isLogin= localStorage.getItem('token');
-        $.ajax({
-            url: baseUrl+'/api/signet/list',
-            type: 'post',
-            headers: {
-                "X-Jdw-Token": "zpok99fya9fcgpuyixpm1khgppjlu9w7"
-            },
-            data: {
-                busModId: "1"// 企业刻章
-            },
-            success: function(res) {
-                // 办理区域
-                for (var i = 0; i < res.data.region.length; i++) {
-                    if(i==0){
-                        var zoomItem= '<li class="checkedItem">'+res.data.region[0].name+'</li>'
-                    }else {
-                        var zoomItem= '<li>'+res.data.region[i].name+'</li>'
+        // 获取刻章列表方法
+        function getSealGoods(zoomId,cityId) {
+            var parameterNum= arguments.length;
+            $.ajax({
+                url: baseUrl+'/api/signet/list',
+                type: 'post',
+                headers: {
+                    "X-Jdw-Token": "tauxil4k2aabmmax2zwchsiv2clsxpvu"
+                },
+                data: {
+                    busModId: "1",// 企业刻章
+                    reionId: zoomId,
+                    cityId: cityId
+                },
+                success: function(res) {
+                    // 办理区域,使用重载实现
+                    if(parameterNum == 0) {
+                        for (var i = 0; i < res.data.region.length; i++) {
+                            if(i==0){
+                                var zoomItem= '<li class="checkedItem" zoomId='+res.data.region[0].regionId+' cityId='+res.data.region[0].agencyId+'>'+res.data.region[0].name+'</li>'
+                            }else {
+                                var zoomItem= '<li zoomId='+res.data.region[0].regionId+' cityId='+res.data.region[0].agencyId+'>'+res.data.region[i].name+'</li>'
+                            }
+                            $('#sealZoom').append(zoomItem);
+                        }
                     }
-                    $('#sealZoom').append(zoomItem);
-                }
-                // 刻章列表
-                for (var k = 0; k < res.data.goods[0].goods.length; k++) {
-                    if(res.data.goods[0].goods[k].name == "私章") {
-                        var sealItem= '<li class="sealItem sealPri">'+
-                                        '<img src="'+res.data.goods[0].goods[k].imgUrl+'" alt="">'+
-                                        '<span class="sealType">'+res.data.goods[0].goods[k].name+'</span>'+
-                                        '<span class="sealPrice">￥'+res.data.goods[0].goods[k].marketPrice+'</span>'+
-                                        '<button class="addBtn"><span>+</span>添加</button>'+
-                                    '</li>'
-                    }else {
-                        var sealItem= '<li class="sealItem">'+
-                                        '<img src="'+res.data.goods[0].goods[k].imgUrl+'" alt="">'+
-                                        '<span class="sealType">'+res.data.goods[0].goods[k].name+'</span>'+
-                                        '<span class="sealPrice">￥'+res.data.goods[0].goods[k].marketPrice+'</span>'+
-                                        '<button class="addBtn"><span>+</span>添加</button>'+
-                                    '</li>'
+                    // 刻章列表
+                    for (var k = 0; k < res.data.goods[0].goods.length; k++) {
+                        if(res.data.goods[0].goods[k].name == "私章") {
+                            var sealItem= '<li class="sealItem sealPri" sealId='+res.data.goods[0].goods[k].id+'>'+
+                                            '<img src="'+res.data.goods[0].goods[k].imgUrl+'" alt="">'+
+                                            '<span class="sealType">'+res.data.goods[0].goods[k].name+'</span>'+
+                                            '<span class="sealPrice">￥'+res.data.goods[0].goods[k].marketPrice+'</span>'+
+                                            '<button class="addBtn"><span>+</span>添加</button>'+
+                                        '</li>'
+                        }else {
+                            var sealItem= '<li class="sealItem" sealId='+res.data.goods[0].goods[k].id+'>'+
+                                            '<img src="'+res.data.goods[0].goods[k].imgUrl+'" alt="">'+
+                                            '<span class="sealType">'+res.data.goods[0].goods[k].name+'</span>'+
+                                            '<span class="sealPrice">￥'+res.data.goods[0].goods[k].marketPrice+'</span>'+
+                                            '<button class="addBtn"><span>+</span>添加</button>'+
+                                        '</li>'
+                        }
+                        $('#openSealList').append(sealItem);
+                        
                     }
-                    $('#openSealList').append(sealItem);
-                }
-                // 注销列表
-                for (var j = 0; j < res.data.goods[1].goods.length; j++) {
-                    if(j== res.data.goods[1].goods.length-1) {
-                        var closeSeal= '<li class="lastItem">'+res.data.goods[1].goods[j].name+'</li>'
-                    }else {
-                        var closeSeal= '<li>'+res.data.goods[1].goods[j].name+'</li>'
+                    // 注销列表
+                    for (var j = 0; j < res.data.goods[1].goods.length; j++) {
+                        if(j== res.data.goods[1].goods.length-1) {
+                            var closeSeal= '<li class="lastItem" closeId='+res.data.goods[1].goods[j].id+'>'+res.data.goods[1].goods[j].name+'</li>'
+                        }else {
+                            var closeSeal= '<li closeId='+res.data.goods[1].goods[j].id+'>'+res.data.goods[1].goods[j].name+'</li>'
+                        }
+                        $('#closeSealList').append(closeSeal)
                     }
-                    $('#closeSealList').append(closeSeal)
                 }
-            }
-        })
+            })
+        }
 
-
+        getSealGoods(); // 默认获取印章列表
+        
         /* --------------注销印章----------------- */
         $('.closeSeal').on('touchend','li',function(e){
             $(this).toggleClass('checkedItem')
         })
 
-        // 选择区域
-        $('.checkZoom>li').on('touchend',function(e){
+        // 选择区域获取对应区域印章列表
+        $('.selectZoom').on('touchend','li',function(e){
+            $('#openSealList').empty();
+            $('#closeSealList').empty();
             $(this).addClass('checkedItem').siblings('li').removeClass('checkedItem');
             var currentZoom = $(this).text();
-            //刻章模块
-            if(currentZoom == "福田区" || currentZoom == "罗湖区" || currentZoom == "龙岗区") {
-                $('.sealPrice').text('￥110.00')
-            }else if(currentZoom == "宝安区" || currentZoom == "南山区") {
-                $('.sealPrice').text('￥100.00')
-            }else if(currentZoom == "龙华区" || currentZoom == "光明区") {
-                $('.sealPrice').text('￥90.00')
-            }else if(currentZoom == "坪山区") {
-                $('.sealPrice').text('￥140.00')
-            }else if(currentZoom == "大鹏新区") {
-                $('.sealPrice').text('￥120.00')
-            };
-            $('.cancelSealPri').text('￥24.00');
-            $('.sealPri .personalPri').text('￥0.00');
+            var zoomId= $(this).attr('zoomId');
+            var cityId= $(this).attr('cityId');
+            // 发送请求获取对应区域刻章列表
+            getSealGoods(zoomId);
         })
 
         // 点击下一步提交订单
@@ -166,7 +169,7 @@
             var orderInfo = {};
             var companyName = $('.companyName').val(); // 获取公司名称
             var personID = $('.personID').val(); // 获取法人身份证
-            var zoomArea = $('.selectZoom li.checkedItem').text(); // 办理区域
+            var zoomArea = $('.selectZoom li.checkedItem').attr('zoomId'); // 办理区域
             var receiverName = $('.receiverName').val(); // 收货人姓名
             var receiverTel = $('.receiverTel').val(); // 收货人电话
             var receiverAdd = $('.receiverAdd').val(); // 收货地址
@@ -177,10 +180,8 @@
             var addBtnList = $('.addBtn');
             for (let i = 0; i < addBtnList.length; i++) {
                 if($(addBtnList[i]).text() == "已添加"){
-                    var type = $(addBtnList[i]).siblings('.sealType').text();
-                    var price = $(addBtnList[i]).siblings('.sealPrice').text().replace('￥','');
-                    var sealItem = {typeAbout:type,priceAbout:price}
-                    seal_goods.push(sealItem);
+                    var sealIds = $(addBtnList[i]).parent().attr('sealId')
+                    seal_goods.push(sealIds);
                 }else {
                     continue;
                 }
@@ -192,25 +193,26 @@
             if(closeSealList.length > 0){
                 closeSealFlag = 1; //有添加注销印章
                 for (let j = 0; j < closeSealList.length; j++) {
-                    var type= "注销"+$(closeSealList[j]).text();
-                    var price = 0.00;
-                    seal_goods.push( {typeAbout:type,priceAbout:price})
+                    var closeIds= $(closeSealList[j]).attr('closeId');
+                    seal_goods.push(closeIds)
                     
                 }
             }
             
             orderInfo = {
+                'busModId': '3',
                 'companyName': companyName,
-                'personID': personID,
+                // 'personID': personID,
                 'zoomArea': zoomArea,
-                'seal_goods': seal_goods,
-                'receiverName': receiverName,
-                'receiverTel': receiverTel,
-                'receiverAdd': receiverAdd,
+                'cityId': seal_goods,
+                'consignee': receiverName,
+                'phone': receiverTel,
+                'address': receiverAdd,
                 'remarkText': remarkText,
-                'uploadImg':showImgSrc,
+                'busLicense':showImgSrc,
                 'isCloseSeal': closeSealFlag,
             };
+            console.log(orderInfo)
 
             // 正则验证表单信息
             if(companyName == ''){ //验证公司名称
@@ -218,13 +220,13 @@
                 return;
             }
 
-            // if(personID == ''){ //验证法人身份证
-            //     layer.msg('请输入法人身份证');
-            //     return;
-            // }else if(!(/^([0-9]){7,18}(x|X)?$ 或 ^\d{8,18}|[0-9x]{8,18}|[0-9X]{8,18}?$/.test(personID))) {
-            //     layer.msg('请填写正确的身份证号码');
-            //     return;
-            // }
+            if(personID == ''){ //验证法人身份证
+                layer.msg('请输入法人身份证');
+                return;
+            }else if(!(/^([0-9]){7,18}(x|X)?$ 或 ^\d{8,18}|[0-9x]{8,18}|[0-9X]{8,18}?$/.test(personID))) {
+                layer.msg('请填写正确的身份证号码');
+                return;
+            }
 
             if(receiverName == ''){ //验证收货人姓名
                 layer.msg('请输入收货人姓名');

@@ -94,7 +94,10 @@
             success: function(res){
                 if(res.code== 0) {
                     window.location.href= 'https://judiaowang.cn/app/index.html'
-                    localStorage.setItem('token',res.data.token)
+                    localStorage.setItem({
+                        'token': res.data.token,
+                        'cityId': res.data.cityId,
+                    })
                 }else {
                     layer.msg(JSON.parse(res).msg)
                 }
