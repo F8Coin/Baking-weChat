@@ -18,39 +18,34 @@ function getArea(url,type,token,busModId,busRegionId,callback) {
 
 
 /* --------------文件上传----------------- */
-function saveUpload(imgFile) {
-    var isLogin= localStorage.getItem('token');
-    $.ajax({
-        url: baseUrl+'/api/upload/upload',
-        // url:'https://desom.mynatapp.cc/api/upload/upload',
-        type: 'post',
-        data: {
-            'file': imgFile
-        },
-        dataType: 'json',
-        success: function(res){
-            console.log(res.code);
-        }
-    })
-}
-
 function uploadFile(inputEle,containerEle) {
-    let formData = new FormData(),
-    fs =inputEle[0].files[0];
+    fs= inputEle[0].files[0];
     var reads= new FileReader();
     reads.readAsDataURL(fs);
     reads.onload=function (e) {
-        var targetSrc = this.result;
-        saveUpload(targetSrc);
+        var targetSrc = this.result;;
         containerEle.removeClass('uploadIcon');
-        containerEle.find('.showImg').attr('src',targetSrc);
     };
+    var formData= new FormData();
+    formData.append('file',fs);
+    $.ajax({
+        url: baseUrl+'/api/upload/upload',
+        type: 'POST',
+        cache: false, //上传文件不需要缓存
+        data: formData,
+        processData: false, // 告诉jQuery不要去处理发送的数据
+        contentType: false, // 告诉jQuery不要去设置Content-Type请求头
+        success: function (res) {
+            if(res.code == 0) {
+                containerEle.find('.showImg').attr('src',res.msg);
+            }
+        }
+    })
 }
 
 
 /* --------------添加按钮----------------- */
 $('#openSealList').on('touchend','.addBtn',function(e){
-    console.log(11)
     var flag;
     if($(this).text() != '已添加'){
         flag = true;
