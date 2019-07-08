@@ -66,7 +66,8 @@
             mobile: mobile,
             password: password	
         }
-        partnerLog= JSON.stringify(partnerLog);
+        // partnerLog= JSON.stringify(partnerLog);
+        console.log(partnerLog);
         // 校验规则
         if(mobile == ''){ //验证手机号码
             layer.msg('请输入手机号码');
@@ -89,19 +90,33 @@
         $.ajax({
             type: 'post',
             // url: baseUrl+'/api/auth/login',
-            url: 'http://192.168.1.51:8080/platform/api/auth/login',
-            contentType: "application/json",
+            url: 'http://desom.mynatapp.cc/api/auth/login',
+            // contentType: "application/json",
             data: partnerLog,   
             success: function(res){
                 if(res.code== 0) {
-                    // window.location.href= 'https://judiaowang.cn/app/index.html'
-                    localStorage.setItem({
-                        'token': res.data.token,
-                        'cityId': res.data.cityId,
-                    })
-                    $.ajax({
-                        url: baseUrl+'',
-                    })
+                    window.location.href= 'https://judiaowang.cn/app/index.html'
+                    // localStorage.setItem({
+                    //     'token': res.data.token,
+                    //     'cityId': res.data.cityId,
+                    // })
+                    // $.ajax({
+                    //     url: baseUrl+'/api/auth/mpAuth',
+                    //     type: 'post',
+                    //     headers: {
+                    //         "X-Jdw-Token": "ddj5umv3ynbmky6kjpc2nlni5sbh4ymx"
+                    //     },
+                    //     data: {
+                    //         returnUrl: 'https://judiaowang.cn/app/index.html'
+                    //     },
+                    //     success: function(res) {
+                    //         if(res.code == 0){
+                    //             console.log(res.data)
+                    //         }else {
+                    //             layer.msg(res.msg);
+                    //         }
+                    //     }
+                    // })
                 }else {
                     layer.msg(JSON.parse(res).msg)
                 }
