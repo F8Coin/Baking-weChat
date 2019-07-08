@@ -88,15 +88,19 @@
 
         $.ajax({
             type: 'post',
-            url: baseUrl+'/api/auth/login',
+            // url: baseUrl+'/api/auth/login',
+            url: 'http://192.168.1.51:8080/platform/api/auth/login',
             contentType: "application/json",
             data: partnerLog,   
             success: function(res){
                 if(res.code== 0) {
-                    window.location.href= 'https://judiaowang.cn/app/index.html'
+                    // window.location.href= 'https://judiaowang.cn/app/index.html'
                     localStorage.setItem({
                         'token': res.data.token,
                         'cityId': res.data.cityId,
+                    })
+                    $.ajax({
+                        url: baseUrl+'',
                     })
                 }else {
                     layer.msg(JSON.parse(res).msg)
