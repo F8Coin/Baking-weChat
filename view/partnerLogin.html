@@ -94,7 +94,7 @@
             data: partnerLog,   
             success: function(res){
                 if(res.code== 0) {
-                    window.location.href= 'https://judiaowang.cn/app/index.html'
+                    window.location.href= 'http://judiaowang.cn/app/index.html'
                     localStorage.setItem('token',res.data.token)
                 }else {
                     layer.msg(JSON.parse(res).msg)
