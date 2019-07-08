@@ -59,7 +59,6 @@
     }
     // ------------获取短信验证码--------------
     $('.loginBtn').on('touchend',function(e){
-        console.log(11)
         var mobile= $('.formItem .mobile').val();
         var code= $('.formItem .code').val();
         var password= $('.formItem .password').val();
@@ -94,8 +93,11 @@
             data: partnerLog,   
             success: function(res){
                 if(res.code== 0) {
-                    window.location.href= 'http://judiaowang.cn/app/index.html'
-                    localStorage.setItem('token',res.data.token)
+                    window.location.href= 'https://judiaowang.cn/app/index.html'
+                    localStorage.setItem({
+                        'token': res.data.token,
+                        'cityId': res.data.cityId,
+                    })
                 }else {
                     layer.msg(JSON.parse(res).msg)
                 }

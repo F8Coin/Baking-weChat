@@ -1,36 +1,51 @@
 var baseUrl= 'https://judiaowang.cn/platform';
 
-
-/* --------------网页根目录----------------- */
-
-function getRootPath_web() {
-    //获取当前网址，如： http://localhost:8083/uimcardprj/share/meun.jsp
-    var curWwwPath = window.document.location.href;
-    //获取主机地址之后的目录，如： uimcardprj/share/meun.jsp
-    var pathName = window.document.location.pathname;
-    var pos = curWwwPath.indexOf(pathName);
-    //获取主机地址，如： http://localhost:8083
-    var localhostPaht = curWwwPath.substring(0, pos);
-    return localhostPaht;
+/* --------------获取分区----------------- */
+function getArea(url,type,token,busModId,busRegionId,callback) {
+    $.ajax({
+        url: url,
+        type: type,
+        // busRegionId:busRegionId,
+        headers: {
+            "X-Jdw-Token": token
+        },
+        data: {
+            busModId: busModId
+        },
+        success: callback(data)
+    })   
 }
+
 
 /* --------------文件上传----------------- */
 function uploadFile(inputEle,containerEle) {
-    let formData = new FormData(),
-    fs =inputEle[0].files[0];
+    fs= inputEle[0].files[0];
     var reads= new FileReader();
     reads.readAsDataURL(fs);
     reads.onload=function (e) {
-        var targetSrc = this.result;
-        containerEle.removeClass('uploadIcon')
-        containerEle.find('.showImg').attr('src',targetSrc);
+        var targetSrc = this.result;;
+        containerEle.removeClass('uploadIcon');
     };
+    var formData= new FormData();
+    formData.append('file',fs);
+    $.ajax({
+        url: baseUrl+'/api/upload/upload',
+        type: 'POST',
+        cache: false, //上传文件不需要缓存
+        data: formData,
+        processData: false, // 告诉jQuery不要去处理发送的数据
+        contentType: false, // 告诉jQuery不要去设置Content-Type请求头
+        success: function (res) {
+            if(res.code == 0) {
+                containerEle.find('.showImg').attr('src',res.msg);
+            }
+        }
+    })
 }
 
 
 /* --------------添加按钮----------------- */
-$('.addBtn').on('touchend',function(e){
-    console.log(11)
+$('#openSealList').on('touchend','.addBtn',function(e){
     var flag;
     if($(this).text() != '已添加'){
         flag = true;
@@ -53,26 +68,9 @@ $('.addBtn').on('touchend',function(e){
 
 })
 
-/* --------------注销业务----------------- */
-// $('.companyFormContainer .content label>input').on('touchend',function(e){
-//     var selectFlag= true;
-//     if($(this).attr('checked')){
-//         selectFlag = true;
-//     }else {
-//         selectFlag = false;
-//     }
-//     if(selectFlag) {
-//         $(this).attr('checked',false);
-//         selectFlag = false;
-//     }else {
-//         $(this).attr('checked',true);
-//         selectFlag = true;
-//     }
-// })
-
 
 /* --------------办理区域----------------- */
-$('.selectZoom').on('touchend','li',function(e){
-    $(this).addClass('checkedItem').siblings('li').removeClass('checkedItem');
-})
+// $('.selectZoom').on('touchend','li',function(e){
+//     $(this).addClass('checkedItem').siblings('li').removeClass('checkedItem');
+// })
 
