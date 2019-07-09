@@ -1,4 +1,4 @@
-var baseUrl= 'https://judiaowang.cn/platform';
+var baseUrl= 'http://judiaowang.cn/platform';
 
 /* --------------获取分区----------------- */
 function getArea(url,type,token,busModId,busRegionId,callback) {
