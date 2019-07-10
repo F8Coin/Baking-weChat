@@ -106,15 +106,14 @@
                 url: baseUrl+'/api/pay/create',
                 type: 'get',
                 headers: {
-                    "X-Jdw-Token": "ddj5umv3ynbmky6kjpc2nlni5sbh4ymx"
+                    "X-Jdw-Token": JSON.parse(localStorage.getItem('loginData')).token
                 },
                 data: {
-                    orderId: '',
-                    returnUrl: ''
+                    orderId: localStorage.getItem('sealOrderId'),
+                    returnUrl: 'http://judiaowang.cn/platform/index.html'
                 },
                 success: function(res) {
                     if(res.code == 0) {
-                        console.log(res.data);
                     }
                 }
             })

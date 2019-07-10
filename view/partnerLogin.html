@@ -64,10 +64,11 @@
         var code= $('.formItem .code').val();
         var password= $('.formItem .password').val();
         var partnerLog= {
-            "mobile": mobile,
-            "password": password	
+            mobile: mobile,
+            password: password	
         }
 
+        partnerLog= JSON.stringify(partnerLog);
         // 校验规则
         if(mobile == ''){ //验证手机号码
             layer.msg('请输入手机号码');
@@ -88,80 +89,36 @@
         }
         $.ajax({
             type: 'post',
-            // url: baseUrl+'/api/auth/login',
-            url: 'http://desom.mynatapp.cc/api/auth/login',
+            url: baseUrl+'/api/auth/login',
             data: partnerLog,
+            contentType: 'application/json',
             success: function(res){
                 if(res.code== 0) {
-                    // window.location.href= 'https://judiaowang.cn/app/index.html'
                     var data= {
                         token: res.data.token,
                         cityId: res.data.cityId,
                     }
                     data= JSON.stringify(data);
                     localStorage.setItem('loginData',data);
-                    console.log(localStorage.getItem('loginData'))
                     var token= res.data.token
-                    // $.ajax({
-                    //     url: baseUrl+'/api/auth/mpAuth',
-                    //     type: 'post',
-                    //     headers: {
-                    //         "X-Jdw-Token": token
-                    //     },
-                    //     data: {
-                    //         returnUrl: 'https://judiaowang.cn/app/index.html'
-                    //     },
-                    //     success: function(res) {
-                    //         console.log(res.code)
-                    //         console.log(res)
-                    //     }
+                    $.ajax({
+                        url: baseUrl+'/api/auth/mpAuth?returnUrl=https://judiaowang.cn/app/index.html',
+                        type: 'post',
+                        headers: {
+                            "X-Jdw-Token": token
+                        },
+                        success: function(res) {
+                            
+                        },
+                        error: function(data){
+                            layer.msg(data.msg)
+                        }
 
-                    // })
+                    })
                 }else {
                     layer.msg(JSON.parse(res).msg)
                 }
-
             }
-
         })
-        // $.ajax({
-        //     type: 'post',
-        //     url: baseUrl+'/api/auth/login',
-        //     // url: 'http://desom.mynatapp.cc/api/auth/login',
-        //     data: partnerLog,
-        //     contentType: "application/json",  
-        //     success: function(res){
-        //         if(res.code== 0) {
-        //             // window.location.href= 'https://judiaowang.cn/app/index.html'
-        //             // localStorage.setItem({
-        //             //     'token': res.data.token,
-        //             //     'cityId': res.data.cityId,
-        //             // })
-        //             // $.ajax({
-        //             //     url: baseUrl+'/api/auth/mpAuth',
-        //             //     type: 'post',
-        //             //     headers: {
-        //             //         "X-Jdw-Token": "ddj5umv3ynbmky6kjpc2nlni5sbh4ymx"
-        //             //     },
-        //             //     data: {
-        //             //         returnUrl: 'https://judiaowang.cn/app/index.html'
-        //             //     },
-        //             //     success: function(res) {
-        //             //         if(res.code == 0){
-        //             //             console.log(res.data)
-        //             //         }else {
-        //             //             layer.msg(res.msg);
-        //             //         }
-        //             //     }
-        //             // })
-        //         }else {
-        //             layer.msg(JSON.parse(res).msg)
-        //         }
-                
-        //     }
-
-        // })
-
-
     })
 </script>
