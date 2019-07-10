@@ -73,7 +73,7 @@
 <script src="../lib/layer/layer.js"></script>
 <script src="../js/index.js"></script>
 <script>
-    var baseUrl= 'https://judiaowang.cn/platform';
+    var baseUrl= 'http://judiaowang.cn/platform';
     // ------------获取短信验证码--------------
     var time= 60;
     var clearId;
@@ -157,7 +157,7 @@
             success: function(data){
                 if(data.code == 0) {
                     layer.msg('注册成功',function(){
-                        window.location.href= 'https://judiaowang.cn/app/view/partnerLogin.html'
+                        window.location.href= 'http://judiaowang.cn/app/view/partnerLogin.html'
                     });
                 }else {
                     layer.msg(JSON.parse(data).msg)

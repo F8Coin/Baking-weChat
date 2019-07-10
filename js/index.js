@@ -1,18 +1,17 @@
 var baseUrl= 'http://judiaowang.cn/platform';
 
 /* --------------获取分区----------------- */
-function getArea(url,type,token,busModId,busRegionId,callback) {
+function getArea(url,type,token,busModId,callback) {
     $.ajax({
         url: url,
         type: type,
-        // busRegionId:busRegionId,
         headers: {
             "X-Jdw-Token": token
         },
         data: {
             busModId: busModId
         },
-        success: callback(data)
+        success: callback
     })   
 }
 
