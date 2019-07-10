@@ -57,7 +57,7 @@
         <span class="fl payInfo">
             订单金额 : <span class="RMB_flag">￥</span><span class="payAmount"></span>
         </span>
-        <a href="./dev.html" class="fr paymentBtn">微信支付</a>
+        <a href="javascript:void(0)" class="fr paymentBtn">微信支付</a>
     </div>
 </body>
 
@@ -96,10 +96,29 @@
              orderAmount+= parseInt(sealOrderAbout.seal_goods[i].priceAbout);
         }
         if(sealOrderAbout.isCloseSeal == 1) {
-            // $('.payInfo .payAmount').text(orderAmount+24)
+            $('.payInfo .payAmount').text(orderAmount+24)
         }else {
-            // $('.payInfo .payAmount').text(orderAmount)
+            $('.payInfo .payAmount').text(orderAmount)
         }
+
+        $('.paymentBtn').on('touchend', function(){
+            $.ajax({
+                url: baseUrl+'/api/pay/create',
+                type: 'get',
+                headers: {
+                    "X-Jdw-Token": "ddj5umv3ynbmky6kjpc2nlni5sbh4ymx"
+                },
+                data: {
+                    orderId: '',
+                    returnUrl: ''
+                },
+                success: function(res) {
+                    if(res.code == 0) {
+                        console.log(res.data);
+                    }
+                }
+            })
+        })
     })
     
 </script>

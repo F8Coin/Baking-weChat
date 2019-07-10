@@ -36,15 +36,15 @@
 <script src="../js/jQuery/jquery-3.4.0.js"></script>
 <script src="../lib/layer/layer.js"></script>
 <script>
-    var baseUrl= 'https://judiaowang.cn/platform';
-     // ------------获取短信验证码--------------
+    var baseUrl= 'http://judiaowang.cn/platform';
+
+    // ------------获取短信验证码--------------
     var time= 60;
     var clearId;
     $('.getCodeBtn').on('click',function(){
         $(this).attr('disabled',"true");
         $(this).text(time+'s再获取');
         clearId= setInterval(timeDown,1000);
-        console.log(clearId);
     })
 
     function timeDown() {
@@ -58,6 +58,7 @@
        }
     }
     // ------------获取短信验证码--------------
+
     $('.loginBtn').on('touchend',function(e){
         var mobile= $('.formItem .mobile').val();
         var code= $('.formItem .code').val();
@@ -66,7 +67,7 @@
             "mobile": mobile,
             "password": password	
         }
-        partnerLog= JSON.stringify(partnerLog);
+
         // 校验规则
         if(mobile == ''){ //验证手机号码
             layer.msg('请输入手机号码');
@@ -85,31 +86,81 @@
             layer.msg('请输入密码');
             return;
         }
-        console.log(partnerLog);
         $.ajax({
             type: 'post',
             // url: baseUrl+'/api/auth/login',
-            url: 'http://192.168.1.51:8080/platform/api/auth/login',
-            contentType: "application/json;charset=utf-8",
-            dataType: 'json',
-            data: partnerLog,   
+            url: 'http://desom.mynatapp.cc/api/auth/login',
+            data: partnerLog,
             success: function(res){
                 if(res.code== 0) {
                     // window.location.href= 'https://judiaowang.cn/app/index.html'
-                    localStorage.setItem({
-                        'token': res.data.token,
-                        'cityId': res.data.cityId,
-                    })
+                    var data= {
+                        token: res.data.token,
+                        cityId: res.data.cityId,
+                    }
+                    data= JSON.stringify(data);
+                    localStorage.setItem('loginData',data);
+                    console.log(localStorage.getItem('loginData'))
+                    var token= res.data.token
                     // $.ajax({
-                    //     url: baseUrl+'',
+                    //     url: baseUrl+'/api/auth/mpAuth',
+                    //     type: 'post',
+                    //     headers: {
+                    //         "X-Jdw-Token": token
+                    //     },
+                    //     data: {
+                    //         returnUrl: 'https://judiaowang.cn/app/index.html'
+                    //     },
+                    //     success: function(res) {
+                    //         console.log(res.code)
+                    //         console.log(res)
+                    //     }
+
                     // })
                 }else {
                     layer.msg(JSON.parse(res).msg)
                 }
-                
+
             }
 
         })
+        // $.ajax({
+        //     type: 'post',
+        //     url: baseUrl+'/api/auth/login',
+        //     // url: 'http://desom.mynatapp.cc/api/auth/login',
+        //     data: partnerLog,
+        //     contentType: "application/json",  
+        //     success: function(res){
+        //         if(res.code== 0) {
+        //             // window.location.href= 'https://judiaowang.cn/app/index.html'
+        //             // localStorage.setItem({
+        //             //     'token': res.data.token,
+        //             //     'cityId': res.data.cityId,
+        //             // })
+        //             // $.ajax({
+        //             //     url: baseUrl+'/api/auth/mpAuth',
+        //             //     type: 'post',
+        //             //     headers: {
+        //             //         "X-Jdw-Token": "ddj5umv3ynbmky6kjpc2nlni5sbh4ymx"
+        //             //     },
+        //             //     data: {
+        //             //         returnUrl: 'https://judiaowang.cn/app/index.html'
+        //             //     },
+        //             //     success: function(res) {
+        //             //         if(res.code == 0){
+        //             //             console.log(res.data)
+        //             //         }else {
+        //             //             layer.msg(res.msg);
+        //             //         }
+        //             //     }
+        //             // })
+        //         }else {
+        //             layer.msg(JSON.parse(res).msg)
+        //         }
+                
+        //     }
+
+        // })
 
 
     })
