@@ -103,14 +103,14 @@
 
         $('.paymentBtn').on('touchend', function(){
             $.ajax({
-                url: baseUrl+'/api/pay/create',
+                url: baseUrl+'/api/pay/create?returnUrl=http://judiaowang.cn/platform/index.html',
                 type: 'get',
                 headers: {
                     "X-Jdw-Token": JSON.parse(localStorage.getItem('loginData')).token
                 },
                 data: {
                     orderId: localStorage.getItem('sealOrderId'),
-                    returnUrl: 'http://judiaowang.cn/platform/index.html'
+                    // returnUrl: 'http://judiaowang.cn/platform/index.html'
                 },
                 success: function(res) {
                     if(res.code == 0) {

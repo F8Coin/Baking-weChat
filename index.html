@@ -82,12 +82,12 @@
 
         // 判断是否登陆
         $('#listBox').on('touchend','li>a',function(){
-            var isLogin= localStorage.getItem('token');
+            var isLogin= JSON.parse(localStorage.getItem('loginData')).token;
             if(isLogin) {
                 var hrefRoot= $(this).attr('hrefs')
-                window.location.href= 'https://judiaowang.cn/app'+hrefRoot
+                window.location.href= 'http://judiaowang.cn/app'+hrefRoot
             }else {
-                window.location.href= 'https://judiaowang.cn/app/view/partnerLogin.html'
+                window.location.href= 'http://judiaowang.cn/app/view/partnerLogin.html'
             }
         })
     })

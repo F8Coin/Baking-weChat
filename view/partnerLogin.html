@@ -57,7 +57,6 @@
             $('.formItem>.getCodeBtn').text(time+'s再获取');
        }
     }
-    // ------------获取短信验证码--------------
 
     $('.loginBtn').on('touchend',function(e){
         var mobile= $('.formItem .mobile').val();
@@ -101,20 +100,22 @@
                     data= JSON.stringify(data);
                     localStorage.setItem('loginData',data);
                     var token= res.data.token
-                    $.ajax({
-                        url: baseUrl+'/api/auth/mpAuth?returnUrl=https://judiaowang.cn/app/index.html',
-                        type: 'post',
-                        headers: {
-                            "X-Jdw-Token": token
-                        },
-                        success: function(res) {
+                    // window.location.href= 'https://judiaowang.cn/app/index.html'
+                    window.location.href= '../index.html'                    
+                    // $.ajax({
+                    //     url: baseUrl+'/api/auth/mpAuth?returnUrl=https://judiaowang.cn/app/index.html',
+                    //     type: 'post',
+                    //     headers: {
+                    //         "X-Jdw-Token": token
+                    //     },
+                    //     success: function(res) {
                             
-                        },
-                        error: function(data){
-                            layer.msg(data.msg)
-                        }
+                    //     },
+                    //     error: function(data){
+                    //         layer.msg(data.msg)
+                    //     }
 
-                    })
+                    // })
                 }else {
                     layer.msg(JSON.parse(res).msg)
                 }

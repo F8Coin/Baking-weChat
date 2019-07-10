@@ -234,6 +234,7 @@
                 remarkText: remarkText,
                 isCloseSeal: closeSealFlag
             };
+            orderInfo= JSON.stringify(orderInfo);
             orderInfoData= JSON.stringify(orderInfoData);
             sessionStorage.setItem('sealFormMes',orderInfoData);
 
@@ -276,25 +277,11 @@
 
             $.ajax({
                 url: baseUrl+'/api/signet/order',
-                // url: 'http://desom.mynatapp.cc/api/signet/order',
                 type: 'POST',
                 headers: {
                     "X-Jdw-Token": JSON.parse(localStorage.getItem('loginData')).token
                 },
-                data: {
-                    "address": "深圳市龙华区",
-                    "busLicense": "http://test.com/img.jpg",
-                    "busModId": 3,
-                    "cityId": JSON.parse(localStorage.getItem('loginData')).cityId,
-                    "companyName": "深圳聚雕网科技有限公司",
-                    "consignee": "张三",
-                    "creditCode": "89323232X",
-                    "goodsIds": [1,2,3],
-                    "legalIdCard": "440981199112082690",
-                    "phone": "18027613030",
-                    "postscript": "测试",
-                    "shippingFee": 24
-                  },
+                data: orderInfo,
                 success: function(res){
                     var res= JSON.parse(res);
                     if(res.code == 0) {
