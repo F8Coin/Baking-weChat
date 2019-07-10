@@ -63,8 +63,8 @@
         var code= $('.formItem .code').val();
         var password= $('.formItem .password').val();
         var partnerLog= {
-            mobile: mobile,
-            password: password	
+            "mobile": mobile,
+            "password": password	
         }
         partnerLog= JSON.stringify(partnerLog);
         // 校验规则
@@ -85,12 +85,13 @@
             layer.msg('请输入密码');
             return;
         }
-
+        console.log(partnerLog);
         $.ajax({
             type: 'post',
             // url: baseUrl+'/api/auth/login',
             url: 'http://192.168.1.51:8080/platform/api/auth/login',
-            contentType: "application/json",
+            contentType: "application/json;charset=utf-8",
+            dataType: 'json',
             data: partnerLog,   
             success: function(res){
                 if(res.code== 0) {
@@ -99,9 +100,9 @@
                         'token': res.data.token,
                         'cityId': res.data.cityId,
                     })
-                    $.ajax({
-                        url: baseUrl+'',
-                    })
+                    // $.ajax({
+                    //     url: baseUrl+'',
+                    // })
                 }else {
                     layer.msg(JSON.parse(res).msg)
                 }
