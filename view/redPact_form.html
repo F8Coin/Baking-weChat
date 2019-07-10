@@ -103,7 +103,7 @@
 <script>
 
     $(function(){
-        var isLogin= localStorage.getItem('token');
+        var isLogin= JSON.parse(localStorage.getItem('loginData')).token;
         var url= baseUrl+'/api/redPact/list'
         getArea(url,'post','fg88yvzi9giwd8hga7yrk8bv9fxe7u0j','4',traverseArea)
         

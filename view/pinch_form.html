@@ -59,7 +59,7 @@
 <script src="../js/index.js"></script>
 <script>
     $(function() {
-        var isLogin= localStorage.getItem('token');
+        var isLogin= JSON.parse(localStorage.getItem('loginData')).token;
         $.ajax({
             url: baseUrl+'/api/change/list',
             type: 'post',
