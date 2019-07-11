@@ -81,6 +81,7 @@
         })
 
         // 判断是否登陆
+        // console.log(JSON.parse(localStorage.getItem('loginData')).token)
         $('#listBox').on('touchend','li>a',function(){
             if(JSON.stringify(localStorage.getItem('loginData')) == "null") {
                 window.location.href= 'http://judiaowang.cn/app/view/partnerLogin.html'

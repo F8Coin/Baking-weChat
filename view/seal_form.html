@@ -85,6 +85,7 @@
 <script>
     $(function(){
         // 获取刻章列表方法
+        console.log(JSON.parse(localStorage.getItem('loginData')).token)
         function getSealGoods(zoomId,areaId) {
             var parameterNum= arguments.length;
             $.ajax({
