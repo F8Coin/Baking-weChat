@@ -89,6 +89,7 @@
         $.ajax({
             type: 'post',
             url: baseUrl+'/api/auth/login',
+            // url:'http://desom.mynatapp.cc/platform/api/auth/login',
             data: partnerLog,
             contentType: 'application/json',
             success: function(res){
@@ -101,21 +102,22 @@
                     localStorage.setItem('loginData',data);
                     var token= res.data.token
                     // window.location.href= 'http://judiaowang.cn/app/index.html'
-                    window.location.href= '../index.html'                    
-                    // $.ajax({
-                    //     url: baseUrl+'/api/auth/mpAuth?returnUrl=http://judiaowang.cn/app/index.html',
-                    //     type: 'post',
-                    //     headers: {
-                    //         "X-Jdw-Token": token
-                    //     },
-                    //     success: function(res) {
+                    // window.location.href= '../index.html'                    
+                    $.ajax({
+                        url: baseUrl+'/api/auth/mpAuth?returnUrl=http://judiaowang.cn/app/index.html',
+                        // url:'http://desom.mynatapp.cc/platform/api/auth/mpAuth?returnUrl=http://judiaowang.cn/app/index.html',
+                        type: 'get',
+                        headers: {
+                            "X-Jdw-Token": token
+                        },
+                        success: function(res) {
                             
-                    //     },
-                    //     error: function(data){
-                    //         layer.msg(data.msg)
-                    //     }
+                        },
+                        error: function(res){
+                            layer.msg(data.msg)
+                        }
 
-                    // })
+                    })
                 }else {
                     layer.msg(JSON.parse(res).msg)
                 }
