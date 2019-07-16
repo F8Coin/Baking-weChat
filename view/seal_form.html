@@ -48,7 +48,7 @@
                 <div class="formItem">
                     <p class="labTitle">上传营业执照&nbsp;<span style="color:#ccc">(刻章码短信或领证通知短信)</span></p>
                     <div class="uploadBox uploadIcon">
-                        <input type="file" class="uploadInput" style="opacity:0;position:absolute;width:13.125rem; height:8.75rem;" onchange="uploadFile($(this),$(this).parent())">
+                        <input type="file" class="uploadInput" accept="image/*" style="opacity:0;position:absolute;width:13.125rem; height:8.75rem;" onchange="uploadFile($(this),$(this).parent())">
                         <img src="" alt="" class="showImg" style="display:block;margin:0 auto; height:100%;">
                     </div>
                 </div>
@@ -85,11 +85,11 @@
 <script>
     $(function(){
         // 获取刻章列表方法
-        console.log(JSON.parse(localStorage.getItem('loginData')).token)
         function getSealGoods(zoomId,areaId) {
             var parameterNum= arguments.length;
             $.ajax({
                 url: baseUrl+'/api/signet/list',
+                // url: test1+'/api/signet/list',
                 type: 'post',
                 headers: {
                     "X-Jdw-Token": JSON.parse(localStorage.getItem('loginData')).token
@@ -214,6 +214,7 @@
                 companyName: companyName,
                 legalIdCard: personID,
                 busLicense: showImgSrc,
+                busLicense: 'map.jpg',
                 goodsIds: seal_goods,
                 phone: receiverTel,
                 address: receiverAdd,
@@ -237,7 +238,7 @@
             };
             orderInfo= JSON.stringify(orderInfo);
             orderInfoData= JSON.stringify(orderInfoData);
-            sessionStorage.setItem('sealFormMes',orderInfoData);
+            localStorage.setItem('sealFormMes',orderInfoData);
 
             // 正则验证表单信息
             if(companyName == ''){ //验证公司名称
@@ -277,18 +278,22 @@
             }
 
             $.ajax({
-                url: baseUrl+'/api/signet/order',
-                type: 'POST',
+                url: baseUrl+'/api/signet/createOrder',
+                // url: test1+'/api/signet/createOrder',
+                type: 'post',
                 headers: {
                     "X-Jdw-Token": JSON.parse(localStorage.getItem('loginData')).token
                 },
                 data: orderInfo,
+                contentType: 'application/json',
                 success: function(res){
-                    var res= JSON.parse(res);
+                    // var res= JSON.parse(res);
                     if(res.code == 0) {
-                        window.location.href = "http://judiaowang.cn/app/view/seal_order.html";
-                        var orderId= res.data
+                        var orderId= res.data.orderId;
                         localStorage.setItem('sealOrderId',orderId)
+                        window.location.href = "./seal_order.html";
+                    }else {
+                        layer.msg(res.msg)
                     }
                 }
             })

@@ -68,7 +68,7 @@
 <script src="../js/jQuery/jquery-3.4.0.js"></script>
 <script>
     $(function(){
-        var sealOrderAbout = JSON.parse(sessionStorage.getItem('sealFormMes')) ;
+        var sealOrderAbout = JSON.parse(localStorage.getItem('sealFormMes')) ;
         $('.informationItem .companyName').text(sealOrderAbout.companyName);
         $('.informationItem .ID').text(sealOrderAbout.personID);
         $('.informationItem .zoom').text(sealOrderAbout.zoomArea);
@@ -102,21 +102,8 @@
         }
 
         $('.paymentBtn').on('touchend', function(){
-            $.ajax({
-                url: baseUrl+'/api/pay/create?returnUrl=http://judiaowang.cn/platform/index.html',
-                type: 'get',
-                headers: {
-                    "X-Jdw-Token": JSON.parse(localStorage.getItem('loginData')).token
-                },
-                data: {
-                    orderId: localStorage.getItem('sealOrderId'),
-                    // returnUrl: 'http://judiaowang.cn/platform/index.html'
-                },
-                success: function(res) {
-                    if(res.code == 0) {
-                    }
-                }
-            })
+            window.location.href=  baseUrl+'/api/pay/create?orderId='+localStorage.getItem('sealOrderId')+'&returnUrl=http://judiaowang.cn/app/weChat/index.html&token='+JSON.parse(localStorage.getItem('loginData')).token
+            // window.location.href= test1+'/api/pay/create?orderId='+localStorage.getItem('sealOrderId')+'&returnUrl=http://judiaowang.cn/app/weChat/index.html&token='+JSON.parse(localStorage.getItem('loginData')).token
         })
     })
     

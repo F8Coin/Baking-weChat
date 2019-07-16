@@ -39,6 +39,7 @@
         // 获取轮播图/九宫格
         $.ajax({
             url: baseUrl+'/api/index/index',
+            // url: test1+'/api/index/index',
             type: 'post',
             success: function(res){
                 for (let i = 0; i < res.data.list.length; i++) {
@@ -81,7 +82,6 @@
         })
 
         // 判断是否登陆
-        // console.log(JSON.parse(localStorage.getItem('loginData')).token)
         $('#listBox').on('touchend','li>a',function(){
             if(JSON.stringify(localStorage.getItem('loginData')) == "null") {
                 window.location.href= 'http://judiaowang.cn/app/view/partnerLogin.html'

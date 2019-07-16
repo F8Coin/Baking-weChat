@@ -1,4 +1,5 @@
 var baseUrl= 'http://judiaowang.cn/platform';
+var test1= 'http://desom.mynatapp.cc/platform';
 
 /* --------------获取分区----------------- */
 function getArea(url,type,token,busModId,callback) {
@@ -29,6 +30,7 @@ function uploadFile(inputEle,containerEle) {
     formData.append('file',fs);
     $.ajax({
         url: baseUrl+'/api/upload/upload',
+        // url: test1+'/api/upload/upload',
         type: 'POST',
         cache: false, //上传文件不需要缓存
         data: formData,
@@ -36,7 +38,7 @@ function uploadFile(inputEle,containerEle) {
         contentType: false, // 告诉jQuery不要去设置Content-Type请求头
         success: function (res) {
             if(res.code == 0) {
-                containerEle.find('.showImg').attr('src',res.msg);
+                containerEle.find('.showImg').attr('src',res.data);
             }
         }
     })
