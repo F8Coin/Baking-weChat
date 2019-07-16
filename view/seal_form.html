@@ -85,6 +85,10 @@
 <script>
     $(function(){
         // 获取刻章列表方法
+<<<<<<< HEAD
+=======
+        // console.log(JSON.parse(localStorage.getItem('loginData')).token)
+>>>>>>> a5b57135ae1a139eea0e1061797017aaf2fa6f46
         function getSealGoods(zoomId,areaId) {
             var parameterNum= arguments.length;
             $.ajax({
@@ -213,7 +217,11 @@
                 cityId: JSON.parse(localStorage.getItem('loginData')).cityId,
                 companyName: companyName,
                 legalIdCard: personID,
+<<<<<<< HEAD
                 busLicense: showImgSrc,
+=======
+                // busLicense: showImgSrc,
+>>>>>>> a5b57135ae1a139eea0e1061797017aaf2fa6f46
                 busLicense: 'map.jpg',
                 goodsIds: seal_goods,
                 phone: receiverTel,
@@ -278,8 +286,13 @@
             }
 
             $.ajax({
+<<<<<<< HEAD
                 url: baseUrl+'/api/signet/createOrder',
                 // url: test1+'/api/signet/createOrder',
+=======
+                // url: baseUrl+'/api/signet/order',
+                url: 'http://desom.mynatapp.cc/platform/api/signet/createOrder',
+>>>>>>> a5b57135ae1a139eea0e1061797017aaf2fa6f46
                 type: 'post',
                 headers: {
                     "X-Jdw-Token": JSON.parse(localStorage.getItem('loginData')).token
@@ -289,9 +302,15 @@
                 success: function(res){
                     // var res= JSON.parse(res);
                     if(res.code == 0) {
+<<<<<<< HEAD
                         var orderId= res.data.orderId;
                         localStorage.setItem('sealOrderId',orderId)
                         window.location.href = "./seal_order.html";
+=======
+                        var orderId= res.data
+                        localStorage.setItem('sealOrderId',orderId)
+                        window.location.href = "http://judiaowang.cn/app/view/seal_order.html";
+>>>>>>> a5b57135ae1a139eea0e1061797017aaf2fa6f46
                     }else {
                         layer.msg(res.msg)
                     }
