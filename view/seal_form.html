@@ -96,7 +96,7 @@
                 },
                 data: {
                     busModId: "1",// 企业刻章
-                    reionId: zoomId,
+                    regionId: zoomId,
                     areaId: areaId
                 },
                 success: function(res) {
@@ -104,9 +104,9 @@
                     if(parameterNum == 0) {
                         for (var i = 0; i < res.data.region.length; i++) {
                             if(i==0){
-                                var zoomItem= '<li class="checkedItem" zoomId='+res.data.region[0].regionId+' areaId='+res.data.region[0].agencyId+'>'+res.data.region[0].name+'</li>'
+                                var zoomItem= '<li class="checkedItem" zoomId='+res.data.region[i].regionId+' areaId='+res.data.region[i].agencyId+'>'+res.data.region[i].name+'</li>'
                             }else {
-                                var zoomItem= '<li zoomId='+res.data.region[0].regionId+' areaId='+res.data.region[0].agencyId+'>'+res.data.region[i].name+'</li>'
+                                var zoomItem= '<li zoomId='+res.data.region[i].regionId+' areaId='+res.data.region[i].agencyId+'>'+res.data.region[i].name+'</li>'
                             }
                             $('#sealZoom').append(zoomItem);
                         }

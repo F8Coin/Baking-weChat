@@ -84,11 +84,11 @@
         // 判断是否登陆
         $('#listBox').on('touchend','li>a',function(){
             if(JSON.stringify(localStorage.getItem('loginData')) == "null") {
-                window.location.href= 'http://judiaowang.cn/app/weChat/view/partnerLogin.html'
+                window.location.href= 'http://judiaowang.cn/app/view/partnerLogin.html'
                 return false;
             }else {
                 var hrefRoot= $(this).attr('hrefs')
-                window.location.href= 'http://judiaowang.cn/app/weChat'+hrefRoot
+                window.location.href= 'http://judiaowang.cn/app'+hrefRoot
             }
         })
     })
