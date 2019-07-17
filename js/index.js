@@ -24,7 +24,8 @@ function uploadFile(inputEle,containerEle) {
     var reads= new FileReader();
     reads.readAsDataURL(fs);
     reads.onload=function (e) {
-        var targetSrc = this.result;;
+        var targetSrc = this.result;
+        containerEle.find('.showImg').attr('src',targetSrc);        
         containerEle.removeClass('uploadIcon');
     };
     var formData= new FormData();
@@ -39,7 +40,7 @@ function uploadFile(inputEle,containerEle) {
         contentType: false, // 告诉jQuery不要去设置Content-Type请求头
         success: function (res) {
             if(res.code == 0) {
-                containerEle.find('.showImg').attr('src',res.data);
+                // containerEle.find('.showImg').attr('src',res.data);
             }
         }
     })
