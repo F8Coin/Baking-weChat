@@ -290,7 +290,7 @@
                     if(res.code == 0) {
                         var orderId= res.data.orderId;
                         localStorage.setItem('sealOrderId',orderId)
-                        window.location.href = "./seal_order.html";
+                        window.location.href = pageUrl+"/seal_order.html";
                     }else {
                         layer.msg(res.msg)
                     }

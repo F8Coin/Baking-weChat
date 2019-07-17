@@ -1,4 +1,5 @@
 var baseUrl= 'http://judiaowang.cn/platform';
+var pageUrl= 'http://judiaowang.cn/app/weChat/view'
 var test1= 'http://desom.mynatapp.cc/platform';
 
 /* --------------获取分区----------------- */
