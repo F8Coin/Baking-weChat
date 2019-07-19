@@ -40,7 +40,7 @@ function uploadFile(inputEle,containerEle) {
         contentType: false, // 告诉jQuery不要去设置Content-Type请求头
         success: function (res) {
             if(res.code == 0) {
-                // containerEle.find('.showImg').attr('src',res.data);
+                containerEle.find('.showImg').attr('src',res.data);
             }
         }
     })
