@@ -46,7 +46,6 @@
         $(this).text(time+'s再获取');
         clearId= setInterval(timeDown,1000);
     })
-
     function timeDown() {
         if(time == 0) {
             $('.formItem>.getCodeBtn').removeAttr('disabled');
@@ -58,7 +57,9 @@
        }
     }
 
+    // ------------点击登录--------------
     $('.loginBtn').on('touchend',function(e){
+        // 获取用户信息
         var mobile= $('.formItem .mobile').val();
         var code= $('.formItem .code').val();
         var password= $('.formItem .password').val();
@@ -66,8 +67,8 @@
             mobile: mobile,
             password: password	
         }
-
         partnerLog= JSON.stringify(partnerLog);
+
         // 校验规则
         if(mobile == ''){ //验证手机号码
             layer.msg('请输入手机号码');
@@ -86,6 +87,8 @@
             layer.msg('请输入密码');
             return;
         }
+
+        // 发送请求
         $.ajax({
             type: 'post',
             url: baseUrl+'/api/auth/login',
@@ -97,10 +100,10 @@
                     var data= {
                         token: res.data.token,
                         cityId: res.data.cityId,
+                        userId: res.data.userId
                     }
                     data= JSON.stringify(data);
                     localStorage.setItem('loginData',data);
-                    var token= res.data.token;
                     window.location.href=  baseUrl+'/api/auth/mpAuth?userId='+res.data.userId+'&returnUrl=http://judiaowang.cn/app/index.html'
                     // window.location.href=  test1+'/api/auth/mpAuth?userId='+res.data.userId+'&returnUrl=http://192.168.1.7:8080/weChat/index.html'
                 }else {

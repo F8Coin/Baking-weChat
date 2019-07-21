@@ -88,85 +88,69 @@
     margin-bottom: 30px ;
 }
 
-/* #bannerBox>.item {
-    height: 7.5rem;
-}  */
-
-/* #bannerBox .bannerItem {
-    margin-right: 6px;
-} */
-
-
 /* --------------刻章信息页面----------------- */
-
-.sealContainer {
+.containerOut {
     position: relative;
     background-color: rgba(250, 250, 250, 1);
     padding-bottom: 4.25rem;
 }
 
-.sealContainer .headerBar {
+.containerOut .headerBar {
     height: 7.5rem;
     width: 100%;
     position: absolute;
     background-color: #836FFF;
-    /* background: url('../img/sealPage_bg.jpg') no-repeat center center;
-    background-size: cover; */
 }
 
-.sealContainer .contentBox {
+.containerOut .containerInner {
     position: relative;
     top: 3.75rem;
-    /* z-index: 999; */
     padding: 0rem 1.875rem;
 }
 
-.sealContainer .upBox {
+.containerOut .baseInfo{
     padding: 1.25rem;
     border: 1px solid #e7e7e7;
     background-color: rgba(255, 255, 255, 1);
     border-radius: .75rem;
 }
 
-.sealContainer .upBox>.title,
-.downBox>.title,
+.containerInner .baseInfo>.title,
+.containerInner .receiveInfo>.title,
 .centerBox>.title {
     font-size: 1.375rem;
 }
 
-.upBox>.formItem,
-.downBox>.formItem {
+.containerInner .baseInfo>.formItem,
+.containerInner .receiveInfo>.formItem {
     padding: .75rem 0rem;
 }
 
-.upBox>.formItem>.labTitle,
-.downBox>.formItem>.labTitle {
+.containerInner .baseInfo>.formItem>.labTitle,
+.containerInner .receiveInfo>.formItem>.labTitle {
     font-size: 1.125rem;
     line-height: 1.25rem;
 }
 
-.upBox>.formItem>.placeholderText,
-.downBox>.formItem>.placeholderText {
+.baseInfo>.formItem>.placeholderText,
+.receiveInfo>.formItem>.placeholderText {
     font-size: 1.125rem;
     width: 100%;
     padding: .375rem 0rem 1rem;
     border-bottom: 1px solid #e7e7e7;
 }
 
-.upBox>.formItem>.selectZoom {
+.baseInfo>.formItem>.zoomList {
     font-size: 0px;
-}
-
-.upBox>.selectZoomBox {
-    padding-bottom: 0px;
-}
-
-.upBox>.formItem>.selectZoom {
     margin-top: .5rem;
 }
 
-.upBox>.formItem>.selectZoom>li,
-.upBox>.formItem>.closeSeal>li {
+.baseInfo>.zoomBox {
+    padding-bottom: 0px;
+}
+
+.baseInfo>.formItem>.zoomList>li,
+.baseInfo>.formItem>.closeSeal>li {
     height: 1.875rem;
     text-align: center;
     line-height: 1.875rem;
@@ -177,34 +161,34 @@
     display: inline-block;
 }
 
-.upBox>.formItem>.selectZoom>li {
+.baseInfo>.formItem>.zoomList>li {
     width: 5rem;
 }
 
-.upBox>.formItem>.closeSeal {
+.baseInfo>.formItem>.closeSeal {
     margin-top: .9375rem;
 }
 
-.upBox>.formItem>.closeSeal>li {
+.baseInfo>.formItem>.closeSeal>li {
     width: 4rem;
 }
 
-.upBox>.formItem>.closeSeal>li.lastItem {
+.baseInfo>.formItem>.closeSeal>li.lastItem {
     margin-right: 0px;
 }
 
-.upBox>.formItem>.selectZoom>li.checkedItem,
-.upBox>.formItem>.closeSeal>li.checkedItem {
+.baseInfo>.formItem>.zoomList>li.checkedItem,
+.baseInfo>.formItem>.closeSeal>li.checkedItem {
     background-color: #836FFF;
     border-color: #836FFF;
     color: #fff;
 }
 
-.upBox>.formItem>.sealBox {
+.baseInfo>.formItem>.sealBox {
     margin-top: .625rem;
 }
 
-.upBox>.formItem>.sealBox>li {
+.baseInfo>.formItem>.sealBox>li {
     height: 7.5rem;
     line-height: 7.5rem;
     border: 1px solid #e7e7e7;
@@ -214,21 +198,20 @@
     padding: 0rem .5rem;
 }
 
-.upBox>.formItem>.sealBox>li>img {
+.baseInfo>.formItem>.sealBox>li>img {
     width: 5rem;
     margin-right: 2.5rem;
     vertical-align: middle;
 }
 
-.upBox>.formItem>.sealBox>li>.sealType {
-    /* font-size: 1.125rem; */
+.baseInfo>.formItem>.sealBox>li>.sealType {
     font-weight: 700;
     padding-right: 1.25rem;
     position: absolute;
     left: 7.5rem;
 }
 
-.upBox>.formItem>.sealBox>li>.sealPrice {
+.baseInfo>.formItem>.sealBox>li>.sealPrice {
     font-size: 1rem;
     font-weight: 700;
     color: red;
@@ -237,7 +220,7 @@
     left: 7.25rem;
 }
 
-.upBox>.formItem>.sealBox>li>.addBtn {
+.baseInfo>.formItem>.sealBox>li>.addBtn {
     width: 5rem;
     font-size: 1rem;
     line-height: 1.875rem;
@@ -251,33 +234,33 @@
     right: 1.25rem;
 }
 
-.upBox>.formItem>.sealBox>li>.addBtn>span {
+.baseInfo>.formItem>.sealBox>li>.addBtn>span {
     font-size: 18px;
     font-weight: 700;
 }
 
-.upBox>.formItem>.sealBox>li.sealPri {
+.baseInfo>.formItem>.sealBox>li.sealPri {
     padding-left: .625rem;
 }
 
-.upBox>.formItem>.uploadBox {
+.baseInfo>.formItem>.uploadBox {
     margin-top: .625rem;
     width: 13.125rem;
     height: 8.75rem;
     border: 1px solid #e7e7e7;
 }
 
-.uploadIcon {
+.baseInfo>.formItem>.uploadIcon {
     background: url('../img/uploadIco.png') no-repeat center center;
     background-size: 3.75rem;
 }
 
-.upBox>.formItem>.uploadBox>input {
+.baseInfo>.formItem>.uploadBox>input {
     width: 100%;
     height: 100%;
 }
 
-.sealContainer .downBox {
+.containerOut .receiveInfo {
     margin-top: 1.875rem;
     padding: 1.25rem;
     border: 1px solid #e7e7e7;
@@ -285,8 +268,8 @@
     border-radius: .75rem;
 }
 
-.sealContainer .downBox .remarkText,
-.sealContainer .upBox .remarkText {
+.containerOut .baseInfo .remarkText,
+.containerOut .receiveInfo .remarkText {
     width: 100%;
     height: 7.5rem;
     margin-top: .625rem;
@@ -294,13 +277,13 @@
     box-sizing: border-box;
 }
 
-.contentBox .nextBtn {
+.containerInner .nextBtn {
     margin-top: 2.8125rem;   
     margin-bottom: 1.875rem;
     background-color: #836FFF;
 }
 
-.contentBox a.nextBtn:active {
+.containerInner a.nextBtn:active {
     background-color: #836FFF;
 }
 

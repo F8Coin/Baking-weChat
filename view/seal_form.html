@@ -14,10 +14,10 @@
 </head>
 
 <body>
-    <div class="sealContainer">
+    <div class="sealContainer containerOut">
         <div class="headerBar"></div>
-        <div class="contentBox">
-            <div class="upBox">
+        <div class="contentBox containerInner">
+            <div class="upBox baseInfo">
                 <p class="title">刻章信息</p>
                 <div class="formItem">
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;公司名称</p>
@@ -27,9 +27,9 @@
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;法人身份证号码</p>
                     <input class="placeholderText personID" type="text" placeholder="请输入法人身份证号码">
                 </div>
-                <div class="formItem selectZoomBox">
+                <div class="formItem selectZoomBox zoomBox">
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;办理区域</p>
-                    <ul class="selectZoom" id="sealZoom">
+                    <ul class="selectZoom zoomList" id="sealZoom">
                         <!-- 刻章选择办理区域 -->
                     </ul>
                 </div>
@@ -53,7 +53,7 @@
                     </div>
                 </div>
             </div>
-            <div class="downBox">
+            <div class="downBox receiveInfo">
                 <p class="title">收货信息</p>
                 <div class="formItem">
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;联系人</p>
@@ -156,7 +156,6 @@
             $('#openSealList').empty();
             $('#closeSealList').empty();
             $(this).addClass('checkedItem').siblings('li').removeClass('checkedItem');
-            var currentZoom = $(this).text();
             var zoomId= $(this).attr('zoomId');
             var areaId= $(this).attr('areaId');
             // 发送请求获取对应区域刻章列表
@@ -169,7 +168,6 @@
             var orderInfoData= {};
             var companyName = $('.companyName').val(); // 获取公司名称
             var personID = $('.personID').val(); // 获取法人身份证
-            // var zoomArea = $('.selectZoom li.checkedItem').attr('zoomId'); // 办理区域
             var zoomArea = $('.selectZoom li.checkedItem').text(); // 办理区域            
             var receiverName = $('.receiverName').val(); // 收货人姓名
             var receiverTel = $('.receiverTel').val(); // 收货人电话
@@ -239,7 +237,7 @@
             orderInfoData= JSON.stringify(orderInfoData);
             localStorage.setItem('sealFormMes',orderInfoData);
 
-            // 正则验证表单信息
+        // 正则验证表单信息
             if(companyName == ''){ //验证公司名称
                 layer.msg('请输入公司名称');
                 return;

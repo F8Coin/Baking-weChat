@@ -1,5 +1,5 @@
 var baseUrl= 'http://judiaowang.cn/platform';
-var pageUrl= 'http://judiaowang.cn/app/view'
+var pageUrl= 'http://judiaowang.cn/app/view';
 var test1= 'http://desom.mynatapp.cc/platform';
 
 /* --------------获取分区----------------- */
@@ -70,6 +70,46 @@ $('#openSealList').on('touchend','.addBtn',function(e){
     }
 
 })
+
+/* --------------商品列表----------------- */
+function getFormData(url,type,parameters,callback) {
+    $.ajax({
+        url: url,
+        type: type,
+        headers: {
+            "X-Jdw-Token": JSON.parse(localStorage.getItem('loginData')).token
+        },
+        data: parameters,
+        success: callback  
+
+    })
+}
+
+/* --------------创建订单----------------- */
+function createOrder(url,type,orderInfo,targetUrl) {
+    $.ajax({
+        url: url,
+        type: type,
+        headers: {
+            "X-Jdw-Token": JSON.parse(localStorage.getItem('loginData')).token
+        },
+        data: orderInfo,
+        contentType: 'application/json',
+        success: function(res){
+            if(res.code == 0) {
+                var orderId= res.data.orderId;
+                sessionStorage.setItem('orderId',orderId)
+                window.location.href = targetUrl;
+            }
+        }
+    })
+}
+
+/* --------------微信支付----------------- */
+function weChatPay(orderId,targetUrl) {
+    window.location.href=  baseUrl+'/api/pay/create?orderId='+orderId+'&returnUrl='+targetUrl+'&token='+JSON.parse(localStorage.getItem('loginData')).token
+}
+
 
 
 /* --------------办理区域----------------- */

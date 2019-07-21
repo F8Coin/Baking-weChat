@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../css/index.css">
 </head>
 <body>
-    <div class="companyFormContainer companyOrderContainer">
+    <div class="companyFormContainer companyOrderContainer commonBox">
         <div class="formItem partOther checkedServ">
             <p class="title">已选择服务</p>
             <div class="content clearfix">
@@ -64,17 +64,20 @@
         <span class="payInfo">
             订单金额 : <span class="payAmount"></span>
         </span>
-        <a href="./dev.html" class="fr paymentBtn">微信支付</a>
+        <a href="javascript:void(0)" class="fr paymentBtn">微信支付</a>
     </div>  
 </body>
 </html>
 
 <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 <script src="../js/jQuery/jquery-3.4.0.js"></script>
+<script src="../js/index.js"></script>
 <script>
     $(function(){
-        var closeOrderAbout = JSON.parse(sessionStorage.getItem('closeFormMes')) ;
-        var checkItemList = closeOrderAbout.checkItem;
+        var orderId= sessionStorage.getItem('orderId');
+        var targetUrl= 'http://judiaowang.cn/app/view/closeCompany_form.html'
+        var orderData = JSON.parse(sessionStorage.getItem('closeFormMes')) ;
+        var checkItemList = orderData.checkItem;
         var payAmount =0;
         for (let i = 0; i < checkItemList.length; i++) {
             var checkItemHtml = '<label class="optionAbout">'+
@@ -91,7 +94,10 @@
             $('.checkedServ .content>label:even').addClass("left fl"); // 偶数添加类名; index索引从0开始,0算偶数
             $('.checkedServ .content>label:odd').addClass("right fr"); // 奇数添加类名            
         }
-        // $('.payInfo .payAmount').text(payAmount+".00");
+        $('.payInfo .payAmount').text(payAmount+".00");
+        $('.paymentBtn').on('touchend',function(){
+            weChatPay(orderId,targetUrl)
+        })
     })
     
 </script>

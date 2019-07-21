@@ -28,15 +28,15 @@
 <script src="../js/index.js"></script>
 <script>
     $(function(){
-        var token= JSON.parse(localStorage.getItem('loginData')).token;
         $.ajax({
             url: baseUrl+'/api/cancelProxy/list',
             type: 'post',
             headers: {
-                "X-Jdw-Token": token
+                "X-Jdw-Token": JSON.parse(localStorage.getItem('loginData')).token
             },
             data: {
-                busModId: "2"// 注销代跑
+                busModId: "2",// 注销代跑
+                cityId: JSON.parse(localStorage.getItem('loginData')).cityId
             },
             success: function(res) {
                 for (let i = 0; i < res.data.goods.length; i++) {
@@ -45,40 +45,67 @@
                                         '<div class="content clearfix">'+
                                     '</div>'+
                                 '</div>'   
-                    $('#closeBox').append(html1);                      
-                    for (let j = 0; j < res.data.goods[i].goods.length; j++) {
-                        if((j+1) % 2 == 0 ){
-                            var html2 =  '<label for="'+i+j+'" class="right fr optionAbout">'+
-                                            '<p class="flag">'+
-                                                '<img class="icon" src='+res.data.goods[i].goods[j].imgUrl+' alt="">'+
-                                                '<span class="text">'+res.data.goods[i].goods[j].name+'</span>'+
-                                            '</p>'+
-                                            '<p class="price">'+res.data.goods[i].goods[j].marketPrice+'</p>'+
-                                            '<input class="selectBtn" type="radio" id="'+i+j+'" name="partOne">'+
-                                        '</label>'
-                        }else {
-                            var html2 =  '<label for="i'+i+j+'" class="left fl optionAbout">'+
-                                            '<p class="flag">'+
-                                                '<img class="icon" src='+res.data.goods[i].goods[j].imgUrl+' alt="">'+
-                                                '<span class="text">'+res.data.goods[i].goods[j].name+'</span>'+
-                                            '</p>'+
-                                            '<p class="price">'+res.data.goods[i].goods[j].marketPrice+'</p>'+
-                                            '<input class="selectBtn" type="radio" id="i'+i+j+'" name="partOne">'+
-                                        '</label>'
+                    $('#closeBox').append(html1);
+                    if(i == res.data.goods.length-1) {
+                        for (let j = 0; j < res.data.goods[i].goods.length; j++) {
+                            if((j+1) % 2 == 0 ){
+                                var html2 =  '<label for="'+i+j+'" class="right fr optionAbout" goodsId="'+res.data.goods[i].goods[j].id+'">'+
+                                                '<p class="flag">'+
+                                                    '<img class="icon" src='+res.data.goods[i].goods[j].imgUrl+' alt="">'+
+                                                    '<span class="text">'+res.data.goods[i].goods[j].name+'</span>'+
+                                                '</p>'+
+                                                '<p class="price">'+res.data.goods[i].goods[j].marketPrice+'</p>'+
+                                                '<input class="selectBtn" type="radio" id="'+i+j+'" name="">'+
+                                            '</label>'
+                            }else {
+                                var html2 =  '<label for="'+i+j+'" class="left fl optionAbout" goodsId="'+res.data.goods[i].goods[j].id+'">'+
+                                                '<p class="flag">'+
+                                                    '<img class="icon" src='+res.data.goods[i].goods[j].imgUrl+' alt="">'+
+                                                    '<span class="text">'+res.data.goods[i].goods[j].name+'</span>'+
+                                                '</p>'+
+                                                '<p class="price">'+res.data.goods[i].goods[j].marketPrice+'</p>'+
+                                                '<input class="selectBtn" type="radio" id="i'+i+j+'" name="">'+
+                                            '</label>'
+                            }                        
+                            $($('#closeBox .formItem')[i+1]).find('.content').append(html2);
                         }
-                                                
-                       $($('#closeBox .formItem')[i+1]).find('.content').append(html2);
+                    }else {
+                        for (let j = 0; j < res.data.goods[i].goods.length; j++) {
+                            if((j+1) % 2 == 0 ){
+                                var html2 =  '<label for="'+i+j+'" class="right fr optionAbout" goodsId="'+res.data.goods[i].goods[j].id+'">'+
+                                                '<p class="flag">'+
+                                                    '<img class="icon" src='+res.data.goods[i].goods[j].imgUrl+' alt="">'+
+                                                    '<span class="text">'+res.data.goods[i].goods[j].name+'</span>'+
+                                                '</p>'+
+                                                '<p class="price">'+res.data.goods[i].goods[j].marketPrice+'</p>'+
+                                                '<input class="selectBtn" type="radio" id="'+i+j+'" name="part'+res.data.goods[i].id+'">'+
+                                            '</label>'
+                            }else {
+                                var html2 =  '<label for="'+i+j+'" class="left fl optionAbout" goodsId="'+res.data.goods[i].goods[j].id+'">'+
+                                                '<p class="flag">'+
+                                                    '<img class="icon" src='+res.data.goods[i].goods[j].imgUrl+' alt="">'+
+                                                    '<span class="text">'+res.data.goods[i].goods[j].name+'</span>'+
+                                                '</p>'+
+                                                '<p class="price">'+res.data.goods[i].goods[j].marketPrice+'</p>'+
+                                                '<input class="selectBtn" type="radio" id="i'+i+j+'" name="part'+res.data.goods[i].id+'">'+
+                                            '</label>'
+                            }                        
+                            $($('#closeBox .formItem')[i+1]).find('.content').append(html2);
+                        }                     
                     }
-                    
                 }
                 var payBtn= '<a href="javascript:void(0)" class="weui_btn weui_btn_primary nextBtn">下一步</a>';
                 $('#closeBox').append(payBtn) ;              
             }
         })
 
-        $('.nextBtn').on('touchend',function(e){
+        $('#closeBox').on('touchend','.nextBtn',function(e){
             var companyName = $('.companyNameText').val();
-            var checkItem=[]; 
+            var orderUrl= baseUrl+'/api/cancelProxy/createOrder';
+            var targetUrl= 'http://judiaowang.cn/app/view/closeCompany_order.html';
+            // var targetUrl= './closeCompany_order.html';
+            var checkItem=[];
+            var goodsIds= []; 
             var checkItemList = $('.formItem>.content input:checked').parent();
             for (let i = 0; i < checkItemList.length; i++) {
                 var checkItemInfo = {
@@ -86,18 +113,26 @@
                     'title': $(checkItemList[i]).find('p.flag .text').text(),
                     'price': $(checkItemList[i]).find('p.price').text(),
                 }
+                var goodsId= $(checkItemList[i]).attr('goodsId');
                 checkItem.push(checkItemInfo);
+                goodsIds.push(goodsId);
             }
             var orderInfo = {};
+            var orderInfoData= {}
             orderInfo = {
+                'busModId': '2',
+                'cityId': JSON.parse(localStorage.getItem('loginData')).cityId,
                 'companyName': companyName,
-                'checkItem': checkItem,
+                'goodsIds': goodsIds
+                
             };
-            // console.log(orderInfo);
-            sessionStorage.setItem("closeFormMes", JSON.stringify(orderInfo));
-
-            window.location.href = "./closeCompany_order.html"
-
+            orderInfo= JSON.stringify(orderInfo);
+            orderInfoData= {
+                'companyName': companyName,
+                'checkItem': checkItem, 
+            }
+            sessionStorage.setItem("closeFormMes", JSON.stringify(orderInfoData));
+            createOrder(orderUrl,'post',orderInfo,targetUrl)
             e.preventDefault();
         })
     })
