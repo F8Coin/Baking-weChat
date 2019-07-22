@@ -23,12 +23,8 @@
             <p class="orderAbout_title">变更项目</p>
             <div class="orderAbout_content">
                 <table class="sealListBox">
-                    <tbody id="sealList">
-                        <tr class="sealItem">
-                            <td>股权变更</td>
-                            <td>×1</td>
-                            <td class="sealPrice">￥390</td>
-                        </tr>
+                    <tbody id="goodsList">
+                        <!-- 项目列表 -->
                     </tbody>
                 </table>
             </div>
@@ -48,7 +44,7 @@
         <span class="fl payInfo">
             订单金额 : <span class="RMB_flag">￥</span><span class="payAmount"></span>
         </span>
-        <a href="./dev.html" class="fr paymentBtn">微信支付</a>
+        <a href="javascript:void(0)" class="fr paymentBtn">微信支付</a>
     </div>
 </body>
 </html>
@@ -56,3 +52,25 @@
 <script src="../js/jQuery/jquery-3.4.0.js"></script>
 <script src="../lib/layer/layer.js"></script>
 <script src="../js/index.js"></script>
+<script>
+    $(function(){
+        var targetUrl= pageUrl+'/pinch_form.html';
+        var orderId= sessionStorage.getItem('orderId');
+        var orderInfoData= JSON.parse(sessionStorage.getItem('pinchFormMes'));
+        $('.pinchOrderContainer .companyName').text(orderInfoData.companyName);
+        $('.pinchOrderContainer .changePlan').text(orderInfoData.changeType);
+        $('.paymentBox .payAmount').text(orderInfoData.totalPrice);
+        for (let i = 0; i < orderInfoData.goodsList.length; i++) {
+            var goodsItem= '<tr class="sealItem">'+
+                                '<td>'+orderInfoData.goodsList[i].title+'</td>'+
+                                '<td>×1</td>'+
+                                '<td class="sealPrice">￥'+orderInfoData.goodsList[i].price+'</td>'+
+                            '</tr>'
+            $('#goodsList').append(goodsItem);
+        }
+
+        $('.paymentBox .paymentBtn').on('touchend',function(){
+            weChatPay(orderId,targetUrl)
+        })
+    })
+</script>

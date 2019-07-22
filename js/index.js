@@ -3,12 +3,12 @@ var pageUrl= 'http://judiaowang.cn/app/view';
 var test1= 'http://desom.mynatapp.cc/platform';
 
 /* --------------获取分区----------------- */
-function getArea(url,type,token,busModId,callback) {
+function getArea(url,type,busModId,callback) {
     $.ajax({
         url: url,
         type: type,
         headers: {
-            "X-Jdw-Token": token
+            "X-Jdw-Token": JSON.parse(localStorage.getItem('loginData')).token
         },
         data: {
             busModId: busModId

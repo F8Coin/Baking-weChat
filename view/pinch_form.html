@@ -10,18 +10,18 @@
     <link rel="stylesheet" href="../css/index.css">
 </head>
 <body>
-    <div class="pinchFormContainer sealContainer">
+    <div class="pinchFormContainer containerOut">
         <div class="headerBar"></div>
-        <div class="contentBox">
-            <div class="upBox commonBox">
+        <div class="contentBox containerInner">
+            <div class="upBox commonBox baseInfo">
                 <p class="title">内资工商变更</p>
                 <div class="formItem">
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;公司名称</p>
                     <input class="placeholderText companyName" type="text" placeholder="请输入公司名称">
                 </div>
-                <div class="formItem selectZoomBox">
+                <div class="formItem selectZoomBox zoomBox">
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;变更方案</p>
-                    <ul class="pinchZoom selectZoom" id="changeType">
+                    <ul class="pinchZoom selectZoom zoomList" id="changeType">
                         <!-- 变更方案列表 -->
                     </ul>
                 </div>
@@ -59,48 +59,120 @@
 <script src="../js/index.js"></script>
 <script>
     $(function() {
-        var isLogin= JSON.parse(localStorage.getItem('loginData')).token;
-        $.ajax({
-            url: baseUrl+'/api/change/list',
-            type: 'post',
-            headers: {
-                "X-Jdw-Token": isLogin
-            },
-            data: {
-                busModId: "3"// 变更代跑
-            },
-            success: function(res) {
-                // 类别
-                for (var i = 0; i < res.data.category.length; i++) {
-                    if(i == 0) {
-                        var typeItem= '<li class="checkedItem">'+res.data.category[i].name+'</li>'
-                    }else {
-                        var typeItem= '<li>'+res.data.category[i].name+'</li>'
-                    }
-                    $('#changeType').append(typeItem);
-                } 
-                // 列表
-                for (var j = 0; j < res.data.goods.length; j++) {
-                    if((j+1) % 2 == 0) {
-                        var goodsItem= '<label for="'+j+'" class="right fr optionAbout">'+
-                                        '<p class="flag">'+
-                                            '<span class="text">'+res.data.goods[j].name+'</span>'+
-                                        '</p>'+
-                                        '<p class="price">'+res.data.goods[j].marketPrice+'</p>'+
-                                        '<input class="selectBtn" type="radio" id="'+j+'" name="partOne">'+
-                                    '</label>'
-                    }else {
-                        var goodsItem= '<label for="'+j+'" class="left fl optionAbout">'+
-                                        '<p class="flag">'+
-                                            '<span class="text">'+res.data.goods[j].name+'</span>'+
-                                        '</p>'+
-                                        '<p class="price">'+res.data.goods[j].marketPrice+'</p>'+
-                                        '<input class="selectBtn" type="radio" id="'+j+'" name="partOne">'+
-                                    '</label>'
-                    }
-                    $('#goodsList').append(goodsItem)
+        // 类别
+        function typeData(res){
+            for (var i = 0; i < res.data.category.length; i++) {
+                if(i == 0) {
+                    var typeItem= '<li class="checkedItem" typeId="'+res.data.category[i].id+'">'+res.data.category[i].name+'</li>'
+                }else {
+                    var typeItem= '<li typeId="'+res.data.category[i].id+'">'+res.data.category[i].name+'</li>'
                 }
+                $('#changeType').append(typeItem);
+            } 
+        }
+
+        // 列表
+        function listData(res){
+            for (var j = 0; j < res.data.goods.length; j++) {
+                if((j+1) % 2 == 0) {
+                    var goodsItem= '<label for="'+j+'" class="right fr optionAbout"  goodsId="'+res.data.goods[j].id+'">'+
+                                    '<p class="flag">'+
+                                        '<span class="text">'+res.data.goods[j].name+'</span>'+
+                                    '</p>'+
+                                    '<p class="price">'+res.data.goods[j].marketPrice+'</p>'+
+                                    '<input class="selectBtn" type="radio" id="'+j+'">'+
+                                '</label>'
+                }else {
+                    var goodsItem= '<label for="'+j+'" class="left fl optionAbout" goodsId="'+res.data.goods[j].id+'">'+
+                                    '<p class="flag">'+
+                                        '<span class="text">'+res.data.goods[j].name+'</span>'+
+                                    '</p>'+
+                                    '<p class="price">'+res.data.goods[j].marketPrice+'</p>'+
+                                    '<input class="selectBtn" type="radio" id="'+j+'">'+
+                                '</label>'
+                }
+                $('#goodsList').append(goodsItem)
             }
+        }
+
+        function callback_list(res){
+            typeData(res);
+            listData(res);
+        } 
+
+        var url_list= baseUrl+'/api/change/list';
+        var url_order= baseUrl+'/api/change/createOrder';
+        var targetUrl= pageUrl+'/pinch_order.html';
+        // var targetUrl= './pinch_order.html';
+        var type_list= 'post';
+        var type_order= 'post';
+        var goodsIds= [];
+        var checkItem=[];
+        var orderInfo= {};
+        var orderInfoData= {};
+        var changeType;
+        var totalPrice= 0;
+        var parameters_list= {
+            busModId: "3",// 变更代跑
+            cityId: JSON.parse(localStorage.getItem('loginData')).cityId,
+        }
+
+        // 获取默认列表信息
+        getFormData(url_list,type_list,parameters_list,callback_list)
+
+        // 选择区域获取对应区域列表
+        $('.zoomList').on('touchend','li',function(e){
+            changeType= $(this).text();
+            $('#goodsList').empty();
+            $(this).addClass('checkedItem').siblings('li').removeClass('checkedItem');
+            var typeId= $(this).attr('typeId');
+            var parametersItem= {
+                busModId: "3",// 变更代跑
+                categoryId: typeId,
+                cityId: JSON.parse(localStorage.getItem('loginData')).cityId,
+            } 
+            getFormData(url_list,type_list,parametersItem,listData)
+        })
+
+        $('.paymentBox .payAmount').text(totalPrice);
+
+        $('.formItem>.content').on('touchend','.optionAbout',function(){
+            var price= $(this).find('.price').text();
+            totalPrice+= Number(price);
+            $('.paymentBox .payAmount').text(totalPrice);
+        })
+
+        // 下单
+        $('.paymentBox').on('touchend','.nextBtn',function(){
+            var companyName= $('.containerInner .formItem .companyName').val();
+            var checkItemList = $('.formItem>.content input:checked').parent();
+            for (let i = 0; i < checkItemList.length; i++) {
+                var checkItemInfo = {
+                    'title': $(checkItemList[i]).find('p.flag .text').text(),
+                    'price': $(checkItemList[i]).find('p.price').text(),
+                }
+                var goodsId= $(checkItemList[i]).attr('goodsId');
+                checkItem.push(checkItemInfo);
+                goodsIds.push(goodsId);
+            }
+            orderInfo= {
+                busModId: "3",// 变更代跑
+                cityId: JSON.parse(localStorage.getItem('loginData')).cityId,
+                companyName: companyName,
+                goodsIds: goodsIds
+            }
+
+            orderInfoData= {
+                companyName: companyName,
+                goodsList: checkItem,
+                changeType: changeType,
+                totalPrice: totalPrice
+            }
+
+            orderInfo= JSON.stringify(orderInfo);
+            orderInfoData= JSON.stringify(orderInfoData);
+            sessionStorage.setItem('pinchFormMes',orderInfoData);
+            createOrder(url_order,type_order,orderInfo,targetUrl);
         })
     })
 </script>
