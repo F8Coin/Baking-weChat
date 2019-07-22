@@ -33,9 +33,13 @@
                         <!-- 承租人性质 -->
                     </ul>
                 </div>
-                <div class="formItem">
+                <div class="formItem legalItem">
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;法人名称</p>
                     <input class="placeholderText lawName" type="text" placeholder="请输入法人名称">
+                </div>
+                <div class="formItem companyItem" style="display: none">
+                    <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;公司名称</p>
+                    <input class="placeholderText companyName" type="text" placeholder="请输入公司名称">
                 </div>
                 <div class="formItem selectZoomBox">
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;是否需要租金发票 <span class="text">(300元)</span> </p>
@@ -56,7 +60,7 @@
                     </div>
                     <div class="picDown ID_img fr uploadIcon" style="position:relative">
                         <input class="idImg uploadInput" type="file" style="opacity:0;width:100%;height:100%; position:absolute;left:0px;" onchange="uploadFile($(this),$(this).parent())">
-                        <img src="" alt="" class="showImg" style="display:block;margin:0 auto; height:100%;">
+                        <img src="" alt="" class="showImg" style="display:block;margin:0 auto; height:100%;width:100%">
                         <span class="tipText"><span style="color:#CD0000;vertical-align: middle;">*</span>&nbsp;法人身份证反面</span>
                     </div>
                 </div>
@@ -314,15 +318,17 @@
                 }
                 $('#acreageBox').append(acreageItem);
             }
+            var orderAmount= $('#acreageBox .checkedItem').attr('retailPrice');
+            $('.paymentBox .payAmount').text(orderAmount);
         }
 
         // 承租人性质
         function tenantList(res){
             for (var i = 0; i < res.data.goods[1].goods.length; i++) {  
                 if(i == 0) {
-                    var tenantItem= '<li class="checkedItem" retailPrice="'+res.data.goods[1].goods[i].retailPrice+'"  marketPrice="'+res.data.goods[1].goods[i].marketPrice+'"  goodsId="'+res.data.goods[1].goods[i].id+'">'+res.data.goods[1].goods[i].name+'</li>'
+                    var tenantItem= '<li class="checkedItem tenantItem" retailPrice="'+res.data.goods[1].goods[i].retailPrice+'"  marketPrice="'+res.data.goods[1].goods[i].marketPrice+'"  goodsId="'+res.data.goods[1].goods[i].id+'">'+res.data.goods[1].goods[i].name+'</li>'
                 }else {
-                    var tenantItem= '<li retailPrice="'+res.data.goods[1].goods[i].retailPrice+'"  marketPrice="'+res.data.goods[1].goods[i].marketPrice+'"  goodsId="'+res.data.goods[1].goods[i].id+'">'+res.data.goods[1].goods[i].name+'</li>'
+                    var tenantItem= '<li class="tenantItem" retailPrice="'+res.data.goods[1].goods[i].retailPrice+'"  marketPrice="'+res.data.goods[1].goods[i].marketPrice+'"  goodsId="'+res.data.goods[1].goods[i].id+'">'+res.data.goods[1].goods[i].name+'</li>'
                 }
                 $('#tenantBox').append(tenantItem);
             }
@@ -332,9 +338,9 @@
         function invoiceList(res){
             for (var i = 0; i < res.data.goods[2].goods.length; i++) {  
                 if(i == 0) {
-                    var invoiceItem= '<li class="checkedItem" retailPrice="'+res.data.goods[2].goods[i].retailPrice+'"  marketPrice="'+res.data.goods[2].goods[i].marketPrice+'"  goodsId="'+res.data.goods[2].goods[i].id+'">'+res.data.goods[2].goods[i].name+'</li>'
+                    var invoiceItem= '<li class="checkedItem invoiceItem" retailPrice="'+res.data.goods[2].goods[i].retailPrice+'"  marketPrice="'+res.data.goods[2].goods[i].marketPrice+'"  goodsId="'+res.data.goods[2].goods[i].id+'">'+res.data.goods[2].goods[i].name+'</li>'
                 }else {
-                    var invoiceItem= '<li retailPrice="'+res.data.goods[2].goods[i].retailPrice+'"  marketPrice="'+res.data.goods[2].goods[i].marketPrice+'"  goodsId="'+res.data.goods[2].goods[i].id+'">'+res.data.goods[2].goods[i].name+'</li>'
+                    var invoiceItem= '<li  class="invoiceItem" retailPrice="'+res.data.goods[2].goods[i].retailPrice+'"  marketPrice="'+res.data.goods[2].goods[i].marketPrice+'"  goodsId="'+res.data.goods[2].goods[i].id+'">'+res.data.goods[2].goods[i].name+'</li>'
                 }
                 $('#invoiceBox').append(invoiceItem);
             }
@@ -353,7 +359,9 @@
         var type_order= 'post';
         var orderInfo= {};
         var orderInfoData= {};
+        var goodsIds= [];
         var targetUrl= pageUrl+'/redPact_order.html';
+        // var targetUrl= './redPact_order.html';
         var parameters_list= {
             busModId: "4",// 红本合同
             cityId: JSON.parse(localStorage.getItem('loginData')).cityId,
@@ -361,6 +369,7 @@
 
         getFormData(url_list,type_list,parameters_list,callback_list)
 
+        // 点击办理区域
         $('#area').on('touchend','.zoomItem',function(){
             var zoomId= $(this).attr('regionId');
             var parametersItem= {
@@ -373,8 +382,88 @@
             getFormData(url_list,type_list,parametersItem,acreageList)
         })
 
+        // 点击面积时长
+        $('#acreageBox').on('touchend','.acreageItem',function(){
+            var orderAmount= $(this).attr('retailprice');
+            $('.paymentBox .payAmount').text(orderAmount);
+        })
+
+        // 点击承租人性质
+        $('#tenantBox').on('touchend','.tenantItem',function(){
+            if($(this).text() == "法人"){
+                $('.baseInfo .legalItem').css('display','block');
+                $('.baseInfo .companyItem').css('display','none');
+            }else {
+                $('.baseInfo .legalItem').css('display','none');
+                $('.baseInfo .companyItem').css('display','block');
+            }
+        })
+
+        // 点击是否需要租金发票
+        $('#invoiceBox').on('touchend','.invoiceItem',function(){
+            if($(this).text() == "需要"){
+                var orderAmount=  Number($('.paymentBox .payAmount').text()) + 300;
+                $('.paymentBox .payAmount').text(orderAmount);
+            }else {
+                var orderAmount= $('#acreageBox .checkedItem').attr('retailPrice');
+                $('.paymentBox .payAmount').text(orderAmount);
+            }
+        })
+
         // 下单
         $('.paymentBox .nextBtn').on('touchend',function(){
+            var zoomText= $('#area .checkedItem').text();
+            var zoomId= $('#area .checkedItem').attr('regionId');
+            var acreageId= $('#acreageBox .checkedItem').attr('goodsId');
+            var tenantId= $('#tenantBox .checkedItem').attr('goodsId');
+            var invoiceId= $('#invoiceBox .checkedItem').attr('goodsId');
+            var acreageText= $('#acreageBox .checkedItem').text();
+            var tenantText= $('#tenantBox .checkedItem').text();
+            var invoiceText= $('#invoiceBox .checkedItem').text();
+            goodsIds= [acreageId,tenantId,invoiceId];
+            var legalName= $('.baseInfo .formItem .lawName').val();
+            var remarkText= $('.baseInfo .formItem .uesText').val();
+            var ID_up= $('.uploadBox .picUp .showImg').attr('src');
+            var ID_down= $('.uploadBox .picDown .showImg').attr('src');
+            var receiverName= $('.receiveInfo .receiverName').val();
+            var receiverTel= $('.receiveInfo .receiverTel').val();
+            var receiverAdd= $('.receiveInfo .receiverAdd').val();
+            var orderAmount= $('.paymentBox .payAmount').text();
+            var companyName= $('.baseInfo .companyItem .companyName').val();
+
+            orderInfo=  {
+                "address": receiverAdd,
+                "busModId": 4,
+                "cityId": JSON.parse(localStorage.getItem('loginData')).cityId,
+                "companyName": companyName,
+                "consignee": receiverName,
+                "goodsIds": goodsIds,
+                "legalCardBack": ID_down,
+                "legalCardFront": ID_up,
+                "legalName": legalName,
+                "phone": receiverTel,
+                "postscript": remarkText
+            };
+
+            orderInfoData= {
+                "address": receiverAdd,
+                "companyName": companyName,
+                "consignee": receiverName,
+                "zoomText": zoomText,
+                "acreageText": acreageText,
+                "tenantText": tenantText,
+                "invoiceText": invoiceText,
+                "legalCardBack": ID_down,
+                "legalCardFront": ID_up,
+                "legalName": legalName,
+                "phone": receiverTel,
+                "postscript": remarkText,
+                "orderAmount": orderAmount
+            };  
+            
+            orderInfo= JSON.stringify(orderInfo);
+            orderInfoData= JSON.stringify(orderInfoData);
+            sessionStorage.setItem('redFormMes',orderInfoData);
 
             createOrder(url_order,type_order,orderInfo,targetUrl);
         })

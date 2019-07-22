@@ -16,7 +16,8 @@
             <p class="orderAbout_title">红本合同信息</p>
             <div class="orderAbout_content">
                 <p class="informationItem">承租人性质:&nbsp;<span class="tenant text">法人</span></p>
-                <p class="informationItem">法人名称:&nbsp;<span class="legalName text">张晓东</span></p>
+                <p class="informationItem legalItem">法人名称:&nbsp;<span class="legalName text"></span></p>
+                <p class="informationItem companyItem">公司名称:&nbsp;<span class="companyName text"></span></p>
                 <p class="informationItem">所属地区:&nbsp;<span class="zoom text">龙华区</span></p>
                 <p class="informationItem">面积时长:&nbsp;<span class="type text">6m²/3月</span></p>
                 <p class="informationItem">备注用途:&nbsp;<span class="remarkText text">变更</span></p>  
@@ -51,20 +52,36 @@
 <script src="../js/jQuery/jquery-3.4.0.js"></script>
 <script>
     $(function(){
-        var redOrderAbout = JSON.parse(sessionStorage.getItem('redlFormMes')) ;
-        $('.informationItem .tenant').text(redOrderAbout.tenantType);
-        $('.informationItem .legalName').text(redOrderAbout.lawName);
-        $('.informationItem .zoom').text(redOrderAbout.zoomArea);
-        $('.informationItem .type').text(redOrderAbout.timeArea);
-        $('.informationItem .remarkText').text(redOrderAbout.useText);
-        $('.informationItem .invoice').text(redOrderAbout.moneyBill);
-        $('.userInfo .userName').text(redOrderAbout.receiverName);
-        $('.userInfo .userTel').text(redOrderAbout.receiverTel);
-        $('.userInfo .userAdd').text(redOrderAbout.receiverAdd);
-        // $('.payInfo .payAmount').text(redOrderAbout.orderAmount);
+        var orderId= sessionStorage.getItem('orderId');
+        var targetUrl= pageUrl+'/redPact_form.html';
+        var redOrderAbout = JSON.parse(sessionStorage.getItem('redFormMes')) ;
+        console.log(redOrderAbout);
+        $('.informationItem .tenant').text(redOrderAbout.tenantText);
+        $('.informationItem .legalName').text(redOrderAbout.legalName);
+        $('.informationItem .companyName').text(redOrderAbout.companyName);
+        $('.informationItem .zoom').text(redOrderAbout.zoomText);
+        $('.informationItem .type').text(redOrderAbout.acreageText);
+        $('.informationItem .remarkText').text(redOrderAbout.postscript);
+        $('.informationItem .invoice').text(redOrderAbout.invoiceText);
+        $('.userInfo .userName').text(redOrderAbout.consignee);
+        $('.userInfo .userTel').text(redOrderAbout.phone);
+        $('.userInfo .userAdd').text(redOrderAbout.address);
+        $('.payInfo .payAmount').text(redOrderAbout.orderAmount);
 
-        $('.ID_up').attr('src',redOrderAbout.ID_pic.up);
-        $('.ID_down').attr('src',redOrderAbout.ID_pic.down)
+        $('.ID_up').attr('src',redOrderAbout.legalCardFront);
+        $('.ID_down').attr('src',redOrderAbout.legalCardBack)
+        if(redOrderAbout.legalName) {
+            $('.redPactOrderContainer .legalItem').css('display','block')
+            $('.redPactOrderContainer .companyItem').css('display','none')
+        }else {
+            $('.redPactOrderContainer .legalItem').css('display','none')
+            $('.redPactOrderContainer .companyItem').css('display','block')
+        }
+
+        $('.paymentBox .paymentBtn').on('touchend',function(){
+            weChatPay(orderId,targetUrl);
+        })
+
     })
     
 </script>

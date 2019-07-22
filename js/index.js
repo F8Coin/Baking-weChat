@@ -113,7 +113,7 @@ function weChatPay(orderId,targetUrl) {
 
 
 /* --------------办理区域----------------- */
-// $('.selectZoom').on('touchend','li',function(e){
-//     $(this).addClass('checkedItem').siblings('li').removeClass('checkedItem');
-// })
+$('.zoomList').on('touchend','li',function(e){
+    $(this).addClass('checkedItem').siblings('li').removeClass('checkedItem');
+})
 
