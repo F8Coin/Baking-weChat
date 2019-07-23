@@ -39,6 +39,10 @@
 
 /* 首页服务列表页面 */
 
+.containerOut .serverList {
+    margin-top: 1.875rem;
+}
+
 .contentBox>ul {
     display: flex;
     display: -webkit-flex;
@@ -689,7 +693,7 @@
 
 /* --------------前海地址信息页面----------------- */
 .renewFormContainer .receiveInfo{
-    margin-bottom: 5rem;
+    /* margin-bottom: 5rem; */
 }
 
 

@@ -37,14 +37,14 @@
                     <textarea class="remarkText business" name="" id="" cols="" rows="" placeholder="简要描述您的优势业务(选填)"></textarea>
                 </div>
             </div>
-            <div class="centerBox upBox frame">
+            <div class="centerBox upBox frame baseInfo">
                 <p class="title">下载合同,填写盖章上传</p>
                 <div class="formItem">
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;上传电子合同<a href="../static/contract.docx" download="contract.docx">(电子合同模板下载)</a></p>
-                    <span class="remarkText">下载合同,打印填写并盖章,按照序号将三张合同上传</span>
+                    <span class="remarkText">下载合同,打印填写并盖章,按照序号将合同上传</span>
                     <div class="uploadBox uploadIcon">
                         <input type="file" class="uploadInput" style="opacity:0;position:absolute;width:13.125rem; height:8.75rem;" onchange="uploadFile($(this),$(this).parent())">
-                        <img src="" alt="" class="showImg" style="display:block;margin:0 auto; height:100%;">
+                        <img src="" alt="" class="showImg" style="display:block;margin:0 auto; height:100%;width:100%">
                     </div>
                 </div>
             </div>
@@ -102,14 +102,15 @@
         var companyAdd= $('.formItem .companyAdd').val();
         var userName= $('.formItem .userName').val();
         var referrer= $('.formItem .referrer').val(); 
-        var business= $('.formItem .business').text(); 
+        var business= $('.formItem .business').val(); 
         var mobile= $('.formItem .mobile').val(); 
         var code= $('.formItem .code').val(); 
         var password= $('.formItem .password').val();
+        var bargain= $('.uploadBox .showImg').attr('src');
         var partnerReg = {
             address: companyAdd,
             username: userName,
-            bargain: '../img/checked.png', // 合同url地址
+            bargain: bargain, // 合同url地址
             business: business,
             mobile: mobile,
             name: companyName,

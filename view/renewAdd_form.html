@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../css/index.css">
 </head>
 <body>
-    <div class="renewFormContainer sealContainer containerOut">
+    <div class="renewFormContainer redPactContainer sealContainer containerOut">
         <div class="headerBar"></div>
         <div class="contentBox containerInner">
             <div class="upBox baseInfo">
@@ -27,11 +27,69 @@
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;商密密码</p>
                     <input class="placeholderText businessPassword" type="text" placeholder="请输入商密系统密码">
                 </div>
-                <div class="formItem">
-                    <p class="labTitle">法人身份证</p>
-                    <div class="uploadBox uploadIcon">
-                        <input type="file" class="uploadInput" style="opacity:0;position:absolute;width:13.125rem; height:8.75rem;" onchange="uploadFile($(this),$(this).parent())">
+                <div class="formItem upload_ID clearfix uploadBox">
+                    <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;法人身份证 <span class="text"></span> </p>
+                    <div class="picUp ID_img fl uploadIcon" style="position:relative">
+                        <input class="idImg uploadInput" type="file" style="opacity:0;width:100%;height:100%;position:absolute;left:0px;" onchange="uploadFile($(this),$(this).parent())">
                         <img src="" alt="" class="showImg" style="display:block;margin:0 auto; height:100%;">
+                        <span class="tipText"><span style="color:#CD0000;vertical-align: middle;">*</span>&nbsp;法人身份证正面</span>
+                    </div>
+                    <div class="picDown ID_img fr uploadIcon" style="position:relative">
+                        <input class="idImg uploadInput" type="file" style="opacity:0;width:100%;height:100%; position:absolute;left:0px;" onchange="uploadFile($(this),$(this).parent())">
+                        <img src="" alt="" class="showImg" style="display:block;margin:0 auto; height:100%;width:100%">
+                        <span class="tipText"><span style="color:#CD0000;vertical-align: middle;">*</span>&nbsp;法人身份证反面</span>
+                    </div>
+                </div>
+                <div class="formItem upload_ID upload_other clearfix uploadBox">
+                    <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;其它材料证明 <span class="text"></span> </p>
+                    <div class="picUp ID_img picOther1 other1_img fl uploadIcon" style="position:relative">
+                        <input class="idImg uploadInput" type="file" style="opacity:0;width:100%;height:100%;position:absolute;left:0px;" onchange="uploadFile($(this),$(this).parent())">
+                        <img src="" alt="" class="showImg" style="display:block;margin:0 auto; height:100%;">
+                        <span class="tipText"><span style="color:#CD0000;vertical-align: middle;">*</span>&nbsp;营业执照复印件盖公章</span>
+                    </div>
+                    <div class="picDown ID_img picOther2 other2_img fr uploadIcon" style="position:relative">
+                        <input class="idImg uploadInput" type="file" style="opacity:0;width:100%;height:100%; position:absolute;left:0px;" onchange="uploadFile($(this),$(this).parent())">
+                        <img src="" alt="" class="showImg" style="display:block;margin:0 auto; height:100%;width:100%">
+                        <span class="tipText"><span style="color:#CD0000;vertical-align: middle;">*</span>&nbsp;法人手持身份证正面照</span>
+                    </div>
+                </div>
+            </div>
+            <div class="upBox baseInfo">
+                <p class="title">股东证件</p>
+                <div class="formItem selectZoomBox">
+                    <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;股东身份</p>
+                    <ul class="selectZoom selectTenant zoomList" id="tenantBox">
+                        <li class="checkedItem">自然人</li>
+                        <li>法人</li>
+                    </ul>
+                </div>
+                <div class="formItem">
+                    <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;姓名</p>
+                    <input class="placeholderText businessAccount" type="text" placeholder="请输入股东姓名">
+                </div>
+                <div class="formItem" style="display:none">
+                    <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;公司名称</p>
+                    <input class="placeholderText businessPassword" type="text" placeholder="请输入公司名称">
+                </div>
+                <div class="formItem upload_ID clearfix uploadBox">
+                    <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;所需材料 <span class="text">(照片必须清晰整齐)</span> </p>
+                    <div class="picUp ID_img fl uploadIcon" style="position:relative">
+                        <input class="idImg uploadInput" type="file" style="opacity:0;width:100%;height:100%;position:absolute;left:0px;" onchange="uploadFile($(this),$(this).parent())">
+                        <img src="" alt="" class="showImg" style="display:block;margin:0 auto; height:100%;">
+                        <span class="tipText"><span style="color:#CD0000;vertical-align: middle;">*</span>&nbsp;身份证正面</span>
+                    </div>
+                    <div class="picDown ID_img fr uploadIcon" style="position:relative">
+                        <input class="idImg uploadInput" type="file" style="opacity:0;width:100%;height:100%; position:absolute;left:0px;" onchange="uploadFile($(this),$(this).parent())">
+                        <img src="" alt="" class="showImg" style="display:block;margin:0 auto; height:100%;width:100%">
+                        <span class="tipText"><span style="color:#CD0000;vertical-align: middle;">*</span>&nbsp;身份证反面</span>
+                    </div>
+                </div>
+                <div class="formItem upload_ID upload_other clearfix uploadBox" style="display:none">
+                    <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;材料证明 <span class="text">照片必须清晰整齐</span> </p>
+                    <div class="picUp ID_img picOther1 other1_img fl uploadIcon" style="position:relative">
+                        <input class="idImg uploadInput" type="file" style="opacity:0;width:100%;height:100%;position:absolute;left:0px;" onchange="uploadFile($(this),$(this).parent())">
+                        <img src="" alt="" class="showImg" style="display:block;margin:0 auto; height:100%;">
+                        <span class="tipText"><span style="color:#CD0000;vertical-align: middle;">*</span>&nbsp;营业执照复印件盖公章</span>
                     </div>
                 </div>
             </div>
@@ -49,10 +107,11 @@
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;收货地址</p>
                     <input class="placeholderText receiverAdd" type="text" placeholder="请输入收货地址">
                 </div>
-                <div class="formItem">
-                    <p class="labTitle">备注</p>
-                    <textarea class="remarkText" name="" id="" cols="" rows="" placeholder="如需其它服务请备注"></textarea>
-                </div>
+            </div>
+            <div class="tipBox">
+                <p class="tipTitle">温馨提示</p><br>
+                <p class="tipText">1 可配合看场地,第一次收费800元，第二次1500元。</p>
+                <p class="tipText">2 聚雕网承诺在服务期间托管企业不会因地址问题被纳入前海住所托管负面清单，否则在7个工作日内无条件将托管企业移除前海住所托管负面清单，如无法解除该异常，公司在3个工作日全额退款。</p>          
             </div>
         </div>
     </div>
