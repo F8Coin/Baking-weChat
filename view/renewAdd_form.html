@@ -54,8 +54,13 @@
                     <textarea class="remarkText" name="" id="" cols="" rows="" placeholder="如需其它服务请备注"></textarea>
                 </div>
             </div>
-            <a href="javascript:void(0)" class="weui_btn weui_btn_primary nextBtn">下一步</a>
         </div>
+    </div>
+    <div class="paymentBox">
+        <span class="payInfo">
+            订单金额 : <span class="RMB_flag">￥</span><span class="payAmount"></span>            
+        </span>
+        <a href="javascript:void(0)" class="fr nextBtn paymentBtn">下一步</a>
     </div>
 </body>
 </html>
@@ -63,18 +68,16 @@
 <script src="../lib/layer/layer.js"></script>
 <script src="../js/index.js"></script>
 <script>
-    var isLogin= JSON.parse(localStorage.getItem('loginData')).token;
-        $.ajax({
-            url: baseUrl+'/api/redPact/list',
-            type: 'post',
-            headers: {
-                "X-Jdw-Token": "zpok99fya9fcgpuyixpm1khgppjlu9w7"
-            },
-            data: {
-                busModId: "5"// 前海地址续签
-            },
-            success: function(res) {
-
-            }
-        })
+    $(function(){
+        function callback_list(res){
+            $('.paymentBox .payAmount').text(res.data.goods[0].goods[0].marketPrice)
+        }
+        var url_list= baseUrl+'/api/seaRenew/list';
+        var type_list= 'post';
+        var parameters_list= {
+            busModId: "5",// 前海续签
+            cityId: JSON.parse(localStorage.getItem('loginData')).cityId,
+        }
+        getFormData(url_list,type_list,parameters_list,callback_list);
+    })
 </script>

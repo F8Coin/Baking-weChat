@@ -687,6 +687,14 @@
     color: #000000;
 }
 
+/* --------------前海地址信息页面----------------- */
+.renewFormContainer .receiveInfo{
+    margin-bottom: 5rem;
+}
+
+
+/* --------------前海地址订单页面----------------- */
+
 
 /* --------------银行开户信息页面----------------- */
 .bankFormContainer .contentBox .formItem .typeText {
