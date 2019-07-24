@@ -20,26 +20,14 @@
                 </div>
                 <div class="formItem selectZoomBox">
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;办理区域</p>
-                    <ul class="selectZoom checkZoom zoomList">
-                        <li class="checkedItem">罗湖区</li>
-                        <li>南山区</li>
-                        <li>宝安区</li>
-                        <li>福田区</li>
-                        <li>龙华区</li>
-                        <li>龙岗区</li>
-                        <li>光明区</li>
-                        <li>坪山区</li>
-                        <li>大鹏新区</li>
+                    <ul class="selectZoom checkZoom zoomList" id="area">
+                        <!-- 办理区域 -->
                     </ul>
                 </div>
                 <div class="formItem selectZoomBox">
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;开户银行</p>
-                    <ul class="selectZoom checkZoom zoomList">
-                        <li class="checkedItem">交通银行</li>
-                        <li>民生银行</li>
-                        <li>中国银行</li>
-                        <li>工商银行</li>
-                        <li>招商银行</li>
+                    <ul class="selectZoom checkZoom zoomList" id="bankBox">
+                        <!-- 开户银行 -->
                     </ul>
                 </div>
                 <div class="formItem">
@@ -72,16 +60,15 @@
                     <p class="tipText">三、现场办理耗费时间，约40分钟左右。</p>
                     <p class="tipText">四、银行回执</p>            
                     <p class="tipText">原开户许可证已取消，统一为开户回执，现场或一到两天内发放</p>            
-                    <p class="tipText">五、聚服网安排开户时间，客户自行到银行办理。</p>                      
+                    <p class="tipText">五、聚雕网安排开户时间，客户自行到银行办理。</p>                      
                 </div> 
             </div>
         </div>
         <div class="paymentBox">
             <span class="payInfo">
-                <!-- 订单金额 : <span class="RMB_flag">￥</span><span class="payAmount">1700.00</span> -->
                 订单金额 : <span class="RMB_flag">￥</span><span class="payAmount"></span>            
             </span>
-            <a href="./bank_order.html" class="fr nextBtn paymentBtn">下一步</a>
+            <a href="javascript:void(0)" class="fr nextBtn paymentBtn">下一步</a>
         </div>
     </div>
 </body>
@@ -90,18 +77,119 @@
 <script src="../js/index.js"></script>
 <script>
     $(function() {
-        $.ajax({
-            url: baseUrl+'/api/bankAccount/list',
-            type: 'post',
-            data: {
-                busModId: "6" // 银行开户 
-            },
-            headers: {
-                "X-Jdw-Token": "7pnfyq95g9ugi51pdxuvr453ivnz3x0j"
-            },
-            success: function(res) {
-                console.log(res.code);
+        // 办理区域
+        function zoomList(res){
+            for (var i = 0; i < res.data.region.length; i++) {  
+                if(i == 0) {
+                    var zoomItem= '<li class="checkedItem zoomItem" regionId='+res.data.region[i].regionId+'>'+res.data.region[i].name+'</li>'
+                }else {
+                    var zoomItem= '<li class="zoomItem" regionId='+res.data.region[i].regionId+'>'+res.data.region[i].name+'</li>'
+                }
+                $('#area').append(zoomItem);
             }
+        }
+
+        // 开户银行
+        function bankList(res){
+            for (var i = 0; i < res.data.goods[0].goods.length; i++) {  
+                if(i == 0) {
+                    var bankItem= '<li class="checkedItem acreageItem" retailPrice="'+res.data.goods[0].goods[i].retailPrice+'"  marketPrice="'+res.data.goods[0].goods[i].marketPrice+'"  goodsId="'+res.data.goods[0].goods[i].id+'">'+res.data.goods[0].goods[i].name+'</li>'
+                }else {
+                    var bankItem= '<li class="acreageItem" retailPrice="'+res.data.goods[0].goods[i].retailPrice+'"  marketPrice="'+res.data.goods[0].goods[i].marketPrice+'"  goodsId="'+res.data.goods[0].goods[i].id+'">'+res.data.goods[0].goods[i].name+'</li>'
+                }
+                $('#bankBox').append(bankItem);
+            }
+            var orderAmount= $('#bankBox .checkedItem').attr('retailPrice');
+            $('.paymentBox .payAmount').text(orderAmount);
+        }
+
+        function callback_list(res){
+            zoomList(res);
+            bankList(res);
+        }
+        var url_list= baseUrl+'/api/bankAccount/list';
+        var url_order= baseUrl+'/api/bankAccount/createOrder';
+        var type_list= 'post';
+        var type_order= 'post';
+        var targetUrl= 'http://judiaowang.cn/app/view/bank_order.html'
+        var parameters_list= {
+            busModId: "6",// 前海续签
+            cityId: JSON.parse(localStorage.getItem('loginData')).cityId,
+        }
+        getFormData(url_list,type_list,parameters_list,callback_list);
+
+        // 点击办理区域
+        $('#area').on('touchend','.zoomItem',function(){
+            var zoomId= $(this).attr('regionId');
+            var parametersItem= {
+                busModId: "6",// 银行开户
+                cityId: JSON.parse(localStorage.getItem('loginData')).cityId,
+                regionId: zoomId
+            }
+            $(this).addClass('checkedItem').siblings('li').removeClass('checkedItem');
+            $('#bankBox').empty();
+            getFormData(url_list,type_list,parametersItem,bankList);
         })
+
+        // 点击开户银行
+        $('#bankBox').on('touchend','.acreageItem',function(){
+            var orderAmount= $(this).attr('retailprice');
+            $('.paymentBox .payAmount').text(orderAmount);
+        })
+
+          // 下单
+          $('.paymentBox .nextBtn').on('touchend',function(){
+            var companyName=  $('.baseInfo .companyName').val(); 
+            var zoomText= $('#area .checkedItem').text();
+            var zoomId= $('#area .checkedItem').attr('regionId');
+            var bankText= $('#bankBox .checkedItem').text();            
+            var bankId= $('#bankBox .checkedItem').attr('goodsId');
+            var licenseImg= $('.baseInfo .uploadBox .showImg').attr('src');
+            var remarkText= $('.receiveInfo .remarkText').val();
+            var orderAmount= $('.paymentBox .payAmount').text();
+
+            orderInfo=  {
+                "bankId": bankId,
+                "busLicense": licenseImg,
+                "busModId": 6,
+                "cityId":JSON.parse(localStorage.getItem('loginData')).cityId,
+                "companyName": companyName,
+                // "legalCardBack": "http//img.com",
+                // "legalCardFront": "http//img.com",
+                // "legalEmail": "1437897378@qq.com",
+                // "legalPhone": 18027613030,
+                // "netSilverCardBack": "http//img.com",
+                // "netSilverCardFront": "http//img.com",
+                // "netSilverEmail": "1437897378@qq.com",
+                // "netSilverPhone": 18027613030,
+                "subTimeNote": remarkText
+            };
+
+            orderInfoData= {
+                "bankText": bankText,
+                'zoomText': zoomText,
+                "busLicense": licenseImg,
+                "busModId": 6,
+                "cityId":JSON.parse(localStorage.getItem('loginData')).cityId,
+                "companyName": companyName,
+                // "legalCardBack": "http//img.com",
+                // "legalCardFront": "http//img.com",
+                // "legalEmail": "1437897378@qq.com",
+                // "legalPhone": 18027613030,
+                // "netSilverCardBack": "http//img.com",
+                // "netSilverCardFront": "http//img.com",
+                // "netSilverEmail": "1437897378@qq.com",
+                // "netSilverPhone": 18027613030,
+                "subTimeNote": remarkText,
+                'orderAmount': orderAmount
+            };  
+            
+            orderInfo= JSON.stringify(orderInfo);
+            orderInfoData= JSON.stringify(orderInfoData);
+            sessionStorage.setItem('bankFormMes',orderInfoData);
+
+            createOrder(url_order,type_order,orderInfo,targetUrl);
+        })
+
     })
 </script>

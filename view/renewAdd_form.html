@@ -205,6 +205,7 @@
                     "busSecretPwd": businessPassword,
                     "companyName": companyName,
                     "consignee": receiverName,
+                    'legalType': '自然人',
                     "corpList": [
                         {
                         // "busLicense": "http://img.com",
@@ -256,6 +257,7 @@
                     "busSecretPwd": businessPassword,
                     "companyName": companyName,
                     "consignee": receiverName,
+                    'legalType': '法人',
                     "corpList": [
                         {
                         "busLicense": stockholder_other,
@@ -277,10 +279,12 @@
             var url_order= baseUrl+'/api/seaRenew/createOrder';
             var type_order= 'post';
             var targetUrl= 'http://judiaowang.cn/app/view/renewAdd_order.html';
+            // var targetUrl= './renewAdd_order.html';
             orderInfo= JSON.stringify(orderInfo);
             orderInfoData= JSON.stringify(orderInfoData);
             sessionStorage.setItem('renewFormMes',orderInfoData);
-            createOrder(url_order,type_order,orderInfo,targetUrl)
+            createOrder(url_order,type_order,orderInfo,targetUrl);
+            window.location.href='./renewAdd_order.html'
         })
     })
 </script>

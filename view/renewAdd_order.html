@@ -12,23 +12,23 @@
 <body>
     <div class="renewAddOrder sealContainer sealOrderContainer containerOut">
         <div class="headerBar"></div>
-        <div class="orderAbout seal_information">
+        <div class="orderAbout seal_information baseInfo">
             <p class="orderAbout_title">公司信息</p>
             <div class="orderAbout_content">
                 <p class="informationItem">公司名称:&nbsp;<span class="companyName"></span></p>
-                <p class="informationItem">商密账号:&nbsp;<span class="businessAccount"></span></p>
-                <p class="informationItem">商密密码:&nbsp;<span class="businessPassword"></span></p>
-               <p class="informationItem">营业执照:<p class="tradingPic"><img class="showImg" src='' alt=""></p></p>
+                <p class="informationItem">商密账号:&nbsp;<span class="busSecretAcc"></span></p>
+                <p class="informationItem">商密密码:&nbsp;<span class="busSecretPwd"></span></p>
+               <p class="informationItem">营业执照:<p class="tradingPic"><img class="showImg busLicenseCopy" src='' alt=""></p></p>
             </div>
         </div>
 
-        <div class="orderAbout seal_information">
+        <div class="orderAbout seal_information partBox">
             <p class="orderAbout_title">股东信息</p>
             <div class="orderAbout_content">
-                <p class="informationItem">股东身份:&nbsp;<span class="companyName"></span></p>
-                <p class="informationItem">姓名:&nbsp;<span class="businessAccount"></span></p>
-               <p class="informationItem">身份证正面:<p class="tradingPic"><img class="showImg" src='' alt=""></p></p>
-               <p class="informationItem">身份证反面:<p class="tradingPic"><img class="showImg" src='' alt=""></p></p>
+                <p class="informationItem">股东身份:&nbsp;<span class="legalType"></span></p>
+                <p class="informationItem">姓名:&nbsp;<span class="legalName"></span></p>
+               <p class="informationItem">身份证正面:<p class="tradingPic"><img class="showImg ID_up" src='' alt=""></p></p>
+               <p class="informationItem">身份证反面:<p class="tradingPic"><img class="showImg ID_down" src='' alt=""></p></p>
             </div>
         </div>
 
@@ -49,7 +49,7 @@
         <span class="fl payInfo">
             订单金额 : <span class="RMB_flag">￥</span><span class="payAmount"></span>
         </span>
-        <a href="./dev.html" class="fr paymentBtn">微信支付</a>
+        <a href="javascript:void(0)" class="fr paymentBtn">微信支付</a>
     </div>
 </body>
 </html>
@@ -59,10 +59,26 @@
 <script>
     $(function(){
         var orderInfoData= JSON.parse(sessionStorage.getItem('renewFormMes'));
-        console.log(orderInfoData)
+        var orderId= sessionStorage.getItem('orderId');
+        var targetUrl= 'http://judiaowang.cn/app/view/renewAdd_form.html';
+        $('.paymentBox .payAmount').text(orderInfoData.orderAmount);
+        
+        $('.baseInfo .companyName').text(orderInfoData.companyName);
+        $('.baseInfo .busSecretAcc').text(orderInfoData.busSecretAcc);
+        $('.baseInfo .busSecretPwd').text(orderInfoData.busSecretPwd);
+        $('.baseInfo .busLicenseCopy').attr('src',orderInfoData.busLicenseCopy);
+
+        $('.partBox .legalType').text(orderInfoData.legalType);
+        $('.partBox .legalName').text(orderInfoData.corpList[0].name);
+        $('.partBox .ID_up').attr('src',orderInfoData.corpList[0].idCardBack);
+        $('.partBox .ID_down').attr('src',orderInfoData.corpList[0].idCardFront);
 
         $('.receiveInfo .userName').text(orderInfoData.consignee);
         $('.receiveInfo .userTel').text(orderInfoData.phone);
         $('.receiveInfo .userAdd').text(orderInfoData.address);
+
+        $('.paymentBox .paymentBtn').on('touchend',function(){
+            weChatPay(orderId,targetUrl);
+        })
     })
 </script>

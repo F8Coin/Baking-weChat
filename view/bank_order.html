@@ -12,7 +12,7 @@
 <body>
     <div class="sealContainer sealOrderContainer containerOut">
         <div class="headerBar"></div>
-        <div class="orderAbout seal_information">
+        <div class="orderAbout seal_information baseInfo">
             <p class="orderAbout_title">开户信息</p>
             <div class="orderAbout_content">
                 <p class="informationItem">公司名称:&nbsp;<span class="companyName"></span></p>
@@ -31,9 +31,9 @@
             <p class="tipText">3.法人必须亲自到场拍照</p>
             <p class="tipText">4.法人身份证原件，1位网银管理员身份证原件（网银管理员不可以是法人）</p>
             <p class="tipText">5.租赁合同（承租人必须是公司或法人，填好之后带去开户行）点击下载模板</p>
-            <p class="tipText">6.印章网打印客户信息（http://www.yinzhangcloud.com</p>
+            <p class="tipText">6.印章网打印客户信息</p>
             <p class="tipText">7.中国银行预收一年账户管理费866元，直接交给银行</p>
-            <p class="tipText">8.水电费单据和场地证明（聚服网提供</p>
+            <p class="tipText">8.水电费单据和场地证明（聚雕网提供</p>
             <p class="tipText">二、预约时间</p>
             <p class="tipText">付款后2个工作日内确定预约时间，办理时间一般定在3-5个工作日内；如有时间段特殊要求，请提前与客服沟通说明。若没按预约时间去办理开户，将收取300元违约金。</p>
             <p class="tipText">三、现场办理耗费时间，约40分钟左右。</p>
@@ -41,16 +41,34 @@
             <p class="tipText">原开户许可证已取消，统一为开户回执，现场或一到两天内发放</p>
             <p class="tipText">五、网银激活: </p>
             <p class="tipText">存款1万元激活网银，网银激活可转走</p>
-            <p class="tipText">六、聚服网安排开户时间，客户自行到银行办理。</p>
+            <p class="tipText">六、聚雕网安排开户时间，客户自行到银行办理。</p>
         </div>
     </div>
     <div class="paymentBox clearfix">
         <span class="fl payInfo">
             订单金额 : <span class="RMB_flag">￥</span><span class="payAmount"></span>
         </span>
-        <a href="./dev.html" class="fr paymentBtn">微信支付</a>
+        <a href="javascript:void(0)" class="fr paymentBtn">微信支付</a>
     </div>
 </body>
 </html>
 <script src="../js/jQuery/jquery-3.4.0.js"></script>
 <script src="../js/index.js"></script>
+<script>
+    $(function(){
+        var orderInfoData= JSON.parse(sessionStorage.getItem('bankFormMes'));
+        var orderId= sessionStorage.getItem('orderId');
+        var targetUrl= 'http://judiaowang.cn/app/view/bank_form.html';
+        $('.paymentBox .payAmount').text(orderInfoData.orderAmount);
+        
+        $('.baseInfo .companyName').text(orderInfoData.companyName);
+        $('.baseInfo .bank').text(orderInfoData.bankText);
+        $('.baseInfo .zoom').text(orderInfoData.zoomText);
+        $('.baseInfo .remarkText').text(orderInfoData.subTimeNote);
+        $('.baseInfo .showImg').attr('src',orderInfoData.busLicense);
+
+        $('.paymentBox .paymentBtn').on('touchend',function(){
+            weChatPay(orderId,targetUrl);
+        })
+    })
+</script>
