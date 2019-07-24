@@ -54,44 +54,45 @@
                     </div>
                 </div>
             </div>
-            <div class="upBox baseInfo">
+            <div class="upBox partBox baseInfo">
                 <p class="title">股东证件</p>
                 <div class="formItem selectZoomBox">
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;股东身份</p>
-                    <ul class="selectZoom selectTenant zoomList" id="tenantBox">
+                    <ul class="selectZoom selectTenant zoomList stockholderType" id="tenantBox">
                         <li class="checkedItem">自然人</li>
                         <li>法人</li>
                     </ul>
                 </div>
-                <div class="formItem">
+                <div class="formItem naturePart">
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;姓名</p>
-                    <input class="placeholderText businessAccount" type="text" placeholder="请输入股东姓名">
+                    <input class="placeholderText stockholderName" type="text" placeholder="请输入股东姓名">
                 </div>
-                <div class="formItem" style="display:none">
+                <div class="formItem legalPart" style="display:none">
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;公司名称</p>
-                    <input class="placeholderText businessPassword" type="text" placeholder="请输入公司名称">
+                    <input class="placeholderText stockholderCompany" type="text" placeholder="请输入公司名称">
                 </div>
-                <div class="formItem upload_ID clearfix uploadBox">
+                <div class="formItem naturePart upload_ID clearfix uploadBox">
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;所需材料 <span class="text">(照片必须清晰整齐)</span> </p>
-                    <div class="picUp ID_img fl uploadIcon" style="position:relative">
+                    <div class="picUp ID_img fl uploadIcon stockholderID_up" style="position:relative">
                         <input class="idImg uploadInput" type="file" style="opacity:0;width:100%;height:100%;position:absolute;left:0px;" onchange="uploadFile($(this),$(this).parent())">
                         <img src="" alt="" class="showImg" style="display:block;margin:0 auto; height:100%;">
                         <span class="tipText"><span style="color:#CD0000;vertical-align: middle;">*</span>&nbsp;身份证正面</span>
                     </div>
-                    <div class="picDown ID_img fr uploadIcon" style="position:relative">
+                    <div class="picDown ID_img fr uploadIcon stockholderID_down" style="position:relative">
                         <input class="idImg uploadInput" type="file" style="opacity:0;width:100%;height:100%; position:absolute;left:0px;" onchange="uploadFile($(this),$(this).parent())">
                         <img src="" alt="" class="showImg" style="display:block;margin:0 auto; height:100%;width:100%">
                         <span class="tipText"><span style="color:#CD0000;vertical-align: middle;">*</span>&nbsp;身份证反面</span>
                     </div>
                 </div>
-                <div class="formItem upload_ID upload_other clearfix uploadBox" style="display:none">
+                <div class="formItem legalPart upload_ID upload_other clearfix uploadBox" style="display:none">
                     <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;材料证明 <span class="text">照片必须清晰整齐</span> </p>
-                    <div class="picUp ID_img picOther1 other1_img fl uploadIcon" style="position:relative">
+                    <div class="picUp ID_img picOther1 other1_img fl uploadIcon stockholder_other" style="position:relative">
                         <input class="idImg uploadInput" type="file" style="opacity:0;width:100%;height:100%;position:absolute;left:0px;" onchange="uploadFile($(this),$(this).parent())">
                         <img src="" alt="" class="showImg" style="display:block;margin:0 auto; height:100%;">
                         <span class="tipText"><span style="color:#CD0000;vertical-align: middle;">*</span>&nbsp;营业执照复印件盖公章</span>
                     </div>
                 </div>
+                <button class="addPerson btn btn-default">确认添加</button>
             </div>
             <div class="downBox receiveInfo">
                 <p class="title">收货信息</p>
@@ -128,8 +129,22 @@
 <script src="../js/index.js"></script>
 <script>
     $(function(){
+        $('.baseInfo .zoomList').on('touchend','li',function(){
+            if($(this).text() == '法人'){
+                $('.baseInfo .legalPart').css('display','block');
+                $('.baseInfo .naturePart').css('display','none');
+            }else if($(this).text() == '自然人') {
+                $('.baseInfo .legalPart').css('display','none');
+                $('.baseInfo .naturePart').css('display','block');
+            }
+        })
+        var goodsId= '';
+        var orderAmount= '0';
+
         function callback_list(res){
             $('.paymentBox .payAmount').text(res.data.goods[0].goods[0].marketPrice)
+            goodsId= res.data.goods[0].goods[0].id
+            orderAmount= res.data.goods[0].goods[0].marketPrice
         }
         var url_list= baseUrl+'/api/seaRenew/list';
         var type_list= 'post';
@@ -138,5 +153,134 @@
             cityId: JSON.parse(localStorage.getItem('loginData')).cityId,
         }
         getFormData(url_list,type_list,parameters_list,callback_list);
+
+        // 下单
+        $('.paymentBox .paymentBtn').on('touchend',function(){
+            var companyName= $('.baseInfo .formItem .companyName').val();
+            var businessAccount= $('.baseInfo .formItem .businessAccount').val();
+            var businessPassword= $('.baseInfo .formItem .businessPassword').val();
+            var ID_up= $('.baseInfo .upload_ID .picUp .showImg').attr('src');
+            var ID_down= $('.baseInfo .upload_ID .picDown .showImg').attr('src');
+            var other1_img= $('.baseInfo .upload_other .other1_img .showImg').attr('src');
+            var other2_img= $('.baseInfo .upload_other .other2_img .showImg').attr('src');
+
+            var receiverName= $('.receiveInfo .receiverName').val();
+            var receiverTel= $('.receiveInfo .receiverTel').val();
+            var receiverAdd= $('.receiveInfo .receiverAdd').val();
+
+            // 判断股东类型
+            if($('.baseInfo .stockholderType .checkedItem').text() == '自然人') {
+                var stockholderName= $('.partBox .formItem .stockholderName').val();
+                var stockholderID_up= $('.partBox .uploadBox .stockholderID_up .showImg').attr('src');
+                var stockholderID_down= $('.partBox .uploadBox .stockholderID_down .showImg').attr('src');
+                var orderInfo= {
+                    "address": receiverAdd,
+                    "busLicenseCopy": other1_img,
+                    "busModId": 5,
+                    "busSecretAcc": businessAccount,
+                    "busSecretPwd": businessPassword,
+                    "cityId": JSON.parse(localStorage.getItem('loginData')).cityId,
+                    "companyName": companyName,
+                    "consignee": receiverName,
+                    "corpList": [
+                        {
+                        // "busLicense": "http://img.com",
+                        // "companyName": "深圳聚雕网科技有限公司",
+                        "idCardBack": stockholderID_down,
+                        "idCardFront": stockholderID_up,
+                        "identity": 1,
+                        "name": stockholderName
+                        }
+                    ],
+                    "goodsId": goodsId,
+                    "legalCardBack": ID_down,
+                    "legalCardFront": ID_up,
+                    "legalCardPhoto": other2_img,
+                    "phone": receiverTel
+                };
+                var orderInfoData= {
+                    "address": receiverAdd,
+                    "busLicenseCopy": other1_img,
+                    "busSecretAcc": businessAccount,
+                    "busSecretPwd": businessPassword,
+                    "companyName": companyName,
+                    "consignee": receiverName,
+                    "corpList": [
+                        {
+                        // "busLicense": "http://img.com",
+                        // "companyName": "深圳聚雕网科技有限公司",
+                        "idCardBack": stockholderID_down,
+                        "idCardFront": stockholderID_up,
+                        "name": stockholderName
+                        }
+                    ],
+                    "legalCardBack": ID_down,
+                    "legalCardFront": ID_up,
+                    "legalCardPhoto": other2_img,
+                    "phone": receiverTel,
+                    'orderAmount': orderAmount
+                };
+
+            }else if($('.baseInfo .stockholderType .checkedItem').text() == '法人') {
+                var stockholderCompany= $('.partBox .formItem .stockholderCompany').val();
+                var stockholder_other= $('.partBox .uploadBox .stockholder_other .showImg').attr('src');
+                var orderInfo= {
+                    "address": receiverAdd,
+                    "busLicenseCopy": other1_img,
+                    "busModId": 5,
+                    "busSecretAcc": businessAccount,
+                    "busSecretPwd": businessPassword,
+                    "cityId": JSON.parse(localStorage.getItem('loginData')).cityId,
+                    "companyName": companyName,
+                    "consignee": receiverName,
+                    "corpList": [
+                        {
+                        "busLicense": stockholder_other,
+                        "companyName": stockholderCompany,
+                        // "idCardBack": stockholderID_down,
+                        // "idCardFront": stockholderID_up,
+                        "identity": 2,
+                        // "name": stockholderName
+                        }
+                    ],
+                    "goodsId": goodsId,
+                    "legalCardBack": ID_down,
+                    "legalCardFront": ID_up,
+                    "legalCardPhoto": other2_img,
+                    "phone": receiverTel
+                };                
+                var orderInfoData= {
+                    "address": receiverAdd,
+                    "busLicenseCopy": other1_img,
+                    "busSecretAcc": businessAccount,
+                    "busSecretPwd": businessPassword,
+                    "companyName": companyName,
+                    "consignee": receiverName,
+                    "corpList": [
+                        {
+                        "busLicense": stockholder_other,
+                        "companyName": stockholderCompany,
+                        // "idCardBack": stockholderID_down,
+                        // "idCardFront": stockholderID_up,
+                        "identity": 2,
+                        // "name": stockholderName
+                        }
+                    ],
+                    "legalCardBack": ID_down,
+                    "legalCardFront": ID_up,
+                    "legalCardPhoto": other2_img,
+                    "phone": receiverTel,
+                    'orderAmount': orderAmount
+                };                
+            }  
+
+            var url_order= baseUrl+'/api/seaRenew/createOrder';
+            var type_order= 'post';
+            var targetUrl= 'http://judiaowang.cn/app/view/renewAdd_order.html';
+            orderInfo= JSON.stringify(orderInfo);
+            orderInfoData= JSON.stringify(orderInfoData);
+            sessionStorage.setItem('renewFormMes',orderInfoData);
+            createOrder(url_order,type_order,orderInfo,targetUrl)
+        })
     })
 </script>

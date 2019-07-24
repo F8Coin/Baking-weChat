@@ -18,12 +18,21 @@
                 <p class="informationItem">公司名称:&nbsp;<span class="companyName"></span></p>
                 <p class="informationItem">商密账号:&nbsp;<span class="businessAccount"></span></p>
                 <p class="informationItem">商密密码:&nbsp;<span class="businessPassword"></span></p>
-                <p class="informationItem">备注:&nbsp;<span class="remarkText"></span></p>  
                <p class="informationItem">营业执照:<p class="tradingPic"><img class="showImg" src='' alt=""></p></p>
             </div>
         </div>
 
-        <div class="orderAbout receive_address">
+        <div class="orderAbout seal_information">
+            <p class="orderAbout_title">股东信息</p>
+            <div class="orderAbout_content">
+                <p class="informationItem">股东身份:&nbsp;<span class="companyName"></span></p>
+                <p class="informationItem">姓名:&nbsp;<span class="businessAccount"></span></p>
+               <p class="informationItem">身份证正面:<p class="tradingPic"><img class="showImg" src='' alt=""></p></p>
+               <p class="informationItem">身份证反面:<p class="tradingPic"><img class="showImg" src='' alt=""></p></p>
+            </div>
+        </div>
+
+        <div class="orderAbout receive_address receiveInfo">
             <p class="orderAbout_title">收货信息</p>
             <div class="orderAbout_content">
                 <p class="userInfo">
@@ -47,3 +56,13 @@
 <script src="../js/jQuery/jquery-3.4.0.js"></script>
 <script src="../lib/layer/layer.js"></script>
 <script src="../js/index.js"></script>
+<script>
+    $(function(){
+        var orderInfoData= JSON.parse(sessionStorage.getItem('renewFormMes'));
+        console.log(orderInfoData)
+
+        $('.receiveInfo .userName').text(orderInfoData.consignee);
+        $('.receiveInfo .userTel').text(orderInfoData.phone);
+        $('.receiveInfo .userAdd').text(orderInfoData.address);
+    })
+</script>

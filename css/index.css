@@ -264,7 +264,8 @@
     height: 100%;
 }
 
-.containerOut .receiveInfo {
+.containerOut .receiveInfo,
+.containerOut .partBox {
     margin-top: 1.875rem;
     padding: 1.25rem;
     border: 1px solid #e7e7e7;
@@ -692,10 +693,18 @@
 }
 
 /* --------------前海地址信息页面----------------- */
-.renewFormContainer .receiveInfo{
-    /* margin-bottom: 5rem; */
+.baseInfo .addPerson {
+    display: block;
+    margin: 0 auto;
+    margin-top: 3.25rem;
+    width: 7.5rem;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    color: #fff;
+    border-radius: 2rem;
+    margin-left: auto;
+    background-color: #836FFF;
 }
-
 
 /* --------------前海地址订单页面----------------- */
 
