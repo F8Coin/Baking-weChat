@@ -10,59 +10,93 @@
     <link rel="stylesheet" href="../css/index.css">
 </head>
 <body>
-    <div class="bankFormContainer sealContainer containerOut">
+    <div class="containerOut">
         <div class="headerBar"></div>
         <div class="contentBox containerInner">
-            <div class="upBox baseInfo">
+            <div class="baseInfo">
                 <div class="formItem">
-                    <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;公司名称</p>
+                    <p class="labTitle"><span class="isRequired">*</span>公司名称</p>
                     <input class="placeholderText companyName" type="text" placeholder="请输入公司名称">
                 </div>
-                <div class="formItem selectZoomBox">
-                    <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;办理区域</p>
-                    <ul class="selectZoom checkZoom zoomList" id="area">
-                        <!-- 办理区域 -->
-                    </ul>
-                </div>
-                <div class="formItem selectZoomBox">
-                    <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;开户银行</p>
-                    <ul class="selectZoom checkZoom zoomList" id="bankBox">
-                        <!-- 开户银行 -->
+                <div class="formItem">
+                    <p class="labTitle"><span class="isRequired">*</span>办理区域</p>
+                    <ul class="zoomList" id="area">
+                       
                     </ul>
                 </div>
                 <div class="formItem">
-                    <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;上传资料</p>
-                    <div class="uploadBox uploadIcon">
-                        <input type="file" class="uploadInput" style="opacity:0;position:absolute;width:13.125rem; height:8.75rem;" onchange="uploadFile($(this),$(this).parent())">
-                        <img src="" alt="" class="showImg" style="display:block;margin:0 auto; height:100%;">
-                        <p class="typeText">营业执照</p>
+                    <p class="labTitle"><span class="isRequired">*</span>开户银行</p>
+                    <ul class="zoomList" id="bankBox">
+                       
+                    </ul>
+                </div>
+                <div class="formItem clearfix">
+                    <p class="labTitle"><span class="isRequired">*</span>上传资料</p>
+                    <div class="uploadBox fl fileBox licenseUpload">
+                        <input type="file" class="uploadInput" onchange="uploadFile($(this),$(this).parent())">
+                        <img src="" alt="" class="showImg">
+                        <p class="typeText">营业执照正本<span class="requiredFlag">*</span></p>
+                    </div>
+                    <div class="uploadBox fr fileBox legalId1Upload isShowItem">
+                        <input type="file" class="uploadInput" onchange="uploadFile($(this),$(this).parent())">
+                        <img src="" alt="" class="showImg">
+                        <p class="typeText">法人身份证正面<span class="requiredFlag">*</span></p>
+                    </div>
+                    <div class="uploadBox fl fileBox legalId2Upload isShowItem">
+                        <input type="file" class="uploadInput" onchange="uploadFile($(this),$(this).parent())">
+                        <img src="" alt="" class="showImg">
+                        <p class="typeText">法人身份证反面<span class="requiredFlag">*</span></p>
+                    </div>
+                    <div class="uploadBox fr fileBox adminId1Upload isShowItem">
+                        <input type="file" class="uploadInput" onchange="uploadFile($(this),$(this).parent())">
+                        <img src="" alt="" class="showImg">
+                        <p class="typeText">网银管理员身份正面<span class="requiredFlag">*</span></p>
+                    </div>
+                    <div class="uploadBox fl fileBox adminId2Upload isShowItem">
+                        <input type="file" class="uploadInput" onchange="uploadFile($(this),$(this).parent())">
+                        <img src="" alt="" class="showImg">
+                        <p class="typeText">网银管理员身份反面<span class="requiredFlag">*</span></p>
                     </div>
                 </div>
             </div>
-            <div class="downBox receiveInfo">
+            <div class="partBox">
+                <div class="formItem legalTelItem isShowItem">
+                    <p class="labTitle"><span class="isRequired">*</span>法人手机</p>
+                    <input class="placeholderText legalTel" type="text" placeholder="请输入法人手机">
+                </div>
+                <div class="formItem legalEmailItem isShowItem">
+                    <p class="labTitle"><span class="isRequired">*</span>法人邮箱</p>
+                    <input class="placeholderText legalEmail" type="text" placeholder="请输入法人邮箱">
+                </div>
+                <div class="formItem adminTelItem isShowItem">
+                    <p class="labTitle"><span class="isRequired">*</span>网银管理员手机</p>
+                    <input class="placeholderText adminTel" type="text" placeholder="请输入网银管理员手机">
+                </div>
+                <div class="formItem adminEmailItem isShowItem">
+                    <p class="labTitle"><span class="isRequired">*</span>网银管理员邮箱</p>
+                    <input class="placeholderText adminEmail" type="text" placeholder="请输入网银管理员邮箱">
+                </div>
                 <div class="formItem">
                     <p class="labTitle">预约时间备注</p>
-                    <textarea class="remarkText" name="" id="" cols="" rows="" placeholder="如需其它服务请备注"></textarea>
+                    <textarea class="remarkText" name="" id="" cols="" rows="" placeholder="付款后2个工作日内确定预约时间,办理时间一般定在3-5个工作日内;如有时间段特殊要求,请在此说明"></textarea>
                 </div>
             </div>
-            <div class="downBox remarkText receiveInfo">
-                <div class="tipBox">
-                    <p class="tipTitle">温馨提示</p>
-                    <p class="tipText">一、客户准备资料</p>
-                    <p class="tipText">1.公章、财务章、法人私章</p>
-                    <p class="tipText">2.营业执照正本原件</p>
-                    <p class="tipText">3.法人必须亲自到场拍照</p>            
-                    <p class="tipText">4.法人身份证原件，1位网银管理员身份证原件（网银管理员不可以是法人）</p>            
-                    <p class="tipText">5.租赁合同（承租人必须是公司或法人，填好之后带去开户行）点击下载模板</p>            
-                    <p class="tipText">6.首年免管理费，第二年网银管理费是200元左右</p>
-                    <p class="tipText">二、预约时间</p>
-                    <p class="tipText">付款后2个工作日内确定预约时间，办理时间一般定在3-5个工作日内；如有时间段特殊要求，请提前与客服沟通说明。若没按预约时间去办理开户，将收取300元违约金。</p>
-                    <p class="tipText">三、现场办理耗费时间，约40分钟左右。</p>
-                    <p class="tipText">四、银行回执</p>            
-                    <p class="tipText">原开户许可证已取消，统一为开户回执，现场或一到两天内发放</p>            
-                    <p class="tipText">五、聚雕网安排开户时间，客户自行到银行办理。</p>                      
-                </div> 
-            </div>
+            <div class="tipBox">
+                <p class="tipTitle">温馨提示</p>
+                <p class="tipText">一、客户准备资料</p>
+                <p class="tipText">1.公章、财务章、法人私章</p>
+                <p class="tipText">2.营业执照正本原件</p>
+                <p class="tipText">3.法人必须亲自到场拍照</p>            
+                <p class="tipText">4.法人身份证原件，1位网银管理员身份证原件（网银管理员不可以是法人）</p>            
+                <p class="tipText">5.租赁合同（承租人必须是公司或法人，填好之后带去开户行）点击下载模板</p>            
+                <p class="tipText">6.首年免管理费，第二年网银管理费是200元左右</p>
+                <p class="tipText">二、预约时间</p>
+                <p class="tipText">付款后2个工作日内确定预约时间，办理时间一般定在3-5个工作日内；如有时间段特殊要求，请提前与客服沟通说明。若没按预约时间去办理开户，将收取300元违约金。</p>
+                <p class="tipText">三、现场办理耗费时间，约40分钟左右。</p>
+                <p class="tipText">四、银行回执</p>            
+                <p class="tipText">原开户许可证已取消，统一为开户回执，现场或一到两天内发放</p>            
+                <p class="tipText">五、聚雕网安排开户时间，客户自行到银行办理。</p>                      
+            </div> 
         </div>
         <div class="paymentBox">
             <span class="payInfo">
@@ -100,7 +134,26 @@
                 $('#bankBox').append(bankItem);
             }
             var orderAmount= $('#bankBox .checkedItem').attr('retailPrice');
+            var checkBankName= $('#bankBox .checkedItem').text();
             $('.paymentBox .payAmount').text(orderAmount);
+            bankDataList(checkBankName);
+        }
+
+        // 判断开户银行需要提交的资料
+        function bankDataList(checkBankName) {
+            if(checkBankName == "交通银行" || checkBankName == "中信银行") {
+                $('.isShowItem').css('display','block');
+            }else if(checkBankName == "民生银行" || checkBankName == "中国银行" || checkBankName == "工商银行" || checkBankName == "招商银行"  || checkBankName == "浦发银行") {
+                $('.isShowItem').css('display','none');                
+            }else if(checkBankName == "建设银行" || checkBankName == "农业银行" ) {
+                $('.isShowItem').css('display','none');                
+                $('.formItem .legalId1Upload').css('display','block')                
+                $('.formItem .legalId2Upload').css('display','block')                
+            }else if(checkBankName == "光大银行") {
+                $('.isShowItem').css('display','block');
+                $('.partBox .legalEmailItem').css('display','none');
+                $('.partBox .adminEmail').css('display','none');
+            }
         }
 
         function callback_list(res){
@@ -112,8 +165,9 @@
         var type_list= 'post';
         var type_order= 'post';
         var targetUrl= 'http://judiaowang.cn/app/view/bank_order.html'
+        // var targetUrl= './bank_order.html'
         var parameters_list= {
-            busModId: "6",// 前海续签
+            busModId: "6",// 银行开户
             cityId: JSON.parse(localStorage.getItem('loginData')).cityId,
         }
         getFormData(url_list,type_list,parameters_list,callback_list);
@@ -134,7 +188,9 @@
         // 点击开户银行
         $('#bankBox').on('touchend','.acreageItem',function(){
             var orderAmount= $(this).attr('retailprice');
+            var checkBankName= $('#bankBox .checkedItem').text();
             $('.paymentBox .payAmount').text(orderAmount);
+            bankDataList(checkBankName);
         })
 
           // 下单
@@ -144,45 +200,135 @@
             var zoomId= $('#area .checkedItem').attr('regionId');
             var bankText= $('#bankBox .checkedItem').text();            
             var bankId= $('#bankBox .checkedItem').attr('goodsId');
-            var licenseImg= $('.baseInfo .uploadBox .showImg').attr('src');
-            var remarkText= $('.receiveInfo .remarkText').val();
+            var licenseImg= $('.baseInfo .licenseUpload .showImg').attr('src');
+            var remarkText= $('.partBox .remarkText').val();
             var orderAmount= $('.paymentBox .payAmount').text();
 
-            orderInfo=  {
-                "bankId": bankId,
-                "busLicense": licenseImg,
-                "busModId": 6,
-                "cityId":JSON.parse(localStorage.getItem('loginData')).cityId,
-                "companyName": companyName,
-                // "legalCardBack": "http//img.com",
-                // "legalCardFront": "http//img.com",
-                // "legalEmail": "1437897378@qq.com",
-                // "legalPhone": 18027613030,
-                // "netSilverCardBack": "http//img.com",
-                // "netSilverCardFront": "http//img.com",
-                // "netSilverEmail": "1437897378@qq.com",
-                // "netSilverPhone": 18027613030,
-                "subTimeNote": remarkText
-            };
-
-            orderInfoData= {
-                "bankText": bankText,
-                'zoomText': zoomText,
-                "busLicense": licenseImg,
-                "busModId": 6,
-                "cityId":JSON.parse(localStorage.getItem('loginData')).cityId,
-                "companyName": companyName,
-                // "legalCardBack": "http//img.com",
-                // "legalCardFront": "http//img.com",
-                // "legalEmail": "1437897378@qq.com",
-                // "legalPhone": 18027613030,
-                // "netSilverCardBack": "http//img.com",
-                // "netSilverCardFront": "http//img.com",
-                // "netSilverEmail": "1437897378@qq.com",
-                // "netSilverPhone": 18027613030,
-                "subTimeNote": remarkText,
-                'orderAmount': orderAmount
-            };  
+            if(bankText == "交通银行" || bankText == "中信银行") {
+                var legalId1_img= $('.baseInfo .legalId1Upload .showImg').attr('src');
+                var legalId2_img= $('.baseInfo .legalId2Upload .showImg').attr('src');
+                var adminId1_img= $('.baseInfo .adminId1Upload .showImg').attr('src');
+                var adminId2_img= $('.baseInfo .adminId1Upload .showImg').attr('src');
+                var legalTel= $('.partBox .legalTelItem .legalTel').val();
+                var legalEmail= $('.partBox .legalEmailItem .legalEmail').val();
+                var adminTel= $('.partBox .adminTelItem .adminTel').val();
+                var adminEmail= $('.partBox .adminEmailItem .adminEmail').val();
+                orderInfo=  {
+                    "bankId": bankId,
+                    "busLicense": licenseImg,
+                    "busModId": 6,
+                    "cityId":JSON.parse(localStorage.getItem('loginData')).cityId,
+                    "companyName": companyName,
+                    "legalCardBack": legalId2_img,
+                    "legalCardFront": legalId1_img,
+                    "legalEmail": legalEmail,
+                    "legalPhone": legalTel,
+                    "netSilverCardBack": adminId2_img,
+                    "netSilverCardFront": adminId1_img,
+                    "netSilverEmail": adminEmail,
+                    "netSilverPhone": adminTel,
+                    "subTimeNote": remarkText
+                };
+                orderInfoData= {
+                    "bankText": bankText,
+                    'zoomText': zoomText,
+                    "busLicense": licenseImg,
+                    "busModId": 6,
+                    "cityId":JSON.parse(localStorage.getItem('loginData')).cityId,
+                    "companyName": companyName,
+                    "legalCardBack": legalId2_img,
+                    "legalCardFront": legalId1_img,
+                    "legalEmail": legalEmail,
+                    "legalPhone": legalTel,
+                    "netSilverCardBack": adminId2_img,
+                    "netSilverCardFront": adminId1_img,
+                    "netSilverEmail": adminEmail,
+                    "netSilverPhone": adminTel,
+                    "subTimeNote": remarkText,
+                    'orderAmount': orderAmount
+                }; 
+            }else if(bankText == "民生银行" || bankText == "中国银行" || bankText == "工商银行" || bankText == "招商银行"  || bankText == "浦发银行") {
+                orderInfo=  {
+                    "bankId": bankId,
+                    "busLicense": licenseImg,
+                    "busModId": 6,
+                    "cityId":JSON.parse(localStorage.getItem('loginData')).cityId,
+                    "companyName": companyName,
+                    "subTimeNote": remarkText
+                };
+                orderInfoData= {
+                    "bankText": bankText,
+                    'zoomText': zoomText,
+                    "busLicense": licenseImg,
+                    "busModId": 6,
+                    "cityId":JSON.parse(localStorage.getItem('loginData')).cityId,
+                    "companyName": companyName,
+                    "subTimeNote": remarkText,
+                    'orderAmount': orderAmount
+                };                 
+            }else if(bankText == "建设银行" || bankText == "农业银行" ) {
+                var legalId1_img= $('.baseInfo .legalId1Upload .showImg').attr('src');
+                var legalId2_img= $('.baseInfo .legalId2Upload .showImg').attr('src');
+                orderInfo=  {
+                    "bankId": bankId,
+                    "busLicense": licenseImg,
+                    "busModId": 6,
+                    "cityId":JSON.parse(localStorage.getItem('loginData')).cityId,
+                    "companyName": companyName,
+                    "legalCardBack": legalId2_img,
+                    "legalCardFront": legalId1_img,
+                    "subTimeNote": remarkText
+                };
+                orderInfoData= {
+                    "bankText": bankText,
+                    'zoomText': zoomText,
+                    "busLicense": licenseImg,
+                    "busModId": 6,
+                    "cityId":JSON.parse(localStorage.getItem('loginData')).cityId,
+                    "companyName": companyName,
+                    "legalCardBack": legalId2_img,
+                    "legalCardFront": legalId1_img,
+                    "subTimeNote": remarkText,
+                    'orderAmount': orderAmount
+                };               
+            }else if(bankText == "光大银行") {
+                var legalId1_img= $('.baseInfo .legalId1Upload .showImg').attr('src');
+                var legalId2_img= $('.baseInfo .legalId2Upload .showImg').attr('src');
+                var adminId1_img= $('.baseInfo .adminId1Upload .showImg').attr('src');
+                var adminId2_img= $('.baseInfo .adminId1Upload .showImg').attr('src');
+                var legalTel= $('.partBox .legalTelItem .legalTel').val();
+                var adminTel= $('.partBox .adminTelItem .adminTel').val();
+                orderInfo=  {
+                    "bankId": bankId,
+                    "busLicense": licenseImg,
+                    "busModId": 6,
+                    "cityId":JSON.parse(localStorage.getItem('loginData')).cityId,
+                    "companyName": companyName,
+                    "legalCardBack": legalId2_img,
+                    "legalCardFront": legalId1_img,
+                    "legalPhone": legalTel,
+                    "netSilverCardBack": adminId2_img,
+                    "netSilverCardFront": adminId1_img,
+                    "netSilverPhone": adminTel,
+                    "subTimeNote": remarkText
+                };
+                orderInfoData= {
+                    "bankText": bankText,
+                    'zoomText': zoomText,
+                    "busLicense": licenseImg,
+                    "busModId": 6,
+                    "cityId":JSON.parse(localStorage.getItem('loginData')).cityId,
+                    "companyName": companyName,
+                    "legalCardBack": legalId2_img,
+                    "legalCardFront": legalId1_img,
+                    "legalPhone": legalTel,
+                    "netSilverCardBack": adminId2_img,
+                    "netSilverCardFront": adminId1_img,
+                    "netSilverPhone": adminTel,
+                    "subTimeNote": remarkText,
+                    'orderAmount': orderAmount
+                }; 
+            } 
             
             orderInfo= JSON.stringify(orderInfo);
             orderInfoData= JSON.stringify(orderInfoData);

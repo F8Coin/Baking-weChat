@@ -10,46 +10,62 @@
     <link rel="stylesheet" href="../css/index.css">
 </head>
 <body>
-    <div class="renewAddOrder sealContainer sealOrderContainer containerOut">
+    <div class="containerOut">
         <div class="headerBar"></div>
-        <div class="orderAbout seal_information baseInfo">
-            <p class="orderAbout_title">公司信息</p>
-            <div class="orderAbout_content">
-                <p class="informationItem">公司名称:&nbsp;<span class="companyName"></span></p>
-                <p class="informationItem">商密账号:&nbsp;<span class="busSecretAcc"></span></p>
-                <p class="informationItem">商密密码:&nbsp;<span class="busSecretPwd"></span></p>
-               <p class="informationItem">营业执照:<p class="tradingPic"><img class="showImg busLicenseCopy" src='' alt=""></p></p>
+        <div class="contentBox containerInner">
+            <div class="orderInfo">
+                <p class="title">公司信息</p>
+                <div class="content">
+                    <p class="orderItem">
+                        <span class="labTitle">公司名称<span class="colon">:</span></span>
+                        <span class="labContent companyName"></span>
+                    </p>
+                    <p class="orderItem">
+                        <span class="labTitle">商密账号<span class="colon">:</span></span>
+                        <span class="labContent busSecretAcc"></span>
+                    </p>
+                    <p class="orderItem">
+                        <span class="labTitle">商密密码<span class="colon">:</span></span>
+                        <span class="labContent busSecretPwd"></span>
+                    </p>
+                   <p class="orderItem">
+                        <span class="labTitle">营业执照<span class="colon">:</span></span>
+                        <p class="labContent tradingPic">
+                            <img class="showImg busLicenseCopy" style="width:100%;" src='' alt="">
+                        </p>
+                    </p>
+                </div>
+            </div>
+    
+            <div class="partBox">
+                <p class="orderAbout_title">股东信息</p>
+                <div class="orderAbout_content">
+                    <p class="informationItem">股东身份:&nbsp;<span class="legalType"></span></p>
+                    <p class="informationItem">姓名:&nbsp;<span class="legalName"></span></p>
+                   <p class="informationItem">身份证正面:<p class="tradingPic"><img class="showImg ID_up" src='' alt=""></p></p>
+                   <p class="informationItem">身份证反面:<p class="tradingPic"><img class="showImg ID_down" src='' alt=""></p></p>
+                </div>
+            </div>
+    
+            <div class="orderAbout receive_address receiveInfo">
+                <p class="orderAbout_title">收货信息</p>
+                <div class="orderAbout_content">
+                    <p class="userInfo">
+                        <span class="userName"></span>    
+                        <span class="userTel"></span>
+                    </p>    
+                    <p class="userInfo">
+                        <span class="userAdd"></span>
+                    </p>
+                </div>  
             </div>
         </div>
-
-        <div class="orderAbout seal_information partBox">
-            <p class="orderAbout_title">股东信息</p>
-            <div class="orderAbout_content">
-                <p class="informationItem">股东身份:&nbsp;<span class="legalType"></span></p>
-                <p class="informationItem">姓名:&nbsp;<span class="legalName"></span></p>
-               <p class="informationItem">身份证正面:<p class="tradingPic"><img class="showImg ID_up" src='' alt=""></p></p>
-               <p class="informationItem">身份证反面:<p class="tradingPic"><img class="showImg ID_down" src='' alt=""></p></p>
-            </div>
+        <div class="paymentBox clearfix">
+            <span class="fl payInfo">
+                订单金额 : <span class="RMB_flag">￥</span><span class="payAmount"></span>
+            </span>
+            <a href="javascript:void(0)" class="fr paymentBtn">微信支付</a>
         </div>
-
-        <div class="orderAbout receive_address receiveInfo">
-            <p class="orderAbout_title">收货信息</p>
-            <div class="orderAbout_content">
-                <p class="userInfo">
-                    <span class="userName"></span>    
-                    <span class="userTel"></span>
-                </p>    
-                <p class="userInfo">
-                    <span class="userAdd"></span>
-                </p>
-            </div>  
-        </div>
-    </div>
-    <div class="paymentBox clearfix">
-        <span class="fl payInfo">
-            订单金额 : <span class="RMB_flag">￥</span><span class="payAmount"></span>
-        </span>
-        <a href="javascript:void(0)" class="fr paymentBtn">微信支付</a>
     </div>
 </body>
 </html>
@@ -63,10 +79,10 @@
         var targetUrl= 'http://judiaowang.cn/app/view/renewAdd_form.html';
         $('.paymentBox .payAmount').text(orderInfoData.orderAmount);
         
-        $('.baseInfo .companyName').text(orderInfoData.companyName);
-        $('.baseInfo .busSecretAcc').text(orderInfoData.busSecretAcc);
-        $('.baseInfo .busSecretPwd').text(orderInfoData.busSecretPwd);
-        $('.baseInfo .busLicenseCopy').attr('src',orderInfoData.busLicenseCopy);
+        $('.orderInfo .companyName').text(orderInfoData.companyName);
+        $('.orderInfo .busSecretAcc').text(orderInfoData.busSecretAcc);
+        $('.orderInfo .busSecretPwd').text(orderInfoData.busSecretPwd);
+        $('.orderInfo .busLicenseCopy').attr('src',orderInfoData.busLicenseCopy);
 
         $('.partBox .legalType').text(orderInfoData.legalType);
         $('.partBox .legalName').text(orderInfoData.corpList[0].name);

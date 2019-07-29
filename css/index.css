@@ -112,7 +112,8 @@
     padding: 0rem 1.875rem;
 }
 
-.containerOut .baseInfo{
+.containerOut .baseInfo,
+.containerOut .orderInfo {
     padding: 1.25rem;
     border: 1px solid #e7e7e7;
     background-color: rgba(255, 255, 255, 1);
@@ -121,23 +122,27 @@
 
 .containerInner .baseInfo>.title,
 .containerInner .receiveInfo>.title,
+.containerInner .orderInfo>.title,
 .centerBox>.title {
     font-size: 1.375rem;
 }
 
 .containerInner .baseInfo>.formItem,
-.containerInner .receiveInfo>.formItem {
+.containerInner .receiveInfo>.formItem,
+.containerInner .partBox>.formItem {
     padding: .75rem 0rem;
 }
 
 .containerInner .baseInfo>.formItem>.labTitle,
-.containerInner .receiveInfo>.formItem>.labTitle {
+.containerInner .receiveInfo>.formItem>.labTitle,
+.containerInner .partBox>.formItem>.labTitle {
     font-size: 1.125rem;
     line-height: 1.25rem;
 }
 
 .baseInfo>.formItem>.placeholderText,
-.receiveInfo>.formItem>.placeholderText {
+.receiveInfo>.formItem>.placeholderText,
+.partBox>.formItem>.placeholderText {
     font-size: 1.125rem;
     width: 100%;
     padding: .375rem 0rem 1rem;
@@ -249,12 +254,28 @@
 
 .baseInfo>.formItem>.uploadBox {
     margin-top: .625rem;
-    width: 13.125rem;
+    /* width: 13.125rem; */
+    width: 48%;
     height: 8.75rem;
     border: 1px solid #e7e7e7;
+    position: relative;
 }
 
-.baseInfo>.formItem>.uploadIcon {
+.baseInfo>.formItem>.uploadBox>.uploadInput {
+    opacity:0;
+    position:absolute;
+    width:100%; 
+    height:8.75rem;
+}
+
+.baseInfo>.formItem>.uploadBox>.showImg {
+    display:block;
+    margin:0 auto; 
+    height:100%;
+    width: 100%;
+}
+
+.baseInfo>.formItem>.uploadBox {
     background: url('../img/uploadIco.png') no-repeat center center;
     background-size: 3.75rem;
 }
@@ -274,7 +295,8 @@
 }
 
 .containerOut .baseInfo .remarkText,
-.containerOut .receiveInfo .remarkText {
+.containerOut .receiveInfo .remarkText,
+.containerOut .partBox .remarkText {
     width: 100%;
     height: 7.5rem;
     margin-top: .625rem;
@@ -319,7 +341,7 @@
     margin-bottom: 1.25rem;
 } 
 
-.sealOrderContainer>.orderAbout>.orderAbout_title {
+.containerOut>.orderAbout>.orderAbout_title {
     font-size: 1.375rem;
     margin-bottom: .5rem;
 }
@@ -449,7 +471,8 @@
     font-size: 1.125rem;
 }
 
-.companyFormContainer>.formItem>.title>.text {
+.companyFormContainer>.formItem>.title>.text,
+.containerOut .formItem>.labTitle>.text {
     padding-left: .5rem;
     color: #999999;
     font-size: 1rem;
@@ -707,22 +730,74 @@
 }
 
 /* --------------前海地址订单页面----------------- */
-.renewAddOrder{
-    margin-bottom: 1.875rem;
-}
 
 /* --------------银行开户信息页面----------------- */
-.bankFormContainer .contentBox .formItem .typeText {
-    text-align: center;
-    padding-top: .5rem;
-    color: #cccccc;
+.containerInner {
+    margin-bottom: 5.625rem;
 }
 
-.bankFormContainer>.contentBox>.remarkText {
-    margin-bottom: 5rem;
+.baseInfo>.formItem .isRequired,
+.receiveInfo>.formItem .isRequired,
+.partBox>.formItem .isRequired {
+    color: #CD0000;
+    margin-right: .25rem;
+}
+
+.baseInfo>.formItem>.fileBox {
+    width: 48%;
+    display: inline-block;
+    margin-bottom: 1.875rem;
+    text-align: center;
+}
+
+.baseInfo>.formItem>.fileBox>.uploadInput {
+    width: 100%;
+    height: 100%;
+    left: 0rem;
+}
+
+.baseInfo>.formItem>.uploadBox .typeText{
+    vertical-align: middle;
+    color: #cccccc;
+    padding-top: .375rem;
+}
+
+.baseInfo>.formItem>.uploadBox .typeText .requiredFlag{
+    color: #CD0000;
+    vertical-align: middle;
+    margin-left: .375rem;
+}
+
+.isShowItem {
+    display: none;
+}
+
+.containerInner .tipBox {
+    margin-top: 1.875rem;
 }
 
 /* --------------银行开户订单页面----------------- */
+.orderInfo .orderItem {
+    margin-bottom: .5rem;
+}
+
+.orderInfo .uploadFile {
+    width: 48%;
+}
+
+.orderInfo .orderItem .labTitle {
+    color: #999999;
+}
+
+.orderInfo .orderItem .labTitle .colon {
+    margin-right: .5rem;
+    margin-left: .25rem;
+}
+
+.orderItem .labContent .showImg {
+    width: 100%;
+    height: 100%;
+}
 
 
 /* --------------变更代跑信息页面----------------- */
@@ -750,11 +825,6 @@
 
 .upBox>.formItem>.pinchZoom>li:last-child {
     padding-top: .875rem;
-}
-
-.contentBox>.tipBox {
-    margin-top: 1.25rem;
-    margin-bottom: 5.625rem;
 }
 
 /* --------------登报服务信息页面----------------- */
