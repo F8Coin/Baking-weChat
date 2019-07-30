@@ -743,6 +743,10 @@
     margin-right: .25rem;
 }
 
+.baseInfo>.formItem>.labTitle {
+    margin-bottom: .5rem;
+}
+
 .baseInfo>.formItem>.fileBox {
     width: 48%;
     display: inline-block;
@@ -777,6 +781,10 @@
 }
 
 /* --------------银行开户订单页面----------------- */
+.containerInner .orderInfo {
+    margin-bottom: 1.875rem;
+}
+
 .orderInfo .orderItem {
     margin-bottom: .5rem;
 }

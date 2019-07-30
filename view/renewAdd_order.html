@@ -37,25 +37,50 @@
                 </div>
             </div>
     
-            <div class="partBox">
-                <p class="orderAbout_title">股东信息</p>
-                <div class="orderAbout_content">
-                    <p class="informationItem">股东身份:&nbsp;<span class="legalType"></span></p>
-                    <p class="informationItem">姓名:&nbsp;<span class="legalName"></span></p>
-                   <p class="informationItem">身份证正面:<p class="tradingPic"><img class="showImg ID_up" src='' alt=""></p></p>
-                   <p class="informationItem">身份证反面:<p class="tradingPic"><img class="showImg ID_down" src='' alt=""></p></p>
+            <div class="orderInfo">
+                <p class="title">股东信息</p>
+                <div class="content">
+                    <p class="orderItem">
+                        <span class="labTitle">股东身份<span class="colon">:</span></span>
+                        <span class="labContent legalType"></span>
+                    <p class="orderItem natureItem">
+                        <span class="labTitle">姓名<span class="colon">:</span></span>
+                        <span class="labContent legalName"></span>
+                    </p>
+                    <p class="orderItem legalItem">
+                        <span class="labTitle">公司名称<span class="colon">:</span></span>
+                        <span class="labContent legalCompanyName"></span>
+                    </p>
+                   <p class="orderItem natureItem">
+                       <span class="labTitle">身份证正面<span class="colon">:</span></span>
+                       <p class="labContent tradingPic">
+                           <img class="showImg ID_up" style="width:100%;" src='' alt="">
+                       </p>
+                    </p>
+                   <p class="orderItem natureItem">
+                       <span class="labTitle">身份证反面<span class="colon">:</span></span>
+                       <p class="labContent tradingPic">
+                           <img class="showImg ID_down" style="width:100%;" src='' alt="">
+                       </p>
+                    </p>
+                   <p class="orderItem legalItem">
+                       <span class="labTitle">营业执照<span class="colon">:</span></span>
+                       <p class="labContent tradingPic">
+                           <img class="showImg busLicenseCopy" style="width:100%;" src='' alt="">
+                       </p>
+                    </p>
                 </div>
             </div>
     
-            <div class="orderAbout receive_address receiveInfo">
-                <p class="orderAbout_title">收货信息</p>
-                <div class="orderAbout_content">
-                    <p class="userInfo">
-                        <span class="userName"></span>    
-                        <span class="userTel"></span>
+            <div class="orderInfo">
+                <p class="title">收货信息</p>
+                <div class="content">
+                    <p class="orderItem">
+                        <span class="labContent userName"></span>
+                        <span class="labContent userTel"></span>                        
                     </p>    
-                    <p class="userInfo">
-                        <span class="userAdd"></span>
+                    <p class="orderItem">
+                        <span class="labContent userAdd"></span>
                     </p>
                 </div>  
             </div>
@@ -75,6 +100,7 @@
 <script>
     $(function(){
         var orderInfoData= JSON.parse(sessionStorage.getItem('renewFormMes'));
+        console.log(orderInfoData)
         var orderId= sessionStorage.getItem('orderId');
         var targetUrl= 'http://judiaowang.cn/app/view/renewAdd_form.html';
         $('.paymentBox .payAmount').text(orderInfoData.orderAmount);
@@ -83,15 +109,24 @@
         $('.orderInfo .busSecretAcc').text(orderInfoData.busSecretAcc);
         $('.orderInfo .busSecretPwd').text(orderInfoData.busSecretPwd);
         $('.orderInfo .busLicenseCopy').attr('src',orderInfoData.busLicenseCopy);
+        $('.orderInfo .legalType').text(orderInfoData.legalType);
+        if(orderInfoData.legalType == '自然人') {
+            $('.orderInfo .natureItem').css('display','block'); 
+            $('.orderInfo .legalItem').css('display','none'); 
+            $('.orderInfo .legalName').text(orderInfoData.corpList[0].name);
+            $('.orderInfo .ID_up').attr('src',orderInfoData.corpList[0].idCardBack);
+            $('.orderInfo .ID_down').attr('src',orderInfoData.corpList[0].idCardFront);
+        }else if(orderInfoData.legalType == '法人') {
+            $('.orderInfo .legalItem').css('display','block');
+            $('.orderInfo .natureItem').css('display','none');
+            $('.legalItem .legalCompanyName').text(orderInfoData.corpList[0].companyName);
+            $('.legalItem .busLicenseCopy').attr('src',orderInfoData.legalCardFront);
+        }
+        
 
-        $('.partBox .legalType').text(orderInfoData.legalType);
-        $('.partBox .legalName').text(orderInfoData.corpList[0].name);
-        $('.partBox .ID_up').attr('src',orderInfoData.corpList[0].idCardBack);
-        $('.partBox .ID_down').attr('src',orderInfoData.corpList[0].idCardFront);
-
-        $('.receiveInfo .userName').text(orderInfoData.consignee);
-        $('.receiveInfo .userTel').text(orderInfoData.phone);
-        $('.receiveInfo .userAdd').text(orderInfoData.address);
+        $('.orderInfo .userName').text(orderInfoData.consignee);
+        $('.orderInfo .userTel').text(orderInfoData.phone);
+        $('.orderInfo .userAdd').text(orderInfoData.address);
 
         $('.paymentBox .paymentBtn').on('touchend',function(){
             weChatPay(orderId,targetUrl);
