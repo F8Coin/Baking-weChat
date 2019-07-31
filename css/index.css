@@ -661,7 +661,7 @@
     color: #999999;
 }
 
-.redPactContainer>.contentBox>.upBox>.formItem>.uesText {
+.contentBox>.baseInfo>.formItem>.uesText {
     padding: 1.25rem .75rem;
     margin-top: .5rem;
     width: 100%;
@@ -701,11 +701,11 @@
     margin-bottom: 1.875rem;
 }
 
-.redPactOrderContainer>.headerBar {
+/* .redPactOrderContainer>.headerBar {
     position: absolute;
     top: 0px;
     left: 0px;
-}
+} */
 
 .redPactOrderContainer>.orderAbout {
     position: relative;
@@ -726,6 +726,7 @@
     color: #fff;
     border-radius: 2rem;
     margin-left: auto;
+    cursor: pointer;
     background-color: #836FFF;
 }
 
@@ -764,6 +765,7 @@
     vertical-align: middle;
     color: #cccccc;
     padding-top: .375rem;
+    text-align: center;
 }
 
 .baseInfo>.formItem>.uploadBox .typeText .requiredFlag{

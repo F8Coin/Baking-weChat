@@ -172,8 +172,8 @@
             // 判断股东类型
             if($('.baseInfo .stockholderType .checkedItem').text() == '自然人') {
                 var stockholderName= $('.partBox .formItem .stockholderName').val();
-                var stockholderID_up= $('.partBox .uploadBox .stockholderID_up .showImg').attr('src');
-                var stockholderID_down= $('.partBox .uploadBox .stockholderID_down .showImg').attr('src');
+                var stockholderID_up= $('.partBox .stockholderID_up .showImg').attr('src');
+                var stockholderID_down= $('.partBox .stockholderID_down .showImg').attr('src');
                 var orderInfo= {
                     "address": receiverAdd,
                     "busLicenseCopy": other1_img,
@@ -225,7 +225,7 @@
 
             }else if($('.baseInfo .stockholderType .checkedItem').text() == '法人') {
                 var stockholderCompany= $('.partBox .formItem .stockholderCompany').val();
-                var stockholder_other= $('.partBox .uploadBox .stockholder_other .showImg').attr('src');
+                var stockholder_other= $('.partBox .stockholder_other .showImg').attr('src');
                 var orderInfo= {
                     "address": receiverAdd,
                     "busLicenseCopy": other1_img,
@@ -279,8 +279,8 @@
 
             var url_order= baseUrl+'/api/seaRenew/createOrder';
             var type_order= 'post';
-            // var targetUrl= 'http://judiaowang.cn/app/view/renewAdd_order.html';
-            var targetUrl= './renewAdd_order.html';
+            var targetUrl= 'http://judiaowang.cn/app/view/renewAdd_order.html';
+            // var targetUrl= './renewAdd_order.html';
             orderInfo= JSON.stringify(orderInfo);
             orderInfoData= JSON.stringify(orderInfoData);
             sessionStorage.setItem('renewFormMes',orderInfoData);

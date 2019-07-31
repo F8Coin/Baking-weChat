@@ -10,33 +10,66 @@
     <link rel="stylesheet" href="../css/index.css">
 </head>
 <body>
-    <div class="sealOrderContainer sealContainer redPactOrderContainer">
+    <div class="containerOut">
         <div class="headerBar"></div>
-        <div class="orderAbout seal_information">
-            <p class="orderAbout_title">红本合同信息</p>
-            <div class="orderAbout_content">
-                <p class="informationItem">承租人性质:&nbsp;<span class="tenant text">法人</span></p>
-                <p class="informationItem legalItem">法人名称:&nbsp;<span class="legalName text"></span></p>
-                <p class="informationItem companyItem">公司名称:&nbsp;<span class="companyName text"></span></p>
-                <p class="informationItem">所属地区:&nbsp;<span class="zoom text">龙华区</span></p>
-                <p class="informationItem">面积时长:&nbsp;<span class="type text">6m²/3月</span></p>
-                <p class="informationItem">备注用途:&nbsp;<span class="remarkText text">变更</span></p>  
-                <p class="informationItem">是否需要租金发票:&nbsp;<span class="invoice text">否</span></p>                  
-                <p class="informationItem">身份证正面:<p class="tradingPic"><img class="ID_up" src="" alt=""></p></p>    
-                <p class="informationItem">身份证反面:<p class="tradingPic"><img class="ID_down" src="" alt=""></p></p>                                                
+        <div class="contentBox containerInner">
+            <div class="orderInfo">
+                <p class="title">红本合同信息</p>
+                <div class="content">
+                    <p class="orderItem">
+                        <span class="labTitle">承租人性质<span class="colon">:</span></span>
+                        <span class="labContent tenant text"></span>
+                    </p>
+                    <p class="orderItem legalItem">
+                        <span class="labTitle">法人名称<span class="colon">:</span></span>
+                        <span class="labContent legalName text"></span>
+                    </p>
+                    <p class="orderItem companyItem">
+                        <span class="labTitle">公司名称<span class="colon">:</span></span>
+                        <span class="labContent companyName text"></span>
+                    </p>
+                    <p class="orderItem">
+                        <span class="labTitle">所属地区<span class="colon">:</span></span>
+                        <span class="labContent zoom text"></span>
+                    </p>
+                    <p class="orderItem">
+                        <span class="labTitle">面积时长<span class="colon">:</span></span>
+                        <span class="labContent type text"></span>
+                    </p>
+                    <p class="orderItem">
+                        <span class="labTitle">备注用途<span class="colon">:</span></span>
+                        <span class="labContent remarkText text"></span>
+                    </p>  
+                    <p class="orderItem">
+                        <span class="labTitle">是否需要租金发票<span class="colon">:</span></span>
+                        <span class="labContent invoice text"></span>
+                    </p>                  
+                    <div class="orderItem">
+                        <span class="labTitle">身份证正面<span class="colon">:</span></span>
+                        <p class="labContent tradingPic">
+                            <img class="showImg ID_up" src='' alt="">
+                        </p>
+                    </div>    
+                    <div class="orderItem">
+                        <span class="labTitle">身份证反面<span class="colon">:</span></span>
+                        <p class="labContent tradingPic">
+                            <img class="showImg ID_down" src='' alt="">
+                        </p>
+                    </div>                                                
+                </div>
             </div>
-        </div>
-        <div class="orderAbout receive_address">
-            <p class="orderAbout_title">收货信息</p>
-            <div class="orderAbout_content">
-                <p class="userInfo">
-                    <span class="userName">张晓东</span>    
-                    <span class="userTel">18603059551</span>
-                </p>    
-                <p class="userInfo">
-                    <span class="userAdd">广东省深圳市龙华新区东环一路壹城中心E区2栋909</span>
-                </p>
-            </div>  
+            <div class="orderInfo">
+                <p class="title">收货信息</p>
+                <div class="content">
+                    <p class="orderItem">
+                        <span class="labContent userName">张晓东</span>    
+                        <span class="labContent userTel">18603059551</span>
+                    </p>    
+                    <p class="orderItem">
+                        <span class="labContent userAdd">广东省深圳市龙华新区东环一路壹城中心E区2栋909</span>
+                    </p>
+                </div>  
+            </div>
         </div>
     </div>
     <div class="paymentBox clearfix">
@@ -57,26 +90,26 @@
         var targetUrl= pageUrl+'/redPact_form.html';
         var redOrderAbout = JSON.parse(sessionStorage.getItem('redFormMes')) ;
         console.log(redOrderAbout);
-        $('.informationItem .tenant').text(redOrderAbout.tenantText);
-        $('.informationItem .legalName').text(redOrderAbout.legalName);
-        $('.informationItem .companyName').text(redOrderAbout.companyName);
-        $('.informationItem .zoom').text(redOrderAbout.zoomText);
-        $('.informationItem .type').text(redOrderAbout.acreageText);
-        $('.informationItem .remarkText').text(redOrderAbout.postscript);
-        $('.informationItem .invoice').text(redOrderAbout.invoiceText);
-        $('.userInfo .userName').text(redOrderAbout.consignee);
-        $('.userInfo .userTel').text(redOrderAbout.phone);
-        $('.userInfo .userAdd').text(redOrderAbout.address);
+        $('.orderItem .tenant').text(redOrderAbout.tenantText);
+        $('.orderItem .legalName').text(redOrderAbout.legalName);
+        $('.orderItem .companyName').text(redOrderAbout.companyName);
+        $('.orderItem .zoom').text(redOrderAbout.zoomText);
+        $('.orderItem .type').text(redOrderAbout.acreageText);
+        $('.orderItem .remarkText').text(redOrderAbout.postscript);
+        $('.orderItem .invoice').text(redOrderAbout.invoiceText);
+        $('.orderItem .userName').text(redOrderAbout.consignee);
+        $('.orderItem .userTel').text(redOrderAbout.phone);
+        $('.orderItem .userAdd').text(redOrderAbout.address);
         $('.payInfo .payAmount').text(redOrderAbout.orderAmount);
 
-        $('.ID_up').attr('src',redOrderAbout.legalCardFront);
-        $('.ID_down').attr('src',redOrderAbout.legalCardBack)
+        $('.orderItem .labContent .ID_up').attr('src',redOrderAbout.legalCardFront);
+        $('.orderItem .labContent .ID_down').attr('src',redOrderAbout.legalCardBack)
         if(redOrderAbout.legalName) {
-            $('.redPactOrderContainer .legalItem').css('display','block')
-            $('.redPactOrderContainer .companyItem').css('display','none')
+            $('.containerOut .legalItem').css('display','block')
+            $('.containerOut .companyItem').css('display','none')
         }else {
-            $('.redPactOrderContainer .legalItem').css('display','none')
-            $('.redPactOrderContainer .companyItem').css('display','block')
+            $('.containerOut .legalItem').css('display','none')
+            $('.containerOut .companyItem').css('display','block')
         }
 
         $('.paymentBox .paymentBtn').on('touchend',function(){
