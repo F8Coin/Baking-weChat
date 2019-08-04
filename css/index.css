@@ -1,42 +1,3 @@
-/* --------------提取公共部分----------------- */
-.layOut {
-    padding: 1.875rem 1.25rem 7.5rem;
-}
-
-.layOut .frame .formItem .remarkTitle {
-    padding-bottom: .5rem;
-} 
-
-.layOut .tipBox {
-    margin-top: 1.875rem;
-    margin-bottom: 7.5rem;
-}
-
-.frame {
-    padding: 1.25rem;
-    border: 1px solid #e7e7e7;
-    background-color: rgba(255, 255, 255, 1);
-    border-radius: .75rem;
-    margin-top: 1.875rem;
-}
-
-.frame .title {
-    font-size: 1.375rem;
-    margin-bottom: .5rem;
-}
-
-.frame .formItem .labTitle {
-    font-size: 1.125rem;
-}
-
-.frame .formItem .textarea {
-    width: 100%;
-    height: 6.25rem;
-    padding: .75rem;
-    box-sizing: border-box;
-    border: 1px solid #e7e7e7;
-}
-
 /* 首页服务列表页面 */
 
 .containerOut .serverList {
@@ -61,6 +22,7 @@
     border: .0625rem solid #e7e7e7;
     text-align: center;
     border-radius: .375rem;
+    background-color: #fff;
 }
 
 .contentBox>ul>li.lastItem {
@@ -317,87 +279,8 @@
 
 /* --------------刻章订单页面----------------- */
 
-.sealOrderContainer {
-    height: 100%;
-    padding: 1.875rem;
-    background-color: rgba(250, 250, 250, 1);
-}
-
-.sealOrderContainer>.headerBar {
-    position: absolute;
-    top: 0rem;
-    left: 0rem;
-}
-
-.sealOrderContainer>.orderAbout {
-    position: relative;
-}
-
-.sealOrderContainer>.orderAbout {
-    padding: 1.25rem;
-    border: 1px solid #e7e7e7;
-    border-radius: .375rem;
-    background-color: #fff;
-    margin-bottom: 1.25rem;
-} 
-
-.containerOut>.orderAbout>.orderAbout_title {
-    font-size: 1.375rem;
-    margin-bottom: .5rem;
-}
-
-.seal_information>.orderAbout_content>.informationItem {
-    font-size: 1rem;
-    letter-spacing: .1875rem;
-    color: #999999;
-    line-height: 1.5rem;
-}
-
-.seal_information>.orderAbout_content>.informationItem>.companyName,
-.informationItem>.ID,
-.informationItem>.zoom,
-.informationItem>.remarkText {
-    letter-spacing: 0rem;
-    color: #000000;
-}
-
-.seal_information>.orderAbout_content>.tradingPic>img {
-    height: 8.75rem;
-    width: 50%;
-}
-
-
-.seal_goods .sealListBox {
+.orderItem .showImg {
     width: 100%;
-}
-
-.seal_goods .sealListBox .sealItem {
-    height: 3.75rem;
-}
-
-.seal_goods .sealListBox .sealItem>td {
-    width: 25%;
-    font-size: 1rem;
-    text-align: center;
-}
-
-.seal_goods .sealListBox .sealItem>.sealIcon>img {
-    height: 2.5rem;
-}
-
-.seal_goods .sealListBox .sealItem>.sealName {
-    color: #999999;
-    
-}
-
-.seal_goods .sealListBox .sealItem>.sealAccount {
-    font-weight: 700;
-}
-
-.seal_goods .sealListBox .sealItem>.sealPrice {
-    font-weight: 700;
-    color: red;
-    text-align: right; 
 }
 
 .tipBox {
@@ -407,9 +290,9 @@
     background: linear-gradient(to top right, #40E0D0, #836FFF);
 }
 
-.sealContainer>.tipBox {
+/* .sealContainer>.tipBox {
     margin-bottom: 3.75rem;
-}
+} */
 
 .tipBox>.tipTitle {
     text-align: center;
@@ -700,12 +583,6 @@
 .redPactOrderContainer {
     margin-bottom: 1.875rem;
 }
-
-/* .redPactOrderContainer>.headerBar {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-} */
 
 .redPactOrderContainer>.orderAbout {
     position: relative;

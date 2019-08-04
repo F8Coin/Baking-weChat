@@ -17,6 +17,20 @@ function getArea(url,type,busModId,callback) {
     })   
 }
 
+/* --------------获取短信验证码----------------- */
+function getCode(mobile) {
+    $.ajax({
+        type: 'post',
+        url: baseUrl+'/api/sms/getCode',
+        data: {"phone":mobile},
+        success: function(res) {
+            if(res.code == '500') {
+                layer.msg(res.msg);
+            }
+        }
+    })
+}
+
 
 /* --------------文件上传----------------- */
 function uploadFile(inputEle,containerEle) {

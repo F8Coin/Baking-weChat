@@ -78,10 +78,19 @@
     var time= 60;
     var clearId;
     $('.getCodeBtn').on('click',function(){
-        $(this).attr('disabled',"true");
-        $(this).text(time+'s再获取');
-        clearId= setInterval(timeDown,1000);
-        console.log(clearId);
+        var mobile= $('.formItem .mobile').val(); 
+        if(mobile == ''){ //验证手机号码
+            layer.msg('请输入手机号码');
+            return;
+        }else if(!(/^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/.test(mobile))) {
+            layer.msg('请填写正确的手机号码');
+            return;
+        }else {
+            $(this).attr('disabled',"true");
+            $(this).text(time+'s再获取');
+            clearId= setInterval(timeDown,1000);
+            getCode(mobile);
+        }
     })
 
     function timeDown() {
@@ -96,8 +105,6 @@
     }
     // ------------获取短信验证码--------------
     $('.regBtn').on('touchend',function(e){
-        // var localhostPaht = getRootPath_web();
-        // console.log(localhostPaht);
         var companyName= $('.formItem .companyName').val();
         var companyAdd= $('.formItem .companyAdd').val();
         var userName= $('.formItem .userName').val();
@@ -144,24 +151,23 @@
             return;
         }
 
-        // if(code == ''){ //验证短信验证码
-        //     layer.msg('请输入验证码');
-        //     return;
-        // }
+        if(code == ''){ //验证短信验证码
+            layer.msg('请输入验证码');
+            return;
+        }
 
         $.ajax({
             type: 'post',
             url: baseUrl+'/api/register/register',
-            // url: 'http://192.168.1.42:8080/api/register/register',
             data: partnerRegData,
             contentType: "application/json",        
             success: function(data){
                 if(data.code == 0) {
                     layer.msg('注册成功',function(){
-                        window.location.href= 'http://judiaowang.cn/app/view/partnerLogin.html'
+                        window.location.href= 'http://judiaowang.cn/app/view/partnerLogin.html';
                     });
                 }else {
-                    layer.msg(JSON.parse(data).msg)
+                    layer.msg(data.msg);
                 }
                 
             }

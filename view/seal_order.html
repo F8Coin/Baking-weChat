@@ -68,6 +68,7 @@
 <script src="../js/index.js"></script>
 <script>
     $(function(){
+        location.replace();
         var sealOrderAbout = JSON.parse(localStorage.getItem('sealFormMes')) ;
         $('.informationItem .companyName').text(sealOrderAbout.companyName);
         $('.informationItem .ID').text(sealOrderAbout.personID);
@@ -100,7 +101,6 @@
         }else {
             $('.payInfo .payAmount').text(orderAmount)
         }
-
         $('.paymentBtn').on('touchend', function(){
             window.location.href=  baseUrl+'/api/pay/create?orderId='+localStorage.getItem('sealOrderId')+'&returnUrl=http://judiaowang.cn/app/index.html&token='+JSON.parse(localStorage.getItem('loginData')).token
             // window.location.href= test1+'/api/pay/create?orderId='+localStorage.getItem('sealOrderId')+'&returnUrl=http://judiaowang.cn/app/weChat/index.html&token='+JSON.parse(localStorage.getItem('loginData')).token

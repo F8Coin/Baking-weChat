@@ -42,9 +42,20 @@
     var time= 60;
     var clearId;
     $('.getCodeBtn').on('click',function(){
-        $(this).attr('disabled',"true");
-        $(this).text(time+'s再获取');
-        clearId= setInterval(timeDown,1000);
+        var mobile= $('.formItem .mobile').val();  
+        // console.log(mobile);  
+        if(mobile == ''){ //验证手机号码
+            layer.msg('请输入手机号码');
+            return;
+        }else if(!(/^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/.test(mobile))) {
+            layer.msg('请填写正确的手机号码');
+            return;
+        }else {
+            $(this).attr('disabled',"true");
+            $(this).text(time+'s再获取');
+            clearId= setInterval(timeDown,1000);
+            getCode(mobile);
+        }
     })
     function timeDown() {
         if(time == 0) {
@@ -65,7 +76,8 @@
         var password= $('.formItem .password').val();
         var partnerLog= {
             mobile: mobile,
-            password: password	
+            password: password,
+            smsCode: code	
         }
         partnerLog= JSON.stringify(partnerLog);
 
@@ -78,10 +90,10 @@
             return;
         }
 
-        // if(code == ''){ //验证短信验证码
-        //     layer.msg('请输入短信验证码');
-        //     return;
-        // }
+        if(code == ''){ //验证短信验证码
+            layer.msg('请输入短信验证码');
+            return;
+        }
 
         if(password == ''){ //验证密码
             layer.msg('请输入密码');
