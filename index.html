@@ -85,7 +85,7 @@
             }
         })
 
-        // 判断是否登陆
+        // 进入服务模块判断登录
         $('#listBox').on('click','li>a',function(){
             if(JSON.stringify(localStorage.getItem('loginData')) == "null") {
                 window.location.href= 'http://judiaowang.cn/app/view/partnerLogin.html'

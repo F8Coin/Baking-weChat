@@ -10,17 +10,17 @@
     <link rel="stylesheet" href="../css/index.css">
 </head>
 <body>
-    <div class="newsContainer sealContainer commonBox redPactContainer containerOut">
+    <div class="newsContainer containerOut">
         <div class="headerBar"></div>
         <div class="contentBox containerInner">
             <div class="upBox baseInfo">
-                <p class="title">登报信息&nbsp;<span>(深圳报)</span></p>
+                <p class="title">登报信息<span>(深圳报)</span></p>
                 <div class="formItem">
-                    <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;公司名称</p>
+                    <p class="labTitle"><span class="isRequired">*</span>公司名称</p>
                     <input class="placeholderText companyName" type="text" placeholder="请输入公司名称">
                 </div>
                 <div class="formItem">
-                    <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;登报类型</p>
+                    <p class="labTitle"><span class="isRequired">*</span>登报类型</p>
                     <div class="content clearfix">
                         <label for="cancellation" class="fl optionAbout optionType">
                             <p class="flag">
@@ -41,27 +41,27 @@
                     </div>
                 </div>
                 <!-- <div class="formItem">
-                    <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;清算负责人电话</p>
+                    <p class="labTitle"><span class="isRequired">*</span>清算负责人电话</p>
                     <input class="placeholderText companyName" type="text" placeholder="请输入清算负责人电话">
                 </div>
                 <div class="formItem upload_ID clearfix uploadBox">
-                    <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;上传附件</p>
+                    <p class="labTitle"><span class="isRequired">*</span>上传附件</p>
                     <div class="picUp ID_img fl uploadIcon" style="position:relative">
                         <input class="idImg uploadInput" type="file" style="opacity:0;width:100%;height:100%;position:absolute;left:0px;" onchange="uploadFile($(this),$(this).parent())">
                         <img src="" alt="" class="showImg" style="display:block;margin:0 auto; height:100%;">
-                        <span class="tipText"><span style="color:#CD0000;vertical-align: middle;">*</span>&nbsp;变更(备案)通知书</span>
+                        <span class="tipText"><span style="color:#CD0000;vertical-align: middle;">*</span>变更(备案)通知书</span>
                     </div>
                     <div class="picDown ID_img fr uploadIcon" style="position:relative">
                         <input class="idImg uploadInput" type="file" style="opacity:0;width:100%;height:100%; position:absolute;left:0px;" onchange="uploadFile($(this),$(this).parent())">
                         <img src="" alt="" class="showImg" style="display:block;margin:0 auto; height:100%;">
-                        <span class="tipText"><span style="color:#CD0000;vertical-align: middle;">*</span>&nbsp;营业执照</span>
+                        <span class="tipText"><span style="color:#CD0000;vertical-align: middle;">*</span>营业执照</span>
                     </div>
                 </div> -->
             </div>
-            <div class="missFileBox frame">
+            <div class="missFileBox frame baseInfo">
                 <p class="title">遗失资料信息</p>
                 <div class="formItem">
-                    <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;选择遗失的资料</p>
+                    <p class="labTitle"><span class="isRequired">*</span>选择遗失的资料</p>
                     <table class="missFileTab">
                         <tr>
                             <td>
@@ -126,24 +126,24 @@
                     </table>
                 </div>
             </div>
-            <div class="frame">
+            <div class="frame baseInfo">
                 <div class="formItem">
-                    <p class="title">遗失登报预览&nbsp;<a href="javascript:void(0)">查看预览</a></p>
+                    <p class="title">遗失登报预览<a href="javascript:void(0)">查看预览</a></p>
                     <textarea name="" id="textarea" cols="" rows="" class="textarea" placeholder="请输入登报文字"></textarea>
                 </div>
             </div>
             <div class="downBox receiveInfo">
                 <p class="title">收货信息</p>
                 <div class="formItem">
-                    <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;联系人</p>
+                    <p class="labTitle"><span class="isRequired">*</span>联系人</p>
                     <input class="placeholderText receiverName" type="text" placeholder="请输入联系人">
                 </div>
                 <div class="formItem">
-                    <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;手机号码</p>
+                    <p class="labTitle"><span class="isRequired">*</span>手机号码</p>
                     <input class="placeholderText receiverTel" type="text" placeholder="请输入手机号码">
                 </div>
                 <div class="formItem">
-                    <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;收货地址</p>
+                    <p class="labTitle"><span class="isRequired">*</span>收货地址</p>
                     <input class="placeholderText receiverAdd" type="text" placeholder="请输入收货地址">
                 </div>
                 <div class="formItem">

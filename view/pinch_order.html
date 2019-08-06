@@ -65,8 +65,8 @@
         var targetUrl= pageUrl+'/pinch_form.html';
         var orderId= sessionStorage.getItem('orderId');
         var orderInfoData= JSON.parse(sessionStorage.getItem('pinchFormMes'));
-        $('.pinchOrderContainer .companyName').text(orderInfoData.companyName);
-        $('.pinchOrderContainer .changePlan').text(orderInfoData.changeType);
+        $('.orderInfo .companyName').text(orderInfoData.companyName);
+        $('.orderInfo .changePlan').text(orderInfoData.changeType);
         $('.paymentBox .payAmount').text(orderInfoData.totalPrice);
         for (let i = 0; i < orderInfoData.goodsList.length; i++) {
             var goodsItem= '<tr class="sealItem">'+

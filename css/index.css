@@ -759,6 +759,17 @@
 .newsContainer>.contentBox .optionType>.flag {
     padding-top: .75rem;
     padding-left: .5rem;
+    margin-bottom: .5rem;
+}
+
+.newsContainer>.contentBox .optionType>.flag>.icon {
+    padding-right: .75rem;
+    width: 1.5rem;
+}
+
+.newsContainer>.contentBox .optionType>.flag>.icon,
+.newsContainer>.contentBox .optionType>.flag>.text {
+    vertical-align: middle;
 }
 
 .newsContainer>.contentBox .optionType>.price {
