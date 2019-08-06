@@ -41,9 +41,9 @@
         // 获取轮播图/九宫格
         $.ajax({
             url: baseUrl+'/api/index/index',
-            // url: test1+'/api/index/index',
             type: 'post',
             success: function(res){
+                // 遍历服务列表
                 for (let i = 0; i < res.data.list.length; i++) {
                     var serveItem= '<li>'+
                                     '<a href="javascript:void(0)" hrefs='+res.data.list[i].link+'>'+
@@ -52,6 +52,7 @@
                                 '</li>'                         
                     $('#listBox').append(serveItem);
                 }
+                // 服务列表布局
                 if(res.data.list.length % 3 == 0) {
                         $('.contentBox>ul').attr('justifyContent','spaceBetween')
                 }else if(res.data.list.length % 3 == 1) {
@@ -65,7 +66,7 @@
                     $('#listBox').append(otherItem);
                     $('#listBox .lastItem').attr('visibility','hidden');
                 }
-
+                // 轮播图
                 for (let i = 0; i < res.data.banner.length; i++) {
                     if(i == 0) {
                         var bannerImg=  '<div class="item active">'+
@@ -85,7 +86,7 @@
         })
 
         // 判断是否登陆
-        $('#listBox').on('touchend','li>a',function(){
+        $('#listBox').on('click','li>a',function(){
             if(JSON.stringify(localStorage.getItem('loginData')) == "null") {
                 window.location.href= 'http://judiaowang.cn/app/view/partnerLogin.html'
                 return false;

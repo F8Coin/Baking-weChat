@@ -18,17 +18,53 @@ function getArea(url,type,busModId,callback) {
 }
 
 /* --------------获取短信验证码----------------- */
-function getCode(mobile) {
-    $.ajax({
-        type: 'post',
-        url: baseUrl+'/api/sms/getCode',
-        data: {"phone":mobile},
-        success: function(res) {
-            if(res.code == '500') {
-                layer.msg(res.msg);
+function getCode() {
+    var codeNum= false;
+    var time= 60;
+    var clearId; 
+    var mobile= $('.formItem .mobile').val();
+    if(mobile == ''){ //验证手机号码
+        layer.msg('请输入手机号码');
+        return;
+    }else if(!(/^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/.test(mobile))) {
+        layer.msg('请填写正确的手机号码');
+        return;
+    }else {
+        $('.formItem .getCodeBtn').attr('disabled',"true");
+        clearId= setInterval(timeDown,1000);
+        $.ajax({
+            type: 'post',
+            url: baseUrl+'/api/sms/getCode',
+            data: {"phone":mobile},
+            success: function(res) {
+                if(res.code == '500') {
+                    layer.msg(res.msg);
+                    codeNum= true;
+                }else if(code == '200') {
+                    $('.formItem .getCodeBtn').text(time+'s再获取');
+                }
+            }
+        })
+        // 倒计时函数
+        function timeDown() {
+            if(codeNum == false) {
+                if(time == 0) {
+                    $('.formItem>.getCodeBtn').removeAttr('disabled');
+                    $('.formItem>.getCodeBtn').text('获取验证码');
+                    clearInterval(clearId);
+                    time= 60
+               }else {
+                    time--
+                    $('.formItem>.getCodeBtn').text(time+'s再获取');
+               }
+            }else {
+                $('.formItem>.getCodeBtn').removeAttr('disabled');
+                $('.formItem>.getCodeBtn').text('获取验证码');
+                clearInterval(clearId);
             }
         }
-    })
+    }
+    
 }
 
 

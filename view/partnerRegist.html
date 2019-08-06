@@ -11,21 +11,21 @@
     <link rel="stylesheet" href="../css/userInfo.css">
 </head>
 <body>
-    <div class="partnerRegist sealContainer containerOut">
+    <div class="partnerRegist containerOut">
         <div class="headerBar"></div>
         <div class="contentBox containerInner">
-            <div class="upBox baseInfo">
+            <div class="baseInfo">
                 <p class="title">用户信息</p>
                 <div class="formItem">
-                    <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;公司名称</p>
+                    <p class="labTitle"><span class="isRequired">*</span>公司名称</p>
                     <input class="placeholderText companyName" type="text" placeholder="请输入公司名称">
                 </div>
                 <div class="formItem">
-                    <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;公司地址</p>
+                    <p class="labTitle"><span class="isRequired">*</span>公司地址</p>
                     <input class="placeholderText companyAdd" type="text" placeholder="请输入公司地址">
                 </div>
                 <div class="formItem">
-                    <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;姓名</p>
+                    <p class="labTitle"><span class="isRequired">*</span>姓名</p>
                     <input class="placeholderText userName" type="text" placeholder="请输入姓名">
                 </div>
                 <div class="formItem">
@@ -37,34 +37,49 @@
                     <textarea class="remarkText business" name="" id="" cols="" rows="" placeholder="简要描述您的优势业务(选填)"></textarea>
                 </div>
             </div>
-            <div class="centerBox upBox frame baseInfo">
+            <div class="baseInfo">
                 <p class="title">下载合同,填写盖章上传</p>
-                <div class="formItem">
-                    <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;上传电子合同<a href="../static/contract.docx" download="contract.docx">(电子合同模板下载)</a></p>
+                <div class="formItem clearfix">
+                    <p class="labTitle"><span class="isRequired">*</span>上传电子合同<a href="../static/contract.docx" download="contract.docx">(电子合同模板下载)</a></p>               
                     <span class="remarkText">下载合同,打印填写并盖章,按照序号将合同上传</span>
-                    <div class="uploadBox uploadIcon">
-                        <input type="file" class="uploadInput" style="opacity:0;position:absolute;width:13.125rem; height:8.75rem;" onchange="uploadFile($(this),$(this).parent())">
-                        <img src="" alt="" class="showImg" style="display:block;margin:0 auto; height:100%;width:100%">
+                    <div class="uploadBox">
+                        <input type="file" class="uploadInput" onchange="uploadFile($(this),$(this).parent())">
+                        <img src="" alt="" class="showImg">
                     </div>
+                    <!-- <div class="uploadBox fileBox fl contract1">
+                        <input class="uploadInput" type="file" onchange="uploadFile($(this),$(this).parent())">
+                        <img src="" alt="" class="showImg">
+                        <p class="typeText">合同第一页<span class="requiredFlag">*</span></p>
+                    </div>
+                    <div class="uploadBox fileBox fr contract2">
+                        <input class="uploadInput" type="file" onchange="uploadFile($(this),$(this).parent())">
+                        <img src="" alt="" class="showImg">
+                        <p class="typeText">合同第二页<span class="requiredFlag">*</span></p>
+                    </div>
+                    <div class="uploadBox fileBox fl contract3">
+                        <input class="uploadInput" type="file" onchange="uploadFile($(this),$(this).parent())">
+                        <img src="" alt="" class="showImg">
+                        <p class="typeText">合同第三页<span class="requiredFlag">*</span></p>
+                    </div> -->
                 </div>
             </div>
-            <div class="downBox receiveInfo">
+            <div class="receiveInfo">
                 <p class="title">手机验证</p>
                 <div class="formItem">
-                    <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;手机号码</p>
+                    <p class="labTitle"><span class="isRequired">*</span>手机号码</p>
                     <input class="placeholderText mobile" type="text" placeholder="此手机号码将用作主账号登陆">
                 </div>
                 <div class="formItem" style="position:relative">
-                    <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;验证码</p>
+                    <p class="labTitle"><span class="isRequired">*</span>验证码</p>
                     <input class="placeholderText code" type="text" placeholder="请输入验证码">
-                    <button style="position:absolute;right:0px;bottom:18px;border-radius:21px;" class="getCodeBtn">获取验证码</button>
+                    <button class="getCodeBtn">获取验证码</button>
                 </div>
                 <div class="formItem">
-                    <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;密码</p>
+                    <p class="labTitle"><span class="isRequired">*</span>密码</p>
                     <input class="placeholderText password" type="password" placeholder="请输入密码">
                 </div>
             </div>
-            <a href="javascript:void(0)" class="weui_btn weui_btn_primary nextBtn regBtn">注册</a>
+            <a href="javascript:void(0)" class="weui_btn weui_btn_primary regBtn">注册</a>
         </div>
     </div>
 </body>
@@ -75,35 +90,12 @@
 <script>
     var baseUrl= 'http://judiaowang.cn/platform';
     // ------------获取短信验证码--------------
-    var time= 60;
-    var clearId;
     $('.getCodeBtn').on('click',function(){
-        var mobile= $('.formItem .mobile').val(); 
-        if(mobile == ''){ //验证手机号码
-            layer.msg('请输入手机号码');
-            return;
-        }else if(!(/^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/.test(mobile))) {
-            layer.msg('请填写正确的手机号码');
-            return;
-        }else {
-            $(this).attr('disabled',"true");
-            $(this).text(time+'s再获取');
-            clearId= setInterval(timeDown,1000);
-            getCode(mobile);
-        }
+        getCode();
     })
 
-    function timeDown() {
-        if(time == 0) {
-            $('.formItem>.getCodeBtn').removeAttr('disabled');
-            $('.formItem>.getCodeBtn').text('获取验证码');
-            clearInterval(clearId);
-       }else {
-            time--
-            $('.formItem>.getCodeBtn').text(time+'s再获取');
-       }
-    }
     // ------------获取短信验证码--------------
+
     $('.regBtn').on('touchend',function(e){
         var companyName= $('.formItem .companyName').val();
         var companyAdd= $('.formItem .companyAdd').val();
@@ -114,11 +106,16 @@
         var code= $('.formItem .code').val(); 
         var password= $('.formItem .password').val();
         var bargain= $('.uploadBox .showImg').attr('src');
+        // var contract1= $('.contract1 .showImg').attr('src');
+        // var contract2= $('.contract2 .showImg').attr('src');
+        // var contract3= $('.contract3 .showImg').attr('src');
+        // var contractList= [contract1,contract2,contract3]
         var partnerReg = {
             address: companyAdd,
             username: userName,
             bargain: bargain, // 合同url地址
             business: business,
+            // business: contractList,
             mobile: mobile,
             name: companyName,
             password: password,

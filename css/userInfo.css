@@ -82,17 +82,32 @@
 }
 
 /* -----------partner注册页面------------- */
-.partnerRegist>.contentBox>.centerBox .remarkText {
+.partnerRegist>.contentBox>.baseInfo .remarkText {
     font-size: .75rem;
     color: #999999;
 } 
 
-.partnerRegist>.contentBox .downBox .getCodeBtn {
+.receiveInfo .getCodeBtn {
     height: 2.625rem;
     width: 7.5rem;
     padding: .375rem 0rem;
     color: #fff;
     background-color: #836FFF;
+    position:absolute;
+    right:0px;
+    bottom:18px;
+    border-radius:21px;
+}
+
+.regBtn {
+    margin-top: 2.8125rem;   
+    margin-bottom: 1.875rem;
+    background-color: #836FFF;
+}
+
+a.regBtn:active {
+    color: #fff !important;
+    background-color: #836FFF !important;
 }
 /* -----------partner登录页面------------- */
 .partnerLogin {
@@ -143,6 +158,10 @@
     padding: .375rem 0rem;
     color: #fff;
     background-color: #836FFF;
+    position:absolute;
+    right:0px;
+    bottom:8px;
+    border-radius:21px;
 }
 /* -----------partner个人中心------------- */
 .partnerCenter .basic {

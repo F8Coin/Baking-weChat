@@ -12,45 +12,57 @@
 </head>
 
 <body>
-    <div class="sealContainer sealOrderContainer">
+    <div class="containerOut">
         <div class="headerBar"></div>
-        <div class="orderAbout seal_information">
-            <p class="orderAbout_title">刻章信息</p>
-            <div class="orderAbout_content">
-                <p class="informationItem">公司名称:&nbsp;<span class="companyName"></span></p>
-                <!-- <p class="informationItem">法人身份证号码:&nbsp;<span class="ID"></span></p> -->
-                <p class="informationItem">办理区域:&nbsp;<span class="zoom"></span></p>
-                <p class="informationItem">备注:&nbsp;<span class="remarkText"></span></p>  
-               <p class="informationItem">营业执照:<p class="tradingPic"><img class="showImg" src='' alt=""></p></p>
+        <div class="containerInner">
+            <div class="orderInfo">
+                <p class="title">刻章信息</p>
+                <div class="content">
+                    <p class="orderItem">
+                        <span class="labTitle">公司名称<span class="colon">:</span></span>
+                        <span class="labContent companyName"></span>
+                    </p>
+                    <p class="orderItem">
+                        <span class="labTitle">办理区域<span class="colon">:</span></span>
+                        <span class="labContent zoom"></span>
+                    </p>
+                    <p class="orderItem">
+                        <span class="labTitle">备注<span class="colon">:</span></span>
+                        <span class="labContent remarkText"></span>
+                    </p>  
+                   <p class="orderItem">
+                        <span class="labTitle">营业执照<span class="colon">:</span></span>
+                        <p class="tradingPic"><img class="showImg" src='' alt=""></p></p>
+                </div>
+    
             </div>
-
-        </div>
-        <div class="orderAbout seal_goods">
-            <p class="orderAbout_title">选购印章</p>
-            <div class="orderAbout_content">
-                <table class="sealListBox">
-                    <tbody id="sealList">
-
-                    </tbody>
-                </table>
+            <div class="orderInfo">
+                <p class="title">选购印章</p>
+                <div class="orderInfo">
+                    <table class="sealListBox">
+                        <tbody id="sealList">
+    
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
-        <div class="orderAbout receive_address">
-            <p class="orderAbout_title">收货信息</p>
-            <div class="orderAbout_content">
-                <p class="userInfo">
-                    <span class="userName"></span>    
-                    <span class="userTel"></span>
-                </p>    
-                <p class="userInfo">
-                    <span class="userAdd"></span>
-                </p>
-            </div>  
-        </div>
-        <div class="tipBox">
-            <p class="tipTitle">温馨提示</p>
-            <p class="tipText">1、工作日下午五点前下的刻章订单，次日安排寄出</p>
-            <p class="tipText">2、因政策原因，聚雕网只承接3个月之内新注册公司的刻章业务，请您核实公司注册日期，暂不承接变更及遗失补刻，以免产生不必要的退款。</p>
+            <div class="orderInfo">
+                <p class="title">收货信息</p>
+                <div class="content">
+                    <p class="orderItem">
+                        <span class="labContent userName"></span>    
+                        <span class="labContent userTel"></span>
+                    </p>    
+                    <p class="orderItem">
+                        <span class="labContent userAdd"></span>
+                    </p>
+                </div>  
+            </div>
+            <div class="tipBox">
+                <p class="tipTitle">温馨提示</p>
+                <p class="tipText">1、工作日下午五点前下的刻章订单，次日安排寄出</p>
+                <p class="tipText">2、因政策原因，聚雕网只承接3个月之内新注册公司的刻章业务，请您核实公司注册日期，暂不承接变更及遗失补刻，以免产生不必要的退款。</p>
+            </div>
         </div>
     </div>
     <div class="paymentBox clearfix">
