@@ -87,6 +87,7 @@
 .containerInner .orderInfo>.title,
 .centerBox>.title {
     font-size: 1.375rem;
+    margin-bottom: .5rem;
 }
 
 .containerInner .baseInfo>.formItem,
@@ -169,7 +170,7 @@
     padding: 0rem .5rem;
 }
 
-.baseInfo>.formItem>.sealBox>li>img {
+.baseInfo>.formItem>.sealBox>li>img{
     width: 5rem;
     margin-right: 2.5rem;
     vertical-align: middle;
@@ -279,8 +280,8 @@
 
 /* --------------刻章订单页面----------------- */
 
-.orderItem .showImg {
-    width: 100%;
+.orderItem>.tradingPic>.showImg {
+    width: 50%;
 }
 
 .tipBox {
@@ -289,10 +290,6 @@
     padding: 1.25rem 1.875rem;
     background: linear-gradient(to top right, #40E0D0, #836FFF);
 }
-
-/* .sealContainer>.tipBox {
-    margin-bottom: 3.75rem;
-} */
 
 .tipBox>.tipTitle {
     text-align: center;
@@ -337,6 +334,40 @@
     color: #fff;
     border-radius: 3.125rem;
     background-color: #836FFF;
+}
+
+.orderInfo>.orderItem>.sealBox>li {
+    height: 7.5rem;
+    line-height: 7.5rem;
+    border: 1px solid #e7e7e7;
+    border-radius: .375rem;
+    margin-bottom: .5rem;
+    position: relative;
+    padding: 0rem .5rem;
+}
+
+.orderInfo .sealItem .sealIcon {
+    width: 15%;
+}
+
+.orderInfo .sealItem .sealIcon>img {
+    width: 100%;
+}
+
+.orderInfo .sealItem .sealName {
+    text-align: center;
+    color: #999999;
+}
+
+.orderInfo .sealItem .sealAccount {
+    font-weight: 700;
+    text-align: center;
+}
+
+.orderInfo .sealItem .sealPrice {
+    font-weight: 700;
+    color: red;
+    text-align: right;
 }
 
 /* --------------注销公司信息页面----------------- */

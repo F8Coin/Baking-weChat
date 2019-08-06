@@ -30,15 +30,16 @@
                         <span class="labTitle">备注<span class="colon">:</span></span>
                         <span class="labContent remarkText"></span>
                     </p>  
-                   <p class="orderItem">
+                   <div class="orderItem">
                         <span class="labTitle">营业执照<span class="colon">:</span></span>
-                        <p class="tradingPic"><img class="showImg" src='' alt=""></p></p>
+                        <p class="tradingPic"><img class="showImg" src='' alt=""></p>
+                    </div>
                 </div>
     
             </div>
             <div class="orderInfo">
                 <p class="title">选购印章</p>
-                <div class="orderInfo">
+                <div class="content">
                     <table class="sealListBox">
                         <tbody id="sealList">
     
@@ -80,16 +81,16 @@
 <script src="../js/index.js"></script>
 <script>
     $(function(){
-        location.replace();
+        // location.replace();
         var sealOrderAbout = JSON.parse(localStorage.getItem('sealFormMes')) ;
-        $('.informationItem .companyName').text(sealOrderAbout.companyName);
-        $('.informationItem .ID').text(sealOrderAbout.personID);
-        $('.informationItem .zoom').text(sealOrderAbout.zoomArea);
-        $('.informationItem .remarkText').text(sealOrderAbout.remarkText);
+        $('.orderItem .companyName').text(sealOrderAbout.companyName);
+        // $('.orderItem .ID').text(sealOrderAbout.personID);
+        $('.orderItem .zoom').text(sealOrderAbout.zoomArea);
+        $('.orderItem .remarkText').text(sealOrderAbout.remarkText);
         $('.showImg').attr('src', sealOrderAbout.uploadImg);
-        $('.userInfo .userName').text(sealOrderAbout.receiverName);
-        $('.userInfo .userTel').text(sealOrderAbout.receiverTel);
-        $('.userInfo .userAdd').text(sealOrderAbout.receiverAdd);
+        $('.orderInfo .userName').text(sealOrderAbout.receiverName);
+        $('.orderInfo .userTel').text(sealOrderAbout.receiverTel);
+        $('.orderInfo .userAdd').text(sealOrderAbout.receiverAdd);
         
         var orderAmount= 0;
         for (let i = 0; i < sealOrderAbout.seal_goods.length; i++) {
