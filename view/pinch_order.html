@@ -7,6 +7,7 @@
     <title>变更代跑</title>
     <link rel="stylesheet" href="../css/weui.min.css">
     <link rel="stylesheet" href="../css/regist.css">
+    <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/index.css">
 </head>
 <body>
@@ -29,7 +30,7 @@
             <div class="orderInfo">
                 <p class="title">变更项目</p>
                 <div class="content">
-                    <table class="sealListBox">
+                    <table class="sealListBox pinchTable">
                         <tbody id="goodsList">
                             <!-- 项目列表 -->
                         </tbody>
@@ -70,8 +71,8 @@
         $('.paymentBox .payAmount').text(orderInfoData.totalPrice);
         for (let i = 0; i < orderInfoData.goodsList.length; i++) {
             var goodsItem= '<tr class="sealItem">'+
-                                '<td>'+orderInfoData.goodsList[i].title+'</td>'+
-                                '<td>×1</td>'+
+                                '<td class= "sealName">'+orderInfoData.goodsList[i].title+'</td>'+
+                                '<td class= "sealAccount">×1</td>'+
                                 '<td class="sealPrice">￥'+orderInfoData.goodsList[i].price+'</td>'+
                             '</tr>'
             $('#goodsList').append(goodsItem);

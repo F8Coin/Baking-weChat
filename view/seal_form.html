@@ -42,7 +42,7 @@
                 </div>
                 <div class="formItem">
                     <p class="labTitle">注销印章&nbsp;<span class="addText">(注销印章免费,包邮24元)</span></p>
-                    <ul class="closeSeal zoomList" id="closeSealList">
+                    <ul class="closeSeal" id="closeSealList">
                         <!-- 注销章列表 -->
                     </ul>
                 </div>
@@ -156,6 +156,11 @@
             var areaId= $(this).attr('areaId');
             // 发送请求获取对应区域刻章列表
             getSealGoods(zoomId);
+        })
+
+        // 选择注销章
+        $('.closeSeal').on('touchend','li',function(e){
+            $(this).toggleClass('checkedItem');
         })
         
         // 点击下一步提交订单

@@ -205,59 +205,6 @@
     font-size: 1.125rem;
 }
 
-.logoutContainer>.formItem>.content>.optionAbout {
-    width: 48%;
-    height: 7.5rem;
-    border: 1px solid #e7e7e7;
-    background-color: #fff;
-    border-radius: 8px;
-    padding: 1.25rem .75rem;
-    position: relative;
-    box-sizing: border-box;
-    margin-bottom: .5rem;
-    
-}
-
-.logoutContainer .optionAbout>.flag>img {
-    width: 1.5rem;
-    vertical-align: middle;
-}
-
-.logoutContainer .optionAbout>.flag>.text {
-    padding-left: .75rem;
-    font-size: 1rem;
-    vertical-align: middle;
-}
-
-.logoutContainer .optionAbout>.price {
-    font-size: 1.125rem;
-    color: red;
-    font-weight: 700;
-    position: absolute;
-    bottom: .75rem;
-} 
-
-.logoutContainer .optionAbout>input[type='radio'],
-.logoutContainer .optionAbout>input[type='checkbox']
-{
-    position: absolute;
-    width: 1.5rem;
-    height: 1.5rem;
-    color: #836FFF;
-    border: 1px solid #836FFF;
-    -webkit-appearance:none;
-    border-radius: 1.875rem;
-    right: 0.75rem;
-    bottom: 1rem;
-}
-
-.logoutContainer .optionAbout>input[type='radio']:checked,
-.logoutContainer .optionAbout>input[type='checkbox']:checked
-{
-    background: url('../img/checked.png') no-repeat center center;
-    background-size: cover;
-}
-
 .logoutContainer .partOther .partOther_self {
     width: 100% !important;
 }
@@ -339,6 +286,8 @@
     vertical-align: middle;
 }
 
+
+
 /* --------------红本合同信息页面----------------- */
 
 #acreageBox>.acreageItem {
@@ -347,6 +296,7 @@
 }
 
 /* --------------红本合同订单页面----------------- */
+
 
 
 /* --------------前海地址信息页面----------------- */
@@ -370,64 +320,33 @@
 
 /* --------------银行开户信息页面----------------- */
 
-.containerInner .tipBox {
-    margin-top: 1.875rem;
-}
-
 /* --------------银行开户订单页面----------------- */
-.containerInner .orderInfo {
-    margin-bottom: 1.875rem;
-}
 
-.orderInfo .orderItem {
-    margin-bottom: .5rem;
-}
-
-.orderInfo .uploadFile {
-    width: 48%;
-}
-
-.orderInfo .orderItem .labTitle {
-    color: #999999;
-}
-
-.orderInfo .orderItem .labTitle .colon {
-    margin-right: .5rem;
-    margin-left: .25rem;
-}
-
-/* .orderItem .labContent .showImg {
-    width: 100%;
-    height: 100%;
-} */
 
 
 /* --------------变更代跑信息页面----------------- */
-.pinchFormContainer .optionAbout>.flag>.text {
+.pinchContainer .optionAbout>.flag>.text {
     padding-left: 0rem;
 }
 
-.upBox>.formItem>.pinchZoom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: row;
-    flex-wrap: wrap;
+/* --------------变更代跑订单页面----------------- */
+.containerInner .pinchTable {
+    width: 100%;
 }
 
-.upBox>.formItem>.pinchZoom>li {
-    width: 48%;
-    line-height: 1rem;
-    padding-top: 1.25rem;
-    margin-right: 0rem;
-    font-size: .875rem;
-    height: 3.75rem;
-    box-sizing: border-box;
+.orderInfo .pinchTable>tbody>tr>.sealName {
+    width: 40%;
+    text-align: left;
+}
+.orderInfo .pinchTable>tbody>tr>.sealAccount {
+    width: 35%;
 }
 
-.upBox>.formItem>.pinchZoom>li:last-child {
-    padding-top: .875rem;
-}
+
+
+
+
+
 
 /* --------------登报服务信息页面----------------- */
 

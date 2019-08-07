@@ -35,6 +35,10 @@
     margin-top: 1.875rem;
 }
 
+.containerOut .orderInfo {
+    margin-bottom: 1.875rem;
+}
+
 .containerInner .baseInfo>.title,
 .containerInner .orderInfo>.title,
 .containerInner .receiveInfo>.title {
@@ -151,6 +155,11 @@
     width: 50%;
 }
 
+/* 多文件显示 */
+.orderItem>.labContent>.showImg {
+    width: 80%;
+    /* height: 100%; */
+}
 
 /* 办理区域*/
 .baseInfo>.formItem>.zoomList {
@@ -158,7 +167,8 @@
     margin-top: .5rem;
 }
 
-.baseInfo>.formItem>.zoomList>li {
+.baseInfo>.formItem>.zoomList>li,
+.baseInfo>.formItem>.closeSeal>li {
     height: 1.875rem;
     width: 5rem;
     text-align: center;
@@ -170,17 +180,107 @@
     display: inline-block;
 }
 
-.baseInfo>.formItem>.zoomList>li.checkedItem {
+.baseInfo>.formItem>.zoomList>li.checkedItem,
+.baseInfo>.formItem>.closeSeal>li.checkedItem {
     background-color: #836FFF;
     border-color: #836FFF;
     color: #fff;
 }
+
+/* 变更方案 */
+.baseInfo>.formItem>.pinchZoom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.baseInfo>.formItem>.pinchZoom>li {
+    width: 48%;
+    line-height: 1rem;
+    padding-top: 1.25rem;
+    margin-right: 0rem;
+    font-size: .875rem;
+    height: 3.75rem;
+    box-sizing: border-box;
+}
+
+/* 变更项目 */
+.containerInner .formItem>.content>.optionAbout {
+    width: 48%;
+    height: 7.5rem;
+    border: 1px solid #e7e7e7;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 1.25rem .75rem;
+    position: relative;
+    box-sizing: border-box;
+    margin-bottom: .5rem;
+    
+}
+
+.containerInner .optionAbout>.flag>img {
+    width: 1.5rem;
+    vertical-align: middle;
+}
+
+.containerInner .optionAbout>.flag>.text {
+    padding-left: .75rem;
+    font-size: 1rem;
+    vertical-align: middle;
+}
+
+.containerInner .optionAbout>.price {
+    font-size: 1.125rem;
+    color: red;
+    font-weight: 700;
+    position: absolute;
+    bottom: .75rem;
+} 
+
+.containerInner .optionAbout>input[type='radio'],
+.containerInner .optionAbout>input[type='checkbox']
+{
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+    color: #836FFF;
+    border: 1px solid #836FFF;
+    -webkit-appearance:none;
+    border-radius: 1.875rem;
+    right: 0.75rem;
+    bottom: 1rem;
+}
+
+.containerInner .optionAbout>input[type='radio']:checked,
+.containerInner .optionAbout>input[type='checkbox']:checked
+{
+    background: url('../img/checked.png') no-repeat center center;
+    background-size: cover;
+}
+
+/* 订单页面 */
+.orderInfo .orderItem {
+    margin-bottom: .5rem;
+}
+
+.orderInfo .orderItem .labTitle {
+    color: #999999;
+}
+
+.orderInfo .orderItem .labTitle .colon {
+    margin-right: .5rem;
+    margin-left: .25rem;
+}
+
 
 /* 备注信息 */
 .containerInner>.tipBox {
     color: #fff;
     border-radius: .375rem;
     padding: 1.25rem 1.875rem;
+    margin-top: 1.875rem;
     background: linear-gradient(to top right, #40E0D0, #836FFF);
 }
 

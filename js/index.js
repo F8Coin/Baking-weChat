@@ -166,8 +166,6 @@ function weChatPay(orderId,targetUrl) {
 
 /* --------------办理区域----------------- */
 $('.zoomList').on('touchend','li',function(e){
-    // $(this).addClass('checkedItem').siblings('li').removeClass('checkedItem');
-    $(this).toggleClass('checkedItem');
-    
+    $(this).addClass('checkedItem').siblings('li').removeClass('checkedItem');
 })
 

@@ -7,26 +7,27 @@
     <title>变更代跑</title>
     <link rel="stylesheet" href="../css/weui.min.css">
     <link rel="stylesheet" href="../css/regist.css">
+    <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/index.css">
 </head>
 <body>
-    <div class="pinchFormContainer containerOut">
+    <div class="pinchContainer containerOut">
         <div class="headerBar"></div>
         <div class="contentBox containerInner">
-            <div class="upBox commonBox baseInfo">
+            <div class="baseInfo">
                 <p class="title">内资工商变更</p>
                 <div class="formItem">
-                    <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;公司名称</p>
+                    <p class="labTitle"><span class="isRequired">*</span>公司名称</p>
                     <input class="placeholderText companyName" type="text" placeholder="请输入公司名称">
                 </div>
-                <div class="formItem selectZoomBox zoomBox">
-                    <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;变更方案</p>
-                    <ul class="pinchZoom selectZoom zoomList" id="changeType">
+                <div class="formItem">
+                    <p class="labTitle"><span class="isRequired">*</span>变更方案</p>
+                    <ul class="pinchZoom zoomList" id="changeType">
                         <!-- 变更方案列表 -->
                     </ul>
                 </div>
-                <div class="formItem changePro">
-                    <p class="title"><span style="color:#CD0000">*</span>&nbsp;变更项目</p>
+                <div class="formItem">
+                    <p class="labTitle"><span class="isRequired">*</span>变更项目</p>
                     <div class="content clearfix" id="goodsList">
                         <!-- 变更项目 -->
                     </div>
