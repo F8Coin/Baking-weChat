@@ -1,0 +1,243 @@
+
+/* 父子容器 */
+.containerOut {
+    position: relative;
+    background-color: rgba(250, 250, 250, 1);
+    padding-bottom: 4.25rem;
+}
+
+.containerOut .headerBar {
+    height: 7.5rem;
+    width: 100%;
+    position: absolute;
+    background-color: #836FFF;
+}
+
+.containerOut .containerInner {
+    position: relative;
+    top: 3.75rem;
+    padding: 0rem 1.875rem;
+    margin-bottom: 5.625rem;
+}
+
+.containerOut .baseInfo,
+.containerOut .orderInfo,
+.containerOut .receiveInfo,
+.containerOut .partBox {
+    padding: 1.25rem;
+    border: 1px solid #e7e7e7;
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: .75rem;
+}
+
+.containerOut .receiveInfo,
+.containerOut .partBox {
+    margin-top: 1.875rem;
+}
+
+.containerInner .baseInfo>.title,
+.containerInner .orderInfo>.title,
+.containerInner .receiveInfo>.title {
+    font-size: 1.375rem;
+    margin-bottom: .5rem;
+}
+
+.containerInner .baseInfo>.formItem,
+.containerInner .receiveInfo>.formItem,
+.containerInner .partBox>.formItem {
+    padding: .75rem 0rem;
+}
+
+.containerInner .baseInfo>.formItem>.labTitle,
+.containerInner .receiveInfo>.formItem>.labTitle,
+.containerInner .partBox>.formItem>.labTitle {
+    font-size: 1.125rem;
+    line-height: 1.25rem;
+    margin-bottom: .5rem;
+}
+
+.containerInner .baseInfo>.formItem>.labTitle>.addText,
+.containerInner .partBox>.formItem>.labTitle>.addText {
+    color:#999;
+}
+
+.baseInfo>.formItem>.placeholderText,
+.receiveInfo>.formItem>.placeholderText,
+.partBox>.formItem>.placeholderText {
+    font-size: 1.125rem;
+    width: 100%;
+    padding: .375rem 0rem 1rem;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.containerOut .baseInfo .remarkText,
+.containerOut .receiveInfo .remarkText,
+.containerOut .partBox .remarkText {
+    width: 100%;
+    height: 7.5rem;
+    margin-top: .625rem;
+    padding: .875rem .75rem;
+    box-sizing: border-box;
+}
+
+.formItem .isRequired{
+    color: #CD0000;
+    margin-right: .25rem;
+}
+
+.isShowItem {
+    display: none;
+}
+
+/* 单文件上传*/
+.baseInfo>.formItem>.uploadBox {
+    margin-top: .625rem;
+    width: 48%;
+    height: 8.75rem;
+    border: 1px solid #e7e7e7;
+    position: relative;
+}
+
+.baseInfo>.formItem>.uploadBox>.uploadInput {
+    width: 100%;
+    height: 100%;
+    opacity:0;
+    position:absolute;
+    width:100%; 
+    height:8.75rem;
+}
+
+.baseInfo>.formItem>.uploadBox>.showImg {
+    display:block;
+    margin:0 auto; 
+    height:100%;
+    width: 100%;
+}
+
+.baseInfo>.formItem>.uploadBox {
+    background: url('../img/uploadIco.png') no-repeat center center;
+    background-size: 3.75rem;
+}
+
+/* 多文件上传 */
+.baseInfo>.formItem>.fileBox {
+    width: 48%;
+    display: inline-block;
+    margin-bottom: 1.875rem;
+    text-align: center;
+}
+
+.baseInfo>.formItem>.fileBox>.uploadInput {
+    width: 100%;
+    height: 100%;
+    left: 0rem;
+}
+
+.baseInfo>.formItem>.uploadBox .typeText{
+    vertical-align: middle;
+    color: #cccccc;
+    padding-top: .375rem;
+    text-align: center;
+}
+
+.baseInfo>.formItem>.uploadBox .typeText .requiredFlag{
+    color: #CD0000;
+    vertical-align: middle;
+    margin-left: .375rem;
+}
+
+/* 单文件显示 */
+.orderItem>.tradingPic>.showImg {
+    width: 50%;
+}
+
+
+/* 办理区域*/
+.baseInfo>.formItem>.zoomList {
+    font-size: 0px;
+    margin-top: .5rem;
+}
+
+.baseInfo>.formItem>.zoomList>li {
+    height: 1.875rem;
+    width: 5rem;
+    text-align: center;
+    line-height: 1.875rem;
+    border: 1px solid #e7e7e7;
+    border-radius: .3125rem;
+    margin-right: .625rem;
+    margin-bottom: .875rem;
+    display: inline-block;
+}
+
+.baseInfo>.formItem>.zoomList>li.checkedItem {
+    background-color: #836FFF;
+    border-color: #836FFF;
+    color: #fff;
+}
+
+/* 备注信息 */
+.containerInner>.tipBox {
+    color: #fff;
+    border-radius: .375rem;
+    padding: 1.25rem 1.875rem;
+    background: linear-gradient(to top right, #40E0D0, #836FFF);
+}
+
+.containerInner>.tipBox>.tipTitle {
+    text-align: center;
+    font-size: 1.25rem;
+} 
+
+.containerInner>.tipBox>.tipText {
+    font-size: 1rem;
+}
+
+
+/* 下一步按钮 */
+.containerInner .nextBtn {
+    margin-top: 2.8125rem;   
+    margin-bottom: 1.875rem;
+    background-color: #836FFF;
+}
+
+.containerInner a.nextBtn:active {
+    background-color: #836FFF;
+}
+
+/* 微信支付 */
+.paymentBox {
+    position: fixed;
+    bottom: 0rem;
+    height: 3.75rem;
+    line-height: 3.75rem;
+    width: 100%;
+    padding: 0rem 1.875rem;
+    box-sizing: border-box;
+    background-color: #fff;
+    border-top: 1px solid #e7e7e7;
+}
+
+.paymentBox>.payInfo {
+    font-size: 1.125rem ;
+}
+
+.paymentBox>.payInfo>.payAmount,
+.paymentBox>.payInfo>.RMB_flag
+{
+    font-size: 1.25rem;
+    color: red;
+    font-weight: 700;
+}
+
+.paymentBox>.paymentBtn {
+    width: 8.75rem;
+    height: 3.125rem;
+    margin-top: .3125rem;
+    line-height: 3.125rem;
+    font-size: 1.125rem;
+    text-align: center;
+    color: #fff;
+    border-radius: 3.125rem;
+    background-color: #836FFF;
+}

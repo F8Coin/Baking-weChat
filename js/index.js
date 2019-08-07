@@ -150,6 +150,8 @@ function createOrder(url,type,orderInfo,targetUrl) {
                 var orderId= res.data.orderId;
                 sessionStorage.setItem('orderId',orderId)
                 window.location.href = targetUrl;
+            }else {
+                layer.msg(res.msg)
             }
         }
     })
@@ -164,6 +166,8 @@ function weChatPay(orderId,targetUrl) {
 
 /* --------------办理区域----------------- */
 $('.zoomList').on('touchend','li',function(e){
-    $(this).addClass('checkedItem').siblings('li').removeClass('checkedItem');
+    // $(this).addClass('checkedItem').siblings('li').removeClass('checkedItem');
+    $(this).toggleClass('checkedItem');
+    
 })
 

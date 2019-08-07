@@ -7,6 +7,7 @@
     <title>银行开户</title>
     <link rel="stylesheet" href="../css/weui.min.css">
     <link rel="stylesheet" href="../css/regist.css">
+    <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/index.css">
 </head>
 <body>
@@ -164,8 +165,8 @@
         var url_order= baseUrl+'/api/bankAccount/createOrder';
         var type_list= 'post';
         var type_order= 'post';
-        var targetUrl= 'http://judiaowang.cn/app/view/bank_order.html'
-        // var targetUrl= './bank_order.html'
+        // var targetUrl= 'http://judiaowang.cn/app/view/bank_order.html'
+        var targetUrl= './bank_order.html'
         var parameters_list= {
             busModId: "6",// 银行开户
             cityId: JSON.parse(localStorage.getItem('loginData')).cityId,

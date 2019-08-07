@@ -7,6 +7,7 @@
     <title>前海地址续签</title>
     <link rel="stylesheet" href="../css/weui.min.css">
     <link rel="stylesheet" href="../css/regist.css">
+    <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/index.css">
 </head>
 <body>
@@ -20,7 +21,7 @@
                     <input class="placeholderText companyName" type="text" placeholder="请输入公司名称">
                 </div>
                 <div class="formItem">
-                    <p class="labTitle"><span class="isRequired">*</span>商密账号<span class="text">(若没有商密账号,请联系客服)</span> </p>
+                    <p class="labTitle"><span class="isRequired">*</span>商密账号<span class="addText">(若没有商密账号,请联系客服)</span> </p>
                     <input class="placeholderText businessAccount" type="text" placeholder="请输入商密系统账号">
                 </div>
                 <div class="formItem">
@@ -131,6 +132,7 @@
 <script>
     $(function(){
         $('.baseInfo .zoomList').on('touchend','li',function(){
+            $(this).addClass('checkedItem').siblings('li').removeClass('checkedItem');
             if($(this).text() == '法人'){
                 $('.baseInfo .legalPart').css('display','block');
                 $('.baseInfo .naturePart').css('display','none');
