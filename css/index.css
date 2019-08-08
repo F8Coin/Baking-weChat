@@ -455,10 +455,17 @@
 
 
 /* --------------法律服务信息页面----------------- */
-.lawContainer .innerBox {
+.lawContainer {
+    background: url('../img/lawBg.jpg') no-repeat center center;
+    background-size: cover;
     position: absolute;
+    top: -1.875rem;
 }
 
-.lawContainer .innerBox>img {
-    width: 100%;
+.lawContainer .containerInner .layerImg {
+    display: block;
+    width: 6.25rem;
+    height: 6.25rem;
+    margin: 0 auto;
+    border-radius: 3.125rem;
 }

@@ -5,31 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>法律服务</title>
+    <link rel="stylesheet" href="../css/weui.min.css">    
     <link rel="stylesheet" href="../css/regist.css">
+    <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/index.css">
 </head>
 <body>
-    <div class="lawContainer layout">
-        <div class="innerBox">
-            <img src="../img/law.png" alt="">
+    <div class="lawContainer containerOut">
+        <div class="containerInner">
+            <div class="tipBox">
+                <img class="layerImg" src="../img/zLayer.jpg" alt="">
+                <p class="tipTitle">张春雨</p>
+                <p class="tipText">广东天峦律师事务所律师，创始合伙人，辽宁大学法学学士，中国人民大学民商法硕士。律师执业十五年以上</p>
+                <p class="tipText">主要业务领域: 擅长建筑房地产法律事务、公司合同法律事务、经济诉讼仲裁、私幕股权投融资、劳资关系等领域的法律事务</p>
+                <p class="tipText">电话：13534220114</p>
+            </div>
+            <div class="tipBox">
+                <img class="layerImg" src="../img/hLayer.jpg" alt="">
+                <p class="tipTitle">胡宝林</p>
+                <p class="tipText">广东天峦律师事务所主任 中国人民大学法学学士 经济学硕士，律师执业十年,主要业务领域: 投资 并购（涉外）业务 主要业务领域:投资、并购（涉外）业务</p>
+                <p class="tipText">在公司法、合同法等民商、经济诉讼领域具有丰富执业经验，担任多家企业、学校、社会团体法律顾问；精于经济、职务犯罪预防与辩护，企业法律风险防控。</p>
+                <p class="tipText">电话13760307231</p>
+            </div>
         </div>
     </div>
 </body>
 </html>
-<script>
-    $(function() {
-        $.ajax({
-            url: baseUrl+'/api/bankAccount/list',
-            type: 'post',
-            data: {
-                busModId: "11" // 法律服务 12 食品经营许可证  13 教育资质 14 进出口经营权
-            },
-            headers: {
-                "X-Jdw-Token": "7pnfyq95g9ugi51pdxuvr453ivnz3x0j"
-            },
-            success: function(res) {
-                console.log(res.code);
-            }
-        })
-    })
-</script>
