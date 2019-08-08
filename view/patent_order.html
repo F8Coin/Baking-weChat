@@ -8,34 +8,36 @@
     <title>订单支付</title>
     <link rel="stylesheet" href="../css/weui.min.css">
     <link rel="stylesheet" href="../css/regist.css">
+    <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/index.css">
 </head>
 
 <body>
-    <div class="sealContainer sealOrderContainer containerOut">
+    <div class="containerOut">
         <div class="headerBar"></div>
-        <div class="orderAbout seal_information">
-            <p class="orderAbout_title">公司信息</p>
-            <div class="orderAbout_content">
-                <p class="informationItem">公司名称:&nbsp;<span class="companyName"></span></p>
-                <p class="informationItem">应纳企业所得税&nbsp;<span class="companyName"></span></p>
-                <p class="informationItem">商务联系人:&nbsp;<span class="companyName"></span></p>
-                <p class="informationItem">商务联系人电话:&nbsp;<span class="companyName"></span></p>
-                <p class="informationItem">技术联系人:&nbsp;<span class="companyName"></span></p>
-                <p class="informationItem">技术联系人电话:&nbsp;<span class="companyName"></span></p>
-                <p class="informationItem">证书邮寄地址:&nbsp;<span class="companyName"></span></p>                
-                <p class="informationItem">备注:&nbsp;<span class="remarkText"></span></p>
+        <div class="containerInner">
+            <div class="orderInfo">
+                <p class="title">公司信息</p>
+                <div class="orderAbout_content">
+                    <p class="informationItem">公司名称:&nbsp;<span class="companyName"></span></p>
+                    <p class="informationItem">应纳企业所得税&nbsp;<span class="companyName"></span></p>
+                    <p class="informationItem">商务联系人:&nbsp;<span class="companyName"></span></p>
+                    <p class="informationItem">商务联系人电话:&nbsp;<span class="companyName"></span></p>
+                    <p class="informationItem">技术联系人:&nbsp;<span class="companyName"></span></p>
+                    <p class="informationItem">技术联系人电话:&nbsp;<span class="companyName"></span></p>
+                    <p class="informationItem">证书邮寄地址:&nbsp;<span class="companyName"></span></p>                
+                    <p class="informationItem">备注:&nbsp;<span class="remarkText"></span></p>
+                </div>
             </div>
-
-        </div>
-        <div class="orderAbout seal_goods">
-            <p class="orderAbout_title">专利类型</p>
-            <div class="orderAbout_content">
-                <table class="sealListBox">
-                    <tbody id="sealList">
-
-                    </tbody>
-                </table>
+            <div class="orderInfo">
+                <p class="title">专利类型</p>
+                <div class="orderAbout_content">
+                    <table class="sealListBox">
+                        <tbody id="sealList">
+    
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
@@ -52,40 +54,3 @@
 
 <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 <script src="../js/jQuery/jquery-3.4.0.js"></script>
-<script>
-    $(function(){
-        var sealOrderAbout = JSON.parse(sessionStorage.getItem('sealFormMes')) ;
-        $('.informationItem .companyName').text(sealOrderAbout.companyName);
-        $('.informationItem .ID').text(sealOrderAbout.personID);
-        $('.informationItem .zoom').text(sealOrderAbout.zoomArea);
-        $('.informationItem .remarkText').text(sealOrderAbout.remarkText);
-        $('.showImg').attr('src', sealOrderAbout.uploadImg);
-        $('.userInfo .userName').text(sealOrderAbout.receiverName);
-        $('.userInfo .userTel').text(sealOrderAbout.receiverTel);
-        $('.userInfo .userAdd').text(sealOrderAbout.receiverAdd);
-        
-        var orderAmount= 0;
-        for (let i = 0; i < sealOrderAbout.seal_goods.length; i++) {
-            var imgSrc = '../img/sealPub.jpg';
-            if(sealOrderAbout.seal_goods[i].typeAbout == '私章') {
-                imgSrc = "../img/sealPri.jpg"
-            }
-            var trItem = '<tr class="sealItem">'+
-                                '<td class="sealIcon">'+
-                                    '<img src='+imgSrc+' alt="">'+
-                                '</td>'+
-                                '<td class="sealName">'+sealOrderAbout.seal_goods[i].typeAbout+'</td>'+
-                                '<td class="sealAccount">×1</td>'+
-                                '<td class="sealPrice">￥'+sealOrderAbout.seal_goods[i].priceAbout+'</td>'+
-                            '</tr>'
-            $('#sealList').append(trItem);
-             orderAmount+= parseInt(sealOrderAbout.seal_goods[i].priceAbout);
-        }
-        if(sealOrderAbout.isCloseSeal == 1) {
-            // $('.payInfo .payAmount').text(orderAmount+24)
-        }else {
-            // $('.payInfo .payAmount').text(orderAmount)
-        }
-    })
-    
-</script>

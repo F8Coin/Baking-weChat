@@ -349,48 +349,16 @@
 
 
 /* --------------登报服务信息页面----------------- */
-
-.newsContainer>.contentBox .optionType {
-    width: 48%;
-    height: 80px;   
-    position: relative;
-    top: .5rem;
-    right: 0px;
-    border: 1px solid #e7e7e7; 
+.newsContainer .optionAbout>.price {
+    font-size: .875rem;
 }
 
-.newsContainer>.contentBox .optionType>.flag {
-    padding-top: .75rem;
-    padding-left: .5rem;
-    margin-bottom: .5rem;
-}
-
-.newsContainer>.contentBox .optionType>.flag>.icon {
-    padding-right: .75rem;
-    width: 1.5rem;
-}
-
-.newsContainer>.contentBox .optionType>.flag>.icon,
-.newsContainer>.contentBox .optionType>.flag>.text {
-    vertical-align: middle;
-}
-
-.newsContainer>.contentBox .optionType>.price {
-    left: .5rem;
-    font-size: 1rem;
-}
-
-.newsContainer>.contentBox .optionType>.price,
-.newsContainer>.contentBox .optionType>.selectBtn {
-    top: 3rem;
-}
-
-.missFileBox .missFileTab {
-    margin-top: .5rem;
-}
-
-.missFileBox .missFileTab tr td {
+.baseInfo .missFileTab tr td {
     padding: 0rem 1.875rem 0px 0rem;
+}
+
+.baseInfo .previewText {
+    padding-left: .5rem;
 }
 
 /* --------------登报服务订单页面----------------- */
@@ -404,37 +372,9 @@
 }
 
 /* --------------专利信息页面----------------- */
-.patentForm {
-    padding-bottom: 2.625rem;
-}
 
-.patentForm .optionAbout>.flag>.text {
-    padding-left: 0rem;
-}
-
-.patentForm .tipBox {
-    margin-top: 1.875rem;
-}
-
-.patentForm .formItem .checkType {
-    margin-top: .75rem;
-}
-
-.patentForm .formItem .checkType>li {
+.patentFormBox .formItem .taggleItem>li {
     width: 45%;
-    height: 2.25rem;
-    margin-right: .75rem;
-    text-align: center;
-    line-height: 2.25rem;
-    display: inline-block;
-    border: 1px solid #e7e7e7;
-    border-radius: .3125rem;
-}
-
-.patentForm .formItem .checkType>li.checkedItem {
-    color: #fff;
-    background-color: #836FFF;
-    border-color: #836FFF;
 }
 
 
@@ -446,7 +386,7 @@
 /* --------------商标订单页面----------------- */
 
 /* --------------税审报告信息页面----------------- */
-.taxReport_form .formItem .companyNameText {
+.baseInfo .formItem .companyNameText {
     width: 100%;
     height: 2.25rem;
     background-color: transparent;

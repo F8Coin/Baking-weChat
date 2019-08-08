@@ -2,18 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no ">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>登报服务</title>
     <link rel="stylesheet" href="../css/weui.min.css">
     <link rel="stylesheet" href="../css/regist.css">
+    <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/index.css">
 </head>
 <body>
     <div class="newsContainer containerOut">
         <div class="headerBar"></div>
-        <div class="contentBox containerInner">
-            <div class="upBox baseInfo">
+        <div class="containerInner">
+            <div class="baseInfo">
                 <p class="title">登报信息<span>(深圳报)</span></p>
                 <div class="formItem">
                     <p class="labTitle"><span class="isRequired">*</span>公司名称</p>
@@ -58,7 +59,7 @@
                     </div>
                 </div> -->
             </div>
-            <div class="missFileBox frame baseInfo">
+            <div class="baseInfo">
                 <p class="title">遗失资料信息</p>
                 <div class="formItem">
                     <p class="labTitle"><span class="isRequired">*</span>选择遗失的资料</p>
@@ -126,13 +127,13 @@
                     </table>
                 </div>
             </div>
-            <div class="frame baseInfo">
+            <div class="baseInfo">
+                <p class="title">遗失登报预览<a class="previewText" href="javascript:void(0)">查看预览</a></p>
                 <div class="formItem">
-                    <p class="title">遗失登报预览<a href="javascript:void(0)">查看预览</a></p>
-                    <textarea name="" id="textarea" cols="" rows="" class="textarea" placeholder="请输入登报文字"></textarea>
+                    <textarea name="" id="textarea" cols="" rows="" class="remarkText" placeholder="请输入登报文字"></textarea>
                 </div>
             </div>
-            <div class="downBox receiveInfo">
+            <div class="receiveInfo">
                 <p class="title">收货信息</p>
                 <div class="formItem">
                     <p class="labTitle"><span class="isRequired">*</span>联系人</p>
@@ -154,7 +155,6 @@
         </div>
         <div class="paymentBox">
             <span class="payInfo">
-                <!-- 订单金额 : <span class="RMB_flag">￥</span><span class="payAmount">1700.00</span> -->
                 订单金额 : <span class="RMB_flag">￥</span><span class="payAmount"></span>            
             </span>
             <a href="javascript:void(0)" class="fr nextBtn paymentBtn">下一步</a>

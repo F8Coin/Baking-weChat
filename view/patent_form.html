@@ -7,104 +7,111 @@
     <title>专利申请</title>
     <link rel="stylesheet" href="../css/weui.min.css">
     <link rel="stylesheet" href="../css/regist.css">
+    <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/index.css">
 </head>
 <body>
-    <div class="patentForm companyFormContainer commonBox sealContainer containerOut">
-        <div class="formItem">
-            <p class="title"><span style="color:#CD0000">*</span>&nbsp;公司名称</p>
-            <div class="content companyNameBox">
-                <input class="companyNameText" type="text" placeholder="请输入公司名称">
+    <div class="patentFormBox containerOut">
+        <div class="headerBar"></div>
+        <div class="containerInner">
+            <div class="baseInfo">
+                <p class="title">专利信息</p>
+                <div class="formItem">
+                    <p class="title"><span class="isRequired">*</span>公司名称</p>
+                    <div class="content companyNameBox">
+                        <input class="companyNameText" type="text" placeholder="请输入公司名称">
+                    </div>
+                </div>
+                <div class="formItem">
+                    <p class="title"><span class="isRequired">*</span>企业应纳税所得额(官费减免)</p>
+                    <ul class="zoomList taggleItem">
+                        <li class="checkedItem">30万以下(是)</li>
+                        <li>30万以上(否)</li>
+                    </ul>
+                </div>
+                <div class="formItem partOther">
+                    <p class="title"><span class="isRequired">*</span>专利类型</p>
+                    <div class="content clearfix">
+                        <label for="partOther1" class="left fl optionAbout">
+                            <p class="flag">
+                                <span class="text">软件著作权</span>
+                            </p>
+                            <p class="price">￥500</p>
+                            <input class="selectBtn" type="checkbox" id="partOther1">
+                        </label>
+                        <label for="partOther2" class="right fr optionAbout">
+                            <p class="flag">
+                                <span class="text">实用新型</span> 
+                            </p>
+                            <p class="price">￥1200.00</p>
+                            <input class="selectBtn" type="checkbox" id="partOther2">
+                        </label>
+                        <label for="partOther3" class="left fl optionAbout">
+                            <p class="flag">
+                                <span class="text">外观专利</span>
+                            </p>
+                            <p class="price">￥700</p>
+                            <input class="selectBtn" type="checkbox" id="partOther3">
+                        </label>
+                        <label for="partOther4" class="right fr optionAbout">
+                            <p class="flag">
+                                <span class="text">发明专利</span> 
+                            </p>
+                            <p class="price">￥2800.00</p>
+                            <input class="selectBtn" type="checkbox" id="partOther4">
+                        </label>
+                        <label for="partOther5" class="left fl optionAbout">
+                            <p class="flag">
+                                <span class="text">年费代缴(企/次)</span>
+                            </p>
+                            <p class="price">￥50</p>
+                            <input class="selectBtn" type="checkbox" id="partOther5">
+                        </label>
+                        <label for="partOther6" class="right fr optionAbout">
+                            <p class="flag">
+                                <span class="text">技术支持(人/半日)</span> 
+                            </p>
+                            <p class="price">￥600.00</p>
+                            <input class="selectBtn" type="checkbox" id="partOther6">
+                        </label>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="formItem">
-            <p class="title"><span style="color:#CD0000">*</span>&nbsp;企业应纳税所得额(官费减免)</p>
-            <ul class="selectZoom checkZoom checkType frame">
-                <li class="checkedItem">30万以下(是)</li>
-                <li>30万以上(否)</li>
-            </ul>
-        </div>
-        <div class="formItem partOther">
-            <p class="title"><span style="color:#CD0000">*</span>&nbsp;专利类型</p>
-            <div class="content clearfix">
-                <label for="partOther1" class="left fl optionAbout">
-                    <p class="flag">
-                        <span class="text">软件著作权</span>
-                    </p>
-                    <p class="price">￥500</p>
-                    <input class="selectBtn" type="checkbox" id="partOther1">
-                </label>
-                <label for="partOther2" class="right fr optionAbout">
-                    <p class="flag">
-                        <span class="text">实用新型</span> 
-                    </p>
-                    <p class="price">￥1200.00</p>
-                    <input class="selectBtn" type="checkbox" id="partOther2">
-                </label>
-                <label for="partOther3" class="left fl optionAbout">
-                    <p class="flag">
-                        <span class="text">外观专利</span>
-                    </p>
-                    <p class="price">￥700</p>
-                    <input class="selectBtn" type="checkbox" id="partOther3">
-                </label>
-                <label for="partOther4" class="right fr optionAbout">
-                    <p class="flag">
-                        <span class="text">发明专利</span> 
-                    </p>
-                    <p class="price">￥2800.00</p>
-                    <input class="selectBtn" type="checkbox" id="partOther4">
-                </label>
-                <label for="partOther5" class="left fl optionAbout">
-                    <p class="flag">
-                        <span class="text">年费代缴(企/次)</span>
-                    </p>
-                    <p class="price">￥50</p>
-                    <input class="selectBtn" type="checkbox" id="partOther5">
-                </label>
-                <label for="partOther6" class="right fr optionAbout">
-                    <p class="flag">
-                        <span class="text">技术支持(人/半日)</span> 
-                    </p>
-                    <p class="price">￥600.00</p>
-                    <input class="selectBtn" type="checkbox" id="partOther6">
-                </label>
+            <div class="receiveInfo">
+                <p class="title">联系信息</p>
+                <div class="formItem">
+                    <p class="labTitle"><span class="isRequired">*</span>商务联系人</p>
+                    <input class="placeholderText receiverName" type="text" placeholder="请输入商务联系人">
+                </div>
+                <div class="formItem">
+                    <p class="labTitle"><span class="isRequired">*</span>商务联系人电话</p>
+                    <input class="placeholderText receiverTel" type="text" placeholder="请输入商务联系人电话">
+                </div>
+                <div class="formItem">
+                    <p class="labTitle"><span class="isRequired">*</span>技术联系人</p>
+                    <input class="placeholderText receiverAdd" type="text" placeholder="请输入技术联系人电话">
+                </div>
+                <div class="formItem">
+                    <p class="labTitle"><span class="isRequired">*</span>证书邮寄地址</p>
+                    <input class="placeholderText receiverAdd" type="text" placeholder="请输入证书邮寄地址">
+                </div>
+                <div class="formItem">
+                    <p class="labTitle">备注说明</p>
+                    <textarea class="remarkText" name="" id="" cols="" rows="" placeholder="请准确说明发票商品名称,企业产品名称"></textarea>
+                </div>            
+            </div>   
+            <div class="tipBox">
+                <p class="tipTitle">下单须知</p>
+                <p class="tipText">1、在聚雕网下单专利，提供免费年费管理，年费代缴另外付费</p>
+                <p class="tipText">2、相关进度在系统里面订单详情里面查询、上传、下载相关文件；</p>
             </div>
-        </div>
-        <div class="downBox receiveInfo">
-            <p class="title">联系信息</p>
-            <div class="formItem">
-                <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;商务联系人</p>
-                <input class="placeholderText receiverName" type="text" placeholder="请输入商务联系人">
-            </div>
-            <div class="formItem">
-                <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;商务联系人电话</p>
-                <input class="placeholderText receiverTel" type="text" placeholder="请输入商务联系人电话">
-            </div>
-            <div class="formItem">
-                <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;技术联系人</p>
-                <input class="placeholderText receiverAdd" type="text" placeholder="请输入技术联系人电话">
-            </div>
-            <div class="formItem">
-                <p class="labTitle"><span style="color:#CD0000">*</span>&nbsp;证书邮寄地址</p>
-                <input class="placeholderText receiverAdd" type="text" placeholder="请输入证书邮寄地址">
-            </div>
-            <div class="formItem">
-                <p class="labTitle">备注说明</p>
-                <textarea class="remarkText" name="" id="" cols="" rows="" placeholder="请准确说明发票商品名称,企业产品名称"></textarea>
-            </div>
-        </div>
-        <div class="tipBox">
-            <p class="tipTitle">下单须知</p>
-            <p class="tipText">1、在聚服网下单专利，提供免费年费管理，年费代缴另外付费</p>
-            <p class="tipText">2、相关进度在系统里面订单详情里面查询、上传、下载相关文件；</p>
         </div>
     </div>
     <div class="paymentBox clearfix">
         <span class="fl payInfo">
             订单金额 : <span class="RMB_flag">￥</span><span class="payAmount"></span>
         </span>
-        <a href="./patent_order.html" class="fr paymentBtn">下一步</a>
+        <a href="javascript:void(0)" class="fr paymentBtn">下一步</a>
     </div>
 </body>
 </html>

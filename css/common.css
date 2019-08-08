@@ -35,7 +35,8 @@
     margin-top: 1.875rem;
 }
 
-.containerOut .orderInfo {
+.containerOut .orderInfo,
+.containerOut .baseInfo {
     margin-bottom: 1.875rem;
 }
 
