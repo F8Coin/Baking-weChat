@@ -40,7 +40,7 @@ function getCode() {
                 if(res.code == '500') {
                     layer.msg(res.msg);
                     codeNum= true;
-                }else if(code == '200') {
+                }else if(res.code == '200') {
                     $('.formItem .getCodeBtn').text(time+'s再获取');
                 }
             }
