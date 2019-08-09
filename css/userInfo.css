@@ -36,7 +36,7 @@
 }
 
 /* -----------partner注册页面------------- */
-.partnerRegist>.contentBox>.baseInfo .remarkText {
+.partnerRegist>.contentBox>.baseInfo>.formItem>.addText {
     font-size: .75rem;
     color: #999999;
 } 
