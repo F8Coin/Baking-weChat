@@ -136,7 +136,7 @@
             return;
         }
 
-        if(companyAdd == ''){ //验证用户姓名
+        if(userName == ''){ //验证用户姓名
             layer.msg('请输入姓名');
             return;
         }
@@ -156,7 +156,8 @@
 
         $.ajax({
             type: 'post',
-            url: baseUrl+'/api/register/register',
+            // url: baseUrl+'/api/register/register',
+            url: 'http://192.168.1.48:8080/platform/api/register/register',
             data: partnerRegData,
             contentType: "application/json",        
             success: function(data){
