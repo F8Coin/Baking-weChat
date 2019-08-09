@@ -154,6 +154,13 @@
             return;
         }
 
+        for (let i = 0; i < contractList.length; i++) {
+            if(contractList[i] == "") {
+                layer.msg('请上传合同图片')
+                return;
+            }
+        } 
+
         $.ajax({
             type: 'post',
             url: baseUrl+'/api/register/register',
