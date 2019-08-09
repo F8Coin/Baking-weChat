@@ -96,7 +96,7 @@
             $('.checkedServ .content>label:odd').addClass("right fr"); // 奇数添加类名            
         }
         $('.payInfo .payAmount').text(payAmount+".00");
-        $('.paymentBtn').on('touchend',function(){
+        $('.paymentBtn').on('click',function(){
             weChatPay(orderId,targetUrl)
         })
     })

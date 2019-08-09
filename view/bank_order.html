@@ -157,7 +157,7 @@
             $('.orderItem .admin2_img .showImg').attr('src',orderInfoData.netSilverCardBack);
         }
 
-        $('.paymentBox .paymentBtn').on('touchend',function(){
+        $('.paymentBox .paymentBtn').on('click',function(){
             weChatPay(orderId,targetUrl);
         })
     })

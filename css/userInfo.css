@@ -53,7 +53,7 @@
     border-radius:21px;
 }
 
-.regBtn {
+.containerInner>.regBtn {
     margin-top: 2.8125rem;   
     margin-bottom: 1.875rem;
     background-color: #836FFF;

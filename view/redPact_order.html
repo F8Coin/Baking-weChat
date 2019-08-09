@@ -63,11 +63,11 @@
                 <p class="title">收货信息</p>
                 <div class="content">
                     <p class="orderItem">
-                        <span class="labContent userName">张晓东</span>    
-                        <span class="labContent userTel">18603059551</span>
+                        <span class="labContent userName"></span>    
+                        <span class="labContent userTel"></span>
                     </p>    
                     <p class="orderItem">
-                        <span class="labContent userAdd">广东省深圳市龙华新区东环一路壹城中心E区2栋909</span>
+                        <span class="labContent userAdd"></span>
                     </p>
                 </div>  
             </div>
@@ -113,7 +113,7 @@
             $('.containerOut .companyItem').css('display','block')
         }
 
-        $('.paymentBox .paymentBtn').on('touchend',function(){
+        $('.paymentBox .paymentBtn').on('click',function(){
             weChatPay(orderId,targetUrl);
         })
 

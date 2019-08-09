@@ -128,7 +128,7 @@
         $('.orderInfo .userTel').text(orderInfoData.phone);
         $('.orderInfo .userAdd').text(orderInfoData.address);
 
-        $('.paymentBox .paymentBtn').on('touchend',function(){
+        $('.paymentBox .paymentBtn').on('click',function(){
             weChatPay(orderId,targetUrl);
         })
     })
