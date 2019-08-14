@@ -91,7 +91,7 @@
 <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 <script src="../js/jQuery/jquery-3.4.0.js"></script>
 <script src="../lib/layer/layer.js"></script>
-<script src="../js/index.js?v=1.0"></script>
+<script src="../js/index.js?v=1.1"></script>
 <script>
     $(function(){
         // 获取刻章列表方法
@@ -111,45 +111,53 @@
                 },
                 success: function(res) {
                     // 办理区域,使用重载实现
-                    if(parameterNum == 0) {
-                        for (var i = 0; i < res.data.region.length; i++) {
-                            if(i==0){
-                                var zoomItem= '<li class="checkedItem" zoomId='+res.data.region[i].regionId+' areaId='+res.data.region[i].agencyId+'>'+res.data.region[i].name+'</li>'
-                            }else {
-                                var zoomItem= '<li zoomId='+res.data.region[i].regionId+' areaId='+res.data.region[i].agencyId+'>'+res.data.region[i].name+'</li>'
+                    if(res.code == 0) {
+                        if(parameterNum == 0) {
+                            for (var i = 0; i < res.data.region.length; i++) {
+                                if(i==0){
+                                    var zoomItem= '<li class="checkedItem" zoomId='+res.data.region[i].regionId+' areaId='+res.data.region[i].agencyId+'>'+res.data.region[i].name+'</li>'
+                                }else {
+                                    var zoomItem= '<li zoomId='+res.data.region[i].regionId+' areaId='+res.data.region[i].agencyId+'>'+res.data.region[i].name+'</li>'
+                                }
+                                $('#sealZoom').append(zoomItem);
                             }
-                            $('#sealZoom').append(zoomItem);
                         }
-                    }
-                    // 刻章列表
-                    for (var k = 0; k < res.data.goods[0].goods.length; k++) {
-                        if(res.data.goods[0].goods[k].name == "私章") {
-                            var sealItem= '<li class="sealItem sealPri" sealId='+res.data.goods[0].goods[k].id+'>'+
-                                            '<img src="'+res.data.goods[0].goods[k].imgUrl+'" alt="">'+
-                                            '<span class="sealType">'+res.data.goods[0].goods[k].name+'</span>'+
-                                            '<span class="sealPrice">￥'+res.data.goods[0].goods[k].marketPrice+'</span>'+
-                                            '<button class="addBtn"><span>+</span>添加</button>'+
-                                        '</li>'
-                        }else {
-                            var sealItem= '<li class="sealItem" sealId='+res.data.goods[0].goods[k].id+'>'+
-                                            '<img src="'+res.data.goods[0].goods[k].imgUrl+'" alt="">'+
-                                            '<span class="sealType">'+res.data.goods[0].goods[k].name+'</span>'+
-                                            '<span class="sealPrice">￥'+res.data.goods[0].goods[k].marketPrice+'</span>'+
-                                            '<button class="addBtn"><span>+</span>添加</button>'+
-                                        '</li>'
+                        // 刻章列表
+                        for (var k = 0; k < res.data.goods[0].goods.length; k++) {
+                            if(res.data.goods[0].goods[k].name == "私章") {
+                                var sealItem= '<li class="sealItem sealPri" sealId='+res.data.goods[0].goods[k].id+'>'+
+                                                '<img src="'+res.data.goods[0].goods[k].imgUrl+'" alt="">'+
+                                                '<span class="sealType">'+res.data.goods[0].goods[k].name+'</span>'+
+                                                '<span class="sealPrice">￥'+res.data.goods[0].goods[k].marketPrice+'</span>'+
+                                                '<button class="addBtn"><span>+</span>添加</button>'+
+                                            '</li>'
+                            }else {
+                                var sealItem= '<li class="sealItem" sealId='+res.data.goods[0].goods[k].id+'>'+
+                                                '<img src="'+res.data.goods[0].goods[k].imgUrl+'" alt="">'+
+                                                '<span class="sealType">'+res.data.goods[0].goods[k].name+'</span>'+
+                                                '<span class="sealPrice">￥'+res.data.goods[0].goods[k].marketPrice+'</span>'+
+                                                '<button class="addBtn"><span>+</span>添加</button>'+
+                                            '</li>'
+                            }
+                            $('#openSealList').append(sealItem);
+                            
                         }
-                        $('#openSealList').append(sealItem);
-                        
-                    }
-                    // 注销列表
-                    for (var j = 0; j < res.data.goods[1].goods.length; j++) {
-                        if(j== res.data.goods[1].goods.length-1) {
-                            var closeSeal= '<li class="lastItem" closeId='+res.data.goods[1].goods[j].id+'>'+res.data.goods[1].goods[j].name+'</li>'
-                        }else {
-                            var closeSeal= '<li closeId='+res.data.goods[1].goods[j].id+'>'+res.data.goods[1].goods[j].name+'</li>'
+                        // 注销列表
+                        for (var j = 0; j < res.data.goods[1].goods.length; j++) {
+                            if(j== res.data.goods[1].goods.length-1) {
+                                var closeSeal= '<li class="lastItem" closeId='+res.data.goods[1].goods[j].id+'>'+res.data.goods[1].goods[j].name+'</li>'
+                            }else {
+                                var closeSeal= '<li closeId='+res.data.goods[1].goods[j].id+'>'+res.data.goods[1].goods[j].name+'</li>'
+                            }
+                            $('#closeSealList').append(closeSeal)
                         }
-                        $('#closeSealList').append(closeSeal)
-                    }
+                    }else if(res.code == 666) {
+                        layer.msg(res.msg,function(){
+                            window.location.href= 'http://judiaowang.cn/app/view/partnerLogin.html'
+                        })
+                    }else {
+                        layer.msg(res.msg);
+                    } 
                 }
             })
         }
@@ -298,8 +306,13 @@
                     if(res.code == 0) {
                         var orderId= res.data.orderId;
                         localStorage.setItem('sealOrderId',orderId)
-                        // window.location.href = pageUrl+"/seal_order.html";
-                        window.location.href = "./seal_order.html";
+                        window.location.href = "http://judiaowang.cn/app/view/seal_order.html";
+                        // window.location.href = "./seal_order.html";
+                    }else if(res.code == 666) {
+                        layer.msg(res.msg,function(){
+                            window.location.href= 'http://judiaowang.cn/app/view/partnerLogin.html';
+                            return false;
+                        })
                     }else {
                         layer.msg(res.msg)
                     }

@@ -91,6 +91,8 @@ function uploadFile(inputEle,containerEle) {
         success: function (res) {
             if(res.code == 0) {
                 containerEle.find('.showImg').attr('src',res.data);
+            }else {
+                layer.msg(res.msg);
             }
         }
     })
@@ -150,6 +152,11 @@ function createOrder(url,type,orderInfo,targetUrl) {
                 var orderId= res.data.orderId;
                 sessionStorage.setItem('orderId',orderId)
                 window.location.href = targetUrl;
+            }else if(res.code == 666){
+                layer.msg(res.msg,function(){
+                    window.location.href= 'http://judiaowang.cn/app/view/partnerLogin.html';
+                    return false;
+                })
             }else {
                 layer.msg(res.msg)
             }

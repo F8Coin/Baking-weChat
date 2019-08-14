@@ -128,7 +128,7 @@
 </html>
 <script src="../js/jQuery/jquery-3.4.0.js"></script>
 <script src="../lib/layer/layer.js"></script>
-<script src="../js/index.js?v=1.0"></script>
+<script src="../js/index.js?v=1.1"></script>
 <script>
     $(function(){
         $('.baseInfo .zoomList').on('touchend','li',function(){
@@ -145,9 +145,18 @@
         var orderAmount= '0';
 
         function callback_list(res){
-            $('.paymentBox .payAmount').text(res.data.goods[0].goods[0].marketPrice)
-            goodsId= res.data.goods[0].goods[0].id
-            orderAmount= res.data.goods[0].goods[0].marketPrice
+            if(res.code == 0) {
+                $('.paymentBox .payAmount').text(res.data.goods[0].goods[0].marketPrice)
+                goodsId= res.data.goods[0].goods[0].id
+                orderAmount= res.data.goods[0].goods[0].marketPrice
+            }else if(res.code == 666) {
+                layer.msg(res.msg,function(){
+                    window.location.href= 'http://judiaowang.cn/app/view/partnerLogin.html';
+                    return false;
+                })
+            }else {
+                layer.msg(res.msg);
+            }
         }
         var url_list= baseUrl+'/api/seaRenew/list';
         var type_list= 'post';

@@ -26,7 +26,7 @@
 <script src="../js/jQuery/jquery-3.4.0.js"></script>
 <script src="../lib/template-web.js"></script>
 <script src="../lib/layer/layer.js"></script>
-<script src="../js/index.js?v=1.0"></script>
+<script src="../js/index.js?v=1.1"></script>
 <script>
     $(function(){
         $.ajax({
@@ -40,63 +40,72 @@
                 cityId: JSON.parse(localStorage.getItem('loginData')).cityId
             },
             success: function(res) {
-                for (let i = 0; i < res.data.goods.length; i++) {
-                    var html1= '<div class="formItem">'+
-                                        '<p class="title">'+res.data.goods[i].name+'</p>'+
-                                        '<div class="content clearfix">'+
-                                    '</div>'+
-                                '</div>'   
-                    $('#closeBox').append(html1);
-                    if(i == res.data.goods.length-1) {
-                        for (let j = 0; j < res.data.goods[i].goods.length; j++) {
-                            if((j+1) % 2 == 0 ){
-                                var html2 =  '<label for="'+i+j+'" class="right fr optionAbout" goodsId="'+res.data.goods[i].goods[j].id+'">'+
-                                                '<p class="flag">'+
-                                                    '<img class="icon" src='+res.data.goods[i].goods[j].imgUrl+' alt="">'+
-                                                    '<span class="text">'+res.data.goods[i].goods[j].name+'</span>'+
-                                                '</p>'+
-                                                '<p class="price">'+res.data.goods[i].goods[j].marketPrice+'</p>'+
-                                                '<input class="selectBtn" type="radio" id="'+i+j+'" name="">'+
-                                            '</label>'
-                            }else {
-                                var html2 =  '<label for="'+i+j+'" class="left fl optionAbout" goodsId="'+res.data.goods[i].goods[j].id+'">'+
-                                                '<p class="flag">'+
-                                                    '<img class="icon" src='+res.data.goods[i].goods[j].imgUrl+' alt="">'+
-                                                    '<span class="text">'+res.data.goods[i].goods[j].name+'</span>'+
-                                                '</p>'+
-                                                '<p class="price">'+res.data.goods[i].goods[j].marketPrice+'</p>'+
-                                                '<input class="selectBtn" type="radio" id="i'+i+j+'" name="">'+
-                                            '</label>'
-                            }                        
-                            $($('#closeBox .formItem')[i+1]).find('.content').append(html2);
+                if(res.code == 0) {
+                    for (let i = 0; i < res.data.goods.length; i++) {
+                        var html1= '<div class="formItem">'+
+                                            '<p class="title">'+res.data.goods[i].name+'</p>'+
+                                            '<div class="content clearfix">'+
+                                        '</div>'+
+                                    '</div>'   
+                        $('#closeBox').append(html1);
+                        if(i == res.data.goods.length-1) {
+                            for (let j = 0; j < res.data.goods[i].goods.length; j++) {
+                                if((j+1) % 2 == 0 ){
+                                    var html2 =  '<label for="'+i+j+'" class="right fr optionAbout" goodsId="'+res.data.goods[i].goods[j].id+'">'+
+                                                    '<p class="flag">'+
+                                                        '<img class="icon" src='+res.data.goods[i].goods[j].imgUrl+' alt="">'+
+                                                        '<span class="text">'+res.data.goods[i].goods[j].name+'</span>'+
+                                                    '</p>'+
+                                                    '<p class="price">'+res.data.goods[i].goods[j].marketPrice+'</p>'+
+                                                    '<input class="selectBtn" type="radio" id="'+i+j+'" name="">'+
+                                                '</label>'
+                                }else {
+                                    var html2 =  '<label for="'+i+j+'" class="left fl optionAbout" goodsId="'+res.data.goods[i].goods[j].id+'">'+
+                                                    '<p class="flag">'+
+                                                        '<img class="icon" src='+res.data.goods[i].goods[j].imgUrl+' alt="">'+
+                                                        '<span class="text">'+res.data.goods[i].goods[j].name+'</span>'+
+                                                    '</p>'+
+                                                    '<p class="price">'+res.data.goods[i].goods[j].marketPrice+'</p>'+
+                                                    '<input class="selectBtn" type="radio" id="i'+i+j+'" name="">'+
+                                                '</label>'
+                                }                        
+                                $($('#closeBox .formItem')[i+1]).find('.content').append(html2);
+                            }
+                        }else {
+                            for (let j = 0; j < res.data.goods[i].goods.length; j++) {
+                                if((j+1) % 2 == 0 ){
+                                    var html2 =  '<label for="'+i+j+'" class="right fr optionAbout" goodsId="'+res.data.goods[i].goods[j].id+'">'+
+                                                    '<p class="flag">'+
+                                                        '<img class="icon" src='+res.data.goods[i].goods[j].imgUrl+' alt="">'+
+                                                        '<span class="text">'+res.data.goods[i].goods[j].name+'</span>'+
+                                                    '</p>'+
+                                                    '<p class="price">'+res.data.goods[i].goods[j].marketPrice+'</p>'+
+                                                    '<input class="selectBtn" type="radio" id="'+i+j+'" name="part'+res.data.goods[i].id+'">'+
+                                                '</label>'
+                                }else {
+                                    var html2 =  '<label for="'+i+j+'" class="left fl optionAbout" goodsId="'+res.data.goods[i].goods[j].id+'">'+
+                                                    '<p class="flag">'+
+                                                        '<img class="icon" src='+res.data.goods[i].goods[j].imgUrl+' alt="">'+
+                                                        '<span class="text">'+res.data.goods[i].goods[j].name+'</span>'+
+                                                    '</p>'+
+                                                    '<p class="price">'+res.data.goods[i].goods[j].marketPrice+'</p>'+
+                                                    '<input class="selectBtn" type="radio" id="i'+i+j+'" name="part'+res.data.goods[i].id+'">'+
+                                                '</label>'
+                                }                        
+                                $($('#closeBox .formItem')[i+1]).find('.content').append(html2);
+                            }                     
                         }
-                    }else {
-                        for (let j = 0; j < res.data.goods[i].goods.length; j++) {
-                            if((j+1) % 2 == 0 ){
-                                var html2 =  '<label for="'+i+j+'" class="right fr optionAbout" goodsId="'+res.data.goods[i].goods[j].id+'">'+
-                                                '<p class="flag">'+
-                                                    '<img class="icon" src='+res.data.goods[i].goods[j].imgUrl+' alt="">'+
-                                                    '<span class="text">'+res.data.goods[i].goods[j].name+'</span>'+
-                                                '</p>'+
-                                                '<p class="price">'+res.data.goods[i].goods[j].marketPrice+'</p>'+
-                                                '<input class="selectBtn" type="radio" id="'+i+j+'" name="part'+res.data.goods[i].id+'">'+
-                                            '</label>'
-                            }else {
-                                var html2 =  '<label for="'+i+j+'" class="left fl optionAbout" goodsId="'+res.data.goods[i].goods[j].id+'">'+
-                                                '<p class="flag">'+
-                                                    '<img class="icon" src='+res.data.goods[i].goods[j].imgUrl+' alt="">'+
-                                                    '<span class="text">'+res.data.goods[i].goods[j].name+'</span>'+
-                                                '</p>'+
-                                                '<p class="price">'+res.data.goods[i].goods[j].marketPrice+'</p>'+
-                                                '<input class="selectBtn" type="radio" id="i'+i+j+'" name="part'+res.data.goods[i].id+'">'+
-                                            '</label>'
-                            }                        
-                            $($('#closeBox .formItem')[i+1]).find('.content').append(html2);
-                        }                     
                     }
+                    var payBtn= '<a href="javascript:void(0)" style="margin-bottom:0px" class="weui_btn weui_btn_primary nextBtn">下一步</a>';
+                    $('#closeBox').append(payBtn) ;              
+                }else if(res.code == 666) {
+                    layer.msg(res.msg,function(){
+                        window.location.href= 'http://judiaowang.cn/app/view/partnerLogin.html';
+                        return false;
+                    })
+                }else {
+                    layer.msg(res.msg);
                 }
-                var payBtn= '<a href="javascript:void(0)" style="margin-bottom:0px" class="weui_btn weui_btn_primary nextBtn">下一步</a>';
-                $('#closeBox').append(payBtn) ;              
             }
         })
 

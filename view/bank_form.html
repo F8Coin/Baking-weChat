@@ -109,35 +109,53 @@
 </body>
 </html>
 <script src="../js/jQuery/jquery-3.4.0.js"></script>
-<script src="../js/index.js?v=1.0"></script>
+<script src="../js/index.js?v=1.1"></script>
 <script>
     $(function() {
         // 办理区域
         function zoomList(res){
-            for (var i = 0; i < res.data.region.length; i++) {  
-                if(i == 0) {
-                    var zoomItem= '<li class="checkedItem zoomItem" regionId='+res.data.region[i].regionId+'>'+res.data.region[i].name+'</li>'
-                }else {
-                    var zoomItem= '<li class="zoomItem" regionId='+res.data.region[i].regionId+'>'+res.data.region[i].name+'</li>'
+            if(res.code == 0) {
+                for (var i = 0; i < res.data.region.length; i++) {  
+                    if(i == 0) {
+                        var zoomItem= '<li class="checkedItem zoomItem" regionId='+res.data.region[i].regionId+'>'+res.data.region[i].name+'</li>'
+                    }else {
+                        var zoomItem= '<li class="zoomItem" regionId='+res.data.region[i].regionId+'>'+res.data.region[i].name+'</li>'
+                    }
+                    $('#area').append(zoomItem);
                 }
-                $('#area').append(zoomItem);
+            }else if(res.code == 666) {
+                layer.msg(res.msg,function(){
+                    window.location.href= 'http://judiaowang.cn/app/view/partnerLogin.html';
+                    return false;
+                })
+            }else {
+                layer.msg(res.msg);
             }
         }
 
         // 开户银行
         function bankList(res){
-            for (var i = 0; i < res.data.goods[0].goods.length; i++) {  
-                if(i == 0) {
-                    var bankItem= '<li class="checkedItem acreageItem" retailPrice="'+res.data.goods[0].goods[i].retailPrice+'"  marketPrice="'+res.data.goods[0].goods[i].marketPrice+'"  goodsId="'+res.data.goods[0].goods[i].id+'">'+res.data.goods[0].goods[i].name+'</li>'
-                }else {
-                    var bankItem= '<li class="acreageItem" retailPrice="'+res.data.goods[0].goods[i].retailPrice+'"  marketPrice="'+res.data.goods[0].goods[i].marketPrice+'"  goodsId="'+res.data.goods[0].goods[i].id+'">'+res.data.goods[0].goods[i].name+'</li>'
+            if(res.code == 0) {
+                for (var i = 0; i < res.data.goods[0].goods.length; i++) {  
+                    if(i == 0) {
+                        var bankItem= '<li class="checkedItem acreageItem" retailPrice="'+res.data.goods[0].goods[i].retailPrice+'"  marketPrice="'+res.data.goods[0].goods[i].marketPrice+'"  goodsId="'+res.data.goods[0].goods[i].id+'">'+res.data.goods[0].goods[i].name+'</li>'
+                    }else {
+                        var bankItem= '<li class="acreageItem" retailPrice="'+res.data.goods[0].goods[i].retailPrice+'"  marketPrice="'+res.data.goods[0].goods[i].marketPrice+'"  goodsId="'+res.data.goods[0].goods[i].id+'">'+res.data.goods[0].goods[i].name+'</li>'
+                    }
+                    $('#bankBox').append(bankItem);
                 }
-                $('#bankBox').append(bankItem);
+                var orderAmount= $('#bankBox .checkedItem').attr('retailPrice');
+                var checkBankName= $('#bankBox .checkedItem').text();
+                $('.paymentBox .payAmount').text(orderAmount);
+                bankDataList(checkBankName);
+            }else if(res.code == 666) {
+                layer.msg(res.msg,function(){
+                    window.location.href= 'http://judiaowang.cn/app/view/partnerLogin.html';
+                    return false;
+                })
+            }else {
+                layer.msg(res.msg);
             }
-            var orderAmount= $('#bankBox .checkedItem').attr('retailPrice');
-            var checkBankName= $('#bankBox .checkedItem').text();
-            $('.paymentBox .payAmount').text(orderAmount);
-            bankDataList(checkBankName);
         }
 
         // 判断开户银行需要提交的资料

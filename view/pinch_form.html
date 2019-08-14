@@ -57,42 +57,60 @@
 <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 <script src="../js/jQuery/jquery-3.4.0.js"></script>
 <script src="../lib/layer/layer.js"></script>
-<script src="../js/index.js?v=1.0"></script>
+<script src="../js/index.js?v=1.1"></script>
 <script>
     $(function() {
         // 类别
         function typeData(res){
-            for (var i = 0; i < res.data.category.length; i++) {
-                if(i == 0) {
-                    var typeItem= '<li class="checkedItem" typeId="'+res.data.category[i].id+'">'+res.data.category[i].name+'</li>'
-                }else {
-                    var typeItem= '<li typeId="'+res.data.category[i].id+'">'+res.data.category[i].name+'</li>'
-                }
-                $('#changeType').append(typeItem);
-            } 
+            if(res.code == 0) {
+                for (var i = 0; i < res.data.category.length; i++) {
+                    if(i == 0) {
+                        var typeItem= '<li class="checkedItem" typeId="'+res.data.category[i].id+'">'+res.data.category[i].name+'</li>'
+                    }else {
+                        var typeItem= '<li typeId="'+res.data.category[i].id+'">'+res.data.category[i].name+'</li>'
+                    }
+                    $('#changeType').append(typeItem);
+                } 
+            }else if(res.code == 666) {
+                layer.msg(res.msg,function(){
+                    window.location.href= 'http://judiaowang.cn/app/view/partnerLogin.html';
+                    return false;
+                })
+            }else {
+                layer.msg(res.msg);
+            }
         }
 
         // 列表
         function listData(res){
-            for (var j = 0; j < res.data.goods.length; j++) {
-                if((j+1) % 2 == 0) {
-                    var goodsItem= '<label for="'+j+'" class="right fr optionAbout"  goodsId="'+res.data.goods[j].id+'">'+
-                                    '<p class="flag">'+
-                                        '<span class="text">'+res.data.goods[j].name+'</span>'+
-                                    '</p>'+
-                                    '<p class="price">'+res.data.goods[j].marketPrice+'</p>'+
-                                    '<input class="selectBtn" type="radio" id="'+j+'">'+
-                                '</label>'
-                }else {
-                    var goodsItem= '<label for="'+j+'" class="left fl optionAbout" goodsId="'+res.data.goods[j].id+'">'+
-                                    '<p class="flag">'+
-                                        '<span class="text">'+res.data.goods[j].name+'</span>'+
-                                    '</p>'+
-                                    '<p class="price">'+res.data.goods[j].marketPrice+'</p>'+
-                                    '<input class="selectBtn" type="radio" id="'+j+'">'+
-                                '</label>'
+            if(res.code == 0) {
+                for (var j = 0; j < res.data.goods.length; j++) {
+                    if((j+1) % 2 == 0) {
+                        var goodsItem= '<label for="'+j+'" class="right fr optionAbout"  goodsId="'+res.data.goods[j].id+'">'+
+                                        '<p class="flag">'+
+                                            '<span class="text">'+res.data.goods[j].name+'</span>'+
+                                        '</p>'+
+                                        '<p class="price">'+res.data.goods[j].marketPrice+'</p>'+
+                                        '<input class="selectBtn" type="radio" id="'+j+'">'+
+                                    '</label>'
+                    }else {
+                        var goodsItem= '<label for="'+j+'" class="left fl optionAbout" goodsId="'+res.data.goods[j].id+'">'+
+                                        '<p class="flag">'+
+                                            '<span class="text">'+res.data.goods[j].name+'</span>'+
+                                        '</p>'+
+                                        '<p class="price">'+res.data.goods[j].marketPrice+'</p>'+
+                                        '<input class="selectBtn" type="radio" id="'+j+'">'+
+                                    '</label>'
+                    }
+                    $('#goodsList').append(goodsItem)
                 }
-                $('#goodsList').append(goodsItem)
+            }else if(res.code == 666) {
+                layer.msg(res.msg,function(){
+                    window.location.href= 'http://judiaowang.cn/app/view/partnerLogin.html';
+                    return false;
+                })
+            }else {
+                layer.msg(res.msg);
             }
         }
 

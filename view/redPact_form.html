@@ -101,58 +101,94 @@
 <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 <script src="../js/jQuery/jquery-3.4.0.js"></script>
 <script src="../lib/layer/layer.js"></script>
-<script src="../js/index.js?v=1.0"></script>
+<script src="../js/index.js?v=1.1"></script>
 <script>
 
     $(function(){
         
         // 办理区域
         function zoomList(res){
-            for (var i = 0; i < res.data.region.length; i++) {  
-                if(i == 0) {
-                    var zoomItem= '<li class="checkedItem zoomItem" regionId='+res.data.region[i].regionId+'>'+res.data.region[i].name+'</li>'
-                }else {
-                    var zoomItem= '<li class="zoomItem" regionId='+res.data.region[i].regionId+'>'+res.data.region[i].name+'</li>'
+            if(res.code == 0) {
+                for (var i = 0; i < res.data.region.length; i++) {  
+                    if(i == 0) {
+                        var zoomItem= '<li class="checkedItem zoomItem" regionId='+res.data.region[i].regionId+'>'+res.data.region[i].name+'</li>'
+                    }else {
+                        var zoomItem= '<li class="zoomItem" regionId='+res.data.region[i].regionId+'>'+res.data.region[i].name+'</li>'
+                    }
+                    $('#area').append(zoomItem);
                 }
-                $('#area').append(zoomItem);
+            }else if(res.code == 666) {
+                layer.msg(res.msg,function(){
+                    window.location.href= 'http://judiaowang.cn/app/view/partnerLogin.html';
+                    return false;
+                })
+            }else {
+                layer.msg(res.msg);
             }
         }
 
         // 面积时长
         function acreageList(res){
-            for (var i = 0; i < res.data.goods[0].goods.length; i++) {  
-                if(i == 0) {
-                    var acreageItem= '<li class="checkedItem acreageItem" retailPrice="'+res.data.goods[0].goods[i].retailPrice+'"  marketPrice="'+res.data.goods[0].goods[i].marketPrice+'"  goodsId="'+res.data.goods[0].goods[i].id+'">'+res.data.goods[0].goods[i].name+'</li>'
-                }else {
-                    var acreageItem= '<li class="acreageItem" retailPrice="'+res.data.goods[0].goods[i].retailPrice+'"  marketPrice="'+res.data.goods[0].goods[i].marketPrice+'"  goodsId="'+res.data.goods[0].goods[i].id+'">'+res.data.goods[0].goods[i].name+'</li>'
+            if(res.code == 0) {
+                for (var i = 0; i < res.data.goods[0].goods.length; i++) {  
+                    if(i == 0) {
+                        var acreageItem= '<li class="checkedItem acreageItem" retailPrice="'+res.data.goods[0].goods[i].retailPrice+'"  marketPrice="'+res.data.goods[0].goods[i].marketPrice+'"  goodsId="'+res.data.goods[0].goods[i].id+'">'+res.data.goods[0].goods[i].name+'</li>'
+                    }else {
+                        var acreageItem= '<li class="acreageItem" retailPrice="'+res.data.goods[0].goods[i].retailPrice+'"  marketPrice="'+res.data.goods[0].goods[i].marketPrice+'"  goodsId="'+res.data.goods[0].goods[i].id+'">'+res.data.goods[0].goods[i].name+'</li>'
+                    }
+                    $('#acreageBox').append(acreageItem);
                 }
-                $('#acreageBox').append(acreageItem);
+                var orderAmount= $('#acreageBox .checkedItem').attr('retailPrice');
+                $('.paymentBox .payAmount').text(orderAmount);
+            }else if(res.code == 666) {
+                layer.msg(res.msg,function(){
+                    window.location.href= 'http://judiaowang.cn/app/view/partnerLogin.html';
+                    return false;
+                })
+            }else {
+                layer.msg(res.msg);
             }
-            var orderAmount= $('#acreageBox .checkedItem').attr('retailPrice');
-            $('.paymentBox .payAmount').text(orderAmount);
         }
 
         // 承租人性质
         function tenantList(res){
-            for (var i = 0; i < res.data.goods[1].goods.length; i++) {  
-                if(i == 0) {
-                    var tenantItem= '<li class="checkedItem tenantItem" retailPrice="'+res.data.goods[1].goods[i].retailPrice+'"  marketPrice="'+res.data.goods[1].goods[i].marketPrice+'"  goodsId="'+res.data.goods[1].goods[i].id+'">'+res.data.goods[1].goods[i].name+'</li>'
-                }else {
-                    var tenantItem= '<li class="tenantItem" retailPrice="'+res.data.goods[1].goods[i].retailPrice+'"  marketPrice="'+res.data.goods[1].goods[i].marketPrice+'"  goodsId="'+res.data.goods[1].goods[i].id+'">'+res.data.goods[1].goods[i].name+'</li>'
+            if(res.code == 0) {
+                for (var i = 0; i < res.data.goods[1].goods.length; i++) {  
+                    if(i == 0) {
+                        var tenantItem= '<li class="checkedItem tenantItem" retailPrice="'+res.data.goods[1].goods[i].retailPrice+'"  marketPrice="'+res.data.goods[1].goods[i].marketPrice+'"  goodsId="'+res.data.goods[1].goods[i].id+'">'+res.data.goods[1].goods[i].name+'</li>'
+                    }else {
+                        var tenantItem= '<li class="tenantItem" retailPrice="'+res.data.goods[1].goods[i].retailPrice+'"  marketPrice="'+res.data.goods[1].goods[i].marketPrice+'"  goodsId="'+res.data.goods[1].goods[i].id+'">'+res.data.goods[1].goods[i].name+'</li>'
+                    }
+                    $('#tenantBox').append(tenantItem);
                 }
-                $('#tenantBox').append(tenantItem);
+            }else if(res.code == 666) {
+                layer.msg(res.msg,function(){
+                    window.location.href= 'http://judiaowang.cn/app/view/partnerLogin.html';
+                    return false;
+                })
+            }else {
+                layer.msg(res.msg);
             }
         }
 
         // 是否需要租金发票
         function invoiceList(res){
-            for (var i = 0; i < res.data.goods[2].goods.length; i++) {  
-                if(i == 0) {
-                    var invoiceItem= '<li class="checkedItem invoiceItem" retailPrice="'+res.data.goods[2].goods[i].retailPrice+'"  marketPrice="'+res.data.goods[2].goods[i].marketPrice+'"  goodsId="'+res.data.goods[2].goods[i].id+'">'+res.data.goods[2].goods[i].name+'</li>'
-                }else {
-                    var invoiceItem= '<li  class="invoiceItem" retailPrice="'+res.data.goods[2].goods[i].retailPrice+'"  marketPrice="'+res.data.goods[2].goods[i].marketPrice+'"  goodsId="'+res.data.goods[2].goods[i].id+'">'+res.data.goods[2].goods[i].name+'</li>'
+            if(res.code == 0 ) {
+                for (var i = 0; i < res.data.goods[2].goods.length; i++) {  
+                    if(i == 0) {
+                        var invoiceItem= '<li class="checkedItem invoiceItem" retailPrice="'+res.data.goods[2].goods[i].retailPrice+'"  marketPrice="'+res.data.goods[2].goods[i].marketPrice+'"  goodsId="'+res.data.goods[2].goods[i].id+'">'+res.data.goods[2].goods[i].name+'</li>'
+                    }else {
+                        var invoiceItem= '<li  class="invoiceItem" retailPrice="'+res.data.goods[2].goods[i].retailPrice+'"  marketPrice="'+res.data.goods[2].goods[i].marketPrice+'"  goodsId="'+res.data.goods[2].goods[i].id+'">'+res.data.goods[2].goods[i].name+'</li>'
+                    }
+                    $('#invoiceBox').append(invoiceItem);
                 }
-                $('#invoiceBox').append(invoiceItem);
+            }else if(res.code == 666) {
+                layer.msg(res.msg,function(){
+                    window.location.href= 'http://judiaowang.cn/app/view/partnerLogin.html';
+                    return false;
+                })
+            }else {
+                layer.msg(res.msg);
             }
         }
 
