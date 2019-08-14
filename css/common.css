@@ -23,6 +23,7 @@
 .containerOut .baseInfo,
 .containerOut .orderInfo,
 .containerOut .receiveInfo,
+.containerInner .customInfo,
 .containerOut .partBox {
     padding: 1.25rem;
     border: 1px solid #e7e7e7;
@@ -42,7 +43,8 @@
 
 .containerInner .baseInfo>.title,
 .containerInner .orderInfo>.title,
-.containerInner .receiveInfo>.title {
+.containerInner .receiveInfo>.title, 
+.containerInner .customInfo>.title {
     font-size: 1.375rem;
     margin-bottom: .5rem;
 }
@@ -293,6 +295,43 @@
 .containerInner>.tipBox>.tipText {
     font-size: 1rem;
 }
+
+/* 咨询方式 */
+.containerInner .customInfo {
+    margin-top: 1.875rem;
+}
+
+.customInfo>.formItem {
+    margin-bottom: .75rem;
+}
+
+.customInfo .formItem .customIcon {
+    width: 3.75rem;
+    height: 3.75rem;
+    vertical-align: middle;
+    border-radius: 1.875rem;
+    border: 1px solid #999999;
+    margin-top: .5rem;
+}
+
+.customInfo .formItem .customBox {
+    line-height: 1.5rem;
+    margin-left: 2rem;
+    padding-top: .5rem;
+}
+
+.customInfo .formItem .customBox>.title, 
+.customInfo .formItem .customBox>.tel {
+    font-size: 1rem;
+    font-weight: 700;
+    vertical-align: middle;
+}
+
+.customInfo .formItem .customBox>.addText {
+    font-size: .875rem;
+    margin-left: .375rem;
+}
+
 
 
 /* 下一步按钮 */
