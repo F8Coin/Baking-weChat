@@ -169,6 +169,25 @@ function weChatPay(orderId,targetUrl) {
     window.location.href=  baseUrl+'/api/pay/create?orderId='+orderId+'&returnUrl='+targetUrl+'&token='+JSON.parse(localStorage.getItem('loginData')).token
 }
 
+/* --------------根据token判断是否登录----------------- */
+function isLogin(token,callBack) {
+    $.ajax({
+        url: '',
+        type: 'post',
+        data: token,
+        success: function(res){
+            if(res.code == 0) {
+                callBack();
+            }else {
+                layer.msg(res.msg,function(){
+                    window.location.href= 'http://judiaowang.cn/app/view/partnerLogin.html'
+                    return false;
+                });
+            }
+        }
+    })
+}
+
 
 
 /* --------------办理区域----------------- */
