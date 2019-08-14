@@ -172,17 +172,19 @@ function weChatPay(orderId,targetUrl) {
 /* --------------根据token判断是否登录----------------- */
 function isLogin(token,callBack) {
     $.ajax({
-        url: '',
+        url: baseUrl+'/api/token/check',
         type: 'post',
         data: token,
         success: function(res){
             if(res.code == 0) {
                 callBack();
-            }else {
-                layer.msg(res.msg,function(){
+            }else  if(res.code == 666){
+                layer.msg('请重新登录',function(){
                     window.location.href= 'http://judiaowang.cn/app/view/partnerLogin.html'
                     return false;
                 });
+            }else {
+                layer.msg(res.msg);
             }
         }
     })
