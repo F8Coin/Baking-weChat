@@ -91,15 +91,16 @@
             var loginData= JSON.parse(localStorage.getItem('loginData'));
             var tokenFlag;
             var requestData= {};
+            var that= this;
             if(loginData == null) {
                 window.location.href= 'http://judiaowang.cn/app/view/partnerLogin.html'
                 return false;
             }else {
                 tokenFlag= loginData.token;
-                requestData= {token:tokenFlag}
+                requestData= {token:tokenFlag}             
             }
             function toTarget() {
-                var hrefRoot= $(this).attr('hrefs')
+                var hrefRoot= $(that).attr('hrefs')
                 window.location.href= 'http://judiaowang.cn/app'+hrefRoot
             }
             isLogin(requestData,toTarget)
