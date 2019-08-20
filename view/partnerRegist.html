@@ -43,10 +43,6 @@
                 <div class="formItem clearfix">
                     <p class="labTitle"><span class="isRequired">*</span>上传电子合同<a target="_blank" download="contact.pdf" href="https://judiaowang.oss-cn-shenzhen.aliyuncs.com/template/contract.pdf">(电子合同模板下载)</a></p>               
                     <span class="addText">下载合同,打印填写并盖章,按照序号将合同上传</span>
-                    <!-- <div class="uploadBox">
-                        <input type="file" class="uploadInput" onchange="uploadFile($(this),$(this).parent())">
-                        <img src="" alt="" class="showImg">
-                    </div> -->
                     <div class="uploadBox fileBox fl contract1">
                         <input class="uploadInput" type="file" onchange="uploadFile($(this),$(this).parent())">
                         <img src="" alt="" class="showImg">
@@ -75,10 +71,10 @@
                     <input class="placeholderText code" type="text" placeholder="请输入验证码">
                     <button class="getCodeBtn">获取验证码</button>
                 </div>
-                <div class="formItem">
+                <!-- <div class="formItem">
                     <p class="labTitle"><span class="isRequired">*</span>密码</p>
                     <input class="placeholderText password" type="password" placeholder="请输入密码">
-                </div>
+                </div> -->
             </div>
             <a href="javascript:void(0)" class="weui_btn weui_btn_primary regBtn">注册</a>
         </div>
@@ -105,8 +101,7 @@
         var business= $('.formItem .business').val(); 
         var mobile= $('.formItem .mobile').val(); 
         var code= $('.formItem .code').val(); 
-        var password= $('.formItem .password').val();
-        // var bargain= $('.uploadBox .showImg').attr('src');
+        // var password= $('.formItem .password').val();
         var contract1= $('.contract1 .showImg').attr('src');
         var contract2= $('.contract2 .showImg').attr('src');
         var contract3= $('.contract3 .showImg').attr('src');
@@ -114,12 +109,11 @@
         var partnerReg = {
             address: companyAdd,
             username: userName,
-            // bargain: bargain, // 合同url地址
             bargain: contractList, // 合同url地址
             business: business,
             mobile: mobile,
             name: companyName,
-            password: password,
+            // password: password,
             referrer: referrer,
             smsCode: code,
         } 

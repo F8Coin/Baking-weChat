@@ -23,10 +23,10 @@
                 <input type="text" class="code"  placeholder="请输入验证码">
                 <button class="getCodeBtn">获取验证码</button>
             </div>
-            <div class="formItem password">
+            <!-- <div class="formItem password">
                 <p class="itemTitle">密码</p>
                 <input type="password" class="password" placeholder="请输入密码">
-            </div>
+            </div> -->
         </div>
         <a href="javascript:void(0)" class="loginBtn">登录</a>
     </div>
@@ -48,10 +48,10 @@
         // 获取用户信息
         var mobile= $('.formItem .mobile').val();
         var code= $('.formItem .code').val();
-        var password= $('.formItem .password').val();
+        // var password= $('.formItem .password').val();
         var partnerLog= {
             mobile: mobile,
-            password: password,
+            // password: password,
             smsCode: code	
         }
         partnerLog= JSON.stringify(partnerLog);
@@ -70,10 +70,10 @@
             return;
         }
 
-        if(password == ''){ //验证密码
-            layer.msg('请输入密码');
-            return;
-        }
+        // if(password == ''){ //验证密码
+        //     layer.msg('请输入密码');
+        //     return;
+        // }
 
         // 发送请求
         $.ajax({

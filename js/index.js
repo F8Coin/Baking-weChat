@@ -190,8 +190,6 @@ function isLogin(token,callBack) {
     })
 }
 
-
-
 /* --------------办理区域----------------- */
 $('.zoomList').on('touchend','li',function(e){
     $(this).addClass('checkedItem').siblings('li').removeClass('checkedItem');
