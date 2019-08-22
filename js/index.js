@@ -74,9 +74,10 @@ function uploadFile(inputEle,containerEle) {
     var reads= new FileReader();
     reads.readAsDataURL(fs);
     reads.onload=function (e) {
-        var targetSrc = this.result;
-        containerEle.find('.showImg').attr('src',targetSrc);        
+        // var targetSrc = this.result;
+        // containerEle.find('.showImg').attr('src',targetSrc);  
         containerEle.removeClass('uploadIcon');
+        layer.load(2)      
     };
     var formData= new FormData();
     formData.append('file',fs);
@@ -90,6 +91,7 @@ function uploadFile(inputEle,containerEle) {
         contentType: false, // 告诉jQuery不要去设置Content-Type请求头
         success: function (res) {
             if(res.code == 0) {
+                layer.closeAll('loading')
                 containerEle.find('.showImg').attr('src',res.data);
             }else {
                 layer.msg(res.msg);

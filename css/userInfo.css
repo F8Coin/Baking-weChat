@@ -119,10 +119,68 @@ a.regBtn:active {
     border-radius:21px;
 }
 /* -----------partner个人中心------------- */
+.partnerCenter .contentBox {
+    padding: 1.875rem 1.25rem;
+}
+
+.partnerCenter .contentBox>.component {
+    padding: 1.25rem 0rem;
+    border: 1px solid #e7e7e7;
+    margin-top: 1.875rem;
+}
+
+.partnerCenter .contentBox>.component>.title {
+    text-align: center;
+    padding-bottom: .75rem;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.partnerCenter .contentBox>.component>.title>img {
+    width: 2rem;
+    vertical-align: middle;
+}
+
+.partnerCenter .contentBox>.component>.title>.text {
+    vertical-align: middle;
+    font-size: 1.125rem;
+    font-weight: 700;
+    padding-left: .375rem;
+}
+
+.partnerCenter .component>.content>a {
+    width: 50%;
+    height: 5rem;
+    text-align: center;
+    padding-top: 1.25rem;
+}
+
+.partnerCenter .component>.content>a>.flagIcon {
+    display: block;
+    margin: 0 auto;
+    width: 2rem;
+    margin-bottom: .5rem;
+}
+
+.partnerCenter .component>.content>a>.other {
+    display: block;
+    margin-bottom: .375rem;
+}
+
+.partnerCenter .component>.content>a>.amount {
+    color: red;
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+
+.partnerCenter .component>.content>a>.text {
+    font-size: 16px;
+    color: #000000;
+}
+
 .partnerCenter .basic {
     height: 7.5rem;
     position: relative;
-    padding: 1.875rem 1.25rem 0rem;
+    padding: 1.875rem 1.25rem;
     background-color: #e7e7e7;
 }
 
@@ -166,7 +224,6 @@ a.regBtn:active {
 
 .partnerCenter .order {
     font-size: 0px;
-    padding: 1.875rem 1.25rem;
 }
 
 .partnerCenter .order>.title,
@@ -183,10 +240,19 @@ a.regBtn:active {
     border-radius: .625rem;
     padding-left: 1.25rem;
     box-sizing: border-box;
+    position: relative;
 }
 
 .partnerCenter .order>.orderRecord>.amount {
     padding-top: 1.25rem;
+}
+
+.partnerCenter .order>.orderRecord>.orderFlag {
+    width: 5rem;
+    vertical-align: middle;
+    position: absolute;
+    top: .75rem;
+    right: .75rem;
 }
 
 .partnerCenter .answer {

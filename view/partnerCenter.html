@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="partnerCenter">
-        <div class="basic">
+        <div class="basic titleBox">
             <p class="personText">
                 <span class="name">邵先生</span>
                 <span class="phone">18603059551</span>
@@ -24,29 +24,58 @@
                 <img src="../img/dev.png" alt="">
             </p>
         </div>
-        <div class="order clearfix">
-            <p class="title">我的订单</p>
-            <div class="orderBefore orderRecord fl">
-                <p class="amount">0</p>
-                <span class="text">处理中</span>
+        <div class="contentBox">
+            <div class="order clearfix">
+                <p class="title">我的订单</p>
+                <div class="orderBefore orderRecord fl">
+                    <p class="amount">0</p>
+                    <span class="text">处理中</span>
+                    <img class="orderFlag fr" src="../img/person/order_before.png" alt="">
+                </div>
+                <div class="orderAfter orderRecord fr">
+                    <p class="amount">0</p>
+                    <span class="text">已完成</span>
+                    <img class="orderFlag fr" src="../img/person/order_after.png" alt="">
+                </div>
             </div>
-            <div class="orderAfter orderRecord fr">
-                <p class="amount">0</p>
-                <span class="text">已完成</span>
+            <div class="payBox component">
+                <p class="title">
+                    <img src="../img/person/payIcon01.png" alt="">
+                    <span class="text">自定义支付</span>
+                </p>
+                <div class="content clearfix">
+                    <a href="javascript:void(0)" class="left fl">
+                        <img class="flagIcon" src="../img/person/payIcon02.png" alt="">
+                        <span class="text">自定义支付1</span>
+                    </a>
+                    <a href="javascript:void(0)" class="right fr">
+                        <img class="flagIcon" src="../img/person/payIcon03.png" alt="">
+                        <span class="text">自定义支付2</span>
+                    </a>
+                </div>
+            </div>
+            <div class="billBox component">
+                <p class="title">
+                    <img src="../img/person/bill_icon01.png" alt="">
+                    <span class="text">在线开票</span>
+                </p>
+                <div class="content clearfix">
+                    <a href="javascript:void(0)" class="left fl">
+                        <span class="amount other">0</span>
+                        <span class="text">可开发票单数</span>
+                    </a>
+                    <a href="javascript:void(0)" class="right fr">
+                        <img class="flagIcon" src="../img/person/bill_icon02.png" alt="">
+                        <span class="text">申请在线开票</span>
+                    </a>
+                </div>
+            </div>
+            <div class="moreSer component">
+                <a href="../index.html" class="toMore">
+
+                </a>
             </div>
         </div>
-        <div class="answer clearfix">
-            <p class="title">留言答疑</p>
-            <a href="javascript:void(0)" class="board module fl">
-                <p class="flag"></p>
-                <span class="text">留言答疑</span>
-            </a>
-            <a href="javascript:void(0)" class="professor module fr">
-                <p class="flag"></p>
-                <span class="text">专家疑难解答</span>
-            </a>
-        </div>
-        <a href="../index.html" class="more">更多服务</a>
     </div>
 </body>
 </html>
