@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>个人中心</title>
     <link rel="stylesheet" href="../css/weui.min.css">
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/regist.css">
     <link rel="stylesheet" href="../css/userInfo.css">
 </head>
@@ -21,7 +22,7 @@
                 <span class="companyName">聚雕网科技有限公司</span> 
             </p>
             <p class="personIcon">
-                <img src="../img/dev.png" alt="">
+                <img src="../img/person/userIcon03.jpg" alt="">
             </p>
         </div>
         <div class="contentBox">
@@ -44,18 +45,29 @@
                     <span class="text">子账号管理</span>
                 </p>
                 <div class="content clearfix">
+                    <!-- 子账号列表 -->
                     <table class="table userTable">
                         <tbody>
                             <tr>
-                                <img src="" alt="" class="userIcon">
+                                <td class="w30">
+                                    <img src="../img/person/userIcon01.jpg" alt="" class="userIcon">
+                                </td>
+                                <td class="w30">
+                                    <span class="tel">18603059551</span>
+                                </td>
+                                <td class="w20">
+                                    <span class="name">邵营</span>
+                                </td>
+                                <td class="w20">
+                                    <span class="deleteBtn">✖</span>
+                                </td>
                             </tr>
-                            <tr>
-                                <span class="tel">18603059551</span>
-                                <span class="name">邵营</span>
-                            </tr>
-                            <tr></tr>
                         </tbody>
                     </table>
+                    <p class="addBtn" id="add_accountBtn">
+                        <span class="addIcon">+</span>
+                        <span class="text">添加账号</span>
+                    </p>
                 </div>
             </div>
             <div class="payBox component">
@@ -91,11 +103,59 @@
                 </div>
             </div>
             <div class="moreSer component">
-                <a href="../index.html" class="toMore">
-
+                <a href="../index.html" class="toMore clearfix">
+                    <span class="text1 text fr">更多服务</span><br><br>
+                    <span class="text2 text fr">让客户业务变得更加全能</span><br><br>
+                    <span class="text3 text fr">查看详情></span><br>
                 </a>
             </div>
         </div>
+        <div class="bottomBox">
+            <a href="javascript:void(0)" class="query">
+                <span class="icon glyphicon glyphicon-list-alt"></span>
+                <span class="text">查询</span>
+            </a>
+            <a href="javascript:void(0)" class="message">
+                <span class="icon  answerIcon glyphicon glyphicon-plus-sign"></span>
+                <span class="text">留言答疑</span>
+            </a>
+            <a href="javascript:void(0)" class="person">
+                <span class="icon glyphicon glyphicon-user"></span>
+                <span class="text">我的</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- 添加子账号弹窗 -->
+    <div id="add_accountBox">
+        <div class="formItem">
+            <span class="labTitle"><span class="isRequired">*</span>姓名:</span>
+            <input class="placeholderText userName" type="text" placeholder="请输入姓名">
+        </div>
+        <div class="formItem">
+            <span class="labTitle"><span class="isRequired">*</span>手机号码:</span>
+            <input class="placeholderText userName" type="text" placeholder="请输入手机号码">
+        </div>
+        <a href="javascript:void(0)" class="confirmBtn">确定</a>
     </div>
 </body>
 </html>
+
+<script src="../js/jQuery/jquery-3.4.0.js"></script>
+<script src="../lib/layer/layer.js"></script>
+<script>
+    $(function(){
+        // 点击添加子账号管理
+        $('#add_accountBtn').on('click',function(){
+            layer.open({
+                type: 1,
+                title: '添加子账号',
+                content: $('#add_accountBox'),
+                yes: function success(index){
+                    alert('发送添加子账号请求');
+                    layer.close(index);
+                }
+            })
+        })
+    })
+</script>

@@ -114,7 +114,19 @@ button {
 
 table {
     border-collapse:collapse;
-}    
+}  
+
+.w10 {
+    width: 10%;
+}
+
+.w20 {
+    width: 20%;
+}
+
+.w30 {
+    width: 30%;
+}
 
 input{
     outline-color: invert ;

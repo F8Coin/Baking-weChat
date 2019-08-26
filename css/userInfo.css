@@ -255,37 +255,148 @@ a.regBtn:active {
     right: .75rem;
 }
 
-.partnerCenter .answer {
-    height: 8.75rem;
-    padding: 0rem 1.25rem;
-    padding-top: .5rem;
-}
-
-.partnerCenter .answer>.module {
-    padding-left: 0rem;
-    height: 7.25rem;
-    color: #000000;
+.partnerCenter .accountBox>.content>.addBtn {
     text-align: center;
+    padding: 1.25rem 0rem;
+    line-height: 2.25rem;
 }
 
-.partnerCenter .answer .flag {
-    width: 3.75rem;
-    height: 3.75rem;
-    border-radius: 3.75rem;
-    margin: 0 auto;
-    margin-bottom: .5rem;
-    margin-top: .5rem;
-    border: 1px solid #e7e7e7;
+.partnerCenter .accountBox>.content>.addBtn>.addIcon {
+    display: inline-block;
+    font-size: 3rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 1.875rem;
+    border: 2px dashed #e7e7e7;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.partnerCenter .accountBox>.content>.userTable {
+    width: 100%;
+    text-align: center;
+    padding: 0rem 1.25rem;
+}
+
+.partnerCenter .accountBox>.content>.userTable>tbody>tr {
+    height: 5rem;
+    border-bottom: 1px solid #e7e7e7;
 } 
 
-.partnerCenter .more {
+.partnerCenter .accountBox>.content>.userTable>tbody>tr>td  {
+    vertical-align: middle;
+}
+
+.partnerCenter .accountBox>.content>.userTable>tbody>tr>td>.userIcon {
+    width: 3.75rem;
+    height: 3.75rem;
+    border-radius: 1.875rem;
+    vertical-align: middle;
+}
+
+.partnerCenter .accountBox>.content>.userTable>tbody>tr>td>.deleteBtn {
+    font-size: 1.5rem;
+    text-align: right;
+    color: #999999;
+    cursor: pointer;
+}
+
+.partnerCenter .moreSer {
+    background: url('../img/person/moreSer_bg.png') no-repeat left center;
+    background-size: contain;
+}
+
+.partnerCenter .moreSer>.toMore {
     display: block;
-    height:3.75rem;
-    text-align: center;
-    line-height: 3.75rem;
-    border: 1px solid #b39fff;
-    border-radius: 3.75rem; ; 
+    width: 100%;
+    height: 100%;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+}
+
+.partnerCenter .moreSer>.toMore>.text {
+    line-height: 2rem;
+}
+
+.partnerCenter .moreSer>.toMore>.text1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: right;
+    color: #000000;
+    line-height: 1.5rem;
+}
+
+.partnerCenter .moreSer>.toMore>.text2 {
+    color: #000000;
+}
+
+.partnerCenter .bottomBox {
     margin-top: 3.75rem;
-    margin-left: 1.25rem;
-    margin-right: 20px ;
+    border-top: 1px solid #e7e7e7;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 3.75rem;
+    line-height: 3.75rem;
+}
+
+.partnerCenter .bottomBox>a {
+    position: relative;
+    text-align: center;
+    padding: 0rem .75rem;
+}
+
+.partnerCenter .bottomBox>a>.icon {
+    position: absolute;
+    top: .75rem;
+    left: 50%;
+    margin-bottom: .375rem;
+    font-size: 1.125rem;
+    margin-left: -0.5625rem;
+}
+
+.partnerCenter .bottomBox>a>.answerIcon {
+    font-size: 2.625rem;
+    top: -1rem;
+    margin-left: -1.3125rem;
+}
+
+.partnerCenter .bottomBox>a>.text {
+    display: inline-block;
+    font-size: 1.125rem;
+    padding-top: .75rem;
+}
+
+
+/* 添加子账号弹框 */
+#add_accountBox {
+    display: none;
+}
+
+.formItem .isRequired{
+    color: #CD0000;
+    margin-right: .25rem;
+}
+
+#add_accountBox .formItem {
+    height: 3rem;
+    line-height: 3rem;
+    padding: .5rem .75rem;
+} 
+
+#add_accountBox .formItem .labTitle {
+    margin-right: .375rem;
+}
+
+#add_accountBox .confirmBtn {
+    display: inline-block;
+    width: 100%;
+    height: 3rem;
+    line-height: 3rem;
+    text-align: center;
+    margin-top: 1rem;
+    color: #000000;
+    border-top: 2px solid #e7e7e7;
 }
