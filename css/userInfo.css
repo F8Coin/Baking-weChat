@@ -121,12 +121,15 @@ a.regBtn:active {
 /* -----------partner个人中心------------- */
 .partnerCenter .contentBox {
     padding: 1.875rem 1.25rem;
+    margin-bottom: 5.625rem; 
 }
 
 .partnerCenter .contentBox>.component {
     padding: 1.25rem 0rem;
     border: 1px solid #e7e7e7;
     margin-top: 1.875rem;
+    background-color: #fff;
+    border-radius: .375rem;
 }
 
 .partnerCenter .contentBox>.component>.title {
@@ -181,7 +184,7 @@ a.regBtn:active {
     height: 7.5rem;
     position: relative;
     padding: 1.875rem 1.25rem;
-    background-color: #e7e7e7;
+    background-color: #fff;
 }
 
 .partnerCenter .basic .personText {
@@ -241,6 +244,10 @@ a.regBtn:active {
     padding-left: 1.25rem;
     box-sizing: border-box;
     position: relative;
+}
+
+.partnerCenter .order>.orderRecord {
+    background-color: #fff;
 }
 
 .partnerCenter .order>.orderRecord>.amount {
@@ -303,7 +310,7 @@ a.regBtn:active {
 
 .partnerCenter .moreSer {
     background: url('../img/person/moreSer_bg.png') no-repeat left center;
-    background-size: contain;
+    background-size: contain;   
 }
 
 .partnerCenter .moreSer>.toMore {
@@ -330,8 +337,7 @@ a.regBtn:active {
     color: #000000;
 }
 
-.partnerCenter .bottomBox {
-    margin-top: 3.75rem;
+.containerOut .bottomBox {
     border-top: 1px solid #e7e7e7;
     display: flex;
     justify-content: space-around;
@@ -340,15 +346,19 @@ a.regBtn:active {
     flex-wrap: wrap;
     height: 3.75rem;
     line-height: 3.75rem;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    background-color: #fff;
 }
 
-.partnerCenter .bottomBox>a {
+.containerOut .bottomBox>a {
     position: relative;
     text-align: center;
     padding: 0rem .75rem;
 }
 
-.partnerCenter .bottomBox>a>.icon {
+.containerOut .bottomBox>a>.icon {
     position: absolute;
     top: .75rem;
     left: 50%;
@@ -357,17 +367,86 @@ a.regBtn:active {
     margin-left: -0.5625rem;
 }
 
-.partnerCenter .bottomBox>a>.answerIcon {
+.containerOut .bottomBox>a>.answerIcon {
     font-size: 2.625rem;
     top: -1rem;
     margin-left: -1.3125rem;
 }
 
-.partnerCenter .bottomBox>a>.text {
+.containerOut .bottomBox>a>.text {
     display: inline-block;
     font-size: 1.125rem;
     padding-top: .75rem;
 }
+
+/* -----------订单记录页面------------- */
+.ordRecordBox .topBox {
+    min-height: 7.5rem;
+    background-color: #fff;
+}
+
+.ordRecordBox .topBox .searchText {
+    padding: 1.875rem .75rem .375rem;
+
+}
+
+.ordRecordBox .topBox .searchText .input_text {
+    height: 3rem;
+    line-height: 3rem;
+}
+
+.ordRecordBox .topBox .searchText .searchBtn {
+    height: 2.625rem;
+}
+
+.ordRecordBox .topBox .searchSelect>.serType {
+    text-align: center;
+    line-height: 3.75rem;
+}
+
+.ordRecordBox .topBox>.serBox {
+    background-color: #fff;
+    border-top: .125rem solid #e7e7e7;
+    padding: .75rem 1.25rem;
+    display: none;
+}
+
+.ordRecordBox .topBox>.orderStateBox>ul>li {
+    height: 2.625rem;
+    line-height: 2.625rem;
+}
+
+.ordRecordBox .topBox>.orderStateBox>ul>li>.checkFlag {
+    padding-right: 1.25rem;
+    padding-top: .75rem;
+    font-size: 1.125rem;
+    display: none;
+}
+
+.ordRecordBox .topBox>.orderStateBox>ul>li.isShow  {  
+    color: #337AB7;
+}
+
+.ordRecordBox .topBox>.orderStateBox>ul>li.isShow .checkFlag{
+    display: block;
+}
+
+.ordRecordBox .topBox>.orderTimeBox {
+    text-align: center;
+}
+
+.ordRecordBox .topBox>.orderTimeBox>input {
+    text-align: center;
+    width: 40%;
+    padding-bottom: .75rem;
+    border-bottom: .0625rem solid #e7e7e7;
+}
+
+.ordRecordBox .mainBox {
+    height: 37.5rem;
+    background: url('../img/person/noRecord.png') center center no-repeat;
+    background-size: 30%;
+} 
 
 
 /* 添加子账号弹框 */

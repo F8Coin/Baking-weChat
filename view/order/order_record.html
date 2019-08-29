@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../css/weui.min.css">
+    <link rel="stylesheet" href="../../lib/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../../lib/mobileSelect/mobileSelect.css">
+    <link rel="stylesheet" href="../../css/regist.css">
+    <link rel="stylesheet" href="../../css/userInfo.css">
+    <title>我的订单</title>
+    <style>
+        body {
+            background-color: #e7e7e7;
+        }
+    </style>
+</head>
+<body>
+    <div class="ordRecordBox containerOut">
+        <div class="topBox clearfix">
+            <div class="container">
+                <div class="row searchText">
+                    <div class="col-lg-6">
+                        <div class="input-group">
+                        <input type="text" class="form-control input_text" placeholder="请输入搜索关键字...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default searchBtn" type="button" style="height:42px">查询</button>
+                        </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="searchSelect clearfix">
+                <div class="left stateSer serType fl w50" id="toggleState">
+                    <p class="title">
+                        订单状态
+                        <span class="arrowFlag glyphicon glyphicon-menu-down"></span>
+                    </p>
+                </div>
+                <div class="right timeSer serType fr w50" id="toggleTime">
+                    <p class="title">
+                        下单时间
+                        <span class="arrowFlag glyphicon glyphicon-menu-down"></span>                        
+                    </p>
+                </div>
+            </div>
+            <div class="orderStateBox serBox">
+                <ul>
+                    <li class="isShow">
+                        <span class="text">所有订单</span>
+                        <span class="checkFlag glyphicon glyphicon-ok fr"></span>
+                    </li>
+                    <li>
+                        <span class="text">未支付</span>
+                        <span class="checkFlag glyphicon glyphicon-ok fr"></span>
+                    </li>
+                    <li>
+                        <span class="text">处理中</span>
+                        <span class="checkFlag glyphicon glyphicon-ok fr"></span>
+                    </li>
+                    <li>
+                        <span class="text">已完成</span>
+                        <span class="checkFlag glyphicon glyphicon-ok fr"></span>
+                    </li>
+                </ul>
+            </div>
+            <div class="orderTimeBox serBox">
+                <input type="text" value="开始时间" class="startTime" id="startTime">
+                <span class="join">至</span>
+                <input type="text" value="结束时间" class="endTime" id="endTime">
+            </div>
+        </div>
+        <div class="mainBox">
+
+        </div>
+        <div class="bottomBox">
+            <a href="javascript:void(0)" class="query">
+                <span class="icon glyphicon glyphicon-list-alt"></span>
+                <span class="text">查询</span>
+            </a>
+            <a href="javascript:void(0)" class="message">
+                <span class="icon  answerIcon glyphicon glyphicon-plus-sign"></span>
+                <span class="text">留言答疑</span>
+            </a>
+            <a href="../partnerCenter.html" class="person">
+                <span class="icon glyphicon glyphicon-user"></span>
+                <span class="text">我的</span>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
+<script src="../../js/jQuery/jquery-3.4.0.js"></script>
+<script src="../../lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script src="../../lib/mobileSelect/mobileSelect.js"></script>
+<script src="../../lib/mobileSelect/selectDate.js"></script>
+<script>
+    $(function(){
+        $('#toggleState').on('click',function(){ //订单状态下拉框切换
+            $('.orderStateBox').slideToggle();
+            $('#toggleState .title .arrowFlag').toggleClass('glyphicon-menu-up');
+            var isShow= $('.orderStateBox').css('display');
+            if(isShow == "block") {
+                $('.orderTimeBox').css('display','none');
+                $('#toggleTime .title .arrowFlag').removeClass('glyphicon-menu-up');                                
+            }else if(isShow == "none") {
+                $('.orderTimeBox').css('display','block');
+                $('#toggleState .title .arrowFlag').removeClass('glyphicon-menu-up');                                                
+            }
+        })
+
+        $('.orderStateBox>ul>li').on('click',function(){ // 选择订单状态
+            $('.orderStateBox>ul>li').removeClass('isShow');
+            $(this).addClass('isShow');
+        })
+
+        $('#toggleTime').on('click',function(){ //下单时间下拉框切换
+            $('.orderTimeBox').slideToggle();
+            $('#toggleTime .title .arrowFlag').toggleClass('glyphicon-menu-up');
+            var isShow= $('.orderTimeBox').css('display');
+            if(isShow == "block") {
+                $('.orderStateBox').css('display','none');
+                $('#toggleState .title .arrowFlag').removeClass('glyphicon-menu-up');
+            }else if(isShow == "none") {
+                $('.orderStateBox').css('display','block');
+                $('#toggleTime .title .arrowFlag').removeClass('glyphicon-menu-up');                
+            }
+        })
+
+        $.selectDate("#startTime",{ //选择开始时间
+                start:2000,
+                end:2099,
+                select:[2019,5,6],
+                title:'开始时间'
+            },function (data) {
+                var year= data.year;
+                var month= data.month;
+                var day= data.day;
+                if(month < 10) {
+                    month= '0'+month;
+                }
+                if(day < 10) {
+                    day= '0'+day;
+                }
+                var startTime= year+'-'+month+'-'+day 
+                $('#startTime').val(startTime);
+        });
+
+        $.selectDate("#endTime",{ //选择结束时间
+                start:2000,
+                end:2099,
+                select:[2020,10,6],
+                title:'结束时间'
+            },function (data) {
+                var year= data.year;
+                var month= data.month;
+                var day= data.day;
+                if(month < 10) {
+                    month= '0'+month;
+                }
+                if(day < 10) {
+                    day= '0'+day;
+                }
+                var endTime= year+'-'+month+'-'+day 
+                $('#endTime').val(endTime);
+            });
+
+        })
+</script>
