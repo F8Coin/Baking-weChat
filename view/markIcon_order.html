@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/weui.min.css">
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../css/regist.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <title>商标注册</title>
+</head>
+<body>
+    <div class="containerOut">
+        <div class="headerBar">
+            <ul><!-- 步骤流程进度条 -->
+                <li class="step1 stepIndex">
+                    <p class="stepCont">
+                        <!-- <span class="stepNum">1</span> -->
+                        <span class="succFlag glyphicon glyphicon-ok"></span>
+                    </p>
+                    <span class="title">选择方案</span>
+                </li>
+                <li class="step2 stepIndex">
+                    <p class="stepCont">
+                        <span class="stepNum">2</span>                                                    
+                    </p>
+                    <span class="title">选择类别</span>
+                </li>
+                <li class="step3 stepIndex">
+                    <p class="stepCont">
+                        <span class="stepNum">3</span>                        
+                    </p>
+                    <span class="title">补全信息</span>
+                </li>
+                <li class="step4 stepIndex">
+                    <p class="stepCont">
+                        <span class="stepNum">4</span>                  
+                    </p>
+                    <span class="title">确认付款</span>
+                </li>
+            </ul>
+        </div>
+        <div class="containerInner markIconInner pageCont">
+            <div id="page1" class="stepPage" style="display: block">
+                <div class="baseInfo">
+                    <p class="title">服务方案</p>
+                    <div class="formItem">
+                        <p class="labTitle"><span class="isRequired">*</span>选择服务方案</p>
+                        <div class="content clearfix" id="goodsList">
+                            <label for="left" class="left fl optionAbout">
+                                <p class="flag">
+                                    <span class="text">方案1</span>
+                                </p>
+                                <p class="price">￥350</p>
+                                <input class="selectBtn" type="radio" id="left" name="plan">
+                            </label>
+                            <label for="right" class="right fr optionAbout">
+                                <p class="flag">
+                                    <span class="text">方案2</span>
+                                </p>
+                                <p class="price">￥550</p>
+                               <input class="selectBtn" type="radio" id="right" name="plan">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="tipBox">
+                    <p class="tipTitle">方案说明</p>
+                    <p class="tipText">方案一：</p>
+                    <p class="tipText">1.商标分析由系统自动分析，聚雕网不再做处理，直接提交，负责提交申请和流程管控；</p>
+                    <p class="tipText">2.系统下单、资料准备等，客户根据模板、样本、及系统操作指导文件自行准备；</p>
+                    <p class="tipText">3.适合对商标体系、聚雕网使用，已有一定的熟悉度的客户；（聚雕网会组织学习培训）</p> <br>
+                    <p class="tipText">方案二：</p>
+                    <p class="tipText">1.客户系统下单后，由专人再次做深度查询分析，提供查询报告，供决策参考；深度分析后放弃申请的，费用退还（每件提供）</p>
+                    <p class="tipText">2.客户系统下单后，系统梳理、资料准备等工作，有专人联系，协助完成。</p>
+                    <p class="tipText">3.适合对商标了解不多、人手不足、出不出时间、相关细节拿不准的客户。</p>
+                    <p class="tipText addText">声明：商标注册不确保成功！！</p>
+                </div>
+            </div>
+            <div id="page2" class="stepPage" style="display: none">
+                <div class="baseInfo">
+                    <div class="formItem">
+                        <p class="labTitle"><span class="isRequired">*</span>选择类别</p>
+                        <ul class="markIconList zoomList" id="trademark">
+                            <li>第1类-化学原料</li>
+                            <li>第2类-颜料油漆</li> 
+                            <li class="disabled">第3类-日化用品</li> 
+                            <li>第4类-燃料油脂</li> 
+                            <li class="disabled">第5类-医药</li> 
+                            <li>第6类-金属材料</li> 
+                            <li>第7类-机械设备</li> 
+                            <li>第8类-手工机械</li> 
+                            <li class="disabled">第9类-科学仪器</li> 
+                            <li>第10类-医疗器械</li> 
+                            <li>第11类-灯具空调</li> 
+                            <li>第12类-运输工具</li> 
+                            <li>第13类-军火烟火</li> 
+                            <li>第14类-珠宝钟表</li> 
+                            <li>第15类-乐器</li> 
+                            <li>第16类-办公用品</li> 
+                            <li>第17类-橡胶制品</li> 
+                            <li>第18类-皮革皮具</li> 
+                            <li>第19类-建筑材料</li> 
+                            <li>第20类-家居</li> 
+                            <li class="disabled">第21类-厨房洁具</li> 
+                            <li>第22类-绳网袋篷</li> 
+                            <li>第23类-纱线丝</li> 
+                            <li>第24类-布料床单</li> 
+                            <li class="disabled">第25类-服装鞋帽</li> 
+                            <li>第26类-纽扣拉链</li> 
+                            <!-- <li>第27类-地毯席垫</li> 
+                            <li>第28类-健身器材</li> 
+                            <li>第29类-食品</li> 
+                            <li>第30类-方便食品</li> 
+                            <li>第31类-饲料种籽</li> 
+                            <li>第32类-啤酒饮料</li> 
+                            <li>第33类-酒</li> 
+                            <li>第34类-烟草烟具</li> 
+                            <li>第35类-广告销售</li> 
+                            <li>第36类-金融物管</li> 
+                            <li>第37类-建筑修理</li> 
+                            <li>第38类-通讯服务</li> 
+                            <li>第39类-运输贮藏</li> 
+                            <li>第40类-材料加工</li> 
+                            <li>第41类-教育娱乐</li> 
+                            <li>第42类-网站服务</li> 
+                            <li>第43类-餐饮住宿</li> 
+                            <li>第44类-医疗园艺</li> 
+                            <li>第45类-社会服务</li>  -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="page3" class="stepPage" style="display: none">
+                <div class="baseInfo">
+                    <p class="title">注册信息</p>
+                    <div class="formItem">
+                        <p class="labTitle"><span class="isRequired">*</span>&nbsp;联系人</p>
+                        <input class="placeholderText linkPerson" type="text" placeholder="请输入联系人">
+                    </div>
+                    <div class="formItem">
+                        <p class="labTitle"><span class="isRequired">*</span>&nbsp;手机号码</p>
+                        <input class="placeholderText mobile" type="text" placeholder="请输入手机号码">
+                    </div>
+                    <div class="formItem">
+                        <p class="labTitle"><span class="isRequired">*</span>&nbsp;产品范围</p>
+                        <textarea class="productAbout remarkText" name="" id="" cols="" rows="" placeholder="请简要说明产品范围,如手机、蓝牙耳机、机械设备、服装等"></textarea>
+                    </div>
+                    <div class="formItem">
+                        <p class="labTitle">备注说明</p>
+                        <textarea class="remarkText" name="" id="" cols="" rows="" placeholder="请简要备注您的需求 (选填)"></textarea>
+                    </div>
+                </div>
+
+                <div class="customInfo">
+                    <p class="title">咨询方式</p>
+                    <div class="formItem clearfix">
+                        <img src="../img/site.jpg" alt="" class="customIcon fl">
+                        <p class="customBox fl">
+                            <span class="title">聚雕网客服黄小姐</span><span class="addText">(对接客服)</span><br>
+                            <span class="tel"><span class="glyphicon glyphicon-phone-alt telIcon"></span> 13823590716</span>
+                        </p>
+                    </div>
+                    <div class="formItem clearfix">
+                        <img src="../img/site.jpg" alt="" class="customIcon fl">
+                        <p class="customBox fl">
+                            <span class="title">商务经理张先生</span><span class="addText">(对接商务经理)</span><br>
+                            <span class="tel"><span class="glyphicon glyphicon-phone-alt telIcon"></span> 13310874521</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div id="page4" class="stepPage" style="display: none">
+                <div class="orderInfo">
+                    <p class="title">申请资料</p>
+                    <div class="content">
+                        <p class="orderItem">
+                            <span class="labTitle">注册商标名称<span class="colon">:</span></span>
+                            <span class="labContent tradeMarkName"></span>
+                        </p>
+                        <p class="orderItem">
+                            <span class="labTitle">申请类别<span class="colon">:</span></span>
+                            <span class="labContent applicationType"></span>
+                        </p>
+                        <p class="orderItem">
+                            <span class="labTitle">产品范围<span class="colon">:</span></span>
+                            <span class="labContent productLimt"></span>
+                        </p>  
+                        <p class="orderItem">
+                            <span class="labTitle">联系人<span class="colon">:</span></span>
+                            <span class="labContent contactName"></span>
+                        </p>  
+                        <p class="orderItem">
+                            <span class="labTitle">联系电话<span class="colon">:</span></span>
+                            <span class="labContent contactTel"></span>
+                        </p>  
+                        <p class="orderItem">
+                            <span class="labTitle">备注说明<span class="colon">:</span></span>
+                            <span class="labContent remarkText"></span>
+                        </p>  
+                    </div>
+                </div>
+                <div class="orderInfo">
+                    <p class="title">服务方案</p>
+                    <div class="content">
+                        <table class="sealListBox w100">
+                            <tbody id="sealList">
+                                <tr class="sealItem">
+                                    <td class="sealName">方案1</td>
+                                    <td class="sealAccount">×1</td>
+                                    <td class="sealPrice">￥350</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="paymentBox clearfix">
+            <span class="fl payInfo">
+                订单金额 : <span class="RMB_flag">￥</span><span class="payAmount"></span>
+            </span>
+            <a href="javascript:void(0)" class="fr paymentBtn ">下一步</a>
+        </div>
+    </div>
+    <!-- page2 类型选择弹窗 -->
+    <div id="trademark_tip" style="display:none">
+        <div class="content">
+            <div class="listTable">
+                <div class="listItem">
+                    <input type="checkbox" class="selectType">
+                    <span class="typeText">0101-工业气体，单质0101-工业气体，单质0101-工业气体，单质0101-工业气体，单质</span>
+                    <span class="moreFlag glyphicon glyphicon-menu-right"></span>
+                    <p class="textInfo">
+                        工业用人造石墨、硫化氢、液态空气、天然石墨、工业用天然石墨、稀土金属、氧、焊接用固态保护气体、游泳池用氯气、液态氯、溴、硼、混合稀土金属、碳酸气、蓄电池用碳粉、锑粉、光气（碳酰氯）、硫（非金属元素）、硫（非金属矿物）、亚硫酸气体（二氧化硫）、蓄电池用人造石墨、碱土金属、氨、无水氨、锑、氩、砷、砹、氮、一氧化二氮、钡、铋、碳、镥、铈、铯、氯气、镝、铒、铕、化学用硫华、氟、工业用石墨、钆、镓、焊接用保护气体、工业用固态气体、干冰（二氧化碳）、氦、钬、氢、化学用碘、工业用碘、氪、镧、锂、汞、准金属、钕、氖、工业用氧、磷、钾、镨、氡、铼、铷、钐、钪、硒、硅、钠、硫、锶、锝、碲、铽、稀土、铊、铥、氙、镱、钇、碱金属、化学用溴、石墨烯、液体二氧化硫、三氧化硫、液体二氧化碳、钙、工业硅、结晶硅
+                    </p>
+                </div>
+                <div class="listItem">
+                    <input type="checkbox" class="selectType">
+                    <span class="typeText">0101-工业气体，单质</span>
+                    <span class="moreFlag glyphicon glyphicon-menu-right"></span>
+                </div>
+                <div class="listItem">
+                    <input type="checkbox" class="selectType">
+                    <span class="typeText">0101-工业气体，单质</span>
+                    <span class="moreFlag glyphicon glyphicon-menu-right"></span>
+                </div>
+                <div class="listItem">
+                    <input type="checkbox" class="selectType">
+                    <span class="typeText">0101-工业气体，单质</span>
+                    <span class="moreFlag glyphicon glyphicon-menu-right"></span>
+                </div>
+                <div class="listItem">
+                    <input type="checkbox" class="selectType">
+                    <span class="typeText">0101-工业气体，单质</span>
+                    <span class="moreFlag glyphicon glyphicon-menu-right"></span>
+                </div>
+            </div>
+
+        </div>
+        <div class="bottom">
+            <span class="selectNum">
+                <span class="text">已选<span class="total">10</span>/10项目</span>
+            </span>
+            <a href="javascript:void(0)" class="fr confirmBtn">确定</a>
+        </div>
+    </div>
+</body>
+</html>
+<script src="../js/jQuery/jquery-3.4.0.js"></script>
+<script src="../lib/layer/layer.js"></script>
+<script src="../js/index.js"></script>
+<script>
+    $(function(){
+        // 选择类别弹窗
+        $('#trademark').on('click','li',function(){
+            var titleText= $(this).text();
+            if( !$(this).hasClass('disabled')) {  
+                layer.open({
+                       type:'1',
+                       title: titleText,
+                    content: $('#trademark_tip')
+                })
+            }else {
+                return;
+            }
+        })
+        // 点击弹窗更多按钮
+        $('#trademark_tip .moreFlag').on('click',function(){
+            $(this).toggleClass('glyphicon-menu-down');
+            $(this).siblings('.textInfo').slideToggle();
+        })
+    })
+</script>

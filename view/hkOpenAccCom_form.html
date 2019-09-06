@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>公司香港开户</title>
+    <link rel="stylesheet" href="../css/weui.min.css">
+    <link rel="stylesheet" href="../css/regist.css">
+    <link rel="stylesheet" href="../css/common.css?v=1.0">
+    <link rel="stylesheet" href="../css/index.css?v=1.0">
+</head>
+<body>
+    <div class="pinchContainer containerOut">
+        <div class="headerBar"></div>
+        <div class="contentBox containerInner">
+            <div class="baseInfo">
+                <p class="title">开户信息</p>
+                <div class="formItem">
+                    <p class="labTitle"><span class="isRequired">*</span>公司名称<span class="addText">(英文)</span> </p>
+                    <input class="placeholderText companyName" type="text" placeholder="请输入公司英文名称">
+                </div>
+                <div class="formItem">
+                    <p class="labTitle"><span class="isRequired">*</span>开户银行<span class="addText">(仅限选一家银行开户)</span> </p>
+                    <div class="content clearfix" id="goodsList">
+                        <label for="1" class="left fl optionAbout">
+                            <p class="flag">
+                                <span class="text">汇丰银行</span>
+                            </p>
+                            <p class="price">￥7000</p>
+                            <input class="selectBtn" type="radio" id="1">
+                        </label>
+                        <label for="2" class="right fr optionAbout">
+                            <p class="flag">
+                                <span class="text">永亨银行</span>
+                            </p>
+                            <p class="price">￥6000</p>
+                            <input class="selectBtn" type="radio" id="2">
+                        </label>
+                        <label for="3" class="left fl optionAbout">
+                            <p class="flag">
+                                <span class="text">东亚银行</span>
+                            </p>
+                            <p class="price">￥7000</p>
+                            <input class="selectBtn" type="radio" id="3">
+                        </label>
+                        <label for="4" class="right fr optionAbout">
+                            <p class="flag">
+                                <span class="text">中国银行</span>
+                            </p>
+                            <p class="price">￥8000</p>
+                            <input class="selectBtn" type="radio" id="4">
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="receiveInfo">
+                <p class="title">收货信息</p>
+                <div class="formItem">
+                    <p class="labTitle"><span class="isRequired">*</span>&nbsp;联系人</p>
+                    <input class="placeholderText receiverName" type="text" placeholder="请输入联系人">
+                </div>
+                <div class="formItem">
+                    <p class="labTitle"><span class="isRequired">*</span>&nbsp;手机号码</p>
+                    <input class="placeholderText receiverTel" type="text" placeholder="请输入手机号码">
+                </div>
+                <div class="formItem">
+                    <p class="labTitle"><span class="isRequired">*</span>&nbsp;收货地址</p>
+                    <input class="placeholderText receiverAdd" type="text" placeholder="请输入收货地址">
+                </div>
+            </div>
+            <div class="customInfo">
+                    <p class="title">咨询方式</p>
+                    <div class="formItem clearfix">
+                        <img src="../img/site.jpg" alt="" class="customIcon fl">
+                        <p class="customBox fl">
+                            <span class="title">聚雕网客服黄小姐</span><span class="addText">(对接客服)</span><br>
+                            <span class="tel"><span class="glyphicon glyphicon-phone-alt telIcon"></span> 13823590716</span>
+                        </p>
+                    </div>
+                    <div class="formItem clearfix">
+                        <img src="../img/site.jpg" alt="" class="customIcon fl">
+                        <p class="customBox fl">
+                            <span class="title">商务经理张先生</span><span class="addText">(对接商务经理)</span><br>
+                            <span class="tel"><span class="glyphicon glyphicon-phone-alt telIcon"></span> 13310874521</span>
+                        </p>
+                    </div>
+                </div>
+            <div class="tipBox">
+                <p class="tipTitle">温馨提示</p><br>
+                <p class="tipText">一、请把以下资料，打包成电子档发送到邮箱：kf@judiaowang.com</p>
+                <p class="tipText">1、公司注册证书，商业登记证书，章程；</p>
+                <p class="tipText">2、董事身份证；</p>
+                <p class="tipText">3、国内公司营业执照，国内公司银行流水，相关业务文件，上下游合同，增值税发票报关单或者提单。</p><br>
+                <p class="tipText">二、开户提示：</p>
+                <p class="tipText">1、请自备银行查册费：HKD 1,200，开户现场交给银行；</p>
+                <p class="tipText">2、开通时间：6周；</p>
+                <p class="tipText">3、银行开户不需要购买任何理财产品。</p>
+            </div>
+        </div>
+        <div class="paymentBox">
+            <span class="payInfo">
+                订单金额 : <span class="RMB_flag">￥</span><span class="payAmount"></span>            
+            </span>
+            <a href="javascript:void(0)" class="fr nextBtn paymentBtn">下一步</a>
+        </div>
+    </div>
+</body>
+</html>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="../js/jQuery/jquery-3.4.0.js"></script>
+<script src="../lib/layer/layer.js"></script>
+<script src="../js/index.js?v=1.1"></script>

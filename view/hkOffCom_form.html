@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <meta http-equiv="Content-Type"  content="multipart/form-data; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>香港公司注销</title>
+    <link rel="stylesheet" href="../css/weui.min.css">
+    <link rel="stylesheet" href="../lib/layer/mobile/need/layer.css">
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/regist.css">
+    <link rel="stylesheet" href="../css/common.css?v=1.0">
+    <link rel="stylesheet" href="../css/index.css?v=1.0">
+</head>
+
+<body>
+    <div class="containerOut">
+        <div class="headerBar"></div>
+        <div class="contentBox containerInner">
+            <div class="baseInfo">
+                <p class="title">公司信息</p>
+                <div class="formItem">
+                    <p class="labTitle">公司名称</p>
+                    <input class="placeholderText companyName" type="text" placeholder="请输入公司名称">
+                </div>
+                <div class="formItem">
+                    <p class="labTitle"><span class="isRequired">*</span>是否办理过审计报告</p>
+                    <ul class="urget zoomList" id="area">
+                       <li>是</li>
+                       <li>否</li>
+                    </ul>
+                </div>
+                <div class="formItem">
+                    <p class="labTitle"><span class="isRequired">*</span>最新商业登记证</p>
+                    <div class="uploadBox">
+                        <input type="file" class="uploadInput" accept="image/*" onchange="uploadFile($(this),$(this).parent())">
+                        <img src="" alt="" class="showImg">
+                        <p class="typeText">最新商业登记证<span class="requiredFlag">*</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="receiveInfo">
+                <p class="title">收货信息</p>
+                <div class="formItem">
+                    <p class="labTitle"><span class="isRequired">*</span>&nbsp;联系人</p>
+                    <input class="placeholderText receiverName" type="text" placeholder="请输入联系人">
+                </div>
+                <div class="formItem">
+                    <p class="labTitle"><span class="isRequired">*</span>&nbsp;手机号码</p>
+                    <input class="placeholderText receiverTel" type="text" placeholder="请输入手机号码">
+                </div>
+                <div class="formItem">
+                    <p class="labTitle"><span class="isRequired">*</span>&nbsp;收货地址</p>
+                    <input class="placeholderText receiverAdd" type="text" placeholder="请输入收货地址">
+                </div>
+            </div>
+            <div class="customInfo">
+                <p class="title">咨询方式</p>
+                <div class="formItem clearfix">
+                    <img src="../img/site.jpg" alt="" class="customIcon fl">
+                    <p class="customBox fl">
+                        <span class="title">聚雕网客服黄小姐</span><span class="addText">(对接客服)</span><br>
+                        <span class="tel"><span class="glyphicon glyphicon-phone-alt telIcon"></span> 13823590716</span>
+                    </p>
+                </div>
+                <div class="formItem clearfix">
+                    <img src="../img/site.jpg" alt="" class="customIcon fl">
+                    <p class="customBox fl">
+                        <span class="title">商务经理张先生</span><span class="addText">(对接商务经理)</span><br>
+                        <span class="tel"><span class="glyphicon glyphicon-phone-alt telIcon"></span> 13310874521</span>
+                    </p>
+                </div>
+            </div>
+            <div class="tipBox">
+                <p class="tipTitle">香港公司注销须知</p><br>
+                <p class="tipText">一、需提供以下材料电子档</p>
+                <p class="tipText">1.香港公司注册证书</p>
+                <p class="tipText">2.最新商业登记证</p>
+                <p class="tipText">3.未满一年的需提供法团成立表(NNC1),满一年的只需提供周年申报表(NAR1)即可;(如之后有发生董事及股权变更等需提供变更文件)</p>            
+                <p class="tipText">4.公司股东董事的身份证明及联系方式</p>            
+                <p class="tipText">5.会计师核数报告(如这家公司出过审计报告,注销的时候就要提供结业报告)</p><br>         
+                <p class="tipText">二、香港公司注销需要注意以下事项:</p>
+                <p class="tipText">1.如公司有开立银行账号的在注销公司前就必须先注销账号</p>
+                <p class="tipText">2.无欠交任何税局的费用(包括BR费用、未缴付的税金等)</p>
+                <p class="tipText">3.无欠公司注册处的年报的费用(每年正常递交年审)</p>            
+                <p class="tipText">4.无外债且香港公司所有成员均需同意撤销公司</p>            
+                <p class="tipText">5.只有董事才有权注销银行账号,所以我们不能注销银行账号,但可以提供咨询</p>                                         
+            </div> 
+        </div>
+        <div class="paymentBox">
+            <span class="payInfo">
+                订单金额 : <span class="RMB_flag">￥</span><span class="payAmount"></span>            
+            </span>
+            <a href="javascript:void(0)" class="fr nextBtn paymentBtn">下一步</a>
+        </div>
+    </div>
+</body>
+</html>
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="../js/jQuery/jquery-3.4.0.js"></script>
+<script src="../lib/layer/layer.js"></script>
+<script src="../js/index.js?v=1.1"></script>

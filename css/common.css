@@ -279,7 +279,7 @@
 
 
 /* 备注信息 */
-.containerInner>.tipBox {
+.containerInner .tipBox {
     color: #fff;
     border-radius: .375rem;
     padding: 1.25rem 1.875rem;
@@ -287,12 +287,12 @@
     background: linear-gradient(to top right, #40E0D0, #836FFF);
 }
 
-.containerInner>.tipBox>.tipTitle {
+.containerInner .tipBox>.tipTitle {
     text-align: center;
     font-size: 1.25rem;
 } 
 
-.containerInner>.tipBox>.tipText {
+.containerInner .tipBox>.tipText {
     font-size: 1rem;
 }
 

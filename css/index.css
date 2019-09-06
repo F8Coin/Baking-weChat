@@ -342,7 +342,21 @@
     width: 35%;
 }
 
+/* --------------法律服务信息页面----------------- */
+.lawContainer {
+    background: url('../img/lawBg.jpg') no-repeat center center;
+    background-size: cover;
+    position: absolute;
+    top: -1.875rem;
+}
 
+.lawContainer .containerInner .layerImg {
+    display: block;
+    width: 6.25rem;
+    height: 6.25rem;
+    margin: 0 auto;
+    border-radius: 3.125rem;
+}
 
 
 
@@ -367,23 +381,206 @@
 }
 
 /* --------------商标专利入口页面----------------- */
-.patentEntry>ul>li:last-child {
-    visibility: hidden;
+.containerOut .tobBanner_bg {
+    height: 6.25rem;
+    margin-bottom: 1.875rem;
+    background: url('../img/banner3.jpg') no-repeat center center;
+    background-size: 100%;
 }
 
 /* --------------专利信息页面----------------- */
-
 .patentFormBox .formItem .taggleItem>li {
     width: 45%;
 }
 
-
-
 /* --------------专利订单页面----------------- */
+.containerOut .patentTable {
+    text-align: center;
+} 
+
+.containerOut .patentTable>tbody>tr>.price {
+    color: red;
+    font-weight: 700;
+}
 
 /* --------------商标信息页面----------------- */
+.containerInner .baseInfo .inputBox {
+    height: 3rem;
+    line-height: 3rem;
+    border-radius: .375rem;
+    text-align: center;
+    margin-top: 1.25rem;
+    border: 1px solid #e7e7e7;
+} 
 
-/* --------------商标订单页面----------------- */
+.containerInner .baseInfo .inputBox>input {
+    width: 100%;
+    height: 3rem;
+    text-align: center;
+    line-height: 3rem;
+}
+
+.containerInner .baseInfo .inputBox>input::-webkit-input-placeholder {
+    font-size: 1rem;
+    text-align: center;
+}
+
+.containerInner .baseInfo .searchBtn {
+    height: 3rem;
+    line-height: 3rem;
+    border-radius: .375rem;
+    font-size: 1.125rem;
+    text-align: center;
+    margin-top: 1.875rem;
+    margin-bottom: .375rem;
+    background-color: #836FFF;
+} 
+
+.containerInner .baseInfo .searchBtn>a {
+    color: #fff;
+}
+
+.containerInner .baseInfo .tipText {
+    color: #999999;
+} 
+
+/* --------------商标订单流程页面----------------- */
+/* -------page1------- */
+.containerOut .markIconInner {
+    top: 9.75rem;
+}
+
+.containerInner>.tipBox>.addText {
+    text-align:center;
+    font-size:1.125rem;
+    font-weight:700
+}
+
+.headerBar>ul {
+    padding: 0rem .75rem;
+    width: 100%;
+    position: absolute;
+    z-index: 999;
+    font-size: 0px;
+}
+
+.headerBar>ul>li {
+    display: inline-block;
+    height: 5rem;
+    margin-top: 1.25rem;
+    text-align: center;
+    width: 25%;
+}
+
+.headerBar>ul>li>.stepCont {
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    border: 1px solid #e7e7e7;
+    margin: 0 auto;
+    line-height: 2.25rem;
+    margin-bottom: .375rem;
+    color: #e7e7e7;
+}
+
+.headerBar>ul>li>.stepCont>.succFlag {
+    font-size: 1.125rem;
+}
+
+.headerBar>ul>li>.title {
+    color: #e7e7e7;
+}
+
+/* -------page2------- */
+#page2>.baseInfo>.formItem>.markIconList>li {
+    width: 45%;
+    height: 2.25rem;
+    line-height: 2.25rem;
+}
+
+#page2>.baseInfo>.formItem>.markIconList>li.disabled {
+    color: #fff;
+    background-color: #cccccc;
+}
+
+#page2>.baseInfo>.formItem>.markIconList>li.disabled {
+    border: 1px solid #e7e7e7;
+}
+
+#trademark_tip {
+    width: 20rem;
+}
+
+#trademark_tip .content {
+    padding: 1.875rem 1.25rem;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+#trademark_tip .content>.listTable>.listItem {
+    margin-bottom: .75rem;
+    position: relative;
+}
+
+#trademark_tip .content>.listTable>.listItem>.selectType {
+    position: absolute;
+    top: 0rem;
+}
+
+#trademark_tip .content>.listTable>.listItem>.typeText {
+    display: inline-block;
+    width: 12.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-left: 1.5rem;
+}
+
+#trademark_tip .content>.listTable>.listItem>.moreFlag {
+    position: absolute;
+    right: 0rem;
+    top: .25rem;
+}
+
+#trademark_tip .content>.listTable>.listItem>.textInfo {
+    padding: .75rem;
+    display: none;
+    background-color: #cccccc;
+    border-radius: .375rem;
+    margin-top: .375rem;
+    margin-bottom: .75rem;
+}
+
+#trademark_tip>.bottom {
+    height: 3.75rem;
+    line-height: 3.75rem;
+    padding: 0rem 1.25rem;
+}
+
+#trademark_tip>.bottom>.confirmBtn {
+    width: 5rem;
+    height: 2.625rem;
+    line-height: 2.625rem;
+    text-align: center;
+    border-radius: 1.125rem;
+    background-color: #F8F8F8;
+    color: #000000;
+    border: 1px solid #e7e7e7;
+    margin-top: .625rem;
+}
+
+/* --------------香港公司注册信息页面----------------- */
+.containerInner>.baseInfo>.formItem>.urget>li {
+    width: 7.5rem;
+    height: 2.25rem;
+    line-height: 2.25rem;
+} 
+
+/* --------------香港公司审计报告信息页面----------------- */
+#makeType>li {
+    width: 7.5rem;
+    height: 2.25rem;
+    line-height: 2.25rem;
+}
 
 /* --------------税审报告信息页面----------------- */
 .baseInfo .formItem .companyNameText {
@@ -394,18 +591,3 @@
 }
 
 
-/* --------------法律服务信息页面----------------- */
-.lawContainer {
-    background: url('../img/lawBg.jpg') no-repeat center center;
-    background-size: cover;
-    position: absolute;
-    top: -1.875rem;
-}
-
-.lawContainer .containerInner .layerImg {
-    display: block;
-    width: 6.25rem;
-    height: 6.25rem;
-    margin: 0 auto;
-    border-radius: 3.125rem;
-}

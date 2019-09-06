@@ -25,8 +25,8 @@
                 <div class="formItem">
                     <p class="title"><span class="isRequired">*</span>企业应纳税所得额(官费减免)</p>
                     <ul class="zoomList taggleItem">
-                        <li class="checkedItem">30万以下(是)</li>
-                        <li>30万以上(否)</li>
+                        <li class="checkedItem">100万以下(是)</li>
+                        <li>100万以上(否)</li>
                     </ul>
                 </div>
                 <div class="formItem partOther">
@@ -81,15 +81,19 @@
                 <p class="title">联系信息</p>
                 <div class="formItem">
                     <p class="labTitle"><span class="isRequired">*</span>商务联系人</p>
-                    <input class="placeholderText receiverName" type="text" placeholder="请输入商务联系人">
+                    <input class="placeholderText businessName" type="text" placeholder="请输入商务联系人">
                 </div>
                 <div class="formItem">
                     <p class="labTitle"><span class="isRequired">*</span>商务联系人电话</p>
-                    <input class="placeholderText receiverTel" type="text" placeholder="请输入商务联系人电话">
+                    <input class="placeholderText businessTel" type="text" placeholder="请输入商务联系人电话">
                 </div>
                 <div class="formItem">
                     <p class="labTitle"><span class="isRequired">*</span>技术联系人</p>
-                    <input class="placeholderText receiverAdd" type="text" placeholder="请输入技术联系人电话">
+                    <input class="placeholderText technicalName" type="text" placeholder="请输入技术联系人">
+                </div>
+                <div class="formItem">
+                    <p class="labTitle"><span class="isRequired">*</span>技术联系人电话</p>
+                    <input class="placeholderText technicalTel" type="text" placeholder="请输入技术联系人电话">
                 </div>
                 <div class="formItem">
                     <p class="labTitle"><span class="isRequired">*</span>证书邮寄地址</p>
@@ -100,6 +104,23 @@
                     <textarea class="remarkText" name="" id="" cols="" rows="" placeholder="请准确说明发票商品名称,企业产品名称"></textarea>
                 </div>            
             </div>   
+            <div class="customInfo">
+                <p class="title">咨询方式</p>
+                <div class="formItem clearfix">
+                    <img src="../img/site.jpg" alt="" class="customIcon fl">
+                    <p class="customBox fl">
+                        <span class="title">聚雕网客服黄小姐</span><span class="addText">(对接客服)</span><br>
+                        <span class="tel"><span class="glyphicon glyphicon-phone-alt telIcon"></span> 13823590716</span>
+                    </p>
+                </div>
+                <div class="formItem clearfix">
+                    <img src="../img/site.jpg" alt="" class="customIcon fl">
+                    <p class="customBox fl">
+                        <span class="title">商务经理张先生</span><span class="addText">(对接商务经理)</span><br>
+                        <span class="tel"><span class="glyphicon glyphicon-phone-alt telIcon"></span> 13310874521</span>
+                    </p>
+                </div>
+            </div>
             <div class="tipBox">
                 <p class="tipTitle">下单须知</p>
                 <p class="tipText">1、在聚雕网下单专利，提供免费年费管理，年费代缴另外付费</p>
@@ -120,48 +141,3 @@
 <script src="../js/jQuery/jquery-3.4.0.js"></script>
 <script src="../lib/layer/layer.js"></script>
 <script src="../js/index.js"></script>
-<script>
-    $(function(){
-        $('.nextBtn').on('touchend',function(e){
-            var companyName = $('.companyNameText').val();
-            var checkItem=[]; 
-            var checkItemList = $('.formItem>.content input:checked').parent();
-            for (let i = 0; i < checkItemList.length; i++) {
-                var checkItemInfo = {
-                    'icon': $(checkItemList[i]).find('p.flag img').attr('src'),
-                    'title': $(checkItemList[i]).find('p.flag .text').text(),
-                    'price': $(checkItemList[i]).find('p.price').text(),
-                }
-                checkItem.push(checkItemInfo);
-            }
-            var orderInfo = {};
-            orderInfo = {
-                'companyName': companyName,
-                'checkItem': checkItem,
-            };
-            // console.log(orderInfo);
-            sessionStorage.setItem("closeFormMes", JSON.stringify(orderInfo));
-
-            window.location.href = "./closeCompany_order.html"
-
-            e.preventDefault();
-        })
-    })
-</script>
-<script>
-        $(function() {
-            $.ajax({
-                url: baseUrl+'/api/bankAccount/list',
-                type: 'post',
-                data: {
-                    busModId: "9" // 商标专利 
-                },
-                headers: {
-                    "X-Jdw-Token": "7pnfyq95g9ugi51pdxuvr453ivnz3x0j"
-                },
-                success: function(res) {
-                    console.log(res.code);
-                }
-            })
-        })
-    </script>

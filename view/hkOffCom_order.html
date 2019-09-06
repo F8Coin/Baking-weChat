@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>订单支付</title>
+    <link rel="stylesheet" href="../css/weui.min.css">
+    <link rel="stylesheet" href="../css/regist.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+
+<body>
+    <div class="containerOut">
+        <div class="headerBar"></div>
+        <div class="containerInner">
+            <div class="orderInfo">
+                <p class="title">公司信息</p>
+                <p class="orderItem">
+                    <span class="labTitle">公司名称<span class="colon">:</span></span>
+                    <span class="labContent legalName text"></span>
+                </p>
+                <p class="orderItem">
+                    <span class="labTitle">是否办理过审计报告<span class="colon">:</span></span>
+                    <span class="labContent legalName text"></span>
+                </p>
+                <div class="orderItem">
+                    <span class="labTitle">最新商业登记证<span class="colon">:</span></span>
+                    <p class="labContent tradingPic">
+                        <img class="showImg ID_up" src='' alt="">
+                    </p>
+                </div> 
+            </div>
+            <div class="orderInfo">
+                <p class="title">收货信息</p>
+                <div class="content">
+                    <p class="orderItem">
+                        <span class="labContent userName">邵先生</span>    
+                        <span class="labContent userTel">18603059551</span>
+                    </p>    
+                    <p class="orderItem">
+                        <span class="labContent userAdd">广东省深圳市福田区</span>
+                    </p>
+                </div>  
+            </div>
+            <div class="tipBox">
+                <p class="tipTitle">温馨提示</p><br>
+                <p class="tipText">一、请把以下清单文件电子档做成一压缩包发送邮箱：kf@judiaowang.com</p><br>
+                <p class="tipText">1、最新周年申报表；如公司成立未到一周年的，则提供法团成立表格NNC1</p>
+                <p class="tipText">2、如果公司有办理过审计报告，则提供最后一次审计报告；</p>
+                <p class="tipText">3、公司在最后一次年审后，有做过变更的要提供变更文件 。</p><br>
+                <p class="tipText">二、办理周期：约为6-8个月，部份公司时间会长一些，视税务局审核进度。</p><br>
+                <p class="tipText">三、最少提前30-40天提出申请，过了30天，需做完当年年审再注销，如无人反对，或公司无违法行为和税务正常，注销完成。</p><br>
+                <p class="tipText">四、注销过程中，有做过审计的公司，如果税务局要求提供文件 ，需要客户配合提供。如客户无法配合而使注销无法继续进行的，我们不承担责任。</p><br>
+                <p class="tipText">五、交付物件：</p>
+                <p class="tipText">1、注销表格NDR1；</p>
+                <p class="tipText">2、注销受理通知书。</p>
+            </div>
+        </div>
+    </div>
+    <div class="paymentBox clearfix">
+        <span class="fl payInfo">
+            订单金额 : <span class="RMB_flag">￥</span><span class="payAmount"></span>
+        </span>
+        <a href="./dev.html" class="fr paymentBtn">微信支付</a>
+    </div>
+</body>
+
+</html>
+
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="../js/jQuery/jquery-3.4.0.js"></script>

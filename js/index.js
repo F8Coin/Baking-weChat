@@ -76,7 +76,7 @@ function uploadFile(inputEle,containerEle) {
     reads.onload=function (e) {
         // var targetSrc = this.result;
         // containerEle.find('.showImg').attr('src',targetSrc);  
-        containerEle.removeClass('uploadIcon');
+        // containerEle.removeClass('uploadIcon');
         layer.load(2)      
     };
     var formData= new FormData();

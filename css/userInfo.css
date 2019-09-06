@@ -1,4 +1,4 @@
-/* -----------partner入口页面------------- */
+/* -----------合作商入口页面------------- */
 .partnerContainer {
     padding: 1.25rem;
 }
@@ -35,7 +35,7 @@
     background-color: #2D73EE;
 }
 
-/* -----------partner注册页面------------- */
+/* -----------合作商注册页面------------- */
 .partnerRegist>.contentBox>.baseInfo>.formItem>.addText {
     font-size: .75rem;
     color: #999999;
@@ -64,7 +64,7 @@ a.regBtn:active {
     background-color: #836FFF !important;
 }
 
-/* -----------partner登录页面------------- */
+/* -----------合作商登录页面------------- */
 .partnerLogin {
     padding: 0rem 1.25rem;
 }
@@ -118,7 +118,7 @@ a.regBtn:active {
     bottom:8px;
     border-radius:21px;
 }
-/* -----------partner个人中心------------- */
+/* -----------合作商个人中心------------- */
 .partnerCenter .contentBox {
     padding: 1.875rem 1.25rem;
     margin-bottom: 5.625rem; 
@@ -379,7 +379,7 @@ a.regBtn:active {
     padding-top: .75rem;
 }
 
-/* -----------订单记录页面------------- */
+/* -----------订单查询页面------------- */
 .ordRecordBox .topBox {
     min-height: 7.5rem;
     background-color: #fff;

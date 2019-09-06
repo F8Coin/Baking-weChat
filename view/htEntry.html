@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>香港公司业务</title>
+    <link rel="stylesheet" href="../css/weui.min.css">
+    <link rel="stylesheet" href="../css/regist.css">
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+
+<body>
+    <div class="containerOut hkEntry">
+        <div class="tobBanner_bg"></div>
+        <div class="contentBox">
+            <ul id="listBox">
+                <li>
+                    <a href="javascript:void(0)" hrefs="./view/seal_form.html">
+                        <img src="../img/hkIcon_01.png" alt=""> 香港公司注册
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" hrefs="./view/closeCompany_form.html">
+                        <img src="../img/hkIcon_02.png" alt=""> 香港公司注销
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" hrefs="./view/closeCompany_form.html">
+                        <img src="../img/hkIcon_03.png" alt=""> 香港公司审计报告
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" hrefs="./view/closeCompany_form.html">
+                        <img src="../img/hkIcon_04.png" alt=""> 香港公司年审
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" hrefs="./view/closeCompany_form.html">
+                        <img src="../img/hkIcon_05.png" alt=""> 香港公司变更
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" hrefs="./view/closeCompany_form.html">
+                        <img src="../img/hkIcon_06.png" alt=""> 公司香港开户
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" hrefs="./view/closeCompany_form.html">
+                        <img src="../img/hkIcon_07.png" alt=""> 个人香港开户
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" hrefs="./view/closeCompany_form.html">
+                        <img src="../img/hkIcon_08.png" alt=""> 香港商标注册
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" hrefs="./view/closeCompany_form.html">
+                        <img src="../img/hkIcon_09.png" alt=""> 香港公证
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
+<script src="../js/jQuery/jquery-3.4.0.js"></script>
+<script>
+    $(function(){
+    // 服务列表布局
+        var serveItemLis= $('.contentBox>ul>li').length; // 获取服务列表的个数
+        if (serveItemLis % 3 == 0) {
+            $('.contentBox>ul').attr('justifyContent', 'spaceBetween')
+        } else if (serveItemLis % 3 == 1) {
+            $('.contentBox>ul').attr('justifyContent', 'spaceAround')
+        } else if (serveItemLis % 3 == 2) {
+            var otherItem = '<li class="lastItem">' +
+                                '<a href="javascript:void(0)" hrefs="javascript:void(0)">' +
+                                    '<img src="" alt="">' +
+                                '</a>' +
+                            '</li>'
+            $('#listBox').append(otherItem);
+            $('#listBox .lastItem').attr('visibility', 'hidden');
+        }
+    })
+</script>

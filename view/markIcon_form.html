@@ -1,17 +1,46 @@
-<script>
-        $(function() {
-            $.ajax({
-                url: baseUrl+'/api/bankAccount/list',
-                type: 'post',
-                data: {
-                    busModId: "9" // 商标专利 
-                },
-                headers: {
-                    "X-Jdw-Token": "7pnfyq95g9ugi51pdxuvr453ivnz3x0j"
-                },
-                success: function(res) {
-                    console.log(res.code);
-                }
-            })
-        })
-    </script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/weui.min.css">
+    <link rel="stylesheet" href="../css/regist.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <title>商标注册</title>
+</head>
+<body>
+    <div class="containerOut">
+        <div class="headerBar"></div>
+        <div class="containerInner">
+            <div class="baseInfo">
+                <div class="inputBox">
+                    <input type="text" placeholder="请输入您要注册的商标名称">
+                </div>
+                <p class="searchBtn">
+                    <a href="javascript:void(0)">免费查询</a>
+                </p>
+                <span class="tipText">点击"免费查询"免费帮您查询是否能注册</span>
+            </div>
+            <div class="tipBox">
+                <p class="tipTitle">商标注册流程</p>
+                <p class="tipText">商标注册流程:</p>
+                <p class="tipText">流程一：2-3天出申请号</p>
+                <p class="tipText">流程二：一个月出官方受理通知书</p>
+                <p class="tipText">流程三：9个月驳回通知/初审公告通知</p>
+                <p class="tipText">流程四：12个月出证书</p><br>
+                <p class="tipText">准备材料：</p>
+                <p class="tipText">1、营业执照副本盖公章扫描件</p>
+                <p class="tipText">2、商标图样（如有）</p>
+                <p class="tipText">3、请下载打印填写《商标申请委托书》</p>
+                <p class="tipText">（下单后联系客服索取空白模板）</p><br>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="../js/jQuery/jquery-3.4.0.js"></script>
+<script src="../lib/layer/layer.js"></script>
+<script src="../js/index.js"></script>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>订单支付</title>
+    <link rel="stylesheet" href="../css/weui.min.css">
+    <link rel="stylesheet" href="../css/regist.css">
+    <link rel="stylesheet" href="../css/common.css?v=1.0">
+    <link rel="stylesheet" href="../css/index.css?v=1.0">
+</head>
+
+<body>
+    <div class="containerOut">
+        <div class="headerBar"></div>
+        <div class="containerInner">
+            <div class="orderInfo">
+                <p class="title">变更信息</p>
+                <div class="content">
+                    <p class="orderItem">
+                        <span class="labTitle">公司名称<span class="colon">:</span></span>
+                        <span class="labContent companyName"></span>
+                    </p>
+                </div>
+            </div>
+            <div class="orderInfo">
+                <p class="title">选购印章</p>
+                <div class="content">
+                    <table class="sealListBox w100">
+                        <tbody id="sealList">
+                            <tr class="sealItem">
+                                <td class="sealName">董事和股东变更</td>
+                                <td class="sealAccount">×1</td>
+                                <td class="sealPrice">￥280</td>
+                            </tr>
+                            <tr class="sealItem">
+                                <td class="sealName">公司名称变更</td>
+                                <td class="sealAccount">×1</td>
+                                <td class="sealPrice">￥800</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="orderInfo">
+                <p class="title">收货信息</p>
+                <div class="content">
+                    <p class="orderItem">
+                        <span class="labContent userName">邵先生</span>    
+                        <span class="labContent userTel">18603059551</span>
+                    </p>    
+                    <p class="orderItem">
+                        <span class="labContent userAdd">广东省深圳市福田区</span>
+                    </p>
+                </div>  
+            </div>
+            <div class="tipBox">
+                <p class="tipTitle">温馨提示</p><br>
+                <p class="tipText">请把以下资料电子档发送到客服邮箱：kf@judiaowang.com</p>
+                <p class="tipText">1、法团成立表（NNC1）或者最新的周年申报表（NAR1）；</p>
+                <p class="tipText">2、如有变更提供变更文件；</p>
+                <p class="tipText">3、填写尽职调查表；</p>
+                <p class="tipText">4、新董事/股东最近三个月的住址证明（如：水电费单据、租赁合同、房产证、银行月结单、话费单）；</p>
+                <p class="tipText">5、新股东股份比例（单独变更董事不用提供）；</p>
+                <p class="tipText">6、变更股权金额超过1W港币，加收千分之二的厘印税（政府收取费用）。</p>
+            </div>
+        </div>
+    </div>
+    <div class="paymentBox clearfix">
+        <span class="fl payInfo">
+            订单金额 : <span class="RMB_flag">￥</span><span class="payAmount"></span>
+        </span>
+        <a href="javascript:void(0)" class="fr paymentBtn">微信支付</a>
+    </div>
+</body>
+
+</html>
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="../js/jQuery/jquery-3.4.0.js"></script>
+<script src="../js/index.js?v=1.0"></script>
+
+

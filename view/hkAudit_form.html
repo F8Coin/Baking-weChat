@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <meta http-equiv="Content-Type"  content="multipart/form-data; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>香港公司审计报告</title>
+    <link rel="stylesheet" href="../css/weui.min.css">
+    <link rel="stylesheet" href="../lib/layer/mobile/need/layer.css">
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/regist.css">
+    <link rel="stylesheet" href="../css/common.css?v=1.0">
+    <link rel="stylesheet" href="../css/index.css?v=1.0">
+</head>
+
+<body>
+    <div class="containerOut">
+        <div class="headerBar"></div>
+        <div class="contentBox containerInner">
+            <div class="baseInfo">
+                <p class="title">香港公司审计报告</p>
+                <div class="formItem">
+                    <p class="labTitle"><span class="isRequired">*</span>&nbsp;公司名称</p>
+                    <input class="placeholderText companyName" type="text" placeholder="请输入公司名称">
+                </div>
+                <div class="formItem">
+                    <p class="labTitle"><span class="isRequired">*</span>做账类型</p>
+                    <ul class="makeType zoomList" id="makeType">
+                       <li>保留意见</li>
+                       <li>无保留意见</li>
+                    </ul>
+                </div>
+                <div class="formItem partOther">
+                    <p class="title"><span class="isRequired">*</span>年度收入金额港币<br><span class="addText">(如有多家银行，以流水收入总和为准)</span> </p>
+                    <div class="content clearfix">
+                        <label for="partOther1" class="left fl optionAbout">
+                            <p class="flag">
+                                <span class="text">200万以下</span>
+                            </p>
+                            <p class="price">￥2200</p>
+                            <input class="selectBtn" type="checkbox" id="partOther1">
+                        </label>
+                        <label for="partOther2" class="right fr optionAbout">
+                            <p class="flag">
+                                <span class="text">201~500万</span> 
+                            </p>
+                            <p class="price">￥2600.00</p>
+                            <input class="selectBtn" type="checkbox" id="partOther2">
+                        </label>
+                        <label for="partOther3" class="left fl optionAbout">
+                            <p class="flag">
+                                <span class="text">501~1000万</span>
+                            </p>
+                            <p class="price">￥3000</p>
+                            <input class="selectBtn" type="checkbox" id="partOther3">
+                        </label>
+                        <label for="partOther4" class="right fr optionAbout">
+                            <p class="flag">
+                                <span class="text">1001~2000万</span> 
+                            </p>
+                            <p class="price">￥3500</p>
+                            <input class="selectBtn" type="checkbox" id="partOther4">
+                        </label>
+                    </div>
+                </div>
+                <div class="formItem">
+                    <p class="labTitle"><span class="isRequired">*</span>是否有完整的月结单<span class="addText">(服务费400元)</span></p>
+                    <ul class="makeType zoomList" id="makeType">
+                        <li>没有</li>
+                        <li>有</li>
+                    </ul>
+                </div>
+                <div class="formItem">
+                    <p class="labTitle"><span class="isRequired">*</span>是否有库存<br> <span class="addText">(若有库存会计师会上门盘点；如果没有盘点是做保留意见的)</span></p>
+                    <ul class="makeType zoomList" id="makeType">
+                        <li>没有库存</li>
+                        <li>有库存</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="receiveInfo">
+                <p class="title">收货信息</p>
+                <div class="formItem">
+                    <p class="labTitle"><span class="isRequired">*</span>&nbsp;联系人</p>
+                    <input class="placeholderText receiverName" type="text" placeholder="请输入联系人">
+                </div>
+                <div class="formItem">
+                    <p class="labTitle"><span class="isRequired">*</span>&nbsp;手机号码</p>
+                    <input class="placeholderText receiverTel" type="text" placeholder="请输入手机号码">
+                </div>
+                <div class="formItem">
+                    <p class="labTitle"><span class="isRequired">*</span>&nbsp;收货地址</p>
+                    <input class="placeholderText receiverAdd" type="text" placeholder="请输入收货地址">
+                </div>
+            </div>
+            <div class="customInfo">
+                <p class="title">咨询方式</p>
+                <div class="formItem clearfix">
+                    <img src="../img/site.jpg" alt="" class="customIcon fl">
+                    <p class="customBox fl">
+                        <span class="title">聚雕网客服黄小姐</span><span class="addText">(对接客服)</span><br>
+                        <span class="tel"><span class="glyphicon glyphicon-phone-alt telIcon"></span> 13823590716</span>
+                    </p>
+                </div>
+                <div class="formItem clearfix">
+                    <img src="../img/site.jpg" alt="" class="customIcon fl">
+                    <p class="customBox fl">
+                        <span class="title">商务经理张先生</span><span class="addText">(对接商务经理)</span><br>
+                        <span class="tel"><span class="glyphicon glyphicon-phone-alt telIcon"></span> 13310874521</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="paymentBox">
+            <span class="payInfo">
+                订单金额 : <span class="RMB_flag">￥</span><span class="payAmount"></span>            
+            </span>
+            <a href="javascript:void(0)" class="fr nextBtn paymentBtn">下一步</a>
+        </div>
+    </div>
+</body>
+</html>
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="../js/jQuery/jquery-3.4.0.js"></script>
+<script src="../lib/layer/layer.js"></script>
+<script src="../js/index.js?v=1.1"></script>
