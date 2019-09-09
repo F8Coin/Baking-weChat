@@ -596,3 +596,15 @@
     width: 9rem;
 }
 
+/* --------------教育资质信息页面----------------- */
+
+.educationInner>.customInfo {
+    color: #fff;
+    border: none;
+    background: linear-gradient(to top right, #40E0D0, #836FFF);
+}
+
+/* --------------天猫入驻信息页面----------------- */
+.tianMaoInner>.tipBox {
+    margin-bottom: 1.25rem;
+}
