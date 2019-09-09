@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>订单支付</title>
+    <link rel="stylesheet" href="../css/weui.min.css">
+    <link rel="stylesheet" href="../css/regist.css">
+    <link rel="stylesheet" href="../css/common.css?v=1.0">
+    <link rel="stylesheet" href="../css/index.css?v=1.0">
+</head>
+
+<body>
+    <div class="containerOut">
+        <div class="headerBar"></div>
+        <div class="containerInner">
+            <div class="orderInfo">
+                <p class="title">变更信息</p>
+                <div class="content">
+                    <p class="orderItem">
+                        <span class="labTitle">公司名称<span class="colon">:</span></span>
+                        <span class="labContent companyName"></span>
+                    </p>
+                    <p class="orderItem">
+                        <span class="labTitle">公司所在区域<span class="colon">:</span></span>
+                        <span class="labContent zoom"></span>
+                    </p>
+                   <div class="orderItem">
+                        <span class="labTitle">营业执照<span class="colon">:</span></span>
+                        <p class="tradingPic"><img class="showImg" src='' alt=""></p>
+                    </div>
+                </div>
+    
+            </div>
+            <div class="tipBox">
+                <p class="tipTitle">温馨提示</p><br>
+                <p class="tipText">一、请提供以下资料的扫描件：</p>
+                <p class="tipText">营业执照、法人身份证、内部厂房合同（除宝安区需要红本租赁凭证，合同地址要书写正确）、工艺流程。（后续邮寄公章到聚服网，客服会提醒安排）。</p><br>
+                <p class="tipText">二、办理流程：</p>
+                <p class="tipText">1、先预约看场地；</p>
+                <p class="tipText">2、出环评报告；</p>
+                <p class="tipText">3、环保局备案批文。</p><br>
+                <p class="tipText">三、办理时间：</p>
+                <p class="tipText">自下单付款起，35个工作日左右。</p>
+
+            </div>
+        </div>
+    </div>
+    <div class="paymentBox clearfix">
+        <span class="fl payInfo">
+            订单金额 : <span class="RMB_flag">￥</span><span class="payAmount"></span>
+        </span>
+        <a href="javascript:void(0)" class="fr paymentBtn">微信支付</a>
+    </div>
+</body>
+
+</html>
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="../js/jQuery/jquery-3.4.0.js"></script>
+<script src="../js/index.js?v=1.0"></script>
+
+

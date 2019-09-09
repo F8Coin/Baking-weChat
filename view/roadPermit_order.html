@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>订单支付</title>
+    <link rel="stylesheet" href="../css/weui.min.css">
+    <link rel="stylesheet" href="../css/regist.css">
+    <link rel="stylesheet" href="../css/common.css?v=1.0">
+    <link rel="stylesheet" href="../css/index.css?v=1.0">
+</head>
+
+<body>
+    <div class="containerOut">
+        <div class="headerBar"></div>
+        <div class="containerInner">
+            <div class="orderInfo">
+                <p class="title">道路运输许可证</p>
+                <div class="content">
+                    <p class="orderItem">
+                        <span class="labTitle">公司名称<span class="colon">:</span></span>
+                        <span class="labContent companyName"></span>
+                    </p>
+                    <p class="orderItem">
+                        <span class="labTitle">办理业务<span class="colon">:</span></span>
+                        <span class="labContent zoom"></span>
+                    </p>
+                </div>
+            </div>
+            <div class="tipBox">
+                <p class="tipTitle">所需资料</p><br>
+                <p class="tipText">一、已有实名认证的提供：</p>
+                <p class="tipText">1、账号和密码；</p>
+                <p class="tipText">2、营业执照正本或者副本；</p>
+                <p class="tipText">3、企业公章。</p><br>
+                <p class="tipText">二、没有实名认证的提供：</p>
+                <p class="tipText">1、法人的银行卡号、银行预留的手机号（可以收到验证码）做交通局实名认证用 ；</p>
+                <p class="tipText">2、法人身份证正反面复印件；</p>
+                <p class="tipText">3、营业执照正本或者副本；</p>
+                <p class="tipText">4、企业公章。</p>
+
+            </div>
+        </div>
+    </div>
+    <div class="paymentBox clearfix">
+        <span class="fl payInfo">
+            订单金额 : <span class="RMB_flag">￥</span><span class="payAmount"></span>
+        </span>
+        <a href="javascript:void(0)" class="fr paymentBtn">微信支付</a>
+    </div>
+</body>
+
+</html>
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="../js/jQuery/jquery-3.4.0.js"></script>
+<script src="../js/index.js?v=1.0"></script>
+
+

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>道路运输许可证</title>
+    <link rel="stylesheet" href="../css/weui.min.css">
+    <link rel="stylesheet" href="../css/regist.css">
+    <link rel="stylesheet" href="../css/common.css?v=1.0">
+    <link rel="stylesheet" href="../css/index.css?v=1.0">
+</head>
+<body>
+    <div class="pinchContainer containerOut">
+        <div class="headerBar"></div>
+        <div class="contentBox containerInner">
+            <div class="baseInfo">
+                <p class="title">道路运输许可证</p>
+                <div class="formItem">
+                    <p class="labTitle"><span class="isRequired">*</span>公司名称<span class="addText">(英文)</span> </p>
+                    <input class="placeholderText companyName" type="text" placeholder="请输入公司英文名称">
+                </div>
+                <div class="formItem">
+                    <p class="labTitle"><span class="isRequired">*</span>办理业务</p>
+                    <div class="content clearfix" id="goodsList">
+                        <label for="1" class="left fl optionAbout">
+                            <p class="flag">
+                                <span class="text">新办</span>
+                            </p>
+                            <p class="price">￥1000</p>
+                            <input class="selectBtn" type="radio" id="1">
+                        </label>
+                        <label for="2" class="right fr optionAbout">
+                            <p class="flag">
+                                <span class="text">延期</span>
+                            </p>
+                            <p class="price">￥800</p>
+                            <input class="selectBtn" type="radio" id="2">
+                        </label>
+                        <label for="3" class="left fl optionAbout">
+                            <p class="flag">
+                                <span class="text">变更</span>
+                            </p>
+                            <p class="price">￥800</p>
+                            <input class="selectBtn" type="radio" id="3">
+                        </label>
+                        <label for="4" class="right fr optionAbout">
+                            <p class="flag">
+                                <span class="text">注销</span>
+                            </p>
+                            <p class="price">￥800</p>
+                            <input class="selectBtn" type="radio" id="4">
+                        </label>
+                        <label for="5" class="left fl optionAbout">
+                            <p class="flag">
+                                <span class="text">解锁</span>
+                            </p>
+                            <p class="price">￥500</p>
+                            <input class="selectBtn" type="radio" id="5">
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="customInfo">
+                <p class="title">咨询方式</p>
+                <div class="formItem clearfix">
+                    <img src="../img/site.jpg" alt="" class="customIcon fl">
+                    <p class="customBox fl">
+                        <span class="title">聚雕网客服黄小姐</span><span class="addText">(对接客服)</span><br>
+                        <span class="tel"><span class="glyphicon glyphicon-phone-alt telIcon"></span> 13823590716</span>
+                    </p>
+                </div>
+                <div class="formItem clearfix">
+                    <img src="../img/site.jpg" alt="" class="customIcon fl">
+                    <p class="customBox fl">
+                        <span class="title">商务经理张先生</span><span class="addText">(对接商务经理)</span><br>
+                        <span class="tel"><span class="glyphicon glyphicon-phone-alt telIcon"></span> 13310874521</span>
+                    </p>
+                </div>
+            </div>
+            <div class="tipBox">
+                <p class="tipTitle">所需资料</p><br>
+                <p class="tipText">一、已有实名认证的提供：</p>
+                <p class="tipText">1、账号和密码；</p>
+                <p class="tipText">2、营业执照正本或者副本；</p>
+                <p class="tipText">3、企业公章。</p><br>
+                <p class="tipText">二、没有实名认证的提供：</p>
+                <p class="tipText">1、法人的银行卡号、银行预留的手机号（可以收到验证码）做交通局实名认证用 </p>
+                <p class="tipText">2、法人身份证正反面复印件；</p>
+                <p class="tipText">3、营业执照正本或者副本；</p>
+                <p class="tipText">4、企业公章。</p>
+            </div>
+        </div>
+        <div class="paymentBox">
+            <span class="payInfo">
+                订单金额 : <span class="RMB_flag">￥</span><span class="payAmount"></span>            
+            </span>
+            <a href="./dev.html" class="fr nextBtn paymentBtn">下一步</a>
+        </div>
+    </div>
+</body>
+</html>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="../js/jQuery/jquery-3.4.0.js"></script>
+<script src="../lib/layer/layer.js"></script>
+<script src="../js/index.js?v=1.1"></script>

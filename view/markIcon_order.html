@@ -10,6 +10,14 @@
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/index.css">
     <title>商标注册</title>
+    <style>
+        /* 修改弹窗头部样式 */
+        .layui-layer .layui-layer-title {
+            color: #ffffff;
+            font-size: 1.125rem;
+            background-color: #836FFF;
+        }
+    </style>
 </head>
 <body>
     <div class="containerOut">
@@ -42,7 +50,7 @@
                 </li>
             </ul>
         </div>
-        <div class="containerInner markIconInner pageCont">
+        <div class="containerInner markIconInner pageCont" id="pageBox">
             <div id="page1" class="stepPage" style="display: block">
                 <div class="baseInfo">
                     <p class="title">服务方案</p>
@@ -222,7 +230,7 @@
             <span class="fl payInfo">
                 订单金额 : <span class="RMB_flag">￥</span><span class="payAmount"></span>
             </span>
-            <a href="javascript:void(0)" class="fr paymentBtn ">下一步</a>
+            <a href="javascript:void(0)" class="fr paymentBtn " id="nextBtn">下一步</a>
         </div>
     </div>
     <!-- page2 类型选择弹窗 -->
@@ -291,6 +299,18 @@
         $('#trademark_tip .moreFlag').on('click',function(){
             $(this).toggleClass('glyphicon-menu-down');
             $(this).siblings('.textInfo').slideToggle();
+        })
+
+        // 点击下一步
+        var pageIndex= 1;
+        $('#nextBtn').on('click',function(){
+            if(pageIndex<4) {
+                $('#pageBox .stepPage').css('display','none');
+                $('#pageBox .stepPage:eq('+pageIndex+')').css('display','block');
+                pageIndex++;
+            }else {
+                return;
+            }
         })
     })
 </script>

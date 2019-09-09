@@ -562,10 +562,11 @@
     line-height: 2.625rem;
     text-align: center;
     border-radius: 1.125rem;
-    background-color: #F8F8F8;
+    background-color: #836FFF;
     color: #000000;
-    border: 1px solid #e7e7e7;
+    border: 1px solid #836FFF;
     margin-top: .625rem;
+    color: #fff;
 }
 
 /* --------------香港公司注册信息页面----------------- */
@@ -590,4 +591,8 @@
     border-bottom: 1px solid #e7e7e7;
 }
 
+/* --------------医疗器械许可证信息页面----------------- */
+.baseInfo .formItem>.levelBox>li {
+    width: 9rem;
+}
 

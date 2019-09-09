@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
     <meta http-equiv="Content-Type"  content="multipart/form-data; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>香港公司注销</title>
+    <title>进出口经营权</title>
     <link rel="stylesheet" href="../css/weui.min.css">
     <link rel="stylesheet" href="../lib/layer/mobile/need/layer.css">
     <link rel="stylesheet" href="../lib/bootstrap-3.3.7-dist/css/bootstrap.min.css">
@@ -20,25 +20,31 @@
         <div class="headerBar"></div>
         <div class="contentBox containerInner">
             <div class="baseInfo">
-                <p class="title">公司信息</p>
+                <p class="title">进出口经营权</p>
                 <div class="formItem">
-                    <p class="labTitle">公司名称</p>
+                    <p class="labTitle"><span class="isRequired">*</span>&nbsp;公司名称</p>
                     <input class="placeholderText companyName" type="text" placeholder="请输入公司名称">
                 </div>
                 <div class="formItem">
-                    <p class="labTitle"><span class="isRequired">*</span>是否办理过审计报告</p>
-                    <ul class="urget zoomList" id="area">
-                       <li>是</li>
-                       <li>否</li>
+                    <p class="labTitle"><span class="isRequired">*</span>办理类型</p>
+                    <ul class="zoomList">
+                       <li>注册</li>
+                       <li>变更</li>
                     </ul>
                 </div>
                 <div class="formItem">
-                    <p class="labTitle"><span class="isRequired">*</span>最新商业登记证</p>
-                    <div class="uploadBox">
-                        <input type="file" class="uploadInput" accept="image/*" onchange="uploadFile($(this),$(this).parent())">
-                        <img src="" alt="" class="showImg">
-                        <p class="typeText">最新商业登记证<span class="requiredFlag">*</span></p>
-                    </div>
+                    <p class="labTitle"><span class="isRequired">*</span>企业类型</p>
+                    <ul class="zoomList">
+                       <li>内资</li>
+                       <li>外资</li>
+                    </ul>
+                </div>
+                <div class="formItem">
+                    <p class="labTitle"><span class="isRequired">*</span>外汇备案<span class="addText">(￥500)</span></p>
+                    <ul class="zoomList">
+                       <li>不需要</li>
+                       <li>需要</li>
+                    </ul>
                 </div>
             </div>
             <div class="receiveInfo">
@@ -74,19 +80,12 @@
                 </div>
             </div>
             <div class="tipBox">
-                <p class="tipTitle">香港公司注销须知</p><br>
-                <p class="tipText">一、需提供以下材料电子档</p>
-                <p class="tipText">1.香港公司注册证书</p>
-                <p class="tipText">2.最新商业登记证</p>
-                <p class="tipText">3.未满一年的需提供法团成立表(NNC1),满一年的只需提供周年申报表(NAR1)即可;(如之后有发生董事及股权变更等需提供变更文件)</p>            
-                <p class="tipText">4.公司股东董事的身份证明及联系方式</p>            
-                <p class="tipText">5.会计师核数报告(如这家公司出过审计报告,注销的时候就要提供结业报告)</p><br>         
-                <p class="tipText">二、香港公司注销需要注意以下事项:</p>
-                <p class="tipText">1.如公司有开立银行账号的在注销公司前就必须先注销账号</p>
-                <p class="tipText">2.无欠交任何税局的费用(包括BR费用、未缴付的税金等)</p>
-                <p class="tipText">3.无欠公司注册处的年报的费用(每年正常递交年审)</p>            
-                <p class="tipText">4.无外债且香港公司所有成员均需同意撤销公司</p>            
-                <p class="tipText">5.只有董事才有权注销银行账号,所以我们不能注销银行账号,但可以提供咨询</p>                                         
+                <p class="tipTitle">温馨提示</p><br>
+                <p class="tipText">1、公司经营范围要有“经营进出口业务”这一项；</p><br>
+                <p class="tipText">2、所需资料：营业执照副本、公章、法人身份证复印件、操作员身份证复印件（法人也可以兼做操作员）、公司英文名称、法人手机号码、座机号码、邮箱和传真（如果需要办理外汇备案，除了上述资料，还需法人身份证原件及法人私章）；</p><br>
+                <p class="tipText">3、新注册办理下来资料包括：对外贸易经营者备案登记表、海关注册证书及检验检疫备案登记回执、法人卡、操作员卡；</p><br>
+                <p class="tipText">4、不包括：生产能力证明、购销合同、核销手册；</p><br>         
+                <p class="tipText">5、如果需要刻海关报关章，则需法人身份证原件，且请交代接单跑手刻章，费用自理。</p>                                         
             </div> 
         </div>
         <div class="paymentBox">
