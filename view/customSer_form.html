@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
     <meta http-equiv="Content-Type"  content="multipart/form-data; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>医疗器械许可证</title>
+    <title>自定义服务</title>
     <link rel="stylesheet" href="../css/weui.min.css">
     <link rel="stylesheet" href="../lib/layer/mobile/need/layer.css">
     <link rel="stylesheet" href="../lib/bootstrap-3.3.7-dist/css/bootstrap.min.css">
@@ -20,35 +20,23 @@
         <div class="headerBar"></div>
         <div class="contentBox containerInner">
             <div class="baseInfo">
-                <p class="title">许可证信息</p>
+                <p class="title">订单信息</p>
                 <div class="formItem">
-                    <p class="labTitle"><span class="isRequired">*</span>&nbsp;公司名称</p>
-                    <input class="placeholderText companyName" type="text" placeholder="请输入公司名称">
-                </div>
-                <div class="formItem">
-                    <p class="labTitle"><span class="isRequired">*</span>办理区域</p>
-                    <ul class="zoomList">
-                       <li>龙岗区</li>
-                       <li>宝安区</li>
-                       <li>南山区</li>
-                       <li>罗湖区</li>
-                       <li>福田区</li>
-                       <li>龙华区</li>
+                    <p class="labTitle"><span class="isRequired">*</span>所属服务类型</p>
+                    <ul class="pinchZoom zoomList" id="changeType">
+                        <li class="checkedItem">消防批文</li>
+                        <li>施工劳务资质</li>
+                        <li>教育资质</li>
+                        <li>法律服务</li>
                     </ul>
                 </div>
                 <div class="formItem">
-                    <p class="labTitle"><span class="isRequired">*</span>许可证级别</p>
-                    <ul class="levelBox zoomList">
-                       <li>二类许可证</li>
-                       <li>三类许可证</li>
-                    </ul>
+                    <p class="labTitle"><span class="isRequired">*</span>&nbsp;处理公司名称</p>
+                    <input class="placeholderText companyName" type="text" placeholder="请输入处理公司名称">
                 </div>
                 <div class="formItem">
-                    <p class="labTitle"><span class="isRequired">*</span>有没有红本租赁合同</p>
-                    <ul class="zoomList">
-                       <li>有</li>
-                       <li>没有</li>
-                    </ul>
+                    <p class="labTitle">订单备注</p>
+                    <textarea class="remarkText" name="" id="" cols="" rows="" placeholder="请简要说明订单备注"></textarea>
                 </div>
             </div>
             <div class="customInfo">
@@ -68,22 +56,7 @@
                     </p>
                 </div>
             </div>
-            <div class="tipBox">
-                <p class="tipTitle">温馨提示</p><br>
-                <p class="tipText">下单后请把以下资料快递到聚雕网：</p>
-                <p class="tipText">1、公章；</p>
-                <p class="tipText">2、营业执照复印件；</p>
-                <p class="tipText">3、法人身份证复印件和毕业证复印件；</p>            
-                <p class="tipText">4、企业管理人员身份证复印件和毕业证复印件；</p>            
-                <p class="tipText">5、租赁合同及租赁凭证或房产证（商业用地）。</p><br>      
-                <p class="tipText">办理时间：约5~7个工作日。</p>                                   
-            </div> 
-        </div>
-        <div class="paymentBox">
-            <span class="payInfo">
-                订单金额 : <span class="RMB_flag">￥</span><span class="payAmount"></span>            
-            </span>
-            <a href="./dev.html" class="fr nextBtn paymentBtn">下一步</a>
+            <a href="javascript:void(0)" class="weui_btn weui_btn_primary nextBtn">提交办理</a>
         </div>
     </div>
 </body>

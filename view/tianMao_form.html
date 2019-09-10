@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <meta http-equiv="Content-Type"  content="multipart/form-data; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>天猫入驻</title>
+    <link rel="stylesheet" href="../css/weui.min.css">
+    <link rel="stylesheet" href="../lib/layer/mobile/need/layer.css">
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/regist.css">
+    <link rel="stylesheet" href="../css/common.css?v=1.0">
+    <link rel="stylesheet" href="../css/index.css?v=1.0">
+    <style>
+        /* 修改弹窗头部样式 */
+        .layui-layer .layui-layer-title {
+            color: #ffffff;
+            font-size: 1.125rem;
+            background-color: #836FFF;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="containerOut">
+        <div class="headerBar"></div>
+        <div class="contentBox containerInner tianMaoInner">
+            <div class="baseInfo">
+                <p class="title">入驻信息</p>
+                <div class="formItem">
+                    <p class="labTitle"><span class="isRequired">*</span>&nbsp;拟入驻天猫公司名称<span class="addText">(中文)</span> </p>
+                    <input class="placeholderText companyName" type="text" placeholder="请输入营业执照公司名称">
+                </div>
+            </div>
+            <div class="customInfo">
+                <p class="title">咨询方式</p>
+                <div class="formItem clearfix">
+                    <img src="../img/site.jpg" alt="" class="customIcon fl">
+                    <p class="customBox fl">
+                        <span class="title">聚雕网客服黄小姐</span><span class="addText">(对接客服)</span><br>
+                        <span class="tel"><span class="glyphicon glyphicon-phone-alt telIcon"></span> 13823590716</span>
+                    </p>
+                </div>
+                <div class="formItem clearfix">
+                    <img src="../img/site.jpg" alt="" class="customIcon fl">
+                    <p class="customBox fl">
+                        <span class="title">商务经理张先生</span><span class="addText">(对接商务经理)</span><br>
+                        <span class="tel"><span class="glyphicon glyphicon-phone-alt telIcon"></span> 13310874521</span>
+                    </p>
+                </div>
+            </div>
+            <div class="tipBox">
+                <p class="tipTitle">天猫下店公司要求及流程</p><br>
+                <p class="tipText">一.公司要求: </p>
+                <p class="tipText">1.成立年限无要求,新老公司都可以</p>
+                <p class="tipText">2.有一般纳税人资格,有无银行账户均可 </p>
+                <p class="tipText">3.注册资金100万以上(若无,网上提交申请变更)</p>
+                <p class="tipText">4.法人股东名下公司不超过3家</p>
+                <p class="tipText">5.变更次数不要超过2次 (特别是法人股东的变更)</p>
+                <p class="tipText">6.工商正常,税务正常,银行网银可以正常进出、转账</p>
+                <p class="tipText">7.经营范围: 电子产品、服装、家居、化妆品、五金、数码产品、家居产品、国内贸易、金融、房地产、服务类的暂不要,偏门行业不要,一般纳税人开票金额累计不超过10万元</p>
+                <p class="tipText">8.公司之前不能有入驻过或者申请过天猫进驻的情况</p><br>
+                <p class="tipText">二.所需资料</p>
+                <p class="tipText">1.营业执照复印件加盖公章</p>
+                <p class="tipText">2.法人身份证正反面复印件加盖公章</p>
+                <p class="tipText">3.开户许可证复印件加盖公章(无户的可以不提供)</p>
+                <p class="tipText">4.天猫入驻授权书盖章(盖章不要压到字)</p>
+                <p class="tipText">5.一般纳税人资格证明,加盖公章</p>
+                <p class="tipText">须知: 以上资料复印件要清晰,复印件加盖公章</p><br>
+                <p class="tipText">三.流程及支付</p><br>
+                <p class="tipText">1.提供公司资料</p>
+                <p class="tipText">2.企业支付宝认证</p>
+                <p class="tipText">3.公司过户</p>
+                <p class="tipText">以上步骤顺利完成后,聚雕网支付2万元</p><br>
+                <p class="tipText">四.注意事项</p>
+                <p class="tipText">1.公司下店了一定要保证可以做企业支付宝认证(一种是用公司银行网银转账到支付宝公司做认证,第二种是用公司法人做)</p>
+                <p class="tipText">2.公司下店了一定要保证工商、税务、银行可以正常过户</p>
+                <p class="tipText">3.天猫入驻期间自行报税</p>
+            </div>
+            <div class="agreeRule">
+                <input type="checkbox"> 我已阅读并接受<a href="javascript:void" class="ruleAbout">《天猫入驻协议》</a>
+            </div>
+            <a href="javascript:void(0)" class="weui_btn weui_btn_primary nextBtn">点击办理</a>
+        </div>
+    </div>
+    <div class="ruleBox" style="display: none">
+        <p class="ruleText">一、服务项目及目的合作商向聚雕网提供公司资源（以下简称标的公司）用于申请天猫下店标，聚雕网申请天猫店铺成功后，合作商承诺协助标的公司股东与受让方达成股权转让协议，完成公司转让。</p><br>
+        <p class="ruleText">二、服务费用、公司股权转让及付款方式</p>
+        <p class="ruleText">1、下店成功后，聚雕网向合作商按每家2万元的价格支付费用，其它变更费用由聚雕网公司支付</p>
+        <p class="ruleText">2、合作商需向聚雕网提供标的公司相关资料：营业执照扫描件、开户许可证扫描件（无户不提供）、法定代表人身份证扫描件、天猫入驻授权书扫描件及盖公章。</p>
+        <p class="ruleText">3、申请时间为30个工作日，待聚雕网申请天猫店铺下店激活公司支付宝并完成标的公司股权转让变更核准（下发营业执照）3日内支付70%即14000元，税务、银行变更完成且资料交接完成付清剩余尾款6000元。若未下店成功，标的公司相关资料退回合作商。</p><br>
+        <p class="ruleText">三、保证条款</p>
+        <p class="ruleText">1、聚雕网保证合法使用标的公司的材料，聚雕网使用该资料仅用于申请天猫店铺，承诺不将标的公司信息泄露给第三方。</p>
+        <p class="ruleText">2、合作商承诺有权代理标的公司的股权转让事宜，标的公司在天猫下店期限内，标的公司股东或合作商不得将标的公司转让给任何第三方。</p>
+        <p class="ruleText">3、合作商应保证标的公司股东完全配合聚雕网完成股权转让、激活标的公司支付宝账户等一切标的公司事宜。激活标的公司支付宝账户应在聚雕网天猫店铺申请成功后的5个工作日之内完成。</p>
+        <p class="ruleText">4、甲乙双方保证所提供的一切资料、信息均属实合法，工商，网银，税务正常，否则应对因提供虚假资料、信息造成的一切损失承担相应的赔偿责任。</p><br>
+        <p class="ruleText">四、甲乙双方的权利义务</p>
+        <p class="ruleText">1、甲乙双方一致确认，聚雕网通过合作商获取标的公司的所有权在于聚雕网能够通过标的公司申请天猫店铺。如合作商已知晓标的公司之前给别人申请过天猫店铺依旧提交给聚雕网申请，聚雕网有权单方面解除合同，并追究合作商的相应违约责任。</p>
+        <p class="ruleText">2、合作商应积极认真的把标的公司的真实情况及出让方的真实意思表示介绍给聚雕网。</p>
+        <p class="ruleText">3、合作商应积极努力的做好聚雕网与标的公司股东之间的协调工作，尤其是聚雕网使用标的公司下店后，合作商应积极促成聚雕网与标的公司股东之间的股权转让协议，在约定期限内完成公司股权转让。（因受让方法人不到场造成股转推迟的合作商不承担责任）</p><br>
+        <p class="ruleText">五、违约责任</p>
+        <p class="ruleText">1、聚雕网应根据付款方式支付合作商所有费用，逾期未支付的，合作商有权按照每日1%要求聚雕网支付违约金。</p>
+        <p class="ruleText">2、聚雕网使用标的公司的任何材料仅用于申请天猫店铺，若发现有其他用途或者谋取非法利益，合作商有权单方解除协议，造成损失的有权要求聚雕网赔偿。</p>
+        <p class="ruleText">3、合作商应按协议要求提供标的公司的资料供聚雕网申请天猫店铺，且提供的资料应属实，不得伪造，否则聚雕网有权要求合作商赔偿总价款（2万元）的20%为违约金，以作为因资料虚假导致聚雕网申请天猫店铺失败的赔偿。</p>
+        <p class="ruleText">4、合作商应按照合同约定的时间，完成标的公司支付宝账户激活和公司股权转让等相应的公司转让应尽事宜，否则聚雕网有权单方解除协议，合作商应向聚雕网赔偿总价款（2万元）10%的违约金。</p><br>
+        <p class="ruleText">六、争议解决方式</p>
+        <p class="ruleText">因本协议发生争议，聚雕网双方应友好协商解决，如协商不成，任何一方有权向龙华区人民法院提起诉讼。</p>
+    </div>
+</body>
+</html>
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="../js/jQuery/jquery-3.4.0.js"></script>
+<script src="../lib/layer/layer.js"></script>
+<script src="../js/index.js?v=1.1"></script>
+<script>
+    $(function(){
+        // 点击天猫入驻协议
+        $('.ruleAbout').on('click',function(){
+            layer.open({
+                type:'1',
+                title:'用户下单须知',
+                content: $('.ruleBox')
+            });
+        })
+    })
+</script>
