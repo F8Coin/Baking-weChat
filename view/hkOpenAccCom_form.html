@@ -102,7 +102,7 @@
             <span class="payInfo">
                 订单金额 : <span class="RMB_flag">￥</span><span class="payAmount"></span>            
             </span>
-            <a href="./dev.html" class="fr nextBtn paymentBtn">下一步</a>
+            <a href="javascript:void(0)" class="fr nextBtn paymentBtn">下一步</a>
         </div>
     </div>
 </body>
@@ -111,3 +111,10 @@
 <script src="../js/jQuery/jquery-3.4.0.js"></script>
 <script src="../lib/layer/layer.js"></script>
 <script src="../js/index.js?v=1.1"></script>
+<script>
+    $(function(){
+        $('.paymentBtn').on('click',function(){
+            layer.msg('功能调试中...业务办理请联系客服');
+        })
+    })
+</script>

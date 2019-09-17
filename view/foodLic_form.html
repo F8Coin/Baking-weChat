@@ -38,13 +38,13 @@
                 </div>
                 <div class="formItem">
                     <p class="labTitle"><span class="isRequired">*</span>所属街道办</p>
-                    <ul class="zoomList">
+                    <ul class="zoomList foodLicBox">
                        <li>所有街道</li>
                     </ul>
                 </div>
                 <div class="formItem">
                     <p class="labTitle"><span class="isRequired">*</span>请选择分类</p>
-                    <ul class="zoomList">
+                    <ul class="zoomList foodLicBox">
                        <li>食品流通类</li>
                     </ul>
                 </div>
@@ -56,7 +56,7 @@
                 </div>
                 <div class="formItem">
                     <p class="labTitle"><span class="isRequired">*</span>选择场地面积</p>
-                    <ul class="zoomList">
+                    <ul class="zoomList foodLicBox">
                        <li>0 ~ 200㎡</li>
                     </ul>
                 </div>
@@ -93,7 +93,7 @@
             <span class="payInfo">
                 订单金额 : <span class="RMB_flag">￥</span><span class="payAmount"></span>            
             </span>
-            <a href="./dev.html" class="fr nextBtn paymentBtn">下一步</a>
+            <a href="javascript:void(0)" class="fr nextBtn paymentBtn">下一步</a>
         </div>
     </div>
 </body>
@@ -103,3 +103,10 @@
 <script src="../js/jQuery/jquery-3.4.0.js"></script>
 <script src="../lib/layer/layer.js"></script>
 <script src="../js/index.js?v=1.1"></script>
+<script>
+    $(function(){
+        $('.paymentBtn').on('click',function(){
+            layer.msg('功能调试中...业务办理请联系客服');
+        })
+    })
+</script>
