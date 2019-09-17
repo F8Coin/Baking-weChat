@@ -598,7 +598,7 @@
 
 
 /* --------------医疗器械许可证信息页面----------------- */
-.baseInfo .formItem>.levelBox>li {
+.baseInfo>.formItem>.levelBox>li {
     width: 9rem;
 }
 
