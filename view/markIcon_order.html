@@ -17,6 +17,11 @@
             font-size: 1.125rem;
             background-color: #836FFF;
         }
+
+        #trademark_tip .listTable .textInfo {
+            height: 20rem;
+            overflow: auto;
+        } 
     </style>
 </head>
 <body>
@@ -287,9 +292,9 @@
             var titleText= $(this).text();
             if( !$(this).hasClass('disabled')) {  
                 layer.open({
-                       type:'1',
-                       title: titleText,
-                    content: $('#trademark_tip')
+                        type:'1',
+                        title: titleText,
+                        content: $('#trademark_tip'),
                 })
             }else {
                 return;
