@@ -37,19 +37,22 @@
                 </li>
                 <li class="step2 stepIndex">
                     <p class="stepCont">
-                        <span class="stepNum">2</span>                                                    
+                        <span class="stepNum">2</span>
+                        <span class="succFlag glyphicon glyphicon-ok"></span>                                                    
                     </p>
                     <span class="title">选择类别</span>
                 </li>
                 <li class="step3 stepIndex">
                     <p class="stepCont">
-                        <span class="stepNum">3</span>                        
+                        <span class="stepNum">3</span> 
+                        <span class="succFlag glyphicon glyphicon-ok"></span>                       
                     </p>
                     <span class="title">补全信息</span>
                 </li>
                 <li class="step4 stepIndex">
                     <p class="stepCont">
-                        <span class="stepNum">4</span>                  
+                        <span class="stepNum">4</span>
+                        <span class="succFlag glyphicon glyphicon-ok"></span>                  
                     </p>
                     <span class="title">确认付款</span>
                 </li>
@@ -170,7 +173,7 @@
                 <div class="customInfo">
                     <p class="title">咨询方式</p>
                     <div class="formItem clearfix">
-                        <img src="../img/site.jpg" alt="" class="customIcon fl">
+                        <img src="../img/userIcon03.jpg" alt="" class="customIcon fl">
                         <p class="customBox fl">
                             <span class="title">聚雕网客服黄小姐</span><span class="addText">(对接客服)</span><br>
                             <span class="tel"><span class="glyphicon glyphicon-phone-alt telIcon"></span> 13823590716</span>
@@ -312,6 +315,8 @@
             if(pageIndex<4) {
                 $('#pageBox .stepPage').css('display','none');
                 $('#pageBox .stepPage:eq('+pageIndex+')').css('display','block');
+                $('.headerBar>ul>li:eq('+pageIndex+')').slice(0,pageIndex+1).find('.stepCont>.stepNum').css('display','none'); // 隐藏流程数字
+                $('.headerBar>ul>li:eq('+pageIndex+')').slice(0,pageIndex+1).find('.stepCont>.succFlag').css('display','block'); // 显示当前完成状态标识
                 pageIndex++;
             }else {
                 layer.msg('功能开发中...业务办理请联系客服')

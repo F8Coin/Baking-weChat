@@ -14,13 +14,30 @@
     <link rel="stylesheet" href="../css/common.css?v=1.0">
     <link rel="stylesheet" href="../css/index.css?v=1.0">
 </head>
+<style>
+.containerOut .containerInner {
+    margin-bottom: 0px ;
+}
+</style>
 
 <body>
     <div class="containerOut">
         <div class="headerBar"></div>
         <div class="contentBox containerInner">
             <div class="baseInfo">
-                <p class="title">订单信息</p>
+                <p class="title">更多服务</p>
+                <div class="formItem">
+                    <p class="labTitle"><span class="isRequired">*</span>&nbsp;公司名称</p>
+                    <input class="placeholderText companyName" type="text" placeholder="请输入处理公司名称">
+                </div>
+                <div class="formItem">
+                    <p class="labTitle"><span class="isRequired">*</span>&nbsp;业务负责人</p>
+                    <input class="placeholderText companyName" type="text" placeholder="请输入业务负责人姓名">
+                </div>
+                <div class="formItem">
+                    <p class="labTitle"><span class="isRequired">*</span>&nbsp;联系电话</p>
+                    <input class="placeholderText companyName" type="text" placeholder="请输入业务负责人联系电话">
+                </div>
                 <div class="formItem">
                     <p class="labTitle"><span class="isRequired">*</span>所属服务类型</p>
                     <ul class="pinchZoom zoomList" id="changeType">
@@ -28,21 +45,18 @@
                         <li>施工劳务资质</li>
                         <li>教育资质</li>
                         <li>法律服务</li>
+                        <li>其它</li>
                     </ul>
                 </div>
                 <div class="formItem">
-                    <p class="labTitle"><span class="isRequired">*</span>&nbsp;处理公司名称</p>
-                    <input class="placeholderText companyName" type="text" placeholder="请输入处理公司名称">
-                </div>
-                <div class="formItem">
-                    <p class="labTitle">订单备注</p>
+                    <p class="labTitle">服务内容简述</p>
                     <textarea class="remarkText" name="" id="" cols="" rows="" placeholder="请简要说明订单备注"></textarea>
                 </div>
             </div>
             <div class="customInfo">
                 <p class="title">咨询方式</p>
                 <div class="formItem clearfix">
-                    <img src="../img/site.jpg" alt="" class="customIcon fl">
+                    <img src="../img/userIcon03.jpg" alt="" class="customIcon fl">
                     <p class="customBox fl">
                         <span class="title">聚雕网客服黄小姐</span><span class="addText">(对接客服)</span><br>
                         <span class="tel"><span class="glyphicon glyphicon-phone-alt telIcon"></span> 13823590716</span>
@@ -56,7 +70,7 @@
                     </p>
                 </div>
             </div>
-            <a href="javascript:void(0)" class="weui_btn weui_btn_primary nextBtn">提交办理</a>
+            <a href="javascript:void(0)" class="weui_btn weui_btn_primary nextBtn">提交</a>
         </div>
     </div>
 </body>

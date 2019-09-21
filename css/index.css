@@ -485,10 +485,23 @@
 
 .headerBar>ul>li>.stepCont>.succFlag {
     font-size: 1.125rem;
+    line-height: 1.875rem;
 }
 
 .headerBar>ul>li>.title {
     color: #e7e7e7;
+}
+
+.headerBar>ul>li:first-child>.stepCont>.stepNum {
+    display: none;
+}
+
+.headerBar>ul>.stepIndex>.stepCont>.succFlag {
+    display: none;
+}
+
+.headerBar>ul>li:first-child>.stepCont>.succFlag {
+    display: block;
 }
 
 /* -------page2------- */
