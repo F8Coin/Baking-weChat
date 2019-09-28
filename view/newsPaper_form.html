@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no ">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>登报服务</title>
     <link rel="stylesheet" href="../css/weui.min.css">
@@ -22,23 +22,8 @@
                 </div>
                 <div class="formItem">
                     <p class="labTitle"><span class="isRequired">*</span>登报类型</p>
-                    <div class="content clearfix">
-                        <label for="cancellation" class="fl optionAbout optionType">
-                            <p class="flag">
-                                <img class="icon" src="../img/other1_icon.png" alt="">
-                                <span class="text">注销登报</span>
-                            </p>
-                            <p class="price">￥150.00</p>
-                            <input class="selectBtn" type="radio" id="cancellation">
-                        </label>
-                        <label for="havingLost" class="fr optionAbout optionType">
-                            <p class="flag">
-                                <img class="icon" src="../img/other1_icon.png" alt="">
-                                <span class="text">遗失登报</span>
-                            </p>
-                            <p class="price">￥75/60个字</p>
-                            <input class="selectBtn" type="radio" id="havingLost">
-                        </label>
+                    <div class="content clearfix" id="newsBox">
+
                     </div>
                 </div>
                 <!-- <div class="formItem">
@@ -185,6 +170,39 @@
 <script src="../js/index.js?v=1.0"></script>
 <script>
     $(function(){
+        // 登报类型
+        function newsType(res) {
+            for (let i = 0; i < res.data.goods[0].goods.length; i++) {
+                var newsTypeItem= '<label for="'+res.data.goods[0].goods[i].id+'" class="fl optionAbout optionType">'+
+                                        '<p class="flag">'+
+                                            '<img class="icon" src="'+res.data.goods[0].goods[i].imgUrl+'" alt="">'+
+                                            '<span class="text">'+res.data.goods[0].goods[i].name+'</span>'+
+                                        '</p>'+
+                                        '<p class="price">￥'+res.data.goods[0].goods[i].marketPrice+'</p>'+
+                                        '<input class="selectBtn" type="radio" id="'+res.data.goods[0].goods[i].id+'">'+
+                                    '</label>'
+            $('#newsBox').append(newsTypeItem);
+            }
+
+        }
+
+        function callback_list(res){
+            newsType(res);
+        }
+
+        var url_list= baseUrl+'/api/newspaper/list';
+        var url_order= baseUrl+'';
+        var type_list= 'post';
+        var type_order= 'post';
+        var targetUrl= 'http://judiaowang.cn/app/view/newsPaper_order.html'
+        // var targetUrl= './newsPaper_order.html'
+        var parameters_list= {
+            busModId: "7",// 登报服务
+            cityId: JSON.parse(localStorage.getItem('loginData')).cityId,
+        }
+        getFormData(url_list,type_list,parameters_list,callback_list);
+
+
         $('.paymentBtn').on('click',function(){
             layer.msg('功能调试中...业务办理请联系客服');
         })

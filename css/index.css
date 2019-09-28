@@ -375,6 +375,12 @@
     padding-left: .5rem;
 }
 
+.newsContainer .formItem>.content>.optionAbout, 
+.taxReportContainer .formItem>.content>.optionAbout {
+    width: 45%;
+    margin-right: .75rem;
+}    
+
 /* --------------登报服务订单页面----------------- */
 .layout .receive_address {
     margin-top: 1.875rem;

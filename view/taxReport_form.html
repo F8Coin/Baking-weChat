@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../css/index.css?v=1.0">
 </head>
 <body>
-    <div class="containerOut">
+    <div class="containerOut taxReportContainer">
         <div class="headerBar"></div>
         <div class="containerInner">
             <div class="baseInfo">
@@ -24,42 +24,8 @@
                 </div>                
                 <div class="formItem partOther">
                     <p class="title"><span class="isRequired">*</span>资产收入</p>
-                    <div class="content clearfix">
-                        <label for="partOther1" class="left fl optionAbout">
-                            <p class="flag">
-                                <span class="text">1000万以下</span>
-                            </p>
-                            <p class="price">￥550</p>
-                            <input class="selectBtn" type="checkbox" id="partOther1">
-                        </label>
-                        <label for="partOther2" class="right fr optionAbout">
-                            <p class="flag">
-                                <span class="text">1000~3000万</span> 
-                            </p>
-                            <p class="price">￥650.00</p>
-                            <input class="selectBtn" type="checkbox" id="partOther2">
-                        </label>
-                        <label for="partOther3" class="left fl optionAbout">
-                            <p class="flag">
-                                <span class="text">3000~5000万</span>
-                            </p>
-                            <p class="price">￥750</p>
-                            <input class="selectBtn" type="checkbox" id="partOther3">
-                        </label>
-                        <label for="partOther4" class="right fr optionAbout">
-                            <p class="flag">
-                                <span class="text">5000~7500万</span> 
-                            </p>
-                            <p class="price">￥850.00</p>
-                            <input class="selectBtn" type="checkbox" id="partOther4">
-                        </label>
-                        <label for="partOther5" class="left fl optionAbout">
-                            <p class="flag">
-                                <span class="text">7500~1亿</span>
-                            </p>
-                            <p class="price">￥950</p>
-                            <input class="selectBtn" type="checkbox" id="partOther5">
-                        </label>
+                    <div class="content clearfix" id="assetsBox">
+                        <!-- 资产收入类型列表 -->
                     </div>
                 </div>
             </div>
@@ -124,6 +90,38 @@
 <script src="../js/index.js?v=1.0"></script>
 <script>
     $(function(){
+        // 资产收入
+        function assetsType(res) {
+            for (let i = 0; i < res.data.goods[0].goods.length; i++) {
+                var assetsItem= '<label for="'+res.data.goods[0].goods[i].id+'" class="fl optionAbout optionType">'+
+                                        '<p class="flag">'+
+                                            '<img class="icon" src="'+res.data.goods[0].goods[i].imgUrl+'" alt="">'+
+                                            '<span class="text">'+res.data.goods[0].goods[i].name+'</span>'+
+                                        '</p>'+
+                                        '<p class="price">￥'+res.data.goods[0].goods[i].marketPrice+'</p>'+
+                                        '<input name="assetType" class="selectBtn" type="radio" id="'+res.data.goods[0].goods[i].id+'">'+
+                                    '</label>'
+            $('#assetsBox').append(assetsItem);
+            }
+        }
+
+        function callback_list(res){
+            assetsType(res);
+        } 
+
+        var url_list= baseUrl+'/api/taxReport/list';
+        var url_order= baseUrl+'';
+        var type_list= 'post';
+        var type_order= 'post';
+        var targetUrl= 'http://judiaowang.cn/app/view/taxReport_order.html'
+        // var targetUrl= './taxReport_order.html'
+        var parameters_list= {
+            busModId: "8",// 税审报告
+            cityId: JSON.parse(localStorage.getItem('loginData')).cityId,
+        }
+        getFormData(url_list,type_list,parameters_list,callback_list);
+
+
         $('.paymentBtn').on('click',function(){
             layer.msg('功能调试中...业务办理请联系客服');
         })
