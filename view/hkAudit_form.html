@@ -34,8 +34,9 @@
                 </div>
                 <div class="formItem partOther">
                     <p class="title"><span class="isRequired">*</span>年度收入金额港币<br><span class="addText">(如有多家银行，以流水收入总和为准)</span> </p>
-                    <div class="content clearfix">
-                        <label for="partOther1" class="left fl optionAbout">
+                    <div class="content clearfix" id="goodsBox">
+                        <!-- 年度收入类型 -->
+                        <!-- <label for="partOther1" class="left fl optionAbout">
                             <p class="flag">
                                 <span class="text">200万以下</span>
                             </p>
@@ -62,7 +63,7 @@
                             </p>
                             <p class="price">￥3500</p>
                             <input class="selectBtn" type="checkbox" id="partOther4">
-                        </label>
+                        </label> -->
                     </div>
                 </div>
                 <div class="formItem">
@@ -129,6 +130,44 @@
 <script src="../js/index.js?v=1.1"></script>
 <script>
     $(function(){
+
+        // 香港公司审计报告
+        function goodsList(res) {
+            if(res.code == "0") {
+                for (let i = 0; i < res.data.goods.length; i++) {
+                    var goodsItem= '<label for="'+res.data.goods[i].id+'" class="fl optionAbout optionType">'+
+                                            '<p class="flag">'+
+                                                '<img class="icon" src="'+res.data.goods[i].imgUrl+'" alt="">'+
+                                                '<span class="text">'+res.data.goods[i].name+'</span>'+
+                                            '</p>'+
+                                            '<p class="price">￥'+res.data.goods[i].marketPrice+'</p>'+
+                                            '<input class="selectBtn" type="radio" id="'+res.data.goods[i].id+'">'+
+                                        '</label>'
+                    $('#goodsBox').append(goodsItem);
+                }    
+            }else {
+                layer.msg(res.msg);
+            }
+
+        }
+
+        function callback_list(res){
+            goodsList(res);
+        }
+
+        var url_list= baseUrl+'/api/hk/auditReport/list';
+        var url_order= baseUrl+'';
+        var type_list= 'post';
+        var type_order= 'post';
+        var targetUrl= ''
+        // var targetUrl= ''
+        var parameters_list= {
+            busModId: "29", // 香港公司审计报告
+            categoryId: '24', // 商品分类ID
+            cityId: JSON.parse(localStorage.getItem('loginData')).cityId,
+        }
+        getFormData(url_list,type_list,parameters_list,callback_list);
+
         $('.paymentBtn').on('click',function(){
             layer.msg('功能调试中...业务办理请联系客服');
         })

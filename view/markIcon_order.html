@@ -65,20 +65,7 @@
                     <div class="formItem">
                         <p class="labTitle"><span class="isRequired">*</span>选择服务方案</p>
                         <div class="content clearfix" id="goodsList">
-                            <label for="left" class="left fl optionAbout">
-                                <p class="flag">
-                                    <span class="text">方案1</span>
-                                </p>
-                                <p class="price">￥350</p>
-                                <input class="selectBtn" type="radio" id="left" name="plan">
-                            </label>
-                            <label for="right" class="right fr optionAbout">
-                                <p class="flag">
-                                    <span class="text">方案2</span>
-                                </p>
-                                <p class="price">￥550</p>
-                               <input class="selectBtn" type="radio" id="right" name="plan">
-                            </label>
+                            <!-- 商标注册方案 -->
                         </div>
                     </div>
                 </div>
@@ -290,6 +277,42 @@
 <script src="../js/index.js"></script>
 <script>
     $(function(){
+        // 商标注册
+        function markIconList(res) {
+            if(res.code == "0") {
+                for (let i = 0; i < res.data.goods[0].goods.length; i++) {
+                    var markItem= '<label for="'+res.data.goods[0].goods[i].id+'" class="fl optionAbout optionType">'+
+                                            '<p class="flag">'+
+                                                '<img class="icon" src="'+res.data.goods[0].goods[i].imgUrl+'" alt="">'+
+                                                '<span class="text">'+res.data.goods[0].goods[i].name+'</span>'+
+                                            '</p>'+
+                                            '<p class="price">￥'+res.data.goods[0].goods[i].marketPrice+'</p>'+
+                                            '<input class="selectBtn" type="radio" id="'+res.data.goods[0].goods[i].id+'">'+
+                                        '</label>'
+                    $('#goodsList').append(markItem);
+                }    
+            }else {
+                layer.msg(res.msg);
+            }
+
+        }
+
+        function callback_list(res){
+            markIconList(res);
+        }
+
+        var url_list= baseUrl+'/api/trademark/list';
+        var url_order= baseUrl+'';
+        var type_list= 'post';
+        var type_order= 'post';
+        var targetUrl= ''
+        // var targetUrl= ''
+        var parameters_list= {
+            busModId: "26", // 商标注册
+            cityId: JSON.parse(localStorage.getItem('loginData')).cityId,
+        }
+        getFormData(url_list,type_list,parameters_list,callback_list);
+
         // 选择类别弹窗
         $('#trademark').on('click','li',function(){
             var titleText= $(this).text();

@@ -22,35 +22,8 @@
                 </div>
                 <div class="formItem">
                     <p class="labTitle"><span class="isRequired">*</span>开户银行<span class="addText">(仅限选一家银行开户)</span> </p>
-                    <div class="content clearfix" id="goodsList">
-                        <label for="1" class="left fl optionAbout">
-                            <p class="flag">
-                                <span class="text">汇丰银行</span>
-                            </p>
-                            <p class="price">￥7000</p>
-                            <input class="selectBtn" type="radio" id="1">
-                        </label>
-                        <label for="2" class="right fr optionAbout">
-                            <p class="flag">
-                                <span class="text">永亨银行</span>
-                            </p>
-                            <p class="price">￥6000</p>
-                            <input class="selectBtn" type="radio" id="2">
-                        </label>
-                        <label for="3" class="left fl optionAbout">
-                            <p class="flag">
-                                <span class="text">东亚银行</span>
-                            </p>
-                            <p class="price">￥7000</p>
-                            <input class="selectBtn" type="radio" id="3">
-                        </label>
-                        <label for="4" class="right fr optionAbout">
-                            <p class="flag">
-                                <span class="text">中国银行</span>
-                            </p>
-                            <p class="price">￥8000</p>
-                            <input class="selectBtn" type="radio" id="4">
-                        </label>
+                    <div class="content clearfix" id="goodsBox">
+                        <!-- 香港公司开户银行列表 -->
                     </div>
                 </div>
             </div>
@@ -113,6 +86,38 @@
 <script src="../js/index.js?v=1.1"></script>
 <script>
     $(function(){
+
+         // 香港公司开户
+         function goodsList(res) {
+            for (let i = 0; i < res.data.goods[0].goods.length; i++) {
+                var goodsItem= '<label for="'+res.data.goods[0].goods[i].id+'" class="fl optionAbout optionType">'+
+                                        '<p class="flag">'+
+                                            '<img class="icon" src="'+res.data.goods[0].goods[i].imgUrl+'" alt="">'+
+                                            '<span class="text">'+res.data.goods[0].goods[i].name+'</span>'+
+                                        '</p>'+
+                                        '<p class="price">￥'+res.data.goods[0].goods[i].marketPrice+'</p>'+
+                                        '<input class="selectBtn" type="radio" id="'+res.data.goods[0].goods[i].id+'">'+
+                                    '</label>'
+            $('#goodsBox').append(goodsItem);
+            }
+        }
+
+        function callback_list(res){
+            goodsList(res);
+        }
+
+        var url_list= baseUrl+'/api/hk/openAccount/list';
+        var url_order= baseUrl+'';
+        var type_list= 'post';
+        var type_order= 'post';
+        var targetUrl= ''
+        // var targetUrl= ''
+        var parameters_list= {
+            busModId: "32",// 香港公司开户
+            cityId: JSON.parse(localStorage.getItem('loginData')).cityId,
+        }
+        getFormData(url_list,type_list,parameters_list,callback_list);
+
         $('.paymentBtn').on('click',function(){
             layer.msg('功能调试中...业务办理请联系客服');
         })

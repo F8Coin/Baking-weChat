@@ -22,56 +22,8 @@
                 </div>
                 <div class="formItem">
                     <p class="labTitle"><span class="isRequired">*</span>开户银行<span class="addText">(仅限选一家银行开户)</span> </p>
-                    <div class="content clearfix" id="goodsList">
-                        <label for="1" class="left fl optionAbout">
-                            <p class="flag">
-                                <span class="text">汇丰银行</span>
-                            </p>
-                            <p class="price">￥3000</p>
-                            <input class="selectBtn" type="radio" id="1">
-                        </label>
-                        <label for="2" class="right fr optionAbout">
-                            <p class="flag">
-                                <span class="text">渣打银行</span>
-                            </p>
-                            <p class="price">￥3000</p>
-                            <input class="selectBtn" type="radio" id="2">
-                        </label>
-                        <label for="3" class="left fl optionAbout">
-                            <p class="flag">
-                                <span class="text">恒生银行</span>
-                            </p>
-                            <p class="price">￥2000</p>
-                            <input class="selectBtn" type="radio" id="3">
-                        </label>
-                        <label for="4" class="right fr optionAbout">
-                            <p class="flag">
-                                <span class="text">中国银行</span>
-                            </p>
-                            <p class="price">￥2500</p>
-                            <input class="selectBtn" type="radio" id="4">
-                        </label>
-                        <label for="5" class="left fl optionAbout">
-                            <p class="flag">
-                                <span class="text">花旗银行</span>
-                            </p>
-                            <p class="price">￥3000</p>
-                            <input class="selectBtn" type="radio" id="5">
-                        </label>
-                        <label for="6" class="right fr optionAbout">
-                            <p class="flag">
-                                <span class="text">星展银行</span>
-                            </p>
-                            <p class="price">￥3000</p>
-                            <input class="selectBtn" type="radio" id="6">
-                        </label>
-                        <label for="7" class="left fl optionAbout">
-                            <p class="flag">
-                                <span class="text">华侨永享银行</span>
-                            </p>
-                            <p class="price">￥3000</p>
-                            <input class="selectBtn" type="radio" id="7">
-                        </label>
+                    <div class="content clearfix" id="goodsBox">
+                        <!-- 香港个人开户 -->
                     </div>
                 </div>
             </div>
@@ -114,6 +66,38 @@
 <script src="../js/index.js?v=1.1"></script>
 <script>
     $(function(){
+
+        // 香港个人开户
+        function goodsList(res) {
+            for (let i = 0; i < res.data.goods[0].goods.length; i++) {
+                var goodsItem= '<label for="'+res.data.goods[0].goods[i].id+'" class="fl optionAbout optionType">'+
+                                        '<p class="flag">'+
+                                            '<img class="icon" src="'+res.data.goods[0].goods[i].imgUrl+'" alt="">'+
+                                            '<span class="text">'+res.data.goods[0].goods[i].name+'</span>'+
+                                        '</p>'+
+                                        '<p class="price">￥'+res.data.goods[0].goods[i].marketPrice+'</p>'+
+                                        '<input class="selectBtn" type="radio" id="'+res.data.goods[0].goods[i].id+'">'+
+                                    '</label>'
+            $('#goodsBox').append(goodsItem);
+            }
+        }
+
+        function callback_list(res){
+            goodsList(res);
+        }
+
+        var url_list= baseUrl+'/api/hk/openAccount/list';
+        var url_order= baseUrl+'';
+        var type_list= 'post';
+        var type_order= 'post';
+        var targetUrl= ''
+        // var targetUrl= ''
+        var parameters_list= {
+            busModId: "33",// 香港个人开户
+            cityId: JSON.parse(localStorage.getItem('loginData')).cityId,
+        }
+        getFormData(url_list,type_list,parameters_list,callback_list);
+
         $('.paymentBtn').on('click',function(){
             layer.msg('功能调试中...业务办理请联系客服');
         })

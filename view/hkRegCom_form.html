@@ -39,9 +39,8 @@
                 </div>
                 <div class="formItem">
                     <p class="labTitle"><span class="isRequired">*</span>是否需要加急处理<span class="addText"> (加急费用200元)</span> <br><span class="addText">(香港公司注册一般为7~9个工作日,加急可缩短至2~3个工作日)</span> </p>
-                    <ul class="urget zoomList" id="area">
-                       <li>是</li>
-                       <li>否</li>
+                    <ul class="urget zoomList" id="chooseBox">
+                       <!-- 是否加急 -->
                     </ul>
                 </div>
             </div>
@@ -102,7 +101,7 @@
         </div>
         <div class="paymentBox">
             <span class="payInfo">
-                订单金额 : <span class="RMB_flag">￥</span><span class="payAmount"></span>            
+                订单金额 : <span class="RMB_flag">￥</span><span class="payAmount">2350</span>            
             </span>
             <a href="javascript:void(0)" class="fr nextBtn paymentBtn">下一步</a>
         </div>
@@ -116,6 +115,36 @@
 <script src="../js/index.js?v=1.1"></script>
 <script>
     $(function(){
+
+        // 香港公司注册
+        function chooseList(res) {
+            if(res.code == "0") {
+                for (let i = 0; i < res.data.goods[0].goods.length; i++) {
+                    var typeItem= '<li> '+res.data.goods[0].goods[i].name+'</li>'
+                    $('#chooseBox').append(typeItem);
+                }
+            }else {
+                layer.msg(res.msg);
+            }
+
+        }
+
+        function callback_list(res){
+            chooseList(res);
+        }
+
+        var url_list= baseUrl+'/api/hk/register/list';
+        var url_order= baseUrl+'';
+        var type_list= 'post';
+        var type_order= 'post';
+        var targetUrl= ''
+        // var targetUrl= ''
+        var parameters_list= {
+            busModId: "27", // 香港公司注册
+            cityId: JSON.parse(localStorage.getItem('loginData')).cityId,
+        }
+        getFormData(url_list,type_list,parameters_list,callback_list);
+
         $('.paymentBtn').on('click',function(){
             layer.msg('功能调试中...业务办理请联系客服');
         })

@@ -88,6 +88,33 @@
 <script src="../js/index.js?v=1.1"></script>
 <script>
     $(function(){
+
+        // 香港公司年审
+        function getPrice(res) {
+            if(res.code == "0") {
+                $('.paymentBox>.payInfo>.payAmount').text(res.data.goods[0].goods[0].marketPrice)
+            }else {
+                layer.msg(res.msg);
+            }
+
+        }
+
+        function callback_list(res){
+            getPrice(res);
+        }
+
+        var url_list= baseUrl+'/api/hk/annual/list';
+        var url_order= baseUrl+'';
+        var type_list= 'post';
+        var type_order= 'post';
+        var targetUrl= ''
+        // var targetUrl= ''
+        var parameters_list= {
+            busModId: "30", // 香港公司年审
+            cityId: JSON.parse(localStorage.getItem('loginData')).cityId,
+        }
+        getFormData(url_list,type_list,parameters_list,callback_list);
+
         $('.paymentBtn').on('click',function(){
             layer.msg('功能调试中...业务办理请联系客服');
         })

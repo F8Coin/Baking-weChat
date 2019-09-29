@@ -27,9 +27,8 @@
                 </div>
                 <div class="formItem">
                     <p class="labTitle"><span class="isRequired">*</span>是否办理过审计报告</p>
-                    <ul class="urget zoomList" id="area">
-                       <li>是</li>
-                       <li>否</li>
+                    <ul class="urget zoomList" id="chooseBox">
+                        <!-- 是否办理过审计报告 -->
                     </ul>
                 </div>
                 <div class="formItem">
@@ -91,7 +90,7 @@
         </div>
         <div class="paymentBox">
             <span class="payInfo">
-                订单金额 : <span class="RMB_flag">￥</span><span class="payAmount"></span>            
+                订单金额 : <span class="RMB_flag">￥</span><span class="payAmount">980</span>            
             </span>
             <a href="javascript:void(0)" class="fr nextBtn paymentBtn">下一步</a>
         </div>
@@ -105,6 +104,36 @@
 <script src="../js/index.js?v=1.1"></script>
 <script>
     $(function(){
+
+        // 香港公司注销
+        function chooseList(res) {
+            if(res.code == "0") {
+                for (let i = 0; i < res.data.goods[0].goods.length; i++) {
+                    var typeItme= '<li> '+res.data.goods[0].goods[i].name+'</li>'
+                    $('#chooseBox').append(typeItme);
+                }
+            }else {
+                layer.msg(res.msg);
+            }
+
+        }
+
+        function callback_list(res){
+            chooseList(res);
+        }
+
+        var url_list= baseUrl+'/api/hk/cancel/list';
+        var url_order= baseUrl+'';
+        var type_list= 'post';
+        var type_order= 'post';
+        var targetUrl= ''
+        // var targetUrl= ''
+        var parameters_list= {
+            busModId: "28", // 香港公司注销
+            cityId: JSON.parse(localStorage.getItem('loginData')).cityId,
+        }
+        getFormData(url_list,type_list,parameters_list,callback_list);
+
         $('.paymentBtn').on('click',function(){
             layer.msg('功能调试中...业务办理请联系客服');
         })

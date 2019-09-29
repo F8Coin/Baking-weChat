@@ -31,8 +31,8 @@
                 </div>
                 <div class="formItem partOther">
                     <p class="title"><span class="isRequired">*</span>专利类型</p>
-                    <div class="content clearfix">
-                        <label for="partOther1" class="left fl optionAbout">
+                    <div class="content clearfix" id="patentBox">
+                        <!-- <label for="partOther1" class="left fl optionAbout">
                             <p class="flag">
                                 <span class="text">软件著作权</span>
                             </p>
@@ -73,7 +73,7 @@
                             </p>
                             <p class="price">￥600.00</p>
                             <input class="selectBtn" type="checkbox" id="partOther6">
-                        </label>
+                        </label> -->
                     </div>
                 </div>
             </div>
@@ -143,6 +143,46 @@
 <script src="../js/index.js"></script>
 <script>
     $(function(){
+
+        // 专利申请
+        function patentList(res) {
+            if(res.code == "0") {
+                for (let i = 0; i < res.data.goods.length; i++) {
+                    var patentItem= '<label for="'+res.data.goods[i].id+'" class="fl optionAbout optionType">'+
+                                            '<p class="flag">'+
+                                                '<img class="icon" src="'+res.data.goods[i].imgUrl+'" alt="">'+
+                                                '<span class="text">'+res.data.goods[i].name+'</span>'+
+                                            '</p>'+
+                                            '<p class="price">￥'+res.data.goods[i].marketPrice+'</p>'+
+                                            '<input class="selectBtn" type="radio" id="'+res.data.goods[i].id+'">'+
+                                        '</label>'
+                    $('#patentBox').append(patentItem);
+                }
+            }else {
+                layer.msg(res.msg);
+            }
+
+        }
+
+        function callback_list(res){
+            patentList(res);
+        }
+
+        var url_list= baseUrl+'/api/patent/list';
+        var url_order= baseUrl+'';
+        var type_list= 'post';
+        var type_order= 'post';
+        var targetUrl= ''
+        // var targetUrl= ''
+        var parameters_list= {
+            busModId: "25",// 专利申请
+            categoryId: '18',
+            cityId: JSON.parse(localStorage.getItem('loginData')).cityId,
+        }
+        getFormData(url_list,type_list,parameters_list,callback_list);
+
+
+
         $('.paymentBtn').on('click',function(){
             layer.msg('功能调试中...业务办理请联系客服');
         })

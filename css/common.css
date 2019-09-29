@@ -211,7 +211,7 @@
 
 /* 变更项目 */
 .containerInner .formItem>.content>.optionAbout {
-    width: 48%;
+    width: 45%;
     height: 7.5rem;
     border: 1px solid #e7e7e7;
     background-color: #fff;
@@ -220,6 +220,7 @@
     position: relative;
     box-sizing: border-box;
     margin-bottom: .5rem;
+    margin-right: .75rem;
     
 }
 

@@ -22,8 +22,9 @@
                 </div>
                 <div class="formItem">
                     <p class="labTitle"><span class="isRequired">*</span>变更项目</p>
-                    <div class="content clearfix" id="goodsList">
-                        <label for="1" class="left fl optionAbout">
+                    <div class="content clearfix" id="goodsBox">
+                        <!-- 变更类型 -->
+                        <!-- <label for="1" class="left fl optionAbout">
                             <p class="flag">
                                 <span class="text">董事和股东变更</span>
                             </p>
@@ -57,7 +58,7 @@
                             </p>
                             <p class="price">￥500</p>
                             <input class="selectBtn" type="radio" id="5">
-                        </label>
+                        </label> -->
                     </div>
                 </div>
             </div>
@@ -119,6 +120,38 @@
 <script src="../js/index.js?v=1.1"></script>
 <script>
     $(function(){
+
+        // 香港公司变更
+        function changList(res) {
+            for (let i = 0; i < res.data.goods[0].goods.length; i++) {
+                var typeItem= '<label for="'+res.data.goods[0].goods[i].id+'" class="fl optionAbout optionType">'+
+                                        '<p class="flag">'+
+                                            '<img class="icon" src="'+res.data.goods[0].goods[i].imgUrl+'" alt="">'+
+                                            '<span class="text">'+res.data.goods[0].goods[i].name+'</span>'+
+                                        '</p>'+
+                                        '<p class="price">￥'+res.data.goods[0].goods[i].marketPrice+'</p>'+
+                                        '<input class="selectBtn" type="radio" id="'+res.data.goods[0].goods[i].id+'">'+
+                                    '</label>'
+            $('#goodsBox').append(typeItem);
+            }
+        }
+
+        function callback_list(res){
+            changList(res);
+        }
+
+        var url_list= baseUrl+'/api/hk/change/list';
+        var url_order= baseUrl+'';
+        var type_list= 'post';
+        var type_order= 'post';
+        var targetUrl= ''
+        // var targetUrl= ''
+        var parameters_list= {
+            busModId: "31",// 香港公司变更
+            cityId: JSON.parse(localStorage.getItem('loginData')).cityId,
+        }
+        getFormData(url_list,type_list,parameters_list,callback_list);
+
         $('.paymentBtn').on('click',function(){
             layer.msg('功能调试中...业务办理请联系客服');
         })

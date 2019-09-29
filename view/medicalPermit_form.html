@@ -27,27 +27,20 @@
                 </div>
                 <div class="formItem">
                     <p class="labTitle"><span class="isRequired">*</span>办理区域</p>
-                    <ul class="zoomList">
-                       <li>龙岗区</li>
-                       <li>宝安区</li>
-                       <li>南山区</li>
-                       <li>罗湖区</li>
-                       <li>福田区</li>
-                       <li>龙华区</li>
+                    <ul class="zoomList" id="zoomBox">
+                       <!-- 办理区域 -->
                     </ul>
                 </div>
                 <div class="formItem">
                     <p class="labTitle"><span class="isRequired">*</span>许可证级别</p>
-                    <ul class="levelBox zoomList">
-                       <li>二类许可证</li>
-                       <li>三类许可证</li>
+                    <ul class="levelBox zoomList" id="levelBox">
+                       <!-- 许可证级别 -->
                     </ul>
                 </div>
                 <div class="formItem">
                     <p class="labTitle"><span class="isRequired">*</span>有没有红本租赁合同</p>
-                    <ul class="zoomList">
-                       <li>有</li>
-                       <li>没有</li>
+                    <ul class="zoomList" id="rentBox">
+                       <!-- 有没有租赁合同 -->
                     </ul>
                 </div>
             </div>
@@ -95,6 +88,89 @@
 <script src="../js/index.js?v=1.1"></script>
 <script>
     $(function(){
+
+        // 办理区域
+        function zoomList(res){
+            if(res.code == 0) {
+                for (var i = 0; i < res.data.region.length; i++) {  
+                    if(i == 0) {
+                        var zoomItem= '<li class="checkedItem zoomItem" regionId='+res.data.region[i].regionId+'>'+res.data.region[i].name+'</li>'
+                    }else {
+                        var zoomItem= '<li class="zoomItem" regionId='+res.data.region[i].regionId+'>'+res.data.region[i].name+'</li>'
+                    }
+                    $('#zoomBox').append(zoomItem);
+                }
+            }else if(res.code == 666) {
+                layer.msg(res.msg,function(){
+                    window.location.href= 'http://judiaowang.cn/app/view/partnerLogin.html';
+                    return false;
+                })
+            }else {
+                layer.msg(res.msg);
+            }
+        }
+   
+
+        // 许可证级别
+        function levelList(res){
+            if(res.code == 0) {
+                for (var i = 0; i < res.data.goods[0].goods.length; i++) {  
+                    if(i == 0) {
+                        var levelItem= '<li class="checkedItem zoomItem" regionId='+ res.data.goods[0].goods[i].regionId+'>'+res.data.goods[0].goods[i].name+'</li>'
+                    }else {
+                        var levelItem= '<li class="zoomItem" regionId='+res.data.goods[0].goods[i].regionId+'>'+res.data.goods[0].goods[i].name+'</li>'
+                    }
+                    $('#levelBox').append(levelItem);
+                }
+            }else if(res.code == 666) {
+                layer.msg(res.msg,function(){
+                    window.location.href= 'http://judiaowang.cn/app/view/partnerLogin.html';
+                    return false;
+                })
+            }else {
+                layer.msg(res.msg);
+            }
+        }
+
+        // 有没有红本租赁合同
+        function rentList(res){
+            if(res.code == 0) {
+                for (var i = 0; i < res.data.goods[1].goods.length; i++) {  
+                    if(i == 0) {
+                        var rentItem= '<li class="checkedItem zoomItem" regionId='+ res.data.goods[1].goods[i].regionId+'>'+res.data.goods[1].goods[i].name+'</li>'
+                    }else {
+                        var rentItem= '<li class="zoomItem" regionId='+res.data.goods[1].goods[i].regionId+'>'+res.data.goods[1].goods[i].name+'</li>'
+                    }
+                    $('#rentBox').append(rentItem);
+                }
+            }else if(res.code == 666) {
+                layer.msg(res.msg,function(){
+                    window.location.href= 'http://judiaowang.cn/app/view/partnerLogin.html';
+                    return false;
+                })
+            }else {
+                layer.msg(res.msg);
+            }
+        }
+
+      
+        function callback_list(res){
+            zoomList(res);
+            levelList(res);
+            rentList(res);
+        }
+        var url_list= baseUrl+'/api/medical/list';
+        var url_order= baseUrl+'';
+        var type_list= 'post';
+        var type_order= 'post';
+        var targetUrl= ''
+        // var targetUrl= ''
+        var parameters_list= {
+            busModId: "23",// 医疗许可证
+            cityId: JSON.parse(localStorage.getItem('loginData')).cityId,
+        }
+        getFormData(url_list,type_list,parameters_list,callback_list);
+
         $('.paymentBtn').on('click',function(){
             layer.msg('功能调试中...业务办理请联系客服');
         })

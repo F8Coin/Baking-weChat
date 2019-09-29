@@ -105,6 +105,85 @@
 <script src="../js/index.js?v=1.1"></script>
 <script>
     $(function(){
+
+        // 办理区域
+        function zoomList(res){
+            if(res.code == 0) {
+                for (var i = 0; i < res.data.region.length; i++) {  
+                    if(i == 0) {
+                        var zoomItem= '<li class="checkedItem zoomItem" regionId='+res.data.region[i].regionId+'>'+res.data.region[i].name+'</li>'
+                    }else {
+                        var zoomItem= '<li class="zoomItem" regionId='+res.data.region[i].regionId+'>'+res.data.region[i].name+'</li>'
+                    }
+                    $('#area').append(zoomItem);
+                }
+            }else if(res.code == 666) {
+                layer.msg(res.msg,function(){
+                    window.location.href= 'http://judiaowang.cn/app/view/partnerLogin.html';
+                    return false;
+                })
+            }else {
+                layer.msg(res.msg);
+            }
+        }
+
+        // 开户银行
+        function bankList(res){
+            if(res.code == 0) {
+                for (var i = 0; i < res.data.goods[0].goods.length; i++) {  
+                    if(i == 0) {
+                        var bankItem= '<li class="checkedItem acreageItem" retailPrice="'+res.data.goods[0].goods[i].retailPrice+'"  marketPrice="'+res.data.goods[0].goods[i].marketPrice+'"  goodsId="'+res.data.goods[0].goods[i].id+'">'+res.data.goods[0].goods[i].name+'</li>'
+                    }else {
+                        var bankItem= '<li class="acreageItem" retailPrice="'+res.data.goods[0].goods[i].retailPrice+'"  marketPrice="'+res.data.goods[0].goods[i].marketPrice+'"  goodsId="'+res.data.goods[0].goods[i].id+'">'+res.data.goods[0].goods[i].name+'</li>'
+                    }
+                    $('#bankBox').append(bankItem);
+                }
+                var orderAmount= $('#bankBox .checkedItem').attr('retailPrice');
+                var checkBankName= $('#bankBox .checkedItem').text();
+                $('.paymentBox .payAmount').text(orderAmount);
+                bankDataList(checkBankName);
+            }else if(res.code == 666) {
+                layer.msg(res.msg,function(){
+                    window.location.href= 'http://judiaowang.cn/app/view/partnerLogin.html';
+                    return false;
+                })
+            }else {
+                layer.msg(res.msg);
+            }
+        }
+
+        // 判断开户银行需要提交的资料
+        function bankDataList(checkBankName) {
+            if(checkBankName == "交通银行" || checkBankName == "中信银行") {
+                $('.isShowItem').css('display','block');
+            }else if(checkBankName == "民生银行" || checkBankName == "中国银行" || checkBankName == "工商银行" || checkBankName == "招商银行"  || checkBankName == "浦发银行") {
+                $('.isShowItem').css('display','none');                
+            }else if(checkBankName == "建设银行" || checkBankName == "农业银行" ) {
+                $('.isShowItem').css('display','none');                
+                $('.formItem .legalId1Upload').css('display','block')                
+                $('.formItem .legalId2Upload').css('display','block')                
+            }else if(checkBankName == "光大银行") {
+                $('.isShowItem').css('display','block');
+                $('.partBox .legalEmailItem').css('display','none');
+                $('.partBox .adminEmail').css('display','none');
+            }
+        }
+
+        function callback_list(res){
+            console.log(res);
+        }
+        var url_list= baseUrl+'/api/food/list';
+        var url_order= baseUrl+'';
+        var type_list= 'post';
+        var type_order= 'post';
+        var targetUrl= ''
+        // var targetUrl= ''
+        var parameters_list= {
+            busModId: "12",// 食品经营许可证
+            cityId: JSON.parse(localStorage.getItem('loginData')).cityId,
+        }
+        getFormData(url_list,type_list,parameters_list,callback_list);
+
         $('.paymentBtn').on('click',function(){
             layer.msg('功能调试中...业务办理请联系客服');
         })

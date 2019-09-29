@@ -27,23 +27,20 @@
                 </div>
                 <div class="formItem">
                     <p class="labTitle"><span class="isRequired">*</span>办理类型</p>
-                    <ul class="zoomList">
-                       <li>注册</li>
-                       <li>变更</li>
+                    <ul class="zoomList" id="handleBox">
+                       <!-- 办理类型 -->
                     </ul>
                 </div>
                 <div class="formItem">
                     <p class="labTitle"><span class="isRequired">*</span>企业类型</p>
-                    <ul class="zoomList">
-                       <li>内资</li>
-                       <li>外资</li>
+                    <ul class="zoomList" id="companyBox">
+                       <!-- 企业类型 -->
                     </ul>
                 </div>
                 <div class="formItem">
                     <p class="labTitle"><span class="isRequired">*</span>外汇备案<span class="addText">(￥500)</span></p>
-                    <ul class="zoomList">
-                       <li>不需要</li>
-                       <li>需要</li>
+                    <ul class="zoomList" id="foreignBox">
+                       <!-- 外汇备案类型 -->
                     </ul>
                 </div>
             </div>
@@ -104,6 +101,88 @@
 <script src="../js/index.js?v=1.1"></script>
 <script>
     $(function(){
+
+        // 办理类型
+        function handleList(res){
+            if(res.code == 0) {
+                for (var i = 0; i < res.data.goods[0].goods.length; i++) {  
+                    if(i == 0) {
+                        var handleItem= '<li class="checkedItem zoomItem" regionId='+res.data.goods[0].goods[i].id+'>'+res.data.goods[0].goods[i].name+'</li>'
+                    }else {
+                        var handleItem= '<li class="zoomItem" regionId='+res.data.goods[0].goods[i].id+'>'+res.data.goods[0].goods[i].name+'</li>'
+                    }
+                    $('#handleBox').append(handleItem);
+                }
+            }else if(res.code == 666) {
+                layer.msg(res.msg,function(){
+                    window.location.href= 'http://judiaowang.cn/app/view/partnerLogin.html';
+                    return false;
+                })
+            }else {
+                layer.msg(res.msg);
+            }
+        }
+
+        // 企业类型
+        function companyList(res){
+            if(res.code == 0) {
+                for (var i = 0; i < res.data.goods[1].goods.length; i++) {  
+                    if(i == 0) {
+                        var companyItem= '<li class="checkedItem acreageItem" retailPrice="'+res.data.goods[1].goods[i].retailPrice+'"  marketPrice="'+res.data.goods[1].goods[i].marketPrice+'"  goodsId="'+res.data.goods[1].goods[i].id+'">'+res.data.goods[1].goods[i].name+'</li>'
+                    }else {
+                        var companyItem= '<li class="acreageItem" retailPrice="'+res.data.goods[1].goods[i].retailPrice+'"  marketPrice="'+res.data.goods[1].goods[i].marketPrice+'"  goodsId="'+res.data.goods[1].goods[i].id+'">'+res.data.goods[1].goods[i].name+'</li>'
+                    }
+                    $('#companyBox').append(companyItem);
+                }
+            }else if(res.code == 666) {
+                layer.msg(res.msg,function(){
+                    window.location.href= 'http://judiaowang.cn/app/view/partnerLogin.html';
+                    return false;
+                })
+            }else {
+                layer.msg(res.msg);
+            }
+        }
+
+        // 外汇备案
+        function foreignList(res){
+            if(res.code == 0) {
+                for (var i = 0; i < res.data.goods[2].goods.length; i++) {  
+                    if(i == 0) {
+                        var foreignItem= '<li class="checkedItem acreageItem" retailPrice="'+res.data.goods[2].goods[i].retailPrice+'"  marketPrice="'+res.data.goods[2].goods[i].marketPrice+'"  goodsId="'+res.data.goods[2].goods[i].id+'">'+res.data.goods[2].goods[i].name+'</li>'
+                    }else {
+                        var foreignItem= '<li class="acreageItem" retailPrice="'+res.data.goods[2].goods[i].retailPrice+'"  marketPrice="'+res.data.goods[2].goods[i].marketPrice+'"  goodsId="'+res.data.goods[2].goods[i].id+'">'+res.data.goods[2].goods[i].name+'</li>'
+                    }
+                    $('#foreignBox').append(foreignItem);
+                }
+            }else if(res.code == 666) {
+                layer.msg(res.msg,function(){
+                    window.location.href= 'http://judiaowang.cn/app/view/partnerLogin.html';
+                    return false;
+                })
+            }else {
+                layer.msg(res.msg);
+            }
+        }
+
+      
+        function callback_list(res){
+            handleList(res);
+            companyList(res);
+            foreignList(res);
+        }
+        var url_list= baseUrl+'/api/importExport/list';
+        var url_order= baseUrl+'';
+        var type_list= 'post';
+        var type_order= 'post';
+        var targetUrl= ''
+        // var targetUrl= ''
+        var parameters_list= {
+            busModId: "14",// 食品经营许可证
+            cityId: JSON.parse(localStorage.getItem('loginData')).cityId,
+        }
+        getFormData(url_list,type_list,parameters_list,callback_list);
+
         $('.paymentBtn').on('click',function(){
             layer.msg('功能调试中...业务办理请联系客服');
         })
