@@ -192,6 +192,69 @@ function isLogin(token,callBack) {
     })
 }
 
+/* --------------添加子账号----------------- */
+function addChildAcc(userName,mobile,index) {
+    $.ajax({
+        url: baseUrl+'/api/user/addSubAccount',
+        type: 'post',
+        headers: {
+            "X-Jdw-Token": JSON.parse(localStorage.getItem('loginData')).token
+        },
+        data: {
+            mobile: mobile,
+            username: userName 
+        },
+        success: function(res){
+            if(res.code == "0") {
+                console.log('发送请求成功')
+                layer.close(index);
+                layer.msg('添加成功')
+                childAccList();
+            }else {
+                layer.msg(res.msg);
+            }
+        }
+    })
+}
+
+/* --------------获取子账号列表----------------- */
+function childAccList() {
+    $.ajax({
+        url: baseUrl+'/api/user/subAccountList',
+        type: 'post',
+        headers: {
+            "X-Jdw-Token": JSON.parse(localStorage.getItem('loginData')).token
+        },
+        success: function(res){
+            if(res.code == "0") {
+                for (var i = 0; i < res.data.length; i++) {
+                    var accountItem= '<tr>'+
+                                    '<td class="w30">'+
+                                        '<img src="../img/person/userIcon01.jpg" alt="" class="userIcon">'+
+                                    '</td>'+
+                                    '<td class="w30">'+
+                                        '<span class="tel">'+res.data[i].mobile+'</span>'+
+                                    '</td>'+
+                                    '<td class="w20">'+
+                                        '<span class="name">'+res.data[i].username+'</span>'+
+                                    '</td>'+
+                                    '<td class="w20">'+
+                                        '<span class="deleteBtn" id="'+res.data[i].userId+'">✖</span>'+
+                                    '</td>'+
+                                '</tr>'
+                    
+                    $('#accountListBox').append(accountItem);            
+                }
+                
+            }else {
+                layer.msg(res.msg);
+            }
+        }
+    })
+}
+
+
+
 /* --------------办理区域----------------- */
 $('.zoomList').on('touchend','li',function(e){
     $(this).addClass('checkedItem').siblings('li').removeClass('checkedItem');

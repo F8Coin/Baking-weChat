@@ -52,21 +52,8 @@
                 <div class="content clearfix">
                     <!-- 子账号列表 -->
                     <table class="table userTable">
-                        <tbody>
-                            <tr>
-                                <td class="w30">
-                                    <img src="../img/person/userIcon01.jpg" alt="" class="userIcon">
-                                </td>
-                                <td class="w30">
-                                    <span class="tel">18603059551</span>
-                                </td>
-                                <td class="w20">
-                                    <span class="name">邵营</span>
-                                </td>
-                                <td class="w20">
-                                    <span class="deleteBtn">✖</span>
-                                </td>
-                            </tr>
+                        <tbody id="accountListBox">
+                            <!-- 子账号 -->
                         </tbody>
                     </table>
                     <p class="addBtn" id="add_accountBtn">
@@ -139,28 +126,37 @@
         </div>
         <div class="formItem">
             <span class="labTitle"><span class="isRequired">*</span>手机号码:</span>
-            <input class="placeholderText userName" type="text" placeholder="请输入手机号码">
+            <input class="placeholderText mobile" type="text" placeholder="请输入手机号码">
         </div>
-        <a href="javascript:void(0)" class="confirmBtn">确定</a>
+        <!-- <a href="javascript:void(0)" class="confirmBtn">确定</a> -->
     </div>
 </body>
 </html>
 
 <script src="../js/jQuery/jquery-3.4.0.js"></script>
 <script src="../lib/layer/layer.js"></script>
+<script src="../js/index.js"></script>
 <script>
     $(function(){
+        // 获取子账号列表
+        childAccList();
+
         // 点击添加子账号管理
         $('#add_accountBtn').on('click',function(){
             layer.open({
                 type: 1,
                 title: '添加子账号',
                 content: $('#add_accountBox'),
-                yes: function success(index){
-                    alert('发送添加子账号请求');
-                    layer.close(index);
-                }
+                btn: ['确定'],
+                btnAlign: 'c',
+                yes:function(index) {
+                    var userName= $('#add_accountBox>.formItem>.userName').val();
+                    var mobile= $('#add_accountBox>.formItem>.mobile').val();
+                    addChildAcc(userName,mobile,index);
+                } 
             })
         })
+
+
     })
 </script>
