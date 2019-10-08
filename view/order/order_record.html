@@ -158,23 +158,27 @@
         })
 
         $.selectDate("#startTime",{ //选择开始时间
-                start:2000,
-                end:2099,
-                select:[2019,5,6],
-                title:'开始时间'
-            },function (data) {
-                var year= data.year;
-                var month= data.month;
-                var day= data.day;
-                if(month < 10) {
-                    month= '0'+month;
-                }
-                if(day < 10) {
-                    day= '0'+day;
-                }
-                var startTime= year+'-'+month+'-'+day 
-                $('#startTime').val(startTime);
+            start:2000,
+            end:2099,
+            select:[2019,5,6],
+            title:'开始时间'
+        },function (data) {
+            var year= data.year;
+            var month= data.month;
+            var day= data.day;
+            if(month < 10) {
+                month= '0'+month;
+            }
+            if(day < 10) {
+                day= '0'+day;
+            }
+            var startTime= year+'-'+month+'-'+day 
+            $('#startTime').val(startTime);
         });
+
+        $("#startTime").focus(function(){
+            document.activeElement.blur();
+        }); 
 
         $.selectDate("#endTime",{ //选择结束时间
                 start:2000,
@@ -182,18 +186,21 @@
                 select:[2020,10,6],
                 title:'结束时间'
             },function (data) {
-                var year= data.year;
-                var month= data.month;
-                var day= data.day;
-                if(month < 10) {
-                    month= '0'+month;
-                }
-                if(day < 10) {
-                    day= '0'+day;
-                }
-                var endTime= year+'-'+month+'-'+day 
-                $('#endTime').val(endTime);
-            });
+            var year= data.year;
+            var month= data.month;
+            var day= data.day;
+            if(month < 10) {
+                month= '0'+month;
+            }
+            if(day < 10) {
+                day= '0'+day;
+            }
+            var endTime= year+'-'+month+'-'+day 
+            $('#endTime').val(endTime);
+        });
+        $("#endTime").focus(function(){
+            document.activeElement.blur();
+        });    
 
         })
 </script>
