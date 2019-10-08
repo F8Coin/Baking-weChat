@@ -39,9 +39,9 @@
 <script>
 
     // 默认进入页面判断是否登录
-    var isLogin= JSON.parse(localStorage.getItem('loginData')) 
-    if(isLogin.token) {
-        window.location.href= './partnerCenter.html';
+    var isLogin= JSON.parse(localStorage.getItem('loginData')); 
+    if(isLogin) {
+        window.location.href= './partnerCenter.html'
     }
 
     // ------------获取短信验证码--------------
