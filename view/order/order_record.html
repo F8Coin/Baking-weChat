@@ -176,6 +176,10 @@
                 $('#startTime').val(startTime);
         });
 
+        $("#startTime").focus(function(){
+                document.activeElement.blur();
+            });
+
         $.selectDate("#endTime",{ //选择结束时间
                 start:2000,
                 end:2099,
@@ -194,6 +198,8 @@
                 var endTime= year+'-'+month+'-'+day 
                 $('#endTime').val(endTime);
             });
-
+            $("#endTime").focus(function(){
+                document.activeElement.blur();
+            });
         })
 </script>
