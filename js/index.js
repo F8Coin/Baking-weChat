@@ -254,6 +254,28 @@ function childAccList() {
 }
 
 
+/* --------------获取用户信息----------------- */
+function getUserInfo() {
+    $.ajax({
+        url: baseUrl+'/api/user/userInfo',
+        type: 'post',
+        headers: {
+            "X-Jdw-Token": JSON.parse(localStorage.getItem('loginData')).token
+        },
+        success: function(res){
+            if(res.code == 0) {
+                $('.partnerCenter>.basic>.personText>.name').text(res.data.username);
+                $('.partnerCenter>.basic>.personText>.phone').text(res.data.mobile);
+                $('.partnerCenter>.basic>.company>.companyName').text(res.data.company);
+                $('.partnerCenter>.basic>.personIcon>img').attr('src', res.data.avatar);
+            }else {
+                layer.msg(res.msg);
+            }
+        }
+    })
+}
+
+
 
 /* --------------办理区域----------------- */
 $('.zoomList').on('touchend','li',function(e){

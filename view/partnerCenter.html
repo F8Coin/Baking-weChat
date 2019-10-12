@@ -23,7 +23,7 @@
                 <span class="phone">18603059551</span>
             </p>
             <p class="company">
-                <img src="../img/entry/gongsi.png" alt="">
+                <img class="comIcon" src="../img/entry/gongsi.png" alt="">
                 <span class="companyName">聚雕网科技有限公司</span> 
             </p>
             <p class="personIcon">
@@ -138,6 +138,9 @@
 <script src="../js/index.js"></script>
 <script>
     $(function(){
+        // 获取用户基本信息
+        getUserInfo();
+
         // 获取子账号列表
         childAccList();
 
@@ -156,7 +159,6 @@
                 } 
             })
         })
-
 
     })
 </script>
