@@ -206,9 +206,10 @@ function addChildAcc(userName,mobile,index) {
         },
         success: function(res){
             if(res.code == "0") {
-                console.log('发送请求成功')
+                // console.log('发送请求成功')
                 layer.close(index);
                 layer.msg('添加成功')
+                $('#accountListBox').empty();
                 childAccList();
             }else {
                 layer.msg(res.msg);
@@ -228,6 +229,20 @@ function childAccList() {
         success: function(res){
             if(res.code == "0") {
                 for (var i = 0; i < res.data.length; i++) {
+                    // var accountItem= '<tr>'+
+                    //                 '<td class="w30">'+
+                    //                     '<img src="../img/person/userIcon01.jpg" alt="" class="userIcon">'+
+                    //                 '</td>'+
+                    //                 '<td class="w30">'+
+                    //                     '<span class="tel">'+res.data[i].mobile+'</span>'+
+                    //                 '</td>'+
+                    //                 '<td class="w20">'+
+                    //                     '<span class="name">'+res.data[i].username+'</span>'+
+                    //                 '</td>'+
+                    //                 '<td class="w20">'+
+                    //                     '<span class="deleteBtn" id="'+res.data[i].userId+'">✖</span>'+
+                    //                 '</td>'+
+                    //             '</tr>'
                     var accountItem= '<tr>'+
                                     '<td class="w30">'+
                                         '<img src="../img/person/userIcon01.jpg" alt="" class="userIcon">'+
@@ -235,11 +250,11 @@ function childAccList() {
                                     '<td class="w30">'+
                                         '<span class="tel">'+res.data[i].mobile+'</span>'+
                                     '</td>'+
-                                    '<td class="w20">'+
+                                    '<td class="">'+
                                         '<span class="name">'+res.data[i].username+'</span>'+
                                     '</td>'+
-                                    '<td class="w20">'+
-                                        '<span class="deleteBtn" id="'+res.data[i].userId+'">✖</span>'+
+                                    '<td class="">'+
+                                        '<span class="deleteBtn" id="'+res.data[i].userId+'"></span>'+
                                     '</td>'+
                                 '</tr>'
                     
