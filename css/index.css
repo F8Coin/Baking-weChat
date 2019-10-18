@@ -379,7 +379,11 @@
 .taxReportContainer .formItem>.content>.optionAbout {
     width: 45%;
     margin-right: .75rem;
-}    
+}
+
+.newsContainer> .containerInner .optionAbout>.flag>.text {
+    padding-left: 0rem;
+}
 
 /* --------------登报服务订单页面----------------- */
 .layout .receive_address {
