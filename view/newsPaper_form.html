@@ -26,23 +26,23 @@
                         <!-- 登报类型 -->
                     </div>
                 </div>
-                <!-- <div class="formItem">
+                <div class="formItem">
                     <p class="labTitle"><span class="isRequired">*</span>清算负责人电话</p>
                     <input class="placeholderText companyName" type="text" placeholder="请输入清算负责人电话">
                 </div>
-                <div class="formItem upload_ID clearfix uploadBox">
-                    <p class="labTitle"><span class="isRequired">*</span>上传附件</p>
-                    <div class="picUp ID_img fl uploadIcon" style="position:relative">
-                        <input class="idImg uploadInput" type="file" style="opacity:0;width:100%;height:100%;position:absolute;left:0px;" onchange="uploadFile($(this),$(this).parent())">
-                        <img src="" alt="" class="showImg" style="display:block;margin:0 auto; height:100%;">
-                        <span class="tipText"><span style="color:#CD0000;vertical-align: middle;">*</span>变更(备案)通知书</span>
+                <div class="formItem clearfix">
+                    <p class="labTitle"><span class="isRequired">*</span>上传资料</p>
+                    <div class="uploadBox fl fileBox licenseUpload">
+                        <input type="file" class="uploadInput" onchange="uploadFile($(this),$(this).parent())">
+                        <img src="" alt="" class="showImg">
+                        <p class="typeText">变更(备案)通知书<span class="requiredFlag">*</span></p>
                     </div>
-                    <div class="picDown ID_img fr uploadIcon" style="position:relative">
-                        <input class="idImg uploadInput" type="file" style="opacity:0;width:100%;height:100%; position:absolute;left:0px;" onchange="uploadFile($(this),$(this).parent())">
-                        <img src="" alt="" class="showImg" style="display:block;margin:0 auto; height:100%;">
-                        <span class="tipText"><span style="color:#CD0000;vertical-align: middle;">*</span>营业执照</span>
+                    <div class="uploadBox fr fileBox legalId1Upload isShowItem">
+                        <input type="file" class="uploadInput" onchange="uploadFile($(this),$(this).parent())">
+                        <img src="" alt="" class="showImg">
+                        <p class="typeText">营业执照<span class="requiredFlag">*</span></p>
                     </div>
-                </div> -->
+                </div>
             </div>
             <div class="baseInfo">
                 <p class="title">遗失资料信息</p>
@@ -107,6 +107,16 @@
                             <td>
                                 <input type="checkbox">
                                 <span class="text">发票章</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox">
+                                <span class="text">食品经营许可证正本</span>
+                            </td>
+                            <td>
+                                <input type="checkbox">
+                                <span class="text">食品经营许可证副本</span>
                             </td>
                         </tr>
                     </table>
