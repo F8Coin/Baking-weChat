@@ -26,11 +26,11 @@
                         <!-- 登报类型 -->
                     </div>
                 </div>
-                <div class="formItem">
+                <div class="formItem newsBox1 newsBox">
                     <p class="labTitle"><span class="isRequired">*</span>清算负责人电话</p>
                     <input class="placeholderText companyName" type="text" placeholder="请输入清算负责人电话">
                 </div>
-                <div class="formItem clearfix">
+                <div class="formItem clearfix newsBox1 newsBox">
                     <p class="labTitle"><span class="isRequired">*</span>上传资料</p>
                     <div class="uploadBox fl fileBox licenseUpload">
                         <input type="file" class="uploadInput" onchange="uploadFile($(this),$(this).parent())">
@@ -44,7 +44,7 @@
                     </div>
                 </div>
             </div>
-            <div class="baseInfo">
+            <div class="baseInfo newsBox2 newsBox">
                 <p class="title">遗失资料信息</p>
                 <div class="formItem">
                     <p class="labTitle"><span class="isRequired">*</span>选择遗失的资料</p>
@@ -121,13 +121,78 @@
                         </tr>
                     </table>
                 </div>
+                <div class="formItem">
+                    <p class="labTitle"><span class="isRequired">*</span>是否三证合一</p>
+                    <ul class="zoomList">
+                        <li>是</li>
+                        <li>否</li>
+                    </ul>
+                </div>
+                <div class="formItem">
+                    <p class="labTitle"><span class="isRequired">*</span>核准日期</p>
+                    <input class="placeholderText companyName" type="text" placeholder="请输入核准日期">
+                </div>
+                <div class="formItem">
+                    <p class="labTitle"><span class="isRequired">*</span>税控盘号</p>
+                    <input class="placeholderText companyName" type="text" placeholder="请输入税控盘号">
+                </div>
+                <div class="formItem">
+                    <p class="labTitle"><span class="isRequired">*</span>发票代码<span class="addText">(请输入遗失发票的号码,多张发票请用逗号隔开,如果连号请输入头尾发票号,中间用"至"连接)</span> </p>
+                    <input class="placeholderText companyName" type="text" placeholder="请输入发票代码">
+                </div>
+                <div class="formItem">
+                    <p class="labTitle"><span class="isRequired">*</span>发票类型</p>
+                    <ul class="zoomList typeList">
+                        <li>通用定额发票</li>
+                        <li>增值税专用发票</li>
+                    </ul>
+                </div>
+                <div class="formItem">
+                    <p class="labTitle"><span class="isRequired">*</span>份</p>
+                    <input class="placeholderText companyName" type="text" placeholder="请输入份">
+                </div>
+                <div class="formItem">
+                    <p class="labTitle"><span class="isRequired">*</span>是否已开</p>
+                    <ul class="zoomList">
+                        <li>已开</li>
+                        <li>空白</li>
+                    </ul>
+                </div>
+                <div class="formItem">
+                    <p class="labTitle"><span class="isRequired">*</span>许可证编号</p>
+                    <input class="placeholderText companyName" type="text" placeholder="请输入许可证编号">
+                </div>
             </div>
-            <div class="baseInfo">
+            <div class="baseInfo newsBox2 newsBox">
                 <p class="title">遗失登报预览<a class="previewText" href="javascript:void(0)">查看预览</a></p>
                 <div class="formItem">
                     <textarea name="" id="textarea" cols="" rows="" class="remarkText" placeholder="请输入登报文字"></textarea>
                 </div>
             </div>
+
+            <div class="baseInfo newsBox3 newsBox">
+                <div class="formItem">
+                    <p class="labTitle"><span class="isRequired">*</span>减资前注册资本(单位: 万元人民币)</p>
+                    <input class="placeholderText companyName" type="text" placeholder="请输入减资前注册资本">
+                </div>
+                <div class="formItem">
+                    <p class="labTitle"><span class="isRequired">*</span>减资后注册资本(单位: 万元人民币)</p>
+                    <input class="placeholderText companyName" type="text" placeholder="请输入减资后注册资本">
+                </div>
+                <div class="formItem">
+                    <p class="labTitle"><span class="isRequired">*</span>联系人</p>
+                    <input class="placeholderText companyName" type="text" placeholder="请输入联系人">
+                </div>
+                <div class="formItem clearfix">
+                    <p class="labTitle"><span class="isRequired">*</span>上传资料</p>
+                    <div class="uploadBox fl fileBox licenseUpload">
+                        <input type="file" class="uploadInput" onchange="uploadFile($(this),$(this).parent())">
+                        <img src="" alt="" class="showImg">
+                        <p class="typeText">营业执照<span class="requiredFlag">*</span></p>
+                    </div>
+                </div>
+            </div>
+
             <div class="receiveInfo">
                 <p class="title">收货信息</p>
                 <div class="formItem">
@@ -183,13 +248,13 @@
         // 登报类型
         function newsType(res) {
             for (let i = 0; i < res.data.goods[0].goods.length; i++) {
-                var newsTypeItem= '<label for="'+res.data.goods[0].goods[i].id+'" class="fl optionAbout optionType">'+
+                var newsTypeItem= '<label for="'+res.data.goods[0].goods[i].id+'" class="fl optionAbout optionType newsType">'+
                                         '<p class="flag">'+
                                             '<img class="icon" src="'+res.data.goods[0].goods[i].imgUrl+'" alt="">'+
                                             '<span class="text">'+res.data.goods[0].goods[i].name+'</span>'+
                                         '</p>'+
                                         '<p class="price">￥'+res.data.goods[0].goods[i].marketPrice+'</p>'+
-                                        '<input class="selectBtn" type="radio" id="'+res.data.goods[0].goods[i].id+'">'+
+                                        '<input class="selectBtn" type="checkbox" id="'+res.data.goods[0].goods[i].id+'">'+
                                     '</label>'
             $('#newsBox').append(newsTypeItem);
             }
@@ -212,9 +277,27 @@
         }
         getFormData(url_list,type_list,parameters_list,callback_list);
 
-
-        $('.paymentBtn').on('click',function(){
-            layer.msg('功能调试中...业务办理请联系客服');
+        // 选择登报类型
+        $('#newsBox').on('click','.newsType',function(){
+            var pageIndex= $(this).index();
+            var showFlag= $(this).find('.selectBtn').prop('checked');
+            if(showFlag) {
+                if(pageIndex == 0) {
+                    $('.newsBox1').css('display','block');
+                }else if(pageIndex == 1) {
+                    $('.newsBox2').css('display','block');
+                }else if(pageIndex == 2) {
+                    $('.newsBox3').css('display','block');
+                } 
+            }else {
+                if(pageIndex == 0) {
+                    $('.newsBox1').css('display','none');
+                }else if(pageIndex == 1) {
+                    $('.newsBox2').css('display','none');
+                }else if(pageIndex == 2) {
+                    $('.newsBox3').css('display','none');
+                } 
+            }
         })
     })
 </script>

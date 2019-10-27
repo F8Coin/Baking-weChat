@@ -359,9 +359,6 @@
 }
 
 
-
-
-
 /* --------------登报服务信息页面----------------- */
 .newsContainer .optionAbout>.price {
     font-size: .875rem;
@@ -381,8 +378,12 @@
     margin-right: .75rem;
 }
 
-.newsContainer> .containerInner .optionAbout>.flag>.text {
+.newsContainer>.containerInner .optionAbout>.flag>.text {
     padding-left: 0rem;
+}
+
+.newsContainer>.containerInner .newsBox {
+    display: none;
 }
 
 /* --------------登报服务订单页面----------------- */
