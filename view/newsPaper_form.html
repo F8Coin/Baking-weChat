@@ -48,10 +48,10 @@
                 <p class="title">遗失资料信息</p>
                 <div class="formItem">
                     <p class="labTitle"><span class="isRequired">*</span>选择遗失的资料</p>
-                    <table class="missFileTab">
+                    <table class="missFileTab" id="missFileTab">
                         <tr>
                             <td>
-                                <input type="checkbox">
+                                <input type="checkbox" class="typeText">
                                 <span class="text">营业执照正本</span>
                             </td>
                             <td>
@@ -121,7 +121,7 @@
                         </tr>
                     </table>
                 </div>
-                <div class="formItem">
+                <div class="formItem isShowItem 3certItem">
                     <p class="labTitle"><span class="isRequired">*</span>是否三证合一</p>
                     <ul class="zoomList">
                         <li>是</li>
@@ -266,7 +266,7 @@
         }
 
         var url_list= baseUrl+'/api/newspaper/list';
-        var url_order= baseUrl+'';
+        var url_order= baseUrl+'/api/newspaper/createOrder';
         var type_list= 'post';
         var type_order= 'post';
         var targetUrl= 'http://judiaowang.cn/app/view/newsPaper_order.html'
@@ -297,6 +297,31 @@
                 }else if(pageIndex == 2) {
                     $('.newsBox3').css('display','none');
                 } 
+            }
+        })
+
+        // 登报类型子菜单
+        $('.typeText').on('click',function(){
+            var textType= $(this).siblings('.text').text();
+            var isFlag= $(this).prop('checked');
+            if(isFlag){
+                switch (textType) {
+                    case '营业执照正本':
+                        $('.3certItem').css('display','block');
+                        break;
+                
+                    default:
+                        break;
+                }
+            }else {
+                switch (textType) {
+                    case '营业执照正本':
+                        $('.3certItem').css('display','none');
+                        break;
+                
+                    default:
+                        break;
+                }
             }
         })
     })
