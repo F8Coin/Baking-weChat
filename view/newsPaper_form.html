@@ -51,71 +51,71 @@
                     <table class="missFileTab" id="missFileTab">
                         <tr>
                             <td>
-                                <input type="checkbox" class="typeText">
+                                <input type="checkbox" class="typeText cretType1">
                                 <span class="text">营业执照正本</span>
                             </td>
                             <td>
-                                <input type="checkbox">
+                                <input type="checkbox" class="typeText cretType2">
                                 <span class="text">营业执照副本</span>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <input type="checkbox">
+                                <input type="checkbox" class="typeText">
                                 <span class="text">税务登记正本</span>
                             </td>
                             <td>
-                                <input type="checkbox">
+                                <input type="checkbox" class="typeText">
                                 <span class="text">税务登记副本</span>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <input type="checkbox">
+                                <input type="checkbox" class="typeText">
                                 <span class="text">税务登记正本</span>
                             </td>
                             <td>
-                                <input type="checkbox">
+                                <input type="checkbox" class="typeText">
                                 <span class="text">税务登记副本</span>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <input type="checkbox">
+                                <input type="checkbox" class="typeText">
                                 <span class="text">税控盘</span>
                             </td>
                             <td>
-                                <input type="checkbox">
+                                <input type="checkbox" class="typeText">
                                 <span class="text">发票</span>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <input type="checkbox">
+                                <input type="checkbox" class="typeText">
                                 <span class="text">刻章卡</span>
                             </td>
                             <td>
-                                <input type="checkbox">
+                                <input type="checkbox" class="typeText">
                                 <span class="text">公章</span>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <input type="checkbox">
+                                <input type="checkbox" class="typeText">
                                 <span class="text">财务章</span>
                             </td>
                             <td>
-                                <input type="checkbox">
+                                <input type="checkbox" class="typeText">
                                 <span class="text">发票章</span>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <input type="checkbox">
+                                <input type="checkbox" class="typeText foodsType1">
                                 <span class="text">食品经营许可证正本</span>
                             </td>
                             <td>
-                                <input type="checkbox">
+                                <input type="checkbox" class="typeText foodsType2">
                                 <span class="text">食品经营许可证副本</span>
                             </td>
                         </tr>
@@ -128,37 +128,41 @@
                         <li>否</li>
                     </ul>
                 </div>
-                <div class="formItem">
+                <div class="formItem isShowItem 3certItem">
                     <p class="labTitle"><span class="isRequired">*</span>核准日期</p>
                     <input class="placeholderText companyName" type="text" placeholder="请输入核准日期">
                 </div>
-                <div class="formItem">
+                <div class="formItem isShowItem taxItem">
                     <p class="labTitle"><span class="isRequired">*</span>税控盘号</p>
                     <input class="placeholderText companyName" type="text" placeholder="请输入税控盘号">
                 </div>
-                <div class="formItem">
+                <div class="formItem isShowItem billItem">
                     <p class="labTitle"><span class="isRequired">*</span>发票代码<span class="addText">(请输入遗失发票的号码,多张发票请用逗号隔开,如果连号请输入头尾发票号,中间用"至"连接)</span> </p>
                     <input class="placeholderText companyName" type="text" placeholder="请输入发票代码">
                 </div>
-                <div class="formItem">
+                <div class="formItem isShowItem billItem">
+                    <p class="labTitle"><span class="isRequired">*</span>发票号码</p>
+                    <input class="placeholderText companyName" type="text" placeholder="请输入发票号码">
+                </div>
+                <div class="formItem isShowItem billItem">
                     <p class="labTitle"><span class="isRequired">*</span>发票类型</p>
                     <ul class="zoomList typeList">
                         <li>通用定额发票</li>
                         <li>增值税专用发票</li>
                     </ul>
                 </div>
-                <div class="formItem">
+                <div class="formItem isShowItem billItem">
                     <p class="labTitle"><span class="isRequired">*</span>份</p>
                     <input class="placeholderText companyName" type="text" placeholder="请输入份">
                 </div>
-                <div class="formItem">
+                <div class="formItem isShowItem billItem">
                     <p class="labTitle"><span class="isRequired">*</span>是否已开</p>
                     <ul class="zoomList">
                         <li>已开</li>
                         <li>空白</li>
                     </ul>
                 </div>
-                <div class="formItem">
+                <div class="formItem isShowItem foodsItem">
                     <p class="labTitle"><span class="isRequired">*</span>许可证编号</p>
                     <input class="placeholderText companyName" type="text" placeholder="请输入许可证编号">
                 </div>
@@ -172,12 +176,12 @@
 
             <div class="baseInfo newsBox3 newsBox">
                 <div class="formItem">
-                    <p class="labTitle"><span class="isRequired">*</span>减资前注册资本(单位: 万元人民币)</p>
-                    <input class="placeholderText companyName" type="text" placeholder="请输入减资前注册资本">
+                    <p class="labTitle"><span class="isRequired">*</span>减资前注册资本 <span class="addText">(单位: 万元人民币)</span></p>
+                    <input class="placeholderText regCapital_before" type="text" placeholder="请输入减资前注册资本">
                 </div>
                 <div class="formItem">
-                    <p class="labTitle"><span class="isRequired">*</span>减资后注册资本(单位: 万元人民币)</p>
-                    <input class="placeholderText companyName" type="text" placeholder="请输入减资后注册资本">
+                    <p class="labTitle"><span class="isRequired">*</span>减资后注册资本 <span class="addText">(单位: 万元人民币)</span></p>
+                    <input class="placeholderText regCapital_after" type="text" placeholder="请输入减资后注册资本">
                 </div>
                 <div class="formItem">
                     <p class="labTitle"><span class="isRequired">*</span>联系人</p>
@@ -234,7 +238,7 @@
             <span class="payInfo">
                 订单金额 : <span class="RMB_flag">￥</span><span class="payAmount"></span>            
             </span>
-            <a href="./newsPaper_order.html" class="fr nextBtn paymentBtn">下一步</a>
+            <a href="javascript:void(0)" class="fr nextBtn paymentBtn">下一步</a>
         </div>
     </div>
 </body>
@@ -304,24 +308,89 @@
         $('.typeText').on('click',function(){
             var textType= $(this).siblings('.text').text();
             var isFlag= $(this).prop('checked');
+            var cretFlag1= $('.cretType1').prop('checked');
+            var cretFlag2= $('.cretType2').prop('checked');
+            var foodsFlag1= $('.foodsType1').prop('checked');
+            var foodsFlag2= $('.foodsType2').prop('checked');
             if(isFlag){
                 switch (textType) {
                     case '营业执照正本':
                         $('.3certItem').css('display','block');
                         break;
-                
+                    case '营业执照副本':
+                        $('.3certItem').css('display','block');
+                        break;
+                    case '税控盘':
+                        $('.taxItem').css('display','block');
+                        break;
+                    case '发票':
+                        $('.billItem').css('display','block');
+                        break;
+                    case '食品经营许可证正本':
+                        $('.foodsItem').css('display','block');
+                        break;
+                    case '食品经营许可证副本':
+                        $('.foodsItem').css('display','block');
+                        break;
+                    
                     default:
                         break;
                 }
             }else {
                 switch (textType) {
                     case '营业执照正本':
-                        $('.3certItem').css('display','none');
+                        if(cretFlag1 || cretFlag2) {
+                            $('.3certItem').css('display','block');
+                            break
+                        }else {
+                            $('.3certItem').css('display','none');
+                        }
                         break;
+                    case '营业执照副本':
+                        if(cretFlag1 || cretFlag2) {
+                            $('.3certItem').css('display','block');
+                            break
+                        }else {
+                            $('.3certItem').css('display','none');
+                        }
+                        break;
+                    case '税控盘':
+                        $('.taxItem').css('display','none');
+                        break;
+                    case '发票':
+                        $('.billItem').css('display','none');
+                        break;
+                    case '食品经营许可证正本':
+                        if(foodsFlag1 || foodsFlag2) {
+                            $('.foodsItem').css('display','block');
+                            break;
+                        }else {
+                            $('.foodsItem').css('display','none');
+                        }
+                        break; 
+                    case '食品经营许可证副本':
+                        if(foodsFlag1 || foodsFlag2) {
+                            $('.foodsItem').css('display','block');
+                            break;
+                        }else {
+                            $('.foodsItem').css('display','none');
+                        }
+                        break;    
                 
                     default:
                         break;
                 }
+            }
+        })
+
+        // 点击下一步提交订单
+        $('.paymentBtn').on('click',function(){
+            var companyName= $('.formItem>.companyName').val(); // 公司名称
+            var newsTypeList= []; // 登报类型
+            var checkTypeList= $("#newsBox>.newsType>input[type='checkbox']:checked");
+            for (let i = 0; i < checkTypeList.length; i++) {
+                console.log($(checkTypeList[i]).siblings('p.flag').find('span.text').text());
+                
             }
         })
     })
