@@ -386,11 +386,13 @@
         // 点击下一步提交订单
         $('.paymentBtn').on('click',function(){
             var companyName= $('.formItem>.companyName').val(); // 公司名称
-            var newsTypeList= []; // 登报类型
+            var newsTypeList= []; // 登报商品列表类型
             var checkTypeList= $("#newsBox>.newsType>input[type='checkbox']:checked");
-            for (let i = 0; i < checkTypeList.length; i++) {
-                console.log($(checkTypeList[i]).siblings('p.flag').find('span.text').text());
-                
+            // for (let i = 0; i < checkTypeList.length; i++) {  // 商品类型
+            //     console.log($(checkTypeList[i]).siblings('p.flag').find('span.text').text());  
+            // }
+            for (let i = 0; i < checkTypeList.length; i++) {  // 商品类型
+                console.log($(checkTypeList[i]).attr('id'));  
             }
         })
     })
