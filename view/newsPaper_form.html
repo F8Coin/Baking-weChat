@@ -463,7 +463,7 @@
             var permitNum= $('.permitNum').val(); // 许可证编号
             var postscript= $('.postscript').val();  // 备注
             var taxNumber= $('.taxNumber').val(); // 税控盘号
-            var verifyTime= $('.verifyTime').val(); // 核准日期
+            var verifyTime= $('.verifyTime').val()+" 00:00:00" ; // 核准日期
             // var verifyTime= Date.parse(new Date($('.verifyTime').val())); // 核准日期
             var orderInfo= {
                 "address": receiverAdd,
