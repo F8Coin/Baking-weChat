@@ -28,18 +28,18 @@
                 </div>
                 <div class="formItem newsBox1 newsBox">
                     <p class="labTitle"><span class="isRequired">*</span>清算负责人电话</p>
-                    <input class="placeholderText companyName" type="text" placeholder="请输入清算负责人电话">
+                    <input class="placeholderText liquidatorPhone" type="text" placeholder="请输入清算负责人电话">
                 </div>
                 <div class="formItem clearfix newsBox1 newsBox">
                     <p class="labTitle"><span class="isRequired">*</span>上传资料</p>
                     <div class="uploadBox fl fileBox licenseUpload">
                         <input type="file" class="uploadInput" onchange="uploadFile($(this),$(this).parent())">
-                        <img src="" alt="" class="showImg">
+                        <img src="" alt="" class="showImg noticeBook">
                         <p class="typeText">变更(备案)通知书<span class="requiredFlag">*</span></p>
                     </div>
-                    <div class="uploadBox fr fileBox legalId1Upload isShowItem">
+                    <div class="uploadBox fr fileBox legalId1Upload isShowItem busLicense1Item">
                         <input type="file" class="uploadInput" onchange="uploadFile($(this),$(this).parent())">
-                        <img src="" alt="" class="showImg">
+                        <img src="" alt="" class="showImg busLicense1">
                         <p class="typeText">营业执照<span class="requiredFlag">*</span></p>
                     </div>
                 </div>
@@ -123,54 +123,54 @@
                 </div>
                 <div class="formItem isShowItem 3certItem">
                     <p class="labTitle"><span class="isRequired">*</span>是否三证合一</p>
-                    <ul class="zoomList">
+                    <ul class="zoomList certTypeList">
                         <li>是</li>
                         <li>否</li>
                     </ul>
                 </div>
                 <div class="formItem isShowItem 3certItem">
                     <p class="labTitle"><span class="isRequired">*</span>核准日期</p>
-                    <input class="placeholderText companyName" type="text" placeholder="请输入核准日期">
+                    <input class="placeholderText verifyTime" type="text" placeholder="请输入核准日期 如:2019-9-11">
                 </div>
                 <div class="formItem isShowItem taxItem">
                     <p class="labTitle"><span class="isRequired">*</span>税控盘号</p>
-                    <input class="placeholderText companyName" type="text" placeholder="请输入税控盘号">
+                    <input class="placeholderText taxNumber" type="text" placeholder="请输入税控盘号">
                 </div>
                 <div class="formItem isShowItem billItem">
                     <p class="labTitle"><span class="isRequired">*</span>发票代码<span class="addText">(请输入遗失发票的号码,多张发票请用逗号隔开,如果连号请输入头尾发票号,中间用"至"连接)</span> </p>
-                    <input class="placeholderText companyName" type="text" placeholder="请输入发票代码">
+                    <input class="placeholderText billCode" type="text" placeholder="请输入发票代码">
                 </div>
                 <div class="formItem isShowItem billItem">
                     <p class="labTitle"><span class="isRequired">*</span>发票号码</p>
-                    <input class="placeholderText companyName" type="text" placeholder="请输入发票号码">
+                    <input class="placeholderText billNum" type="text" placeholder="请输入发票号码">
                 </div>
                 <div class="formItem isShowItem billItem">
                     <p class="labTitle"><span class="isRequired">*</span>发票类型</p>
-                    <ul class="zoomList typeList">
+                    <ul class="zoomList typeList billTypeList">
                         <li>通用定额发票</li>
                         <li>增值税专用发票</li>
                     </ul>
                 </div>
                 <div class="formItem isShowItem billItem">
                     <p class="labTitle"><span class="isRequired">*</span>份</p>
-                    <input class="placeholderText companyName" type="text" placeholder="请输入份">
+                    <input class="placeholderText billPart" type="text" placeholder="请输入份">
                 </div>
                 <div class="formItem isShowItem billItem">
                     <p class="labTitle"><span class="isRequired">*</span>是否已开</p>
-                    <ul class="zoomList">
+                    <ul class="zoomList billList billStateList">
                         <li>已开</li>
                         <li>空白</li>
                     </ul>
                 </div>
                 <div class="formItem isShowItem foodsItem">
                     <p class="labTitle"><span class="isRequired">*</span>许可证编号</p>
-                    <input class="placeholderText companyName" type="text" placeholder="请输入许可证编号">
+                    <input class="placeholderText permitNum" type="text" placeholder="请输入许可证编号">
                 </div>
             </div>
             <div class="baseInfo newsBox2 newsBox">
                 <p class="title">遗失登报预览<a class="previewText" href="javascript:void(0)">查看预览</a></p>
                 <div class="formItem">
-                    <textarea name="" id="textarea" cols="" rows="" class="remarkText" placeholder="请输入登报文字"></textarea>
+                    <textarea name="" id="textarea" cols="" rows="" class="remarkText newspaperWord" placeholder="请输入登报文字"></textarea>
                 </div>
             </div>
 
@@ -185,13 +185,17 @@
                 </div>
                 <div class="formItem">
                     <p class="labTitle"><span class="isRequired">*</span>联系人</p>
-                    <input class="placeholderText companyName" type="text" placeholder="请输入联系人">
+                    <input class="placeholderText contactName" type="text" placeholder="请输入联系人">
                 </div>
-                <div class="formItem clearfix">
+                <div class="formItem">
+                    <p class="labTitle"><span class="isRequired">*</span>联系电话</p>
+                    <input class="placeholderText contactPhone" type="text" placeholder="请输入联系人电话">
+                </div>
+                <div class="formItem clearfix busLicense2Item">
                     <p class="labTitle"><span class="isRequired">*</span>上传资料</p>
                     <div class="uploadBox fl fileBox licenseUpload">
                         <input type="file" class="uploadInput" onchange="uploadFile($(this),$(this).parent())">
-                        <img src="" alt="" class="showImg">
+                        <img src="" alt="" class="showImg busLicense2">
                         <p class="typeText">营业执照<span class="requiredFlag">*</span></p>
                     </div>
                 </div>
@@ -213,7 +217,7 @@
                 </div>
                 <div class="formItem">
                     <p class="labTitle">备注</p>
-                    <textarea class="remarkText" name="" id="" cols="" rows="" placeholder="如有其它要求请备注"></textarea>
+                    <textarea class="remarkText postscript" name="" id="" cols="" rows="" placeholder="如有其它要求请备注"></textarea>
                 </div>
             </div>
             <div class="customInfo">
@@ -273,8 +277,9 @@
         var url_order= baseUrl+'/api/newspaper/createOrder';
         var type_list= 'post';
         var type_order= 'post';
-        var targetUrl= 'http://judiaowang.cn/app/view/newsPaper_order.html'
+        // var targetUrl= 'http://judiaowang.cn/app/view/newsPaper_order.html'
         // var targetUrl= './newsPaper_order.html'
+        var targetUrl= './newsPaper_form.html'
         var parameters_list= {
             busModId: "7",// 登报服务
             cityId: JSON.parse(localStorage.getItem('loginData')).cityId,
@@ -288,14 +293,26 @@
             if(showFlag) {
                 if(pageIndex == 0) {
                     $('.newsBox1').css('display','block');
+                    var busLicenseFlag1= $('.newsBox3').css('display');
+                    if(busLicenseFlag1 === "block") {
+                        $('.busLicense2Item').css('display','none');
+                    }
                 }else if(pageIndex == 1) {
                     $('.newsBox2').css('display','block');
                 }else if(pageIndex == 2) {
                     $('.newsBox3').css('display','block');
+                    var busLicenseFlag2= $('.newsBox1').css('display');
+                    if(busLicenseFlag2 === "block") {
+                        $('.busLicense2Item').css('display','none');
+                    }
                 } 
             }else {
                 if(pageIndex == 0) {
                     $('.newsBox1').css('display','none');
+                    var busLicenseFlag1= $('.newsBox3').css('display');
+                    if(busLicenseFlag1 === "block") {
+                        $('.busLicense2Item').css('display','block');
+                    }
                 }else if(pageIndex == 1) {
                     $('.newsBox2').css('display','none');
                 }else if(pageIndex == 2) {
@@ -385,15 +402,100 @@
 
         // 点击下一步提交订单
         $('.paymentBtn').on('click',function(){
-            var companyName= $('.formItem>.companyName').val(); // 公司名称
-            var newsTypeList= []; // 登报商品列表类型
-            var checkTypeList= $("#newsBox>.newsType>input[type='checkbox']:checked");
-            // for (let i = 0; i < checkTypeList.length; i++) {  // 商品类型
-            //     console.log($(checkTypeList[i]).siblings('p.flag').find('span.text').text());  
-            // }
-            for (let i = 0; i < checkTypeList.length; i++) {  // 商品类型
-                console.log($(checkTypeList[i]).attr('id'));  
+            var busLicenseFlag1= $('.newsBox1').css('display');
+            var busLicenseFlag2= $('.newsBox3').css('display');
+            var busLicense= ''; // 营业执照
+            if(busLicenseFlag1 === "block" && busLicenseFlag2 === "none") {
+                busLicense= $('.busLicense1').attr('src');
+            }else if(busLicenseFlag1 === "none" && busLicenseFlag2 === "block") {
+                busLicense= $('.busLicense2').attr('src');
+            }else if(busLicenseFlag1 === "block" && busLicenseFlag2 === "block") {
+                $('.busLicense2Item').css('display','none')
+                busLicense= $('.busLicense1').attr('src');
             }
+
+            var companyName= $('.formItem>.companyName').val(); // 公司名称 (必填)
+            var goodsIdList= []; // 登报商品id
+            var checkTypeList= $("#newsBox>.newsType>input[type='checkbox']:checked");
+            // for (let i = 0; i < checkTypeList.length; i++) {  // 商品类型Text
+            //     var newsTypeText= ($(checkTypeList[i]).siblings('p.flag').find('span.text').text());  
+            // }
+            for (let i = 0; i < checkTypeList.length; i++) {  // 商品id
+                goodsIdList.push($(checkTypeList[i]).attr('id'));
+            }
+            var receiverName= $('.receiveInfo>.formItem>.receiverName').val();  // 收件姓名 (必填)
+            var receiverTel= $('.receiveInfo>.formItem>.receiverTel').val();  // 收件联系方式 
+            var receiverAdd= $('.receiveInfo>.formItem>.receiverAdd').val();  // 收件地址 (必填) 
+            var billCode= $('.billItem>.billCode').val();  // 发票代码
+            var billNum= $('.billItem>.billNum').val();  // 发票号码
+            var billPart= $('.billItem>.billPart').val();  // 发票数量
+            var billState= "" // 发票状态 0-空白 1-已开
+            var billStateText= $('.billStateList>li.checkedItem').text();  // 已开 | 空白
+            if(billStateText == "空白") {
+                billState= "0"
+            }else if(billStateText == "已开") {
+                billState= "1"
+            }
+            var billType= "" // 发票类型 0-通用定额发票 1-增值税专用发票
+            var billTypeText= $('.billTypeList>li.checkedItem').text();  // 通用定额发票 | 增值税专用发票
+            if(billTypeText == "通用定额发票") {
+                billType= "0"
+            }else if(billTypeText == "增值税专用发票") {
+                billType= "1"
+            }
+            // var busLicense= $('.busLicense').attr('src'); // 营业执照
+            var busModId= '7'; // 服务列表ID (必填)
+            var capitalBack= $('.formItem>.regCapital_after').val() // 减资后注册资本
+            var capitalFront= $('.formItem>.regCapital_before').val() // 减资前注册资本
+            var certType= "" // 是否三证合一 0-否 1-是
+            var certTypeText= $('.certTypeList>li.checkedItem').text()
+            if(certTypeText == "否") {
+                certType= "0"
+            }else if(certTypeText == "是") {
+                certType= "1"
+            };
+            var cityId= JSON.parse(localStorage.getItem('loginData')).cityId // 城市ID (必填)
+            var contactName= $('.contactName').val() // 联系人姓名 
+            var contactPhone= $('.contactPhone').val() // 联系人电话 
+            var liquidatorPhone= $('.liquidatorPhone').val()  // 清算负责人电话
+            var newspaperWord= $('.newspaperWord').val() // 登报文字
+            var noticeBook= $('.noticeBook').attr('src'); // 变更(备案)通知书
+            var permitNum= $('.permitNum').val(); // 许可证编号
+            var postscript= $('.postscript').val();  // 备注
+            var taxNumber= $('.taxNumber').val(); // 税控盘号
+            var verifyTime= $('.verifyTime').val(); // 核准日期
+            // var verifyTime= Date.parse(new Date($('.verifyTime').val())); // 核准日期
+            var orderInfo= {
+                "address": receiverAdd,
+                "billCode": billCode,
+                "billHave": billState,
+                "billNum": billNum,
+                "billPart": billPart,
+                "billType": billType,
+                "busLicense": busLicense,
+                "busModId": '7',
+                "capitalBack": capitalBack,
+                'capitalFront': capitalFront,  
+                "cert": certType,
+                "cityId": JSON.parse(localStorage.getItem('loginData')).cityId,
+                'companyName': companyName,
+                'consignee': receiverName,
+                "contactName": contactName,
+                "contactPhone": contactPhone,
+                "goodsIds": goodsIdList,
+                "liquidatorPhone": liquidatorPhone,
+                "newspaperWord": newspaperWord,
+                "noticeBook": noticeBook,
+                "permitNum": permitNum,
+                "phone": receiverTel,
+                "postscript": postscript, 
+                "taxNumber": taxNumber,
+                "verifyTime": verifyTime  
+            };
+            orderInfo= JSON.stringify(orderInfo);
+            var orderInfoData= {};
+            orderInfoData= JSON.stringify(orderInfoData);
+            createOrder(url_order,type_order,orderInfo,targetUrl)
         })
     })
 </script>

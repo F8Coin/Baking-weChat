@@ -116,7 +116,7 @@
 <script>
     $(function(){
         var orderInfoData= JSON.parse(sessionStorage.getItem('bankFormMes'));
-        console.log(orderInfoData);
+        // console.log(orderInfoData);
         var orderId= sessionStorage.getItem('orderId');
         var targetUrl= 'http://judiaowang.cn/app/view/bank_form.html';
         $('.paymentBox .payAmount').text(orderInfoData.orderAmount);

@@ -32,48 +32,7 @@
                 <div class="formItem partOther">
                     <p class="title"><span class="isRequired">*</span>专利类型</p>
                     <div class="content clearfix" id="patentBox">
-                        <!-- <label for="partOther1" class="left fl optionAbout">
-                            <p class="flag">
-                                <span class="text">软件著作权</span>
-                            </p>
-                            <p class="price">￥500</p>
-                            <input class="selectBtn" type="checkbox" id="partOther1">
-                        </label>
-                        <label for="partOther2" class="right fr optionAbout">
-                            <p class="flag">
-                                <span class="text">实用新型</span> 
-                            </p>
-                            <p class="price">￥1200.00</p>
-                            <input class="selectBtn" type="checkbox" id="partOther2">
-                        </label>
-                        <label for="partOther3" class="left fl optionAbout">
-                            <p class="flag">
-                                <span class="text">外观专利</span>
-                            </p>
-                            <p class="price">￥700</p>
-                            <input class="selectBtn" type="checkbox" id="partOther3">
-                        </label>
-                        <label for="partOther4" class="right fr optionAbout">
-                            <p class="flag">
-                                <span class="text">发明专利</span> 
-                            </p>
-                            <p class="price">￥2800.00</p>
-                            <input class="selectBtn" type="checkbox" id="partOther4">
-                        </label>
-                        <label for="partOther5" class="left fl optionAbout">
-                            <p class="flag">
-                                <span class="text">年费代缴(企/次)</span>
-                            </p>
-                            <p class="price">￥50</p>
-                            <input class="selectBtn" type="checkbox" id="partOther5">
-                        </label>
-                        <label for="partOther6" class="right fr optionAbout">
-                            <p class="flag">
-                                <span class="text">技术支持(人/半日)</span> 
-                            </p>
-                            <p class="price">￥600.00</p>
-                            <input class="selectBtn" type="checkbox" id="partOther6">
-                        </label> -->
+                        <!-- 专利类型 -->
                     </div>
                 </div>
             </div>
@@ -154,7 +113,7 @@
                                                 '<span class="text">'+res.data.goods[i].name+'</span>'+
                                             '</p>'+
                                             '<p class="price">￥'+res.data.goods[i].marketPrice+'</p>'+
-                                            '<input class="selectBtn" type="radio" id="'+res.data.goods[i].id+'">'+
+                                            '<input class="selectBtn" type="checkbox" id="'+res.data.goods[i].id+'">'+
                                         '</label>'
                     $('#patentBox').append(patentItem);
                 }
@@ -169,11 +128,11 @@
         }
 
         var url_list= baseUrl+'/api/patent/list';
-        var url_order= baseUrl+'';
+        var url_order= baseUrl+'/api/patent/createOrder';
         var type_list= 'post';
         var type_order= 'post';
-        var targetUrl= ''
-        // var targetUrl= ''
+        // var targetUrl= 'http://judiaowang.cn/app/view/patent_order.html'
+        var targetUrl= './patent_order.html'
         var parameters_list= {
             busModId: "25",// 专利申请
             categoryId: '18',
@@ -184,7 +143,50 @@
 
 
         $('.paymentBtn').on('click',function(){
-            layer.msg('功能调试中...业务办理请联系客服');
+            var orderInfo= {};
+            var orderInfoData= {};
+            var goodsIds= [];
+            var taxText= $('.taggleItem>li.checkedItem').text();
+            var goodsList= $("#patentBox>.optionType>input[type='checkbox']:checked");
+            for (let i = 0; i < goodsList.length; i++) {  // 商品id
+                goodsIds.push($(goodsList[i]).attr('id'));
+            }
+            var busContact= $('.businessName').val();
+            var busContactPhone= $('.businessTel').val();
+            var busModId= "25";
+            var certAddress= $('.receiverAdd').val();
+            var cityId= JSON.parse(localStorage.getItem('loginData')).cityId;
+            var companyName= $('.companyNameText').val();
+            var postscript= $('.remarkText').val();
+            var techContact= $('.technicalName').val();
+            var techContactPhone= $('.technicalTel').val();
+            orderInfo= {
+                "busContact": busContact,
+                "busContactPhone": busContactPhone,
+                "busModId": "25",
+                "certAddress": certAddress,
+                "cityId": cityId,
+                "companyName": companyName,
+                "goodsIds": goodsIds,
+                "postscript": postscript,
+                "techContact": techContact,
+                "techContactPhone": techContactPhone
+            }
+            orderInfoData= {
+                "companyName": companyName,
+                "taxText": taxText,
+                "busContact": busContact,
+                "busContactPhone": busContactPhone,
+                "techContact": techContact,
+                "techContactPhone": techContactPhone,
+                "postscript": postscript,
+                "certAddress": certAddress,
+                "price": '',
+                "goodsList": ''
+            }
+            orderInfo= JSON.stringify(orderInfo);
+            orderInfoData= JSON.stringify(orderInfoData);
+            createOrder(url_order,type_order,orderInfo,targetUrl)
         })
     })
 </script>

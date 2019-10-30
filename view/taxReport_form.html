@@ -93,7 +93,7 @@
         // 资产收入
         function assetsType(res) {
             for (let i = 0; i < res.data.goods[0].goods.length; i++) {
-                var assetsItem= '<label for="'+res.data.goods[0].goods[i].id+'" class="fl optionAbout optionType">'+
+                var assetsItem= '<label for="'+res.data.goods[0].goods[i].id+'" class="fl optionAbout optionType assetsType">'+
                                         '<p class="flag">'+
                                             '<img class="icon" src="'+res.data.goods[0].goods[i].imgUrl+'" alt="">'+
                                             '<span class="text">'+res.data.goods[0].goods[i].name+'</span>'+
@@ -110,7 +110,7 @@
         } 
 
         var url_list= baseUrl+'/api/taxReport/list';
-        var url_order= baseUrl+'';
+        var url_order= baseUrl+'/api/taxReport/createOrder';
         var type_list= 'post';
         var type_order= 'post';
         var targetUrl= 'http://judiaowang.cn/app/view/taxReport_order.html'
@@ -122,8 +122,41 @@
         getFormData(url_list,type_list,parameters_list,callback_list);
 
 
+        $('#assetsBox').on('click','.assetsType',function(){
+            $('.payAmount').text($(this).find('p.price').text().replace('￥',''))
+        })
+
         $('.paymentBtn').on('click',function(){
-            layer.msg('功能调试中...业务办理请联系客服');
+            var orderInfo= {};
+            var orderInfoData= {};
+            var companyName= $('.companyNameText').val();
+            var goodsId= $("#assetsBox>.optionType>input[type='radio']:checked").attr('id');
+            var goodsText= $("#assetsBox>.optionType>input[type='radio']:checked").siblings('p.flag').find('.text').text();
+            var goodsPrice= $(".payAmount").text();
+            var receiverName= $('.receiveInfo>.formItem>.receiverName').val();  // 收件姓名 (必填)
+            var receiverTel= $('.receiveInfo>.formItem>.receiverTel').val();  // 收件联系方式 
+            var receiverEmail= $('.receiveInfo>.formItem>.receiverEmail').val();  // 收件邮箱地址 (必填)
+            orderInfo= {
+                "busModId": '8',
+                "cityId": JSON.parse(localStorage.getItem('loginData')).cityId,
+                "companyName": companyName,
+                "consignee": receiverName,
+                "email": receiverEmail,
+                "goodsId": goodsId,
+                "phone": receiverTel
+            }
+            orderInfoData= {
+                "companyName": companyName,
+                "assetsText": goodsText,
+                "receiverName": receiverName,
+                "receiverTel": receiverTel,
+                "receiverEmail": receiverEmail,
+                "goodsPrice": goodsPrice
+            }
+            orderInfo= JSON.stringify(orderInfo);
+            orderInfoData= JSON.stringify(orderInfoData);
+            sessionStorage.setItem('tax_orderInfo',orderInfoData);
+            createOrder(url_order,type_order,orderInfo,targetUrl)
         })
     })
 </script>
