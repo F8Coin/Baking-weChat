@@ -25,74 +25,74 @@
                     </p>
                     <p class="orderItem">
                         <span class="labTitle">登报文字<span class="colon">:</span></span>
-                        <span class="labContent newsWords text"></span>
+                        <span class="labContent newspaperWord text"></span>
                     </p>
                     <p class="orderItem">
                         <span class="labTitle">联系人<span class="colon">:</span></span>
-                        <span class="labContent newsWords text"></span>
+                        <span class="labContent contactName text"></span>
                     </p>
                     <p class="orderItem">
                         <span class="labTitle">联系电话<span class="colon">:</span></span>
-                        <span class="labContent newsWords text"></span>
+                        <span class="labContent contactPhone text"></span>
                     </p>
                     <p class="orderItem">
                         <span class="labTitle">清算负责人电话<span class="colon">:</span></span>
-                        <span class="labContent newsWords text"></span>
+                        <span class="labContent liquidatorPhone text"></span>
                     </p>
                     <p class="orderItem">
                         <span class="labTitle">减资前注册资本<span class="colon">:</span></span>
-                        <span class="labContent newsWords text"></span>
+                        <span class="labContent capitalFront text"></span>
                     </p>
                     <p class="orderItem">
                         <span class="labTitle">减资后注册资本<span class="colon">:</span></span>
-                        <span class="labContent newsWords text"></span>
+                        <span class="labContent capitalBack text"></span>
                     </p>
                     <p class="orderItem">
                         <span class="labTitle">核准日期<span class="colon">:</span></span>
-                        <span class="labContent newsWords text"></span>
+                        <span class="labContent verifyTime text"></span>
                     </p>
                     <p class="orderItem">
                         <span class="labTitle">税控盘号<span class="colon">:</span></span>
-                        <span class="labContent newsWords text"></span>
+                        <span class="labContent taxNumber text"></span>
                     </p>
                     <p class="orderItem">
                         <span class="labTitle">发票代码<span class="colon">:</span></span>
-                        <span class="labContent newsWords text"></span>
+                        <span class="labContent billCode text"></span>
                     </p>
                     <p class="orderItem">
                         <span class="labTitle">发票号码<span class="colon">:</span></span>
-                        <span class="labContent newsWords text"></span>
+                        <span class="labContent billNum text"></span>
                     </p>
                     <p class="orderItem">
                         <span class="labTitle">份<span class="colon">:</span></span>
-                        <span class="labContent newsWords text"></span>
+                        <span class="labContent billPart text"></span>
                     </p>
                     <p class="orderItem">
                         <span class="labTitle">许可证编号<span class="colon">:</span></span>
-                        <span class="labContent newsWords text"></span>
+                        <span class="labContent permitNum text"></span>
                     </p>
                     <p class="orderItem">
                         <span class="labTitle">是否三证合一<span class="colon">:</span></span>
-                        <span class="labContent newsWords text"></span>
+                        <span class="labContent cert text"></span>
                     </p>
                     <p class="orderItem">
                         <span class="labTitle">发票类型<span class="colon">:</span></span>
-                        <span class="labContent newsWords text"></span>
+                        <span class="labContent billType text"></span>
                     </p>
                     <p class="orderItem">
                         <span class="labTitle">是否已开<span class="colon">:</span></span>
-                        <span class="labContent newsWords text"></span>
+                        <span class="labContent billHave text"></span>
                     </p>
                     <div class="orderItem uploadFile">
                         <span class="labTitle">变更(备案)通知书<span class="colon">:</span></span>
                         <p class="labContent license_img">
-                            <img class="showImg" src='../img/RMB_flag' alt="">
+                            <img class="showImg noticeBook" src='' alt="">
                         </p>
                     </div>
                     <div class="orderItem legal1Item uploadFile">
                         <span class="labTitle">营业执照<span class="colon">:</span></span>
                         <p class="labContent legal1_img">
-                            <img class="showImg" src='../img/showImg' alt="">
+                            <img class="showImg busLicense" src='' alt="">
                         </p>
                     </div>
                 </div>
@@ -105,7 +105,7 @@
                         <span class="labContent userTel"></span>
                     </p>    
                     <p class="orderItem">
-                        <span class="labContent userAdd"></span>
+                        <span class="labContent userAdd "></span>
                     </p>
                 </div>  
             </div>
@@ -125,11 +125,11 @@
                 <p class="title">收货信息</p>
                 <div class="content">
                     <p class="orderItem">
-                        <span class="labContent userName"></span>    
-                        <span class="labContent userTel"></span>
+                        <span class="labContent userName consignee"></span>    
+                        <span class="labContent userTel phone"></span>
                     </p>    
                     <p class="orderItem">
-                        <span class="labContent userAdd"></span>
+                        <span class="labContent userAdd address"></span>
                     </p>
                 </div>  
             </div>
@@ -148,4 +148,38 @@
 
 <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 <script src="../js/jQuery/jquery-3.4.0.js"></script>
+<script src="../js/index.js"></script>
+<script>
+    $(function(){
+        var orderInfoData= JSON.parse(sessionStorage.getItem('news_orderInfo'));
+        var orderId= getUrlParam('orderId');
+        var targetUrl= 'http://judiaowang.cn/app/view/newsPaper_form.html';
+        $('.orderItem>.companyName').text(orderInfoData.companyName); //必填
+        $('.orderItem>.address').text(orderInfoData.address);
+        $('.orderItem>.billCode').text(orderInfoData.billCode);
+        $('.orderItem>.billHave').text(orderInfoData.billHave);
+        $('.orderItem>.billNum').text(orderInfoData.billNum);
+        $('.orderItem>.billPart').text(orderInfoData.billPart);
+        $('.orderItem>.billType').text(orderInfoData.billType);
+        $('.busLicense').attr('src',orderInfoData.busLicense);
+        $('.orderItem>.capitalBack').text(orderInfoData.capitalBack);
+        $('.orderItem>.capitalFront').text(orderInfoData.capitalFront);
+        $('.orderItem>.cert').text(orderInfoData.cert);
+        $('.orderItem>.consignee').text(orderInfoData.consignee);
+        $('.orderItem>.contactName').text(orderInfoData.contactName);
+        $('.orderItem>.contactPhone').text(orderInfoData.contactPhone);
+        $('.orderItem>.liquidatorPhone').text(orderInfoData.liquidatorPhone);
+        $('.orderItem>.newspaperWord').text(orderInfoData.newspaperWord);
+        $('.noticeBook').attr('src',orderInfoData.noticeBook);
+        $('.orderItem>.permitNum').text(orderInfoData.permitNum);
+        $('.orderItem>.phone').text(orderInfoData.phone);
+        $('.orderItem>.postscript').text(orderInfoData.postscript);
+        $('.orderItem>.taxNumber').text(orderInfoData.taxNumber);
+        $('.orderItem>.verifyTime').text(orderInfoData.verifyTime);
 
+        $('.payAmount').text(orderInfoData.goodsPrice); 
+        $('.paymentBtn').on('click',function(){
+            weChatPay(orderId,targetUrl)
+        })
+    })
+</script>

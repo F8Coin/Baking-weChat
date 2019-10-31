@@ -178,7 +178,7 @@
         $('#levelBox').on('click','.zoomItem',function(){
             var levelText= $(this).text();
             if(levelText == "三类许可证") {
-                $('#rentBox>.emptyText').addClass('isShowItem');
+                $('#rentBox>.emptyText').addClass('isShow');
                 $('#rentBox>.emptyText').removeClass('checkedItem');   
                 $('#rentBox>.haveText').addClass('checkedItem'); 
                 var levelPrice= Number($(this).attr('marketPrice'));
@@ -186,7 +186,7 @@
                 var rentPrice= Number($('#rentBox>li.checkedItem').attr('marketPrice'));
                 $('.payAmount').text(levelPrice+rentPrice+"");  
             }else if(levelText == "二类许可证") {
-                $('#rentBox>.emptyText').removeClass('isShowItem');
+                $('#rentBox>.emptyText').removeClass('isShow');
                 var levelPrice= Number($(this).attr('marketPrice'));
                 var rentPrice= Number($('#rentBox>li.checkedItem').attr('marketPrice'));
                 $('.payAmount').text(levelPrice+rentPrice+"");

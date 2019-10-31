@@ -52,71 +52,71 @@
                         <tr>
                             <td>
                                 <input type="checkbox" class="typeText cretType1">
-                                <span class="text">营业执照正本</span>
+                                <span class="text" typeIndex="1">营业执照正本</span>
                             </td>
                             <td>
                                 <input type="checkbox" class="typeText cretType2">
-                                <span class="text">营业执照副本</span>
+                                <span class="text" typeIndex="2">营业执照副本</span>
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <input type="checkbox" class="typeText">
-                                <span class="text">税务登记正本</span>
+                                <span class="text" typeIndex="3">税务登记正本</span>
                             </td>
                             <td>
                                 <input type="checkbox" class="typeText">
-                                <span class="text">税务登记副本</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="checkbox" class="typeText">
-                                <span class="text">税务登记正本</span>
-                            </td>
-                            <td>
-                                <input type="checkbox" class="typeText">
-                                <span class="text">税务登记副本</span>
+                                <span class="text" typeIndex="4">税务登记副本</span>
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <input type="checkbox" class="typeText">
-                                <span class="text">税控盘</span>
+                                <span class="text" typeIndex="5">税务登记正本</span>
                             </td>
                             <td>
                                 <input type="checkbox" class="typeText">
-                                <span class="text">发票</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="checkbox" class="typeText">
-                                <span class="text">刻章卡</span>
-                            </td>
-                            <td>
-                                <input type="checkbox" class="typeText">
-                                <span class="text">公章</span>
+                                <span class="text" typeIndex="6">税务登记副本</span>
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <input type="checkbox" class="typeText">
-                                <span class="text">财务章</span>
+                                <span class="text" typeIndex="7">税控盘</span>
                             </td>
                             <td>
                                 <input type="checkbox" class="typeText">
-                                <span class="text">发票章</span>
+                                <span class="text" typeIndex="8">发票</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" class="typeText">
+                                <span class="text" typeIndex="9">刻章卡</span>
+                            </td>
+                            <td>
+                                <input type="checkbox" class="typeText">
+                                <span class="text" typeIndex="10">公章</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" class="typeText">
+                                <span class="text" typeIndex="11">财务章</span>
+                            </td>
+                            <td>
+                                <input type="checkbox" class="typeText">
+                                <span class="text" typeIndex="12">发票章</span>
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <input type="checkbox" class="typeText foodsType1">
-                                <span class="text">食品经营许可证正本</span>
+                                <span class="text" typeIndex="13">食品经营许可证正本</span>
                             </td>
                             <td>
                                 <input type="checkbox" class="typeText foodsType2">
-                                <span class="text">食品经营许可证副本</span>
+                                <span class="text" typeIndex="14">食品经营许可证副本</span>
                             </td>
                         </tr>
                     </table>
@@ -329,6 +329,7 @@
             var foodsFlag1= $('.foodsType1').prop('checked');
             var foodsFlag2= $('.foodsType2').prop('checked');
             if(isFlag){
+                $(this).siblings('.text').addClass('loseText')
                 switch (textType) {
                     case '营业执照正本':
                         $('.3certItem').css('display','block');
@@ -353,6 +354,7 @@
                         break;
                 }
             }else {
+                $(this).siblings('.text').removeClass('loseText')
                 switch (textType) {
                     case '营业执照正本':
                         if(cretFlag1 || cretFlag2) {
@@ -401,6 +403,16 @@
 
         // 点击下一步提交订单
         $('.paymentBtn').on('click',function(){
+            var loseText= [];
+            var loseType= [];
+            var loseTextList= $('.loseText');
+            for (let i = 0; i < loseTextList.length; i++) {
+                var text= $(loseTextList[i]).text();
+                var type= $(loseTextList[i]).attr('typeIndex');
+                loseText.push(text); 
+                loseType.push(type);          
+            }
+
             var busLicenseFlag1= $('.newsBox1').css('display');
             var busLicenseFlag2= $('.newsBox3').css('display');
             var busLicense= ''; // 营业执照
@@ -415,10 +427,11 @@
 
             var companyName= $('.formItem>.companyName').val(); // 公司名称 (必填)
             var goodsIdList= []; // 登报商品id
+            var goodsTextList= []; // 登报商品名称
             var checkTypeList= $("#newsBox>.newsType>input[type='checkbox']:checked");
-            // for (let i = 0; i < checkTypeList.length; i++) {  // 商品类型Text
-            //     var newsTypeText= ($(checkTypeList[i]).siblings('p.flag').find('span.text').text());  
-            // }
+            for (let i = 0; i < checkTypeList.length; i++) {  // 商品类型Text
+                goodsTextList.push($(checkTypeList[i]).siblings('p.flag').find('span.text').text());  
+            }
             for (let i = 0; i < checkTypeList.length; i++) {  // 商品id
                 goodsIdList.push($(checkTypeList[i]).attr('id'));
             }
@@ -463,6 +476,7 @@
             var postscript= $('.postscript').val();  // 备注
             var taxNumber= $('.taxNumber').val(); // 税控盘号
             var verifyTime= $('.verifyTime').val()+" 00:00:00" ; // 核准日期
+            var verifyTimeText= $('.verifyTime').val() ; // 核准日期
             // var verifyTime= Date.parse(new Date($('.verifyTime').val())); // 核准日期
             var orderInfo= {
                 "address": receiverAdd,
@@ -482,6 +496,7 @@
                 "contactName": contactName,
                 "contactPhone": contactPhone,
                 "goodsIds": goodsIdList,
+                "loseData": loseType,
                 "liquidatorPhone": liquidatorPhone,
                 "newspaperWord": newspaperWord,
                 "noticeBook": noticeBook,
@@ -491,10 +506,37 @@
                 "taxNumber": taxNumber,
                 "verifyTime": verifyTime  
             };
+            var orderInfoData= {
+                "address": receiverAdd,
+                "billCode": billCode,
+                "billHave": billStateText,
+                "billNum": billNum,
+                "billPart": billPart,
+                "billType": billTypeText,
+                "busLicense": busLicense,
+                "capitalBack": capitalBack,
+                'capitalFront': capitalFront,  
+                "cert": certTypeText,
+                'companyName': companyName,
+                'consignee': receiverName,
+                "contactName": contactName,
+                "contactPhone": contactPhone,
+                "loseText": loseText,
+                "goodsText": goodsTextList,
+                // "goodsPrice": ""
+                "liquidatorPhone": liquidatorPhone,
+                "newspaperWord": newspaperWord,
+                "noticeBook": noticeBook,
+                "permitNum": permitNum,
+                "phone": receiverTel,
+                "postscript": postscript, 
+                "taxNumber": taxNumber,
+                "verifyTime": verifyTimeText
+            }
             orderInfo= JSON.stringify(orderInfo);
-            var orderInfoData= {};
             orderInfoData= JSON.stringify(orderInfoData);
-            createOrder(url_order,type_order,orderInfo,targetUrl)
+            sessionStorage.setItem('news_orderInfo',orderInfoData);
+            // createOrder(url_order,type_order,orderInfo,targetUrl);
         })
     })
 </script>
