@@ -110,15 +110,14 @@
             }
         }
    
-
         // 许可证级别
         function levelList(res){
             if(res.code == 0) {
                 for (var i = 0; i < res.data.goods[0].goods.length; i++) {  
                     if(i == 0) {
-                        var levelItem= '<li class="checkedItem zoomItem" levelGoodsId='+ res.data.goods[0].goods[i].id+'>'+res.data.goods[0].goods[i].name+'</li>'
+                        var levelItem= '<li class="checkedItem zoomItem" retailPrice='+ res.data.goods[0].goods[i].retailPrice+' marketPrice='+ res.data.goods[0].goods[i].marketPrice+' levelGoodsId='+ res.data.goods[0].goods[i].id+'>'+res.data.goods[0].goods[i].name+'</li>'
                     }else {
-                        var levelItem= '<li class="zoomItem" levelGoodsId='+res.data.goods[0].goods[i].id+'>'+res.data.goods[0].goods[i].name+'</li>'
+                        var levelItem= '<li class="zoomItem" retailPrice='+ res.data.goods[0].goods[i].retailPrice+' marketPrice='+ res.data.goods[0].goods[i].marketPrice+' levelGoodsId='+res.data.goods[0].goods[i].id+'>'+res.data.goods[0].goods[i].name+'</li>'
                     }
                     $('#levelBox').append(levelItem);
                 }
@@ -137,9 +136,9 @@
             if(res.code == 0) {
                 for (var i = 0; i < res.data.goods[1].goods.length; i++) {  
                     if(i == 0) {
-                        var rentItem= '<li class="checkedItem zoomItem" rentGoodsId='+ res.data.goods[1].goods[i].id+'>'+res.data.goods[1].goods[i].name+'</li>'
+                        var rentItem= '<li class="checkedItem haveText zoomItem" retailPrice='+ res.data.goods[1].goods[i].retailPrice+' marketPrice='+ res.data.goods[1].goods[i].marketPrice+' rentGoodsId='+ res.data.goods[1].goods[i].id+'>'+res.data.goods[1].goods[i].name+'</li>'
                     }else {
-                        var rentItem= '<li class="zoomItem" rentGoodsId='+res.data.goods[1].goods[i].id+'>'+res.data.goods[1].goods[i].name+'</li>'
+                        var rentItem= '<li class="zoomItem emptyText" retailPrice='+ res.data.goods[1].goods[i].retailPrice+' marketPrice='+ res.data.goods[1].goods[i].marketPrice+' rentGoodsId='+res.data.goods[1].goods[i].id+'>'+res.data.goods[1].goods[i].name+'</li>'
                     }
                     $('#rentBox').append(rentItem);
                 }
@@ -158,18 +157,47 @@
             zoomList(res);
             levelList(res);
             rentList(res);
+            var levelPrice= Number($('#levelBox>li.checkedItem').attr('marketPrice'));
+            var rentGoodsPrice= Number($('#rentBox>li.checkedItem').attr('marketPrice'));
+            $('.payAmount').text(levelPrice+rentGoodsPrice+"");
         }
+
         var url_list= baseUrl+'/api/medical/list';
         var url_order= baseUrl+'/api/medical/createOrder';
         var type_list= 'post';
         var type_order= 'post';
-        // var targetUrl= 'http://judiaowang.cn/app/view/medicalPermit_order.html'
-        var targetUrl= './medicalPermit_order.html'
+        var targetUrl= 'http://judiaowang.cn/app/view/medicalPermit_order.html'
+        // var targetUrl= './medicalPermit_order.html'
         var parameters_list= {
             busModId: "23",// 医疗许可证
             cityId: JSON.parse(localStorage.getItem('loginData')).cityId,
         }
         getFormData(url_list,type_list,parameters_list,callback_list);
+
+        
+        $('#levelBox').on('click','.zoomItem',function(){
+            var levelText= $(this).text();
+            if(levelText == "三类许可证") {
+                $('#rentBox>.emptyText').addClass('isShowItem');
+                $('#rentBox>.emptyText').removeClass('checkedItem');   
+                $('#rentBox>.haveText').addClass('checkedItem'); 
+                var levelPrice= Number($(this).attr('marketPrice'));
+                var rentText= $('#rentBox>li.checkedItem').text();
+                var rentPrice= Number($('#rentBox>li.checkedItem').attr('marketPrice'));
+                $('.payAmount').text(levelPrice+rentPrice+"");  
+            }else if(levelText == "二类许可证") {
+                $('#rentBox>.emptyText').removeClass('isShowItem');
+                var levelPrice= Number($(this).attr('marketPrice'));
+                var rentPrice= Number($('#rentBox>li.checkedItem').attr('marketPrice'));
+                $('.payAmount').text(levelPrice+rentPrice+"");
+            }
+            
+        })
+        $('#rentBox').on('click','.zoomItem',function(){
+            var rentPrice= Number($(this).attr('marketPrice'));
+            var levelPrice= Number($('#levelBox>li.checkedItem').attr('marketPrice'));
+            $('.payAmount').text(rentPrice+levelPrice+"");
+        })
 
         $('.paymentBtn').on('click',function(){
             var orderInfo= {};
@@ -182,7 +210,7 @@
             var rentGoodsId= $('#rentBox>li.checkedItem').attr('rentGoodsId');
             var rentGoodsText= $('#rentBox>li.checkedItem').text();
             var goodsList= [levelGoodsId,rentGoodsId];
-            var goodsPrice= "";
+            var goodsPrice= $('.payAmount').text();
             orderInfo= {
                 "busModId": "23",
                 "cityId": JSON.parse(localStorage.getItem('loginData')).cityId,

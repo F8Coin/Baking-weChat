@@ -97,7 +97,7 @@
 }
 
 .isShowItem {
-    display: none;
+    display: none !important;
 }
 
 /* 单文件上传*/

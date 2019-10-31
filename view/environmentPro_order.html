@@ -25,11 +25,11 @@
                     </p>
                     <p class="orderItem">
                         <span class="labTitle">公司所在区域<span class="colon">:</span></span>
-                        <span class="labContent zoom"></span>
+                        <span class="labContent zoom regionText"></span>
                     </p>
                    <div class="orderItem">
                         <span class="labTitle">营业执照<span class="colon">:</span></span>
-                        <p class="tradingPic"><img class="showImg" src='' alt=""></p>
+                        <p class="tradingPic"><img class="showImg busLicense" src='' alt=""></p>
                     </div>
                 </div>
     
@@ -61,5 +61,17 @@
 <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 <script src="../js/jQuery/jquery-3.4.0.js"></script>
 <script src="../js/index.js?v=1.0"></script>
-
-
+<script>
+    $(function(){
+        var orderInfoData= JSON.parse(sessionStorage.getItem('environment_orderInfo'));
+        var orderId= getUrlParam('orderId');
+        var targetUrl= 'http://judiaowang.cn/app/view/environmentPro_form.html';
+        $('.orderItem>.companyName').text(orderInfoData.companyName);
+        $('.orderItem>.regionText').text(orderInfoData.regionText);
+        $('.busLicense').attr('src',orderInfoData.busLicense);
+        $('.payAmount').text(orderInfoData.goodsPrice);
+        $('.paymentBtn').on('click',function(){
+            weChatPay(orderId,targetUrl)
+        })
+    })
+</script>

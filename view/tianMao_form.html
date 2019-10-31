@@ -119,8 +119,8 @@
     $(function(){
         var url_order= baseUrl+'/api/newspaper/createOrder';
         var type_order= 'post';
-        // var targetUrl= 'http://judiaowang.cn/app/view/tianMao_form.html'
-        var targetUrl= './tianMao_form.html'
+        // var targetUrl= 'http://judiaowang.cn/app/view/tianMao_order.html'
+        var targetUrl= './tianMao_order.html'
 
         // 点击天猫入驻协议
         $('.ruleAbout').on('click',function(){
@@ -132,14 +132,20 @@
         })
 
         $('.nextBtn').on('click',function(){
-            var companyName= $('.companyName').val();
             var orderInfo= {};
+            var orderInfoData= {};
+            var companyName= $('.companyName').val();
             orderInfo= {
-                "busModId": '7',
+                "busModId": "15",
                 "cityId": JSON.parse(localStorage.getItem('loginData')).cityId,
                 "companyName": companyName
             }
+            orderInfoData= {
+                "companyName": companyName
+            }
             orderInfo= JSON.stringify(orderInfo);
+            orderInfoData= JSON.stringify(orderInfoData);
+            sessionStorage.setItem('tianMao_orderInfo',orderInfoData);
             createOrder(url_order,type_order,orderInfo,targetUrl);
         })
         

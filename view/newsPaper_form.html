@@ -168,7 +168,7 @@
                 </div>
             </div>
             <div class="baseInfo newsBox2 newsBox">
-                <p class="title">遗失登报预览<a class="previewText" href="javascript:void(0)">查看预览</a></p>
+                <p class="title">遗失登报信息<a class="previewText" href="javascript:void(0)" style="display: none">查看预览</a></p>
                 <div class="formItem">
                     <textarea name="" id="textarea" cols="" rows="" class="remarkText newspaperWord" placeholder="请输入登报文字"></textarea>
                 </div>
@@ -278,7 +278,7 @@
         var type_list= 'post';
         var type_order= 'post';
         // var targetUrl= 'http://judiaowang.cn/app/view/newsPaper_order.html'
-        // var targetUrl= './newsPaper_order.html'
+        var targetUrl= './newsPaper_order.html'
         var parameters_list= {
             busModId: "7",// 登报服务
             cityId: JSON.parse(localStorage.getItem('loginData')).cityId,

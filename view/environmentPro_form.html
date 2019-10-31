@@ -91,11 +91,12 @@
             if(res.code == 0) {
                 for (var i = 0; i < res.data.region.length; i++) {  
                     if(i == 0) {
-                        var zoomItem= '<li class="checkedItem zoomItem" regionId='+res.data.region[i].id+'>'+res.data.region[i].name+'</li>'
+                        var zoomItem= '<li class="checkedItem zoomItem" regionId='+res.data.region[i].regionId+'>'+res.data.region[i].name+'</li>'
                     }else {
-                        var zoomItem= '<li class="zoomItem" regionId='+res.data.region[i].id+'>'+res.data.region[i].name+'</li>'
+                        var zoomItem= '<li class="zoomItem" regionId='+res.data.region[i].regionId+'>'+res.data.region[i].name+'</li>'
                     }
                     $('#zoomBox').append(zoomItem);
+                    $('.payAmount').text(res.data.goods[0].goods[0].marketPrice)
                 }
             }else if(res.code == 666) {
                 layer.msg(res.msg,function(){
@@ -115,8 +116,8 @@
         var url_order= baseUrl+'/api/environ/createOrder';
         var type_list= 'post';
         var type_order= 'post';
-        // var targetUrl= 'http://judiaowang.cn/app/view/environmentPro_order.html'
-        var targetUrl= './environmentPro_order.html'
+        var targetUrl= 'http://judiaowang.cn/app/view/environmentPro_order.html'
+        // var targetUrl= './environmentPro_order.html'
         var parameters_list= {
             busModId: "16",// 环保备案
             cityId: JSON.parse(localStorage.getItem('loginData')).cityId,
@@ -128,15 +129,25 @@
             var orderInfoData= {};
             var companyName= $('.formItem>.companyName').val(); 
             var busLicense= $('.busLicense').attr('src');
-            var regionId= $('#zoomBox>li.checkedItem').attr('regionId')
+            var regionId= $('#zoomBox>li.checkedItem').attr('regionId');
+            var regionText= $('#zoomBox>li.checkedItem').text();
+            var goodsPrice= $('.payAmount').text();
             orderInfo= {
                 "busLicense": busLicense,
                 "busModId": "16",
                 "companyName": companyName,
-                "goodsId": "",
+                "goodsId": "291",
                 "regionId": regionId
             }
+            orderInfoData= {
+                "companyName": companyName,
+                "regionText": regionText,
+                "busLicense": busLicense,
+                "goodsPrice": goodsPrice
+            }
             orderInfo= JSON.stringify(orderInfo);
+            orderInfoData= JSON.stringify(orderInfoData);
+            sessionStorage.setItem('environment_orderInfo',orderInfoData);
             createOrder(url_order,type_order,orderInfo,targetUrl)
         })
     })

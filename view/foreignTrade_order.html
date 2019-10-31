@@ -61,7 +61,7 @@
         <span class="fl payInfo">
             订单金额 : <span class="RMB_flag">￥</span><span class="payAmount"></span>
         </span>
-        <a href="./dev.html" class="fr paymentBtn">微信支付</a>
+        <a href="javascript:void(0)" class="fr paymentBtn">微信支付</a>
     </div>
 </body>
 
@@ -83,7 +83,7 @@
         $('.orderItem>.userName').text(orderInfoData.receiverName);
         $('.orderItem>.userTel').text(orderInfoData.receiverTel);
         $('.orderItem>.userAdd').text(orderInfoData.receiverAdd);
-        // $('.payAmount').text(orderInfoData.goodsPrice);
+        $('.payAmount').text(orderInfoData.goodsPrice);
         $('.paymentBtn').on('click',function(){
             weChatPay(orderId,targetUrl)
         })

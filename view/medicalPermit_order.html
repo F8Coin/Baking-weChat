@@ -67,12 +67,12 @@
         $(function(){
             var orderInfoData= JSON.parse(sessionStorage.getItem('medical_orderInfo'));
             var orderId= getUrlParam('orderId');
-            var targetUrl= 'http://judiaowang.cn/app/view/medical_form.html';
+            var targetUrl= 'http://judiaowang.cn/app/view/medicalPermit_form.html';
             $('.orderItem>.companyName').text(orderInfoData.companyName);
             $('.orderItem>.regionText').text(orderInfoData.regionText);
             $('.orderItem>.levelGoodsText').text(orderInfoData.levelGoodsText);
             $('.orderItem>.rentGoodsText').text(orderInfoData.rentGoodsText);
-            // $('.payAmount').text(orderInfoData.goodsPrice);
+            $('.payAmount').text(orderInfoData.goodsPrice);
             $('.paymentBtn').on('click',function(){
                 weChatPay(orderId,targetUrl);
             })

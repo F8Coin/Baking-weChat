@@ -113,7 +113,6 @@
                     }
                     $('#handleBox').append(handleItem);
                 }
-                $('.payAmount').text($('#handleBox>li.checkedItem').attr('marketPrice'));
             }else if(res.code == 666) {
                 layer.msg(res.msg,function(){
                     window.location.href= 'http://judiaowang.cn/app/view/partnerLogin.html';
@@ -134,6 +133,7 @@
                         var companyItem= '<li class="acreageItem" retailPrice="'+res.data.goods[1].goods[i].retailPrice+'"  marketPrice="'+res.data.goods[1].goods[i].marketPrice+'"  goodsId="'+res.data.goods[1].goods[i].id+'">'+res.data.goods[1].goods[i].name+'</li>'
                     }
                     $('#companyBox').append(companyItem);
+                    $('.payAmount').text($('#companyBox>li.checkedItem').attr('marketPrice'));
                 }
             }else if(res.code == 666) {
                 layer.msg(res.msg,function(){
@@ -177,7 +177,7 @@
         var type_list= 'post';
         var type_order= 'post';
         var targetUrl= 'http://judiaowang.cn/app/view/foreignTrade_order.html'
-        var targetUrl= './foreignTrade_order.html'
+        // var targetUrl= './foreignTrade_order.html'
         var parameters_list= {
             busModId: "14",// 进出口经营
             cityId: JSON.parse(localStorage.getItem('loginData')).cityId,
@@ -187,8 +187,6 @@
 
         $('#handleBox').on('click','.zoomItem',function(){
             var textType= $(this).text();
-            var price= $(this).attr('marketPrice')
-            $('.payAmount').text(price);
             if(textType == "变更") {
                 $('.foreignItem').css('display','none');
             }else if(textType == "注册") {
@@ -198,13 +196,16 @@
 
         $('#companyBox').on('click','.acreageItem',function(){
             var textType= $(this).text();
-            var price= $(this).attr('marketPrice')
-            $('.payAmount').text(price);
+            var companyPrice= Number($(this).attr('marketPrice')); 
+            var foreignPrice= Number($('#foreignBox>li.checkedItem').attr('marketPrice'))
+            $('.payAmount').text(companyPrice+foreignPrice+"");
             
         })
         $('#foreignBox').on('click','.acreageItem',function(){
             var textType= $(this).text();
-            var price= $(this).attr('marketPrice')
+            var foreignPrice= Number($(this).attr('marketPrice')); 
+            var companyPrice= Number($('#companyBox>li.checkedItem').attr('marketPrice'))
+            $('.payAmount').text(companyPrice+foreignPrice+"");
             $('.payAmount').text(price);
             if(textType == "变更") {
                 $('.foreignItem').css('display','none');
@@ -233,6 +234,7 @@
             var receiverTel= $('.receiveInfo>.formItem>.receiverTel').val();  // 收件联系方式 
             var receiverAdd= $('.receiveInfo>.formItem>.receiverAdd').val();  // 收件地址 (必填) 
             var companyName= $('.formItem>.companyName').val();
+            var goodsPrice= $('.payAmount').text();
             orderInfo= {
                 "address": receiverAdd,
                 "busModId": '14',
@@ -249,7 +251,8 @@
                 "foreignGoodsText": foreignGoodsText,
                 "receiverName": receiverName, 
                 "receiverTel": receiverTel, 
-                "receiverAdd": receiverAdd
+                "receiverAdd": receiverAdd,
+                "goodsPrice": goodsPrice
             }
 
             orderInfo= JSON.stringify(orderInfo);
