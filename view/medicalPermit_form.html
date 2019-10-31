@@ -116,9 +116,9 @@
             if(res.code == 0) {
                 for (var i = 0; i < res.data.goods[0].goods.length; i++) {  
                     if(i == 0) {
-                        var levelItem= '<li class="checkedItem zoomItem" regionId='+ res.data.goods[0].goods[i].regionId+'>'+res.data.goods[0].goods[i].name+'</li>'
+                        var levelItem= '<li class="checkedItem zoomItem" levelGoodsId='+ res.data.goods[0].goods[i].id+'>'+res.data.goods[0].goods[i].name+'</li>'
                     }else {
-                        var levelItem= '<li class="zoomItem" regionId='+res.data.goods[0].goods[i].regionId+'>'+res.data.goods[0].goods[i].name+'</li>'
+                        var levelItem= '<li class="zoomItem" levelGoodsId='+res.data.goods[0].goods[i].id+'>'+res.data.goods[0].goods[i].name+'</li>'
                     }
                     $('#levelBox').append(levelItem);
                 }
@@ -137,9 +137,9 @@
             if(res.code == 0) {
                 for (var i = 0; i < res.data.goods[1].goods.length; i++) {  
                     if(i == 0) {
-                        var rentItem= '<li class="checkedItem zoomItem" regionId='+ res.data.goods[1].goods[i].regionId+'>'+res.data.goods[1].goods[i].name+'</li>'
+                        var rentItem= '<li class="checkedItem zoomItem" rentGoodsId='+ res.data.goods[1].goods[i].id+'>'+res.data.goods[1].goods[i].name+'</li>'
                     }else {
-                        var rentItem= '<li class="zoomItem" regionId='+res.data.goods[1].goods[i].regionId+'>'+res.data.goods[1].goods[i].name+'</li>'
+                        var rentItem= '<li class="zoomItem" rentGoodsId='+res.data.goods[1].goods[i].id+'>'+res.data.goods[1].goods[i].name+'</li>'
                     }
                     $('#rentBox').append(rentItem);
                 }
@@ -160,11 +160,11 @@
             rentList(res);
         }
         var url_list= baseUrl+'/api/medical/list';
-        var url_order= baseUrl+'';
+        var url_order= baseUrl+'/api/medical/createOrder';
         var type_list= 'post';
         var type_order= 'post';
-        var targetUrl= ''
-        // var targetUrl= ''
+        // var targetUrl= 'http://judiaowang.cn/app/view/medicalPermit_order.html'
+        var targetUrl= './medicalPermit_order.html'
         var parameters_list= {
             busModId: "23",// 医疗许可证
             cityId: JSON.parse(localStorage.getItem('loginData')).cityId,
@@ -172,7 +172,35 @@
         getFormData(url_list,type_list,parameters_list,callback_list);
 
         $('.paymentBtn').on('click',function(){
-            layer.msg('功能调试中...业务办理请联系客服');
+            var orderInfo= {};
+            var orderInfoData= {};
+            var companyName= $('.formItem>.companyName').val();
+            var regionId= $('#zoomBox>li.checkedItem').attr('regionId');
+            var regionText= $('#zoomBox>li.checkedItem').text();
+            var levelGoodsId= $('#levelBox>li.checkedItem').attr('levelGoodsId');
+            var levelGoodsText= $('#levelBox>li.checkedItem').text();
+            var rentGoodsId= $('#rentBox>li.checkedItem').attr('rentGoodsId');
+            var rentGoodsText= $('#rentBox>li.checkedItem').text();
+            var goodsList= [levelGoodsId,rentGoodsId];
+            var goodsPrice= "";
+            orderInfo= {
+                "busModId": "23",
+                "cityId": JSON.parse(localStorage.getItem('loginData')).cityId,
+                "companyName": companyName,
+                "goodsIds": goodsList,
+                "regionId": regionId
+            }
+            orderInfoData= {
+                "companyName": companyName,
+                "regionText": regionText,
+                "levelGoodsText" :levelGoodsText,
+                "rentGoodsText": rentGoodsText,
+                "goodsPrice": goodsPrice
+            }
+            orderInfo= JSON.stringify(orderInfo);
+            orderInfoData= JSON.stringify(orderInfoData);
+            sessionStorage.setItem('medical_orderInfo',orderInfoData);
+            createOrder(url_order,type_order,orderInfo,targetUrl)
         })
     })
 </script>

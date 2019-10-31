@@ -37,7 +37,7 @@
                        <!-- 企业类型 -->
                     </ul>
                 </div>
-                <div class="formItem">
+                <div class="formItem foreignItem">
                     <p class="labTitle"><span class="isRequired">*</span>外汇备案<span class="addText">(￥500)</span></p>
                     <ul class="zoomList" id="foreignBox">
                        <!-- 外汇备案类型 -->
@@ -107,12 +107,13 @@
             if(res.code == 0) {
                 for (var i = 0; i < res.data.goods[0].goods.length; i++) {  
                     if(i == 0) {
-                        var handleItem= '<li class="checkedItem zoomItem" regionId='+res.data.goods[0].goods[i].id+'>'+res.data.goods[0].goods[i].name+'</li>'
+                        var handleItem= '<li class="checkedItem zoomItem" retailPrice="'+res.data.goods[0].goods[i].retailPrice+'" marketPrice="'+res.data.goods[0].goods[i].marketPrice+'" goodsId='+res.data.goods[0].goods[i].id+'>'+res.data.goods[0].goods[i].name+'</li>'
                     }else {
-                        var handleItem= '<li class="zoomItem" regionId='+res.data.goods[0].goods[i].id+'>'+res.data.goods[0].goods[i].name+'</li>'
+                        var handleItem= '<li class="zoomItem" retailPrice="'+res.data.goods[0].goods[i].retailPrice+'" marketPrice="'+res.data.goods[0].goods[i].marketPrice+'" goodsId='+res.data.goods[0].goods[i].id+'>'+res.data.goods[0].goods[i].name+'</li>'
                     }
                     $('#handleBox').append(handleItem);
                 }
+                $('.payAmount').text($('#handleBox>li.checkedItem').attr('marketPrice'));
             }else if(res.code == 666) {
                 layer.msg(res.msg,function(){
                     window.location.href= 'http://judiaowang.cn/app/view/partnerLogin.html';
@@ -172,19 +173,89 @@
             foreignList(res);
         }
         var url_list= baseUrl+'/api/importExport/list';
-        var url_order= baseUrl+'';
+        var url_order= baseUrl+'/api/importExport/createOrder';
         var type_list= 'post';
         var type_order= 'post';
-        var targetUrl= ''
-        // var targetUrl= ''
+        var targetUrl= 'http://judiaowang.cn/app/view/foreignTrade_order.html'
+        var targetUrl= './foreignTrade_order.html'
         var parameters_list= {
-            busModId: "14",// 食品经营许可证
+            busModId: "14",// 进出口经营
             cityId: JSON.parse(localStorage.getItem('loginData')).cityId,
         }
         getFormData(url_list,type_list,parameters_list,callback_list);
 
+
+        $('#handleBox').on('click','.zoomItem',function(){
+            var textType= $(this).text();
+            var price= $(this).attr('marketPrice')
+            $('.payAmount').text(price);
+            if(textType == "变更") {
+                $('.foreignItem').css('display','none');
+            }else if(textType == "注册") {
+                $('.foreignItem').css('display','block');
+            }
+        })
+
+        $('#companyBox').on('click','.acreageItem',function(){
+            var textType= $(this).text();
+            var price= $(this).attr('marketPrice')
+            $('.payAmount').text(price);
+            
+        })
+        $('#foreignBox').on('click','.acreageItem',function(){
+            var textType= $(this).text();
+            var price= $(this).attr('marketPrice')
+            $('.payAmount').text(price);
+            if(textType == "变更") {
+                $('.foreignItem').css('display','none');
+            }else if(textType == "注册") {
+                $('.foreignItem').css('display','block');
+            }
+        })
+
         $('.paymentBtn').on('click',function(){
-            layer.msg('功能调试中...业务办理请联系客服');
+            var orderInfo= {};
+            var orderInfoData= {};
+            var goodsList= [];
+            var handleGoodsId= $('#handleBox>li.checkedItem').attr('goodsId');
+            var companyGoodsId= $('#companyBox>li.checkedItem').attr('goodsId');
+            var foreignGoodsId= $('#foreignBox>li.checkedItem').attr('goodsId');
+            var handleGoodsText= $('#handleBox>li.checkedItem').text();
+            var companyGoodsText= $('#companyBox>li.checkedItem').text();
+            var foreignGoodsText= $('#foreignBox>li.checkedItem').text();
+            var isForeign= $('.foreignItem').css('display');
+            if(isForeign == "block") {
+                goodsList= [handleGoodsId,companyGoodsId,foreignGoodsId];
+            }else if(isForeign == "none") {
+                goodsList= [handleGoodsId,companyGoodsId];
+            } 
+            var receiverName= $('.receiveInfo>.formItem>.receiverName').val();  // 收件姓名 (必填)
+            var receiverTel= $('.receiveInfo>.formItem>.receiverTel').val();  // 收件联系方式 
+            var receiverAdd= $('.receiveInfo>.formItem>.receiverAdd').val();  // 收件地址 (必填) 
+            var companyName= $('.formItem>.companyName').val();
+            orderInfo= {
+                "address": receiverAdd,
+                "busModId": '14',
+                "cityId": JSON.parse(localStorage.getItem('loginData')).cityId,
+                "companyName": companyName,
+                "consignee": receiverName,
+                "goodsIds": goodsList,
+                "phone": receiverTel
+            }
+            orderInfoData= {
+                "companyName": companyName,
+                "handleGoodsText": handleGoodsText,
+                "companyGoodsText": companyGoodsText,
+                "foreignGoodsText": foreignGoodsText,
+                "receiverName": receiverName, 
+                "receiverTel": receiverTel, 
+                "receiverAdd": receiverAdd
+            }
+
+            orderInfo= JSON.stringify(orderInfo);
+            orderInfoData= JSON.stringify(orderInfoData);
+            sessionStorage.setItem('foreign_orderInfo',orderInfoData)
+            createOrder(url_order,type_order,orderInfo,targetUrl)
         })
     })
 </script>

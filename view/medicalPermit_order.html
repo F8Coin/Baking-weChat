@@ -25,15 +25,15 @@
                     </p>
                     <p class="orderItem">
                         <span class="labTitle">办理区域<span class="colon">:</span></span>
-                        <span class="labContent zoom"></span>
+                        <span class="labContent zoom regionText"></span>
                     </p>
                     <p class="orderItem">
                         <span class="labTitle">许可证级别<span class="colon">:</span></span>
-                        <span class="labContent zoom"></span>
+                        <span class="labContent zoom levelGoodsText"></span>
                     </p>
                     <p class="orderItem">
                         <span class="labTitle">是否有红本租赁合同<span class="colon">:</span></span>
-                        <span class="labContent zoom"></span>
+                        <span class="labContent zoom rentGoodsText"></span>
                     </p>
                 </div>
     
@@ -63,5 +63,18 @@
 <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 <script src="../js/jQuery/jquery-3.4.0.js"></script>
 <script src="../js/index.js?v=1.0"></script>
-
-
+<script>
+        $(function(){
+            var orderInfoData= JSON.parse(sessionStorage.getItem('medical_orderInfo'));
+            var orderId= getUrlParam('orderId');
+            var targetUrl= 'http://judiaowang.cn/app/view/medical_form.html';
+            $('.orderItem>.companyName').text(orderInfoData.companyName);
+            $('.orderItem>.regionText').text(orderInfoData.regionText);
+            $('.orderItem>.levelGoodsText').text(orderInfoData.levelGoodsText);
+            $('.orderItem>.rentGoodsText').text(orderInfoData.rentGoodsText);
+            // $('.payAmount').text(orderInfoData.goodsPrice);
+            $('.paymentBtn').on('click',function(){
+                weChatPay(orderId,targetUrl);
+            })
+        })
+    </script>

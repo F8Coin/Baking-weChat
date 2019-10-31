@@ -25,7 +25,7 @@
                     </p>
                     <p class="orderItem">
                         <span class="labTitle">办理业务<span class="colon">:</span></span>
-                        <span class="labContent zoom"></span>
+                        <span class="labContent zoom goodsText"></span>
                     </p>
                 </div>
             </div>
@@ -57,5 +57,18 @@
 <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 <script src="../js/jQuery/jquery-3.4.0.js"></script>
 <script src="../js/index.js?v=1.0"></script>
+<script>
+$(function(){
+    var orderInfoData= JSON.parse(sessionStorage.getItem('road_orderInfo'));
+    var orderId= getUrlParam('orderId');
+    var targetUrl= 'http://judiaowang.cn/app/view/roadPermit_form.html';
+    $('.orderItem>.companyName').text(orderInfoData.companyName);
+    $('.orderItem>.goodsText').text(orderInfoData.goodsText);
+    $('.payAmount').text(orderInfoData.goodsPrice);
+    $('.paymentBtn').on('click',function(){
+        weChatPay(orderId,targetUrl)
+    })
+})
 
+</script>
 

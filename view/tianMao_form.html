@@ -80,7 +80,7 @@
                 <p class="tipText">3.天猫入驻期间自行报税</p>
             </div>
             <div class="agreeRule">
-                <input type="checkbox"> 我已阅读并接受<a href="javascript:void" class="ruleAbout">《天猫入驻协议》</a>
+                <input type="checkbox" checked> 我已阅读并接受<a href="javascript:void" class="ruleAbout">《天猫入驻协议》</a>
             </div>
             <a href="javascript:void(0)" class="weui_btn weui_btn_primary nextBtn">点击办理</a>
         </div>
@@ -117,6 +117,11 @@
 <script src="../js/index.js?v=1.1"></script>
 <script>
     $(function(){
+        var url_order= baseUrl+'/api/newspaper/createOrder';
+        var type_order= 'post';
+        // var targetUrl= 'http://judiaowang.cn/app/view/tianMao_form.html'
+        var targetUrl= './tianMao_form.html'
+
         // 点击天猫入驻协议
         $('.ruleAbout').on('click',function(){
             layer.open({
@@ -127,7 +132,15 @@
         })
 
         $('.nextBtn').on('click',function(){
-            layer.msg('功能调试中...业务办理请联系客服');
+            var companyName= $('.companyName').val();
+            var orderInfo= {};
+            orderInfo= {
+                "busModId": '7',
+                "cityId": JSON.parse(localStorage.getItem('loginData')).cityId,
+                "companyName": companyName
+            }
+            orderInfo= JSON.stringify(orderInfo);
+            createOrder(url_order,type_order,orderInfo,targetUrl);
         })
         
     })

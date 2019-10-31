@@ -24,26 +24,26 @@
                 </p>
                 <p class="orderItem">
                     <span class="labTitle">办理类型<span class="colon">:</span></span>
-                    <span class="labContent legalName text"></span>
+                    <span class="labContent handleGoodsType text"></span>
                 </p>
                 <p class="orderItem">
                     <span class="labTitle">企业类型<span class="colon">:</span></span>
-                    <span class="labContent legalName text"></span>
+                    <span class="labContent companyGoodsType text"></span>
                 </p>
                 <p class="orderItem">
                     <span class="labTitle">外汇备案<span class="colon">:</span></span>
-                    <span class="labContent legalName text"></span>
+                    <span class="labContent foreignGoodsType text"></span>
                 </p>
             </div>
             <div class="orderInfo">
                 <p class="title">收货信息</p>
                 <div class="content">
                     <p class="orderItem">
-                        <span class="labContent userName">邵先生</span>    
-                        <span class="labContent userTel">18603059551</span>
+                        <span class="labContent userName"></span>    
+                        <span class="labContent userTel"></span>
                     </p>    
                     <p class="orderItem">
-                        <span class="labContent userAdd">广东省深圳市福田区</span>
+                        <span class="labContent userAdd"></span>
                     </p>
                 </div>  
             </div>
@@ -70,3 +70,22 @@
 
 <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 <script src="../js/jQuery/jquery-3.4.0.js"></script>
+<script src="../js/index.js"></script>
+<script>
+    $(function(){
+        var orderInfoData= JSON.parse(sessionStorage.getItem('foreign_orderInfo'));
+        var orderId= getUrlParam('orderId');
+        var targetUrl= 'http://judiaowang.cn/app/view/foreignTrade_form.html';
+        $('.orderItem>.companyName').text(orderInfoData.companyName);
+        $('.orderItem>.handleGoodsType').text(orderInfoData.handleGoodsText);
+        $('.orderItem>.companyGoodsType').text(orderInfoData.companyGoodsText);
+        $('.orderItem>.foreignGoodsType').text(orderInfoData.foreignGoodsText);
+        $('.orderItem>.userName').text(orderInfoData.receiverName);
+        $('.orderItem>.userTel').text(orderInfoData.receiverTel);
+        $('.orderItem>.userAdd').text(orderInfoData.receiverAdd);
+        // $('.payAmount').text(orderInfoData.goodsPrice);
+        $('.paymentBtn').on('click',function(){
+            weChatPay(orderId,targetUrl)
+        })
+    })
+</script>

@@ -35,7 +35,7 @@
                     <p class="labTitle"><span class="isRequired">*</span>上传营业执照</p>
                     <div class="uploadBox">
                         <input type="file" class="uploadInput" accept="image/*" onchange="uploadFile($(this),$(this).parent())">
-                        <img src="" alt="" class="showImg">
+                        <img src="" alt="" class="showImg busLicense">
                         <p class="typeText">营业执照<span class="requiredFlag">*</span></p>
                     </div>
                 </div>
@@ -112,11 +112,11 @@
             zoomList(res);
         }
         var url_list= baseUrl+'/api/environ/list';
-        var url_order= baseUrl+'';
+        var url_order= baseUrl+'/api/environ/createOrder';
         var type_list= 'post';
         var type_order= 'post';
-        var targetUrl= ''
-        // var targetUrl= ''
+        // var targetUrl= 'http://judiaowang.cn/app/view/environmentPro_order.html'
+        var targetUrl= './environmentPro_order.html'
         var parameters_list= {
             busModId: "16",// 环保备案
             cityId: JSON.parse(localStorage.getItem('loginData')).cityId,
@@ -124,7 +124,20 @@
         getFormData(url_list,type_list,parameters_list,callback_list);
 
         $('.paymentBtn').on('click',function(){
-            layer.msg('功能调试中...业务办理请联系客服');
+            var orderInfo= {};
+            var orderInfoData= {};
+            var companyName= $('.formItem>.companyName').val(); 
+            var busLicense= $('.busLicense').attr('src');
+            var regionId= $('#zoomBox>li.checkedItem').attr('regionId')
+            orderInfo= {
+                "busLicense": busLicense,
+                "busModId": "16",
+                "companyName": companyName,
+                "goodsId": "",
+                "regionId": regionId
+            }
+            orderInfo= JSON.stringify(orderInfo);
+            createOrder(url_order,type_order,orderInfo,targetUrl)
         })
     })
 </script>

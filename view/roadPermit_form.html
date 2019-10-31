@@ -17,8 +17,8 @@
             <div class="baseInfo">
                 <p class="title">道路运输许可证</p>
                 <div class="formItem">
-                    <p class="labTitle"><span class="isRequired">*</span>公司名称<span class="addText">(英文)</span> </p>
-                    <input class="placeholderText companyName" type="text" placeholder="请输入公司英文名称">
+                    <p class="labTitle"><span class="isRequired">*</span>公司名称</p>
+                    <input class="placeholderText companyName" type="text" placeholder="请输入公司全称">
                 </div>
                 <div class="formItem">
                     <p class="labTitle"><span class="isRequired">*</span>办理业务</p>
@@ -83,7 +83,7 @@
                                                 '<span class="text">'+res.data.goods[0].goods[i].name+'</span>'+
                                             '</p>'+
                                             '<p class="price">￥'+res.data.goods[0].goods[i].marketPrice+'</p>'+
-                                            '<input class="selectBtn" type="radio" id="'+res.data.goods[0].goods[i].id+'">'+
+                                            '<input class="selectBtn" name="roadType" type="radio" id="'+res.data.goods[0].goods[i].id+'">'+
                                         '</label>'
                     $('#goodsBox').append(goodsItem);
                 }
@@ -102,19 +102,43 @@
             goodsList(res);
         }
         var url_list= baseUrl+'/api/roadPermit/list';
-        var url_order= baseUrl+'';
+        var url_order= baseUrl+'/api/roadPermit/createOrder';
         var type_list= 'post';
         var type_order= 'post';
-        var targetUrl= ''
-        // var targetUrl= ''
+        var targetUrl= 'http://judiaowang.cn/app/view/roadPermit_order.html'
+        // var targetUrl= './roadPermit_order.html'
         var parameters_list= {
             busModId: "21",// 道路运输许可证
             cityId: JSON.parse(localStorage.getItem('loginData')).cityId,
         }
         getFormData(url_list,type_list,parameters_list,callback_list);
 
+        $('#goodsBox').on('click','.optionType',function(){
+            var goodsPrice= $(this).find('p.price').text().replace('￥','');
+            $('.payAmount').text(goodsPrice);
+        })
         $('.paymentBtn').on('click',function(){
-            layer.msg('功能调试中...业务办理请联系客服');
+            var orderInfo= {};
+            var orderInfoData= {};
+            var companyName= $('.formItem>.companyName').val();
+            var goodsId= [$('#goodsBox>.optionAbout>input[type="radio"]:checked').attr('id')];
+            var goodsText= $('#goodsBox>.optionAbout>input[type="radio"]:checked').siblings('p.flag').find('.text').text();
+            var goodsPrice= $('.payAmount').text();
+            orderInfo= {
+                "busModId": '21',
+                "cityId": JSON.parse(localStorage.getItem('loginData')).cityId,
+                "companyName": companyName,
+                "goodsIds": goodsId
+            }
+            orderInfoData= {
+                "companyName": companyName,
+                "goodsText": goodsText,
+                "goodsPrice": goodsPrice
+            }
+            orderInfo= JSON.stringify(orderInfo);
+            orderInfoData= JSON.stringify(orderInfoData);
+            sessionStorage.setItem("road_orderInfo",orderInfoData);
+            createOrder(url_order,type_order,orderInfo,targetUrl)
         })
     })
 </script>
