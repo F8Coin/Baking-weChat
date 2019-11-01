@@ -60,16 +60,7 @@
 <script src="../js/index.js"></script>
 <script>
     $(function(){
-        var orderInfoData= JSON.parse(sessionStorage.getItem('tax_orderInfo'));
-        var orderId= getUrlParam('orderId');
-        var targetUrl= 'http://judiaowang.cn/app/view/taxReport_form.html';
-        $('.orderItem>.companyName').text(orderInfoData.companyName);
-    })
-</script>
-<script>
-    $(function(){
         var orderInfoData= JSON.parse(sessionStorage.getItem('tianMao_orderInfo'));
-        var orderId= getUrlParam('orderId');
         $('.orderItem>.companyName').text(orderInfoData.companyName);
     })
 </script>

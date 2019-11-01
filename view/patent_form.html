@@ -113,7 +113,7 @@
                                                 '<span class="text">'+res.data.goods[i].name+'</span>'+
                                             '</p>'+
                                             '<p class="price">￥'+res.data.goods[i].marketPrice+'</p>'+
-                                            '<input class="selectBtn" type="checkbox" id="'+res.data.goods[i].id+'">'+
+                                            '<input class="selectBtn" goodsText="'+res.data.goods[i].name+'" marketPrice="'+res.data.goods[i].marketPrice+'" type="checkbox" id="'+res.data.goods[i].id+'">'+
                                         '</label>'
                     $('#patentBox').append(patentItem);
                 }
@@ -131,8 +131,8 @@
         var url_order= baseUrl+'/api/patent/createOrder';
         var type_list= 'post';
         var type_order= 'post';
-        // var targetUrl= 'http://judiaowang.cn/app/view/patent_order.html'
-        var targetUrl= './patent_order.html'
+        var targetUrl= 'http://judiaowang.cn/app/view/patent_order.html'
+        // var targetUrl= './patent_order.html'
         var parameters_list= {
             busModId: "25",// 专利申请
             categoryId: '18',
@@ -140,16 +140,33 @@
         }
         getFormData(url_list,type_list,parameters_list,callback_list);
 
-
+        $('#patentBox').on('click','.optionType',function(){
+            var goodsList= $("#patentBox>.optionType>input[type='checkbox']:checked");
+            var goodsPrice= 0;
+            for (let i = 0; i < goodsList.length; i++) {
+               var price= Number($(goodsList[i]).attr('marketPrice'));
+               goodsPrice+= price;
+            }
+            $(".payAmount").text(goodsPrice+"");
+        })
 
         $('.paymentBtn').on('click',function(){
             var orderInfo= {};
             var orderInfoData= {};
             var goodsIds= [];
+            var goodsText= [];
+            var goodsAbout= [];
+            var goodsPrice= $('.payAmount').text();
             var taxText= $('.taggleItem>li.checkedItem').text();
             var goodsList= $("#patentBox>.optionType>input[type='checkbox']:checked");
             for (let i = 0; i < goodsList.length; i++) {  // 商品id
                 goodsIds.push($(goodsList[i]).attr('id'));
+                goodsText.push($(goodsList[i]).attr('goodsText'))
+                var goodsAboutItem= {
+                    "type": $(goodsList[i]).attr('goodsText'),
+                    "price": $(goodsList[i]).attr('marketPrice')
+                }
+                goodsAbout.push(goodsAboutItem);
             }
             var busContact= $('.businessName').val();
             var busContactPhone= $('.businessTel').val();
@@ -181,11 +198,13 @@
                 "techContactPhone": techContactPhone,
                 "postscript": postscript,
                 "certAddress": certAddress,
-                "price": '',
-                "goodsList": ''
+                "price": goodsPrice,
+                "goodsList": goodsText,
+                'goodsAbout': goodsAbout,
             }
             orderInfo= JSON.stringify(orderInfo);
             orderInfoData= JSON.stringify(orderInfoData);
+            sessionStorage.setItem('patent_orderInfo',orderInfoData);
             createOrder(url_order,type_order,orderInfo,targetUrl)
         })
     })

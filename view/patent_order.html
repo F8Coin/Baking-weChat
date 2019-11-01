@@ -25,31 +25,31 @@
                     </p>
                     <p class="orderItem">
                         <span class="labTitle">应纳企业所得税<span class="colon">:</span></span>
-                        <span class="labContent companyName text"></span>
+                        <span class="labContent taxText text"></span>
                     </p>
                     <p class="orderItem">
                         <span class="labTitle">商务联系人<span class="colon">:</span></span>
-                        <span class="labContent companyName text"></span>
+                        <span class="labContent busContact text"></span>
                     </p>
                     <p class="orderItem">
                         <span class="labTitle">商务联系人电话<span class="colon">:</span></span>
-                        <span class="labContent companyName text"></span>
+                        <span class="labContent busContactPhone text"></span>
                     </p>
                     <p class="orderItem">
                         <span class="labTitle">技术联系人<span class="colon">:</span></span>
-                        <span class="labContent companyName text"></span>
+                        <span class="labContent techContact text"></span>
                     </p>
                     <p class="orderItem">
                         <span class="labTitle">技术联系人电话<span class="colon">:</span></span>
-                        <span class="labContent companyName text"></span>
+                        <span class="labContent techContactPhone text"></span>
                     </p>
                     <p class="orderItem">
                         <span class="labTitle">证书邮寄地址<span class="colon">:</span></span>
-                        <span class="labContent companyName text"></span>
+                        <span class="labContent certAddress text"></span>
                     </p>
                     <p class="orderItem">
                         <span class="labTitle">备注<span class="colon">:</span></span>
-                        <span class="labContent companyName text"></span>
+                        <span class="labContent postscript text"></span>
                     </p>
                 </div>
             </div>
@@ -57,12 +57,8 @@
                 <p class="title">专利类型</p>
                 <div class="orderAbout_content">
                     <table class="patentTable w100">
-                        <tbody>
-                            <tr>
-                                <td class="type">发明专利</td>
-                                <td class="amount">3</td>
-                                <td class="price">￥2505</td>
-                            </tr>
+                        <tbody id="patentList">
+                            <!-- 专利类型列表 -->
                         </tbody>
                     </table>
                 </div>
@@ -73,7 +69,7 @@
         <span class="fl payInfo">
             订单金额 : <span class="RMB_flag">￥</span><span class="payAmount"></span>
         </span>
-        <a href="./dev.html" class="fr paymentBtn">微信支付</a>
+        <a href="javascript:void(0)" class="fr paymentBtn">微信支付</a>
     </div>
 </body>
 
@@ -85,7 +81,26 @@
 <script src="../js/index.js"></script>
 <script>
     $(function(){
-        var orderId= getUrlParam('orderId');  // 获取订单id
-        
+        var orderInfoData= JSON.parse(sessionStorage.getItem('patent_orderInfo'));
+        var orderId= getUrlParam('orderId');
+        var targetUrl= 'http://judiaowang.cn/app/view/patent_form.html';
+        $('.orderItem>.companyName').text(orderInfoData.companyName);
+        $('.orderItem>.taxText').text(orderInfoData.taxText);
+        $('.orderItem>.busContact').text(orderInfoData.busContact);
+        $('.orderItem>.busContactPhone').text(orderInfoData.busContactPhone);
+        $('.orderItem>.techContact').text(orderInfoData.techContact);
+        $('.orderItem>.techContactPhone').text(orderInfoData.techContactPhone);
+        $('.orderItem>.certAddress').text(orderInfoData.certAddress);
+        $('.orderItem>.postscript').text(orderInfoData.postscript);
+        $('.payAmount').text(orderInfoData.price);
+        $('.orderItem>.companyName').text(orderInfoData.companyName);
+        for (let i = 0; i < orderInfoData.goodsAbout.length; i++) {
+           var patentItem= '<tr>'+
+                                '<td class="type w50">'+orderInfoData.goodsAbout[i].type+'</td>'+
+                                '<td class="amount w30">×1</td>'+
+                                '<td class="price w20">'+'￥'+orderInfoData.goodsAbout[i].price+'</td>'+
+                            '</tr>'
+            $('#patentList').append(patentItem);
+        }
     })
 </script>

@@ -100,25 +100,21 @@
             <div class="orderInfo">
                 <p class="title">登报类型</p>
                 <div class="content">
-                    <p class="orderItem">
-                        <span class="labContent userName"></span>    
-                        <span class="labContent userTel"></span>
-                    </p>    
-                    <p class="orderItem">
-                        <span class="labContent userAdd "></span>
-                    </p>
+                    <table class="newsTypeTable w100">
+                        <tbody id="newsTypeBox">
+                            <!-- 登报类型 -->
+                        </tbody>
+                    </table>
                 </div>  
             </div>
             <div class="orderInfo">
                 <p class="title">遗失材料</p>
                 <div class="content">
-                    <p class="orderItem">
-                        <span class="labContent userName"></span>    
-                        <span class="labContent userTel"></span>
-                    </p>    
-                    <p class="orderItem">
-                        <span class="labContent userAdd"></span>
-                    </p>
+                    <table class="loseTypeTable w100">
+                        <tbody id="loseTypeBox">
+                            <!-- 遗失材料 -->
+                        </tbody>
+                    </table>
                 </div>  
             </div>
             <div class="orderInfo">
@@ -139,7 +135,7 @@
         <span class="fl payInfo">
             订单金额 : <span class="RMB_flag">￥</span><span class="payAmount"></span>
         </span>
-        <a href="./dev.html" class="fr paymentBtn">微信支付</a>
+        <a href="javascript:void(0)" class="fr paymentBtn">微信支付</a>
     </div>
 </body>
 
@@ -178,6 +174,22 @@
         $('.orderItem>.verifyTime').text(orderInfoData.verifyTime);
 
         $('.payAmount').text(orderInfoData.goodsPrice); 
+        for (let i = 0; i < orderInfoData.loseText.length; i++) {
+           var newsTypeItem= '<tr>'+
+                                '<td class="type w50">'+orderInfoData.loseText[i]+'</td>'+
+                                '<td class="amount w30">×1</td>'+
+                            '</tr>'
+            $('#loseTypeBox').append(newsTypeItem);
+        }
+        for (let i = 0; i < orderInfoData.goodsText.length; i++) {
+           var loseTypeItem= '<tr>'+
+                                '<td class="type w50">'+orderInfoData.goodsText[i]+'</td>'+
+                                '<td class="amount w30">×1</td>'+
+                            '</tr>'
+            $('#newsTypeBox').append(loseTypeItem);
+        }
+
+
         $('.paymentBtn').on('click',function(){
             weChatPay(orderId,targetUrl)
         })

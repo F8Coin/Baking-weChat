@@ -262,7 +262,7 @@
                                             '<span class="text">'+res.data.goods[0].goods[i].name+'</span>'+
                                         '</p>'+
                                         '<p class="price">￥'+res.data.goods[0].goods[i].marketPrice+'</p>'+
-                                        '<input class="selectBtn" type="checkbox" id="'+res.data.goods[0].goods[i].id+'">'+
+                                        '<input class="selectBtn" type="checkbox" newsPrice="'+res.data.goods[0].goods[i].marketPrice+'" id="'+res.data.goods[0].goods[i].id+'">'+
                                     '</label>'
             $('#newsBox').append(newsTypeItem);
             }
@@ -289,6 +289,13 @@
         $('#newsBox').on('click','.newsType',function(){
             var pageIndex= $(this).index();
             var showFlag= $(this).find('.selectBtn').prop('checked');
+            var goodsList= $("#newsBox>.newsType>input[type='checkbox']:checked");
+            var goodsPrice= 0;
+            for (let i = 0; i < goodsList.length; i++) {
+               var price= Number($(goodsList[i]).attr('newsPrice'));
+               goodsPrice+= price;
+            }
+            $(".payAmount").text(goodsPrice+"");
             if(showFlag) {
                 if(pageIndex == 0) {
                     $('.newsBox1').css('display','block');
@@ -404,13 +411,14 @@
         // 点击下一步提交订单
         $('.paymentBtn').on('click',function(){
             var loseText= [];
-            var loseType= [];
+            var loseType= "";
+            var newsPrice= $('.payAmount').text();
             var loseTextList= $('.loseText');
             for (let i = 0; i < loseTextList.length; i++) {
                 var text= $(loseTextList[i]).text();
                 var type= $(loseTextList[i]).attr('typeIndex');
                 loseText.push(text); 
-                loseType.push(type);          
+                loseType= loseType+','+type;         
             }
 
             var busLicenseFlag1= $('.newsBox1').css('display');
@@ -523,7 +531,7 @@
                 "contactPhone": contactPhone,
                 "loseText": loseText,
                 "goodsText": goodsTextList,
-                // "goodsPrice": ""
+                "goodsPrice": newsPrice,
                 "liquidatorPhone": liquidatorPhone,
                 "newspaperWord": newspaperWord,
                 "noticeBook": noticeBook,
@@ -536,7 +544,7 @@
             orderInfo= JSON.stringify(orderInfo);
             orderInfoData= JSON.stringify(orderInfoData);
             sessionStorage.setItem('news_orderInfo',orderInfoData);
-            // createOrder(url_order,type_order,orderInfo,targetUrl);
+            createOrder(url_order,type_order,orderInfo,targetUrl);
         })
     })
 </script>
