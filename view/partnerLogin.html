@@ -39,10 +39,23 @@
 <script>
 
     // 默认进入页面判断是否登录
-    var isLogin= JSON.parse(localStorage.getItem('loginData')); 
-    if(isLogin) {
-        window.location.href= './partnerCenter.html'
+    // var isLogin= JSON.parse(localStorage.getItem('loginData')); 
+    // if(isLogin) {
+    //     window.location.href= './partnerCenter.html'
+    // }
+
+    var loginData= JSON.parse(localStorage.getItem('loginData'));
+    var tokenFlag;
+    var requestData= {};
+    var that= this;
+    if(loginData == null) {
+        window.location.href= 'http://judiaowang.cn/app/view/partnerLogin.html'
+        return false;
+    }else {
+        tokenFlag= loginData.token;
+        requestData= {token:tokenFlag}             
     }
+    isLogin(requestData)
 
     // ------------获取短信验证码--------------
     $('.getCodeBtn').on('click',function(){
