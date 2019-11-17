@@ -45,17 +45,18 @@
     // }
 
     var loginData= JSON.parse(localStorage.getItem('loginData'));
-    var tokenFlag;
-    var requestData= {};
-    var that= this;
-    if(loginData == null) {
-        window.location.href= 'http://judiaowang.cn/app/view/partnerLogin.html'
-        return false;
-    }else {
+    if(loginData) {
+        var tokenFlag;
+        var requestData= {};
+        var that= this;
+        function toTarget() {
+            window.location.href= 'http://judiaowang.cn/app/view/partnerCenter.html'
+        }
         tokenFlag= loginData.token;
-        requestData= {token:tokenFlag}             
+        requestData= {token:tokenFlag}
+        isLogin(requestData,toTarget) 
     }
-    isLogin(requestData)
+    
 
     // ------------获取短信验证码--------------
     $('.getCodeBtn').on('click',function(){

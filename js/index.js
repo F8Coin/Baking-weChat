@@ -182,6 +182,7 @@ function isLogin(token,callBack) {
                 callBack();
             }else  if(res.code == 666){
                 layer.msg('请重新登录',function(){
+                    localStorage.clear()
                     window.location.href= 'http://judiaowang.cn/app/view/partnerLogin.html'
                     return false;
                 });
