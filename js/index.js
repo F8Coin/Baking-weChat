@@ -188,6 +188,8 @@ function isLogin(token,callBack) {
                 });
             }else {
                 layer.msg(res.msg);
+                localStorage.clear();
+                window.location.href= 'http://judiaowang.cn/app/view/partnerLogin.html?ids=1020'
             }
         }
     })

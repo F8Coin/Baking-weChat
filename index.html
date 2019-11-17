@@ -98,13 +98,12 @@
             }else {
                 tokenFlag= loginData.token;
                 requestData= {token:tokenFlag}             
+                function toTarget() {
+                    var hrefRoot= $(that).attr('hrefs')
+                    window.location.href= 'http://judiaowang.cn/app'+hrefRoot
+                }
+                isLogin(requestData,toTarget)
             }
-            function toTarget() {
-                var hrefRoot= $(that).attr('hrefs')
-                window.location.href= 'http://judiaowang.cn/app'+hrefRoot
-            }
-            isLogin(requestData,toTarget)
-            // isLogin({token:'123456789'},toTarget)
             
         })
     })
